@@ -5,17 +5,20 @@ import Control.Monad (filterM)
 import qualified Data.ByteString.Char8 as BS (pack, empty)
 import qualified Data.Text as Text
 import Data.Text (Text)
+import Data.HashMap.Strict (HashMap)
+import qualified Data.HashMap.Strict as Map
 import Data.Maybe (catMaybes)
 import Network.Google
 import Network.Google.OAuth2 -- From google-oauth2 package, not gogol 
 import Network.Google.Drive 
     ( filesList, flQ, flItems, fId
     , childrenList, clItems, crId
-    , filesGet, fDescription, fKind
+    , filesGet, fDescription, fKind, fExportLinks
     )
 import Network.Google.Drive.Types 
     ( FileList, ChildList, File
     , driveReadonlyScope
+    , felAddtional
     )
 import System.Environment (getEnv)
 import System.IO (stdout)
@@ -39,8 +42,11 @@ main = do
     env <- newEnv (FromToken token) <&> envLogger .~ logger 
 
     published <- runResourceT . runGoogle env $
-        locatetarget >>= listFiles >>= filterM isPublished   
-        
+        locatetarget
+            >>= listFiles
+            >>= filterM isPublished
+            >>= mapM getHtmlExportUrl
+
     putStrLn $ show published
 
     where
@@ -79,9 +85,27 @@ listFiles folder = case folder ^. fId of
 isPublished :: FileId -> Google Bool
 isPublished fileId = do
     file <- send (filesGet fileId)
-    
-    let published = file ^. fDescription == publishedDescription
-        doc = file ^. fKind == Text.pack "Document"
+    return $ file ^. fDescription == publishedDescription
 
-    return $ published && doc
+getHtmlExportUrl :: FileId -> Google Text
+getHtmlExportUrl fileId = do
+    file <- send (filesGet fileId)
+
+    case file ^. fExportLinks of
+        Nothing ->
+            fail $ "There are no export links for file " ++ fileIdStr
+
+        Just l -> case Map.lookup exportHtml (l ^. felAddtional) of
+            Nothing ->
+                fail "This file cannot be exported as Html."
+
+            Just htmlLink ->
+                return htmlLink
+
+    where
+        fileIdStr :: String
+        fileIdStr = Text.unpack fileId
+
+        exportHtml :: Text
+        exportHtml = Text.pack "text/html"
 

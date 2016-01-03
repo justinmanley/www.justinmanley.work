@@ -43,6 +43,7 @@ Executable download-content
 
   Build-depends:    base == 4.*,
                     bytestring,
+                    unordered-containers,
                     filepath,
                     hakyll == 4.7.*,
                     gogol,
@@ -53,3 +54,4 @@ Executable download-content
                     text
 
   Default-language: Haskell2010
+
