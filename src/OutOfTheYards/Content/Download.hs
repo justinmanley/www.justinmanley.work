@@ -11,7 +11,7 @@ import Network.Google.OAuth2 -- From google-oauth2 package, not gogol
 import Network.Google.Drive 
     ( filesList, flQ, flItems, fId
     , childrenList, clItems, crId
-    , filesGet, fDescription
+    , filesGet, fDescription, fKind
     )
 import Network.Google.Drive.Types 
     ( FileList, ChildList, File
@@ -77,6 +77,11 @@ listFiles folder = case folder ^. fId of
             $ send (childrenList folderId) 
 
 isPublished :: FileId -> Google Bool
-isPublished fileId = ((== publishedDescription) . (^. fDescription))
-    <$> send (filesGet fileId) 
-     
+isPublished fileId = do
+    file <- send (filesGet fileId)
+    
+    let published = file ^. fDescription == publishedDescription
+        doc = file ^. fKind == Text.pack "Document"
+
+    return $ published && doc
+
