@@ -6,3 +6,6 @@ dist
 # Hakyll build artifacts
 _cache
 _site
+
+# Application secrets
+_secret
