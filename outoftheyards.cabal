@@ -25,3 +25,15 @@ Executable site
 
   Default-language: Haskell2010
 
+executable download-content 
+  hs-source-dirs:   src
+
+  main-is:          OutOfTheYards/Content/Download.hs
+
+  build-depends:    base == 4.*,
+                    hakyll == 4.7.*,
+                    gogol,
+                    gogol-core,
+                    gogol-drive
+
+  default-language: Haskell2010
