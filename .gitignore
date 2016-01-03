@@ -1,0 +1,8 @@
+# Cabal
+cabal.sandbox.config
+.cabal-sandbox
+dist
+
+# Hakyll build artifacts
+_cache
+_site
