@@ -1,56 +1,121 @@
+@font-face {
+    font-family:'Aleo';
+    src: url('/assets/fonts/aleo-regular-webfont.woff');
+}
+
 body {
-    color: black;
-    font-size: 16px;
-    margin: 0px auto 0px auto;
-    width: 600px;
+    margin: 0;
 }
 
-div#header {
-    border-bottom: 2px solid black;
-    margin-bottom: 30px;
-    padding: 12px 0px 12px 0px;
+header {
+    background-color: #db1d0f;
 }
 
-div#logo a {
-    color: black;
-    float: left;
-    font-size: 18px;
-    font-weight: bold;
+.header {
+    padding-top: 300px;
+}
+
+.site-title {
+    font-size: 500%;
+    text-align: center;
+    padding-bottom: 40px;
+    margin: 0;
+}
+
+
+.site-subtitle {
+    font-family: 'Open Sans', serif;
+    color: #fff;
+    text-align: center;
+    font-size: 0.8em;
+    margin: 0;
+    padding-bottom: 60px;
+}
+
+.site-title a {
     text-decoration: none;
+    font-family: 'Aleo', sans-serif;
+    color: #ffffff;
 }
 
-div#header #navigation {
-    text-align: right;
+.skyline {
+    overflow: hidden;  
+    position: absolute;
+    width: 100%;
+    height: 400px;
 }
 
-div#header #navigation a {
-    color: black;
+.skyline img {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    margin: auto;
+}
+
+body {
+    background-color:#fffff7;
+}
+
+article {
+    font-family: 'Cardo', serif;
     font-size: 18px;
-    font-weight: bold;
-    margin-left: 12px;
-    text-decoration: none;
+    line-height: 3.5em;
+}
+
+article p {
+    padding-bottom: 40px;
+}
+
+article .title {
+    color: #db1d0f;    
+    font-weight: normal;
+    font-size: 3em;
+}
+
+a {
+	outline: none;
+	color: #db1d0f;
+}
+
+a:hover {
+	outline: none;
+	color: #c31a0d;
+}
+
+nav {
+    display: block;
+    height: 100px;
+    background-color: #ededed;
+    width: 100%;
+}
+
+.navlink {
     text-transform: uppercase;
+    text-decoration: none; 
+    font-size: 2.5em;
+    display: inline-block;
+    font-family: 'Open Sans', sans-serif;
+    position: relative;
+    top: 50%;
+    /* http://zerosixthree.se/vertical-align-anything-with-just-3-lines-of-css/ */
+    transform: translateY(-50%);
+    padding-left: 60px;
+    padding-right: 60px;
 }
 
-div#footer {
-    border-top: solid 2px black;
-    color: #555;
-    font-size: 12px;
-    margin-top: 30px;
-    padding: 12px 0px 12px 0px;
-    text-align: right;
+footer {
+    background-color: #db1d0f;
+    text-align: center;
+    color: #fff;
+    padding: 80px;
 }
 
-h1 {
-    font-size: 24px;
+footer a {
+    color: #fff;
 }
 
-h2 {
-    font-size: 20px;
-}
-
-div.info {
-    color: #555;
-    font-size: 14px;
-    font-style: italic;
+/* Mobile (default) */
+article {
+    padding-left: 6%;
+    padding-right: 6%;
 }
