@@ -1,0 +1,163 @@
+$oty_red: #db1d0f;
+$oty_grey: #ededed;
+
+@font-face {
+    font-family:'Aleo';
+    src: url('/assets/fonts/aleo-regular-webfont.woff');
+}
+
+body {
+    margin: 0;
+}
+
+body {
+    background-color:#fffff7;
+}
+
+a {
+	outline: none;
+	color: $oty_red;
+}
+
+a:hover {
+	outline: none;
+	color: #c31a0d;
+}
+
+nav {
+    display: block;
+    height: 100px;
+    background-color: $oty_grey;
+    width: 100%;
+    .navlink {
+        text-transform: uppercase;
+        text-decoration: none; 
+        display: inline-block;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 2.5em;
+        position: relative;
+        top: 50%;
+        /* http://zerosixthree.se/vertical-align-anything-with-just-3-lines-of-css/ */
+        transform: translateY(-50%);
+        padding-left: 60px;
+        padding-right: 60px;
+    }
+}
+
+/* Mobile (default) */
+article {
+    padding-left: 6%;
+    padding-right: 6%;
+}
+
+header {
+    background-color: $oty_red;
+
+    .site-title {
+        text-align: center;
+        padding-bottom: 40px;
+        margin: 0;
+        font-size: 59.5px;
+        font-weight: normal;
+    }
+
+    .site-subtitle {
+        font-family: 'Open Sans', serif;
+        color: #fff;
+        text-align: center;
+        margin: 0;
+        padding-bottom: 60px;
+    }
+
+    .site-title a {
+        text-decoration: none;
+        font-family: 'Aleo', sans-serif;
+        color: #ffffff;
+    }
+
+    /* The padding on the .skyline-inner element is critical:
+     * https://www.smashingmagazine.com/2013/07/simple-responsive-images-with-css-background-images/
+     */
+    .skyline {
+        width: 100%;
+        background-size: 100%;
+        background-image: url(/assets/images/skyline/600x158.png);
+        background-repeat: no-repeat;
+    }
+
+    .skyline-inner {
+        height: 0;
+        padding-top: percentage(158/600);
+    }
+}
+
+article {
+    font-family: 'Cardo', serif;
+
+    p {
+        padding-bottom: 40px;
+    }
+
+    .title {
+        color: $oty_red;    
+        font-weight: normal;
+    }
+}
+
+footer {
+    background-color: $oty_red;
+    text-align: center;
+    color: #fff;
+    padding: 80px;
+
+    a {
+        color: #fff;
+    }
+}
+
+@media (min-width: 600px) {
+}
+
+@media (min-width: 1000px) {
+    $padding_left: 15%;
+
+    header {
+        .skyline {
+            background-image: url(/assets/images/skyline/1920x279.png)
+        }
+
+        .skyline-inner {
+            padding-top: percentage(279/1920);
+        }
+
+        .site-title {
+            padding-bottom: 10px;
+        }
+
+        .site-subtitle {
+            padding-bottom: 20px;
+        }
+    }
+
+    nav {
+        height: 44px;
+        margin-bottom: 40px;
+        padding-left: $padding_left;
+        width: 100 - $padding_left;
+
+        .navlink {
+            font-size: inherit;
+            padding-left: 0;
+        }
+    }
+    
+    article {
+        width: 40%;
+        padding-left: $padding_left;
+
+        p {
+            padding-bottom: 0;
+        }
+    }
+}
+
