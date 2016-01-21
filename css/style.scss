@@ -6,12 +6,12 @@ $oty_grey: #ededed;
     src: url('/assets/fonts/aleo-regular-webfont.woff');
 }
 
-body {
+body, html {
     margin: 0;
 }
 
 body {
-    background-color:#fffff7;
+    background-color:#ffffff;
 }
 
 a {
@@ -55,10 +55,16 @@ header {
 
     .site-title {
         text-align: center;
+        padding-top: 40px;
         padding-bottom: 40px;
         margin: 0;
-        font-size: 59.5px;
         font-weight: normal;
+
+         a {
+            text-decoration: none;
+            font-family: 'Aleo', sans-serif;
+            color: #ffffff;
+        }
     }
 
     .site-subtitle {
@@ -67,12 +73,6 @@ header {
         text-align: center;
         margin: 0;
         padding-bottom: 60px;
-    }
-
-    .site-title a {
-        text-decoration: none;
-        font-family: 'Aleo', sans-serif;
-        color: #ffffff;
     }
 
     /* The padding on the .skyline-inner element is critical:
@@ -89,6 +89,10 @@ header {
         height: 0;
         padding-top: percentage(158/600);
     }
+}
+
+.twitter-container {
+    display: none;
 }
 
 article {
@@ -110,17 +114,38 @@ footer {
     color: #fff;
     padding: 80px;
 
+    .contact-me {
+        padding-bottom: 30px;
+    }
+
+    .fa {
+        font-size: 3em;
+        padding-left: 30px;
+        &:first-child {
+            padding-left: 0;
+        }
+    }
+
     a {
         color: #fff;
     }
 }
 
-@media (min-width: 600px) {
+
+@media screen and (min-width: 300px) and (min-resolution: 2dppx) {
+    header {
+        .site-title {
+            font-size: 6em;
+        }
+
+        .site-subtitle {
+            font-size: 0.8em;
+        }
+    }
 }
 
-@media (min-width: 1000px) {
-    $padding_left: 15%;
 
+@media screen and (min-width: 600px) and (max-resolution: 1dppx) {
     header {
         .skyline {
             background-image: url(/assets/images/skyline/1920x279.png)
@@ -138,6 +163,28 @@ footer {
             padding-bottom: 20px;
         }
     }
+}
+
+@media screen and (min-width: 1000px) {
+    $padding_left: 15%;
+
+    main {
+        /* Clearfix pseudo-element. */
+        &:after {
+            content: ".";
+            display: block;
+            height: 0;
+            clear: both;
+            visibility: hidden;
+        }
+    }
+
+    .twitter-container {
+        display: block;
+        float: left;
+        padding: 0 5%;
+        width: 25%;
+    }
 
     nav {
         height: 44px;
@@ -150,13 +197,20 @@ footer {
             padding-left: 0;
         }
     }
-    
+
     article {
         width: 40%;
         padding-left: $padding_left;
+        float: left;
 
         p {
             padding-bottom: 0;
+            font-size: 1.2em;
+            line-height: 1.5em;
+        }
+
+        .title {
+            font-size: 2.5em;
         }
     }
 }
