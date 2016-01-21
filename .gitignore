@@ -9,3 +9,6 @@ _site
 
 # Application secrets
 _secret
+
+# Bower
+bower_components

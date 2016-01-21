@@ -1,6 +1,8 @@
 $oty_red: #db1d0f;
 $oty_grey: #ededed;
 
+@import '../bower_components/bootstrap/scss/bootstrap.scss';
+
 @font-face {
     font-family:'Aleo';
     src: url('/assets/fonts/aleo-regular-webfont.woff');
