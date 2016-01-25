@@ -18,11 +18,14 @@ Build-type:         Simple
 Library
   Hs-source-dirs:   src
 
-  Exposed-modules:  OutOfTheYards.Config
+  Exposed-modules:  OutOfTheYards.Config,
+                    OutOfTheYards.Content.Normalize 
 
   Build-depends:    base == 4.*,
                     filepath,
-                    text
+                    hakyll == 4.7.*,
+                    text,
+                    xml
 
   Default-language: Haskell2010
 
@@ -30,7 +33,9 @@ Executable site
   Main-is:          Site.hs
 
   Build-depends:    base == 4.*,
-                    hakyll == 4.7.*
+                    binary,
+                    hakyll == 4.7.*,
+                    outoftheyards
 
   Ghc-options:      -threaded
 
