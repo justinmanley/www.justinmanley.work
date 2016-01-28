@@ -12,3 +12,6 @@ _secret
 
 # Bower
 bower_components
+
+# Cache for blog post content
+posts
