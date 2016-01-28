@@ -74,6 +74,7 @@ header {
 
 
 $article-padding-x: 5%;
+$article-padding-top: 50px;
 
 nav {
     background-color: $gray-lighter;
@@ -88,7 +89,7 @@ nav {
 }
 
 article {
-    padding-top: 30px;
+    padding-top: $article-padding-top;
     padding-left: $article-padding-x;
     padding-right: $article-padding-x;
     .title {
@@ -162,7 +163,7 @@ footer {
         @include center-block();
         height: 600px;
         width: 300px;
-        padding-top: 30px; 
+        padding-top: $article-padding-top; 
     }
 }
 
