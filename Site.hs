@@ -10,6 +10,10 @@ import OutOfTheYards.Content.Normalize (normalizeUrls)
 -----------------------------------------------------------------------------
 main :: IO ()
 main = hakyll $ do
+    match "CNAME" $ do
+        route   idRoute
+        compile copyFileCompiler
+
     match "assets/**" $ do
         route   idRoute
         compile copyFileCompiler
