@@ -147,8 +147,18 @@ footer {
         }
     }
 
-    nav.navbar {
-        padding-left: 15%; 
+    nav {
+        li {
+            padding-left: 30px;
+            display: inline;
+            &:first-child {
+                padding-left: 0;
+            }
+        }
+
+        &.navbar {
+            padding-left: 15%; 
+        }
     }
 
     // Show a Twitter timeline on the right-hand side of the page on medium
