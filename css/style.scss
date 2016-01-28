@@ -5,8 +5,10 @@
 
 $brand_primary: #db1d0f;
 
-$font_family_serif: Aleo, Georgia, "Times New Roman", Times, serif;
-$font_family_sans_serif: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif; 
+$font_family_serif: 
+    Aleo, Georgia, "Times New Roman", Times, serif;
+$font_family_sans_serif: 
+    "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif; 
 $font_family_base: Cardo, $font_family_serif;
 
 @import '../bower_components/bootstrap/scss/bootstrap.scss';
@@ -80,6 +82,9 @@ nav {
     &.navbar {
         padding-left: $article-padding-x;
     }
+    a:hover {
+        text-decoration: none;
+    }
 }
 
 article {
@@ -89,6 +94,10 @@ article {
     .title {
         color: $brand_primary;
         font-size: 2em;
+    }
+    img {
+        max-width: 100%;
+        @include center-block();
     }
 }
 
