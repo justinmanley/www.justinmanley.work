@@ -19,13 +19,15 @@ Library
   Hs-source-dirs:   src
 
   Exposed-modules:  OutOfTheYards.Config,
-                    OutOfTheYards.Content.Normalize 
+                    OutOfTheYards.Content.Clean,
+                    OutOfTheYards.Content.Normalize
 
   Build-depends:    base == 4.*,
                     filepath,
                     hakyll == 4.7.*,
                     text,
-                    xml
+                    xml,
+                    regex-compat
 
   Default-language: Haskell2010
 
