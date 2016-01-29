@@ -1,5 +1,5 @@
 @font-face {
-    font-family:'Aleo';
+    font-family: 'Aleo';
     src: url('/assets/fonts/aleo-regular-webfont.woff');
 }
 
@@ -41,7 +41,7 @@ header {
         margin: 0;
         font-weight: normal;
 
-         a {
+        a {
             @include light-text();
             font-family: $font_family_serif;
             text-decoration: none;
@@ -158,6 +158,10 @@ footer {
 
         &.navbar {
             padding-left: 15%; 
+        }
+
+        .fa-external-link {
+            padding-left: 5px;
         }
     }
 
