@@ -13,5 +13,8 @@ _secret
 # Bower
 bower_components
 
+# Sass
+.sass-cache
+
 # Cache for blog post content
 posts

@@ -18,9 +18,12 @@ main = hakyll $ do
         route   idRoute
         compile copyFileCompiler
 
-    match "css/*.css" $ do
-        route   idRoute
-        compile compressCssCompiler
+    match "css/style.scss" $ do
+        route $ setExtension "css"
+        compile $ getResourceString 
+            >>= withItemBody
+                (unixFilter "sass" [ "-s", "--scss", "--load-path=css"])
+            >>= return . fmap compressCss
 
     match "posts/*/images/**" $ do
         route   idRoute
@@ -52,7 +55,6 @@ main = hakyll $ do
                 >>= relativizeUrls
 
     match "templates/*" $ compile templateCompiler
-
 
 -----------------------------------------------------------------------------
 postCtx =
