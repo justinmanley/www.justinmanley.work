@@ -86,6 +86,13 @@ nav {
     a:hover {
         text-decoration: none;
     }
+    .nav-item {
+        display: inline;
+        padding-left: 20px;
+        &:first-child {
+            padding-left: 0;
+        }
+    }
 }
 
 article {
