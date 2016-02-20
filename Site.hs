@@ -29,7 +29,7 @@ main = hakyll $ do
         route   idRoute
         compile copyFileCompiler
 
-    match "posts/**/*.html" $ do
+    match "posts/**/*.md" $ do
         route $ setExtension "html"
         compile $ pandocCompiler
             >>= loadAndApplyTemplate "templates/post.html"    postCtx
@@ -43,7 +43,7 @@ main = hakyll $ do
         route idRoute
         compile $ do
             posts <- recentFirst 
-                =<< loadAllSnapshots "posts/**/*.html" "content"
+                =<< loadAllSnapshots "posts/**/*.md" "content"
 
             let archiveCtx =
                     listField "posts" postCtx (return posts) `mappend`
