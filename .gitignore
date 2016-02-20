@@ -4,6 +4,7 @@ cabal.sandbox.config
 dist
 
 # Hakyll build artifacts
+_site
 _cache
 
 # Application secrets
@@ -15,5 +16,3 @@ bower_components
 # Sass
 .sass-cache
 
-# Cache for blog post content
-/posts
