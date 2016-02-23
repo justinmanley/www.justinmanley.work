@@ -72,16 +72,11 @@ header {
     }
 }
 
-
-$article-padding-x: 5%;
-$article-padding-top: 50px;
-
 nav {
     background-color: $gray-lighter;
     text-transform: uppercase;
     font-family: $font_family_sans_serif;
     &.navbar {
-        padding-left: $article-padding-x;
     }
     a:hover {
         text-decoration: none;
@@ -95,10 +90,13 @@ nav {
     }
 }
 
+main {
+    padding-top: 50px;
+}
+
 article {
-    padding-top: $article-padding-top;
-    padding-left: $article-padding-x;
-    padding-right: $article-padding-x;
+    padding-bottom: 50px;
+
     .title {
         color: $brand_primary;
         font-size: 2em;
@@ -136,7 +134,7 @@ footer {
     }
 }
 
-@include media-breakpoint-up(md) {
+@include media-breakpoint-up(lg) {
     header {
         .skyline {
             background-image: url(/assets/images/skyline/1920x279.png)
@@ -164,10 +162,11 @@ footer {
             }
         }
 
-        &.navbar {
-            padding-left: 15%; 
-        }
-
+        .nav {
+            width: map-get($grid-breakpoints, 'lg');    
+            margin: 0 auto;
+        } 
+           
         .fa-external-link {
             padding-left: 5px;
         }
@@ -175,17 +174,21 @@ footer {
 
     // Show a Twitter timeline on the right-hand side of the page on medium
     // screens and larger.
-    article.article { 
-        padding-left: 15%;
+    .content { 
+        width: 600px;
+        display: inline-block;
+        vertical-align: top;
     }
-    main { 
-        @include clearfix(); 
+    main {
+        width: map-get($grid-breakpoints, 'lg');    
+        margin: 0 auto;
     }
     .twitter-container {
-        @include center-block();
+        padding-left: 85px;
+        display: inline-block;
+        vertical-align: top;
         height: 600px;
-        width: 300px;
-        padding-top: $article-padding-top; 
+        width: 385px;
     }
 }
 
