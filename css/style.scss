@@ -25,6 +25,26 @@ $font_family_base: Cardo, $font_family_serif;
     @include light-text();
 }
 
+// Ensure that the element with class $content-class will always
+// have aspect ratio $width : $height.
+@mixin fixed-aspect-ratio($content-class, $width, $height) {
+    position: relative;
+    &:before {
+        display: block;
+        content: "";
+        width: 100%;
+        padding-top: ($height / $width) * 100%;
+    }
+    .#{$content-class} {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 100%;
+    }
+}
+
 html, body {
     // I'm not sure why this is required, but without it, I get an empty
     // space on the right of the page when the viewport is < 600px.
@@ -104,6 +124,9 @@ article {
     img {
         max-width: 100%;
         @include center-block();
+    }
+    .youtube-container {
+        @include fixed-aspect-ratio('youtube-video', 560, 315);        
     }
 }
 
@@ -191,4 +214,5 @@ footer {
         width: 385px;
     }
 }
+
 
