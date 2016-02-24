@@ -27,7 +27,8 @@ Library
                     hakyll == 4.7.*,
                     text,
                     xml,
-                    regex-compat
+                    regex-compat,
+                    url
 
   Default-language: Haskell2010
 

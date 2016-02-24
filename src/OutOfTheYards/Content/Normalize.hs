@@ -1,6 +1,7 @@
 module OutOfTheYards.Content.Normalize (normalizeUrls) where
 
 import Hakyll
+import qualified Network.URL as URL
 import Text.XML.Light
 import System.FilePath (dropFileName)
 
@@ -21,11 +22,23 @@ mapAttrs f c = case c of
 normalizeImageSrc :: String -> QName -> Attr -> Attr
 normalizeImageSrc prefix tagName attr =
     if qName tagName == "img" && (qName . attrKey) attr == "src"
-    then Attr
-        { attrKey = attrKey attr
-        , attrVal = "/" ++ prefix ++ attrVal attr
-        }
+    then
+        let isRelative :: String -> Bool
+            isRelative s = case URL.importURL s of
+                Nothing -> False
+                Just url -> case URL.url_type url of
+                    URL.PathRelative -> True
+                    _ -> False
+            srcUrl = attrVal attr
+            rootedUrl = if isRelative srcUrl 
+                        then "/" ++ prefix ++ srcUrl
+                        else srcUrl
+        in Attr
+            { attrKey = attrKey attr
+            , attrVal = rootedUrl
+            }
     else attr
+
 
 -- Transform all relative URLs to be absolute rooted URLs.
 normalizeUrls :: Context String -> Item String -> Compiler (Item String)
