@@ -92,12 +92,13 @@ header {
     }
 }
 
+$mobile-padding-outer: 5%;
+
 nav {
     background-color: $gray-lighter;
     text-transform: uppercase;
     font-family: $font_family_sans_serif;
-    &.navbar {
-    }
+    padding: 10px 0;
     a:hover {
         text-decoration: none;
     }
@@ -107,6 +108,11 @@ nav {
         &:first-child {
             padding-left: 0;
         }
+    }
+    .nav-items {
+        margin-top: 0;
+        margin-bottom: 0;
+        padding-left: $mobile-padding-outer;
     }
 }
 
@@ -121,8 +127,21 @@ article {
         color: $brand_primary;
         font-size: 2em;
     }
+    .title, p, figcaption {
+        padding-left: $mobile-padding-outer;
+        padding-right: $mobile-padding-outer;
+    }
+    figure {
+        padding-bottom: 20px;
+    }
+    figcaption {
+        color: $gray-light;
+        font-family: $font_family_sans_serif;
+        font-size: 0.8em;
+        padding-top: 5px;
+    }
     img {
-        max-width: 100%;
+        width: 100%;
         @include center-block();
     }
     .youtube-container {
@@ -157,6 +176,27 @@ footer {
     }
 }
 
+@include media-breakpoint-up(md) {
+    nav {
+        .nav-items {
+            width: 600px;
+            margin: 0 auto;
+            padding-left: 0; // reset from $mobile-padding-outer
+        } 
+    }
+
+    .content { 
+        width: 600px;
+        margin: 0 auto;
+        article {
+            .title, p {
+                padding-left: 0;
+                padding-right: 0;
+            }
+        }
+    }
+}
+
 @include media-breakpoint-up(lg) {
     header {
         .skyline {
@@ -177,7 +217,7 @@ footer {
     }
 
     nav {
-        li {
+        .nav-item {
             padding-left: 30px;
             display: inline;
             &:first-child {
@@ -185,9 +225,10 @@ footer {
             }
         }
 
-        .nav {
+        .nav-items {
             width: map-get($grid-breakpoints, 'lg');    
             margin: 0 auto;
+            padding-left: 0; // reset from $mobile-padding-outer
         } 
            
         .fa-external-link {
