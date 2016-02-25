@@ -3,13 +3,13 @@
     src: url('/assets/fonts/aleo-regular-webfont.woff');
 }
 
-$brand_primary: #db1d0f;
+$brand-primary: #db1d0f;
 
-$font_family_serif: 
+$font-family-serif: 
     Aleo, Georgia, "Times New Roman", Times, serif;
-$font_family_sans_serif: 
+$font-family-sans-serif: 
     "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif; 
-$font_family_base: Cardo, $font_family_serif;
+$font-family-base: Cardo, $font-family-serif;
 
 @import '../bower_components/bootstrap/scss/bootstrap.scss';
 
@@ -52,7 +52,7 @@ html, body {
 }
 
 header {
-    background-color: $brand_primary;
+    background-color: $brand-primary;
 
     .site-title {
         text-align: center;
@@ -63,13 +63,13 @@ header {
 
         a {
             @include light-text();
-            font-family: $font_family_serif;
+            font-family: $font-family-serif;
             text-decoration: none;
         }
     }
 
     .site-subtitle {
-        font-family: $font_family_sans_serif;
+        font-family: $font-family-sans-serif;
         color: #fff;
         text-align: center;
         margin: 0;
@@ -92,12 +92,13 @@ header {
     }
 }
 
+// Used as the gutter for the navbar and text content on mobile.
 $mobile-padding-outer: 5%;
 
 nav {
     background-color: $gray-lighter;
     text-transform: uppercase;
-    font-family: $font_family_sans_serif;
+    font-family: $font-family-sans-serif;
     padding: 10px 0;
     a:hover {
         text-decoration: none;
@@ -109,6 +110,7 @@ nav {
             padding-left: 0;
         }
     }
+    // Styles that control the horizontal position of nav links should be placed on this class.
     .nav-items {
         margin-top: 0;
         margin-bottom: 0;
@@ -117,16 +119,23 @@ nav {
 }
 
 main {
+    // Space between the navbar and the articles / Twitter feed beneath.
     padding-top: 50px;
 }
 
 article {
+    // Provides space between successive articles.
     padding-bottom: 50px;
 
     .title {
-        color: $brand_primary;
+        color: $brand-primary;
         font-size: 2em;
     }
+    // Left and right gutters are placed on the paragraph and caption elements,
+    // rather than the article tag, so that images expand to fill the full 
+    // width of the screen on mobile.
+    // These selectors should be kept in sync with the declaration below which
+    // removes this padding for tablets and larger screens.
     .title, p, figcaption {
         padding-left: $mobile-padding-outer;
         padding-right: $mobile-padding-outer;
@@ -136,7 +145,7 @@ article {
     }
     figcaption {
         color: $gray-light;
-        font-family: $font_family_sans_serif;
+        font-family: $font-family-sans-serif;
         font-size: 0.8em;
         padding-top: 5px;
     }
@@ -149,6 +158,7 @@ article {
     }
 }
 
+// Twitter feed is only shown on desktop.
 .twitter-container {
     display: none;    
     height: 0;
@@ -156,7 +166,7 @@ article {
 }
 
 footer {
-    background-color: $brand_primary;
+    background-color: $brand-primary;
     text-align: center;
     color: #fff;
     padding-top: 80px;
@@ -176,20 +186,36 @@ footer {
     }
 }
 
+$article-width: 600px;
+
+// Tablets and up
 @include media-breakpoint-up(md) {
+    header {
+        .skyline {
+            background-image: url(/assets/images/skyline/1200x316.png)
+        }
+
+        .skyline-inner {
+            padding-top: percentage(316/1200);
+        }
+    }
+
     nav {
         .nav-items {
-            width: 600px;
+            width: $article-width;
             margin: 0 auto;
             padding-left: 0; // reset from $mobile-padding-outer
         } 
     }
 
     .content { 
-        width: 600px;
+        width: $article-width;
         margin: 0 auto;
         article {
-            .title, p {
+            // Reset the horizontal padding used for mobile devices.
+            // This should be kept in sync with the selectors used for mobile
+            // devices. 
+            .title, p, figcaption {
                 padding-left: 0;
                 padding-right: 0;
             }
@@ -197,6 +223,7 @@ footer {
     }
 }
 
+// Desktop and up
 @include media-breakpoint-up(lg) {
     header {
         .skyline {
@@ -236,10 +263,8 @@ footer {
         }
     }
 
-    // Show a Twitter timeline on the right-hand side of the page on medium
-    // screens and larger.
     .content { 
-        width: 600px;
+        width: $article-width;
         display: inline-block;
         vertical-align: top;
     }
@@ -247,12 +272,23 @@ footer {
         width: map-get($grid-breakpoints, 'lg');    
         margin: 0 auto;
     }
+
+    // The width of the Twitter timeline widget.
+    $twitter-width: 300px; 
+    
+    // Padding between the article and the Twitter timeline widget.
+    // Not sure why the extra 7px is necessary, but without it, the Twitter timeline gets
+    // bumped to the very bottom of the page.
+    $twitter-padding: map-get($grid-breakpoints, 'lg') - $article-width - $twitter-width - 7px;
+
+    // Show a Twitter timeline on the right-hand side of the page on medium
+    // screens and larger.
     .twitter-container {
-        padding-left: 85px;
+        padding-left: $twitter-padding;
         display: inline-block;
         vertical-align: top;
         height: 600px;
-        width: 385px;
+        width: $twitter-width + $twitter-padding;
     }
 }
 
