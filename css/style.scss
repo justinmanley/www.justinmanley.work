@@ -130,6 +130,9 @@ article {
     .title {
         color: $brand-primary;
         font-size: 2em;
+        a:hover {
+            text-decoration: none;
+        }
     }
     // Left and right gutters are placed on the paragraph and caption elements,
     // rather than the article tag, so that images expand to fill the full 
