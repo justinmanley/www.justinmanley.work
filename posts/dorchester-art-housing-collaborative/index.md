@@ -1,7 +1,7 @@
 ---
 title: The Death and Life of Dante-Harper Townhomes
 date: December 27, 2015
-coverImage: ./images/2015-facade.jpg  
+cover-image: ./images/2015-facade.jpg  
 ---
 
 [Chiraq]:                                   https://www.youtube.com/watch?v=R9HuKssWhrU

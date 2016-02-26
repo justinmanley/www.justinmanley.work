@@ -1,7 +1,7 @@
 ---
 title: Three Excursions in Artificial Existence
 date: February 17, 2016
-coverImage: ./images/forever.jpg
+cover-image: ./images/forever.jpg
 ---
 
 [NEAT]: http://neat.thecjm.org/
