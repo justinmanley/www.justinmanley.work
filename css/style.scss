@@ -130,16 +130,24 @@ article {
     .title {
         color: $brand-primary;
         font-size: 2em;
-        a:hover {
+        a {
             text-decoration: none;
+            &:hover {
+                text-decoration: none;
+            }
         }
+    }
+    .date-published {
+        color: $gray-light;
+        display: block;
+        padding-bottom: 10px;
     }
     // Left and right gutters are placed on the paragraph and caption elements,
     // rather than the article tag, so that images expand to fill the full 
     // width of the screen on mobile.
     // These selectors should be kept in sync with the declaration below which
     // removes this padding for tablets and larger screens.
-    .title, p, figcaption {
+    .title, p, figcaption, .date-published {
         padding-left: $mobile-padding-outer;
         padding-right: $mobile-padding-outer;
     }
@@ -218,7 +226,7 @@ $article-width: 600px;
             // Reset the horizontal padding used for mobile devices.
             // This should be kept in sync with the selectors used for mobile
             // devices. 
-            .title, p, figcaption {
+            .title, p, figcaption, .date-published {
                 padding-left: 0;
                 padding-right: 0;
             }
