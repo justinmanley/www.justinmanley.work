@@ -5,7 +5,6 @@ import           Hakyll
 import Data.Typeable
 import Data.Binary (Binary)
 
-import OutOfTheYards.Content.Clean (clean)
 import OutOfTheYards.Content.Normalize (normalizeUrls)
 -----------------------------------------------------------------------------
 main :: IO ()
@@ -33,7 +32,6 @@ main = hakyll $ do
         route $ setExtension "html"
         compile $ pandocCompiler
             >>= loadAndApplyTemplate "templates/post.html"    postCtx
-            >>= clean
             >>= normalizeUrls postCtx
             >>= saveSnapshot "content"
             >>= loadAndApplyTemplate "templates/default.html" postCtx

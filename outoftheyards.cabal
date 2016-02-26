@@ -18,36 +18,13 @@ Build-type:         Simple
 Library
   Hs-source-dirs:   src
 
-  Exposed-modules:  OutOfTheYards.Config,
-                    OutOfTheYards.Content.Clean,
-                    OutOfTheYards.Content.Normalize
+  Exposed-modules:  OutOfTheYards.Content.Normalize
 
   Build-depends:    base == 4.*,
                     filepath,
                     hakyll == 4.7.*,
-                    text,
                     xml,
-                    regex-compat,
                     url
-
-  Default-language: Haskell2010
-
-Test-suite outoftheyards-tests
-  Type:             exitcode-stdio-1.0 
-
-  Hs-source-dirs:   src tests
-
-  Main-is:          Test.hs
-
-  Ghc-options:      -Wall
-
-  Other-modules:    OutOfTheYards.Content.Clean.Tests
-
-  Build-depends:    base,
-                    hspec,
-                    regex-compat,
-                    hakyll,
-                    xml 
 
   Default-language: Haskell2010
 
@@ -60,25 +37,6 @@ Executable site
                     outoftheyards
 
   Ghc-options:      -threaded
-
-  Default-language: Haskell2010
-
-Executable download-content
-  Hs-source-dirs:   src
-
-  Main-is:          OutOfTheYards/Content/Download.hs
-
-  Build-depends:    base == 4.*,
-                    bytestring,
-                    unordered-containers,
-                    filepath,
-                    hakyll == 4.7.*,
-                    gogol,
-                    gogol-core,
-                    gogol-drive,
-                    google-oauth2,
-                    lens,
-                    text
 
   Default-language: Haskell2010
 
