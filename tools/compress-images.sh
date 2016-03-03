@@ -12,7 +12,7 @@ set -x
 
 IMAGES_DIR=$1
 
-for image in $(ls $IMAGES_DIR); do mogrify \
+for image in $IMAGES_DIR/*.jpg; do mogrify \
     -path $IMAGES_DIR \
     -filter Triangle \
     -define filter:support=2 \
