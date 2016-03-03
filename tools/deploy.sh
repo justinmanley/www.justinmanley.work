@@ -1,8 +1,14 @@
 #!/bin/bash
 
+# This script deploys the site to Github Pages in-place (that is, without cloning, reinstalling
+# dependencies, and rebuilding from scratch). The site is deployed by pushing the contents of the
+# _site directory to Github Pages. This makes deployment much faster than deploying from scratch,
+# but requires care to ensure that the site is built correctly before it is run.
+
 # exit script with nonzero exit code if any command fails
 set -e
 
+# echo each command
 set -x
 
 # add generated site to git 
