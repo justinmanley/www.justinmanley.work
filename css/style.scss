@@ -304,6 +304,11 @@ $article-width: 600px;
         height: 600px;
         width: $twitter-width + $twitter-padding;
     }
+
+    .twitter-widget {
+        border: 1px solid rgba(15, 70, 100, 0.117647);
+        border-radius: 2px;
+    }
 }
 
 
