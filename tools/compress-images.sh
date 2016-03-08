@@ -12,8 +12,8 @@ set -x
 
 IMAGES_DIR=$1
 
-for image in $IMAGES_DIR/*.jpg; do mogrify \
-    -path $IMAGES_DIR \
+for image in $IMAGES_DIR/images/*.jpg; do mogrify \
+    -path $IMAGES_DIR/images \
     -filter Triangle \
     -define filter:support=2 \
     -thumbnail 600 \
@@ -28,5 +28,5 @@ for image in $IMAGES_DIR/*.jpg; do mogrify \
     -define png:exclude-chunk=all \
     -interlace none \
     -colorspace sRGB \
-    -strip $IMAGES_DIR/$image;
+    -strip $image;
 done
