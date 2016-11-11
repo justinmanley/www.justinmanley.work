@@ -49,7 +49,7 @@ normalizeUrls ctx item =  do
         Nothing -> item
         Just route -> 
             let prefix = dropFileName route
-                t = concatMap ppContent 
+                t = concatMap showContent 
                     . map (mapAttrs $ normalizeImageSrc prefix) 
                     . parseXML
             in Item 
