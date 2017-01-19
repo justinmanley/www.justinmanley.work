@@ -10,6 +10,7 @@ cover-image: http://res.cloudinary.com/artlogic/w_1200,h_900,c_limit/ws-michaelh
 [2016 interview]: https://www.sfmoma.org/watch/sohei-nishinos-maps-trace-more-city/
 [contact prints]: https://en.wikipedia.org/wiki/Contact_print
 [Diorama Maps]: http://soheinishino.net/dioramamap/
+[Michael Hoppen Gallery]: http://www.michaelhoppengallery.com/artists/25-sohei-nishino/overview/
 
 [sources]: https://docs.google.com/document/d/1OIoKdH-Z5EmVdo3zMJfooF5qHxbYIHE2fYtyHGOWfIg/pub
 
@@ -22,8 +23,8 @@ Each of the artist’s Diorama Maps depicts a single city through thousands of h
 The notion of a cognitive map was first systematically explored in the 1950s by urban planner Kevin Lynch. Using the tools of the psychologist, rather than the artist, Lynch and his collaborators interviewed dozens of city dwellers, asking them to sketch maps from memory or give instructions for traveling between two familiar places. Lynch synthesized the results of these surveys in schematic diagrams (below). These diagrams are tantalizing: they suggest that the collective experience of the city might be summarized and grasped at a glance. Lynch wrote that, “It was as if the map were drawn on an infinitely flexible rubber sheet; directions were twisted, distances stretched or compressed, large forms so changed from their accurate scale projection as to be at first unrecognizable...[but] the map was rarely torn and sewn back together in another order.” Lynch’s diagrams are remarkable in the way that they materialize mental maps, but are also narrow, inflexible, and purposefully stripped of emotional depth in favor of abstraction. Nishino’s procedure provides a new model for visualizing cognitive maps which is evocative, open-ended, and vividly expresses the many idiosyncrasies of mental maps observed by Lynch decades ago.
 
 <figure>
-<img src="./images/lynch-diagram-boston-verbal.png"></img>
-<img src="./images/lynch-diagram-boston-sketch.png"></img>
+<img src="./images/lynch-diagram-boston-verbal.jpg"></img>
+<img src="./images/lynch-diagram-boston-sketch.jpg"></img>
 <figcaption>Lynch's diagrams of Boston show the city as derived from verbal interviews and sketch maps. Each method produces a subtly different representation of the cognitive map. These differences caution against interpreting any representation as a completely transparent image of a cognitive map.</figcaption>
 </figure>
 
@@ -35,7 +36,7 @@ Nishino’s maps recall their cognitive counterparts in their deviations from te
 
 <figure>
 <img src="./images/twin-peaks-up-close.jpg"></img>
-<figcaption>Twin Peaks appears twice in Nishino's map of San Francisco.</figcaption>
+<figcaption>Twin Peaks appears twice in Nishino's map of San Francisco. Images courtesy of [Michael Hoppen Gallery][]. 'Diorama Map San Francisco, 2016', © Sohei Nishino</figcaption>
 </figure>
 
 Susan Sontag wrote that, “photographed images do not seem to be statements about the world so much as pieces of it, miniatures of reality.” Historian of film Tom Gunning described this quality as photography’s truth claim. Gunning argued that the credibility of photographs as “miniatures of reality” arises from their unrivaled visual accuracy and their construction as the causal end-product of a deterministic physical process. That is, Gunning argued that our scientific knowledge of the interaction between light and photographic chemicals endows the photograph with the appearance of objectivity. Nishino’s Diorama Maps extend Gunning’s argument by emphasizing that photographs claim a particular kind of truth: every photograph announces a personal, past experience. A painting or drawing may be inspired by past events, but it has no necessary connection to the past; the painter is free to show the never-was and the yet-to-be. Photographs are different. Our knowledge of the causal relationship between the photograph and the event it depicts marks the photograph as a representation of a past moment. Photographs are also distinctive for their mimicry of human visual perception. Produced by lenses which recall those in the human eye, photographs capture many of the essential features of human vision, like linear perspective. These qualities, familiar from our own visual experience, cue us to recognize the photograph as a representation of another person’s experience. In this way, photographs make a truth claim that is are always personal in addition to being linked to a past event.
@@ -50,7 +51,7 @@ We expect our cognitive maps to serve as truthful representations and reliable g
 
 -----------
 
-Thanks to Abigail Kelly for her helpful comments.
+Thanks to Abigail Kelly for her incisive comments which so improved the clarity of this piece.
 
 For further reading, see my [full list of sources][sources].
 
@@ -60,5 +61,5 @@ For further reading, see my [full list of sources][sources].
 
 <a name="on-photography">3: </a> Sontag, Susan. _On Photography_. London: Penguin, 1977.
 
-
+<a name="gunning">4: </a> Gunning, Tom. "What's the Point of an Index? Or, Faking Photographs." Still Moving (2008): 40.
 
