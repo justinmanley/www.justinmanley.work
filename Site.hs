@@ -4,6 +4,7 @@ import           Data.Monoid (mappend)
 import           Hakyll
 import Data.Typeable
 import Data.Binary (Binary)
+import Debug.Trace (trace)
 
 import OutOfTheYards.Content.Normalize (normalizeUrls)
 -----------------------------------------------------------------------------
@@ -31,9 +32,10 @@ main = hakyll $ do
     match "posts/**/*.md" $ do
         route $ setExtension "html"
         compile $ pandocCompiler
+            >>= saveSnapshot "post-body"
             >>= loadAndApplyTemplate "templates/post.html"    postCtx
             >>= normalizeUrls postCtx
-            >>= saveSnapshot "content"
+            >>= saveSnapshot "post-full"
             >>= loadAndApplyTemplate "templates/default.html" postCtx
             >>= relativizeUrls
 
@@ -41,7 +43,7 @@ main = hakyll $ do
         route idRoute
         compile $ do
             posts <- recentFirst 
-                =<< loadAllSnapshots "posts/**/*.md" "content"
+                =<< loadAllSnapshots "posts/**/*.md" "post-full"
 
             let archiveCtx =
                     listField "posts" postCtx (return posts) `mappend`
@@ -54,8 +56,25 @@ main = hakyll $ do
 
     match "templates/*" $ compile templateCompiler
 
+    create ["feed/atom"] $ do
+        route idRoute
+        compile $ do
+            let feedCtx = postCtx `mappend`
+                    bodyField "description"
+
+            posts <- fmap (take 10) . recentFirst =<< loadAllSnapshots "posts/**/*.md" "post-body"
+            renderAtom feedConfiguration feedCtx posts
+
 -----------------------------------------------------------------------------
 postCtx =
     dateField "date" "%B %e, %Y" `mappend`
     defaultContext
 
+feedConfiguration :: FeedConfiguration
+feedConfiguration = FeedConfiguration
+    { feedTitle = "Out of the Yards"
+    , feedDescription = "Writing about digital art, technology, and architecture."
+    , feedAuthorName = "Justin Manley"
+    , feedAuthorEmail = "manleyjster@gmail.com"
+    , feedRoot = "http://outoftheyards.com"
+    }
