@@ -1,5 +1,5 @@
 ---
-title: Permanence and Program: Farewell to the American Folk Art Museum
+title: "Permanence and Program: Farewell to the American Folk Art Museum"
 date: January 9, 2014
 cover-image: ./images/afam-facade.jpg
 ---

@@ -1,5 +1,5 @@
 ---
-title: Light Makes Wright: James Turrell at the Guggenheim
+title: "Light Makes Wright: James Turrell at the Guggenheim"
 date: September 17, 2013
 cover-image: ./images/aten-reign-purple.jpg 
 ---
