@@ -56,7 +56,7 @@ main = hakyll $ do
 
     match "templates/*" $ compile templateCompiler
 
-    create ["feed/atom"] $ do
+    create ["feed/atom.xml"] $ do
         route idRoute
         compile $ do
             let feedCtx = postCtx `mappend`
