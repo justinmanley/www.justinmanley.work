@@ -21,8 +21,7 @@ main = hakyll $ do
     match "css/style.scss" $ do
         route $ setExtension "css"
         compile $ getResourceString 
-            >>= withItemBody
-                (unixFilter "sass" [ "-s", "--scss", "--load-path=css"])
+            >>= withItemBody (unixFilter "sass" ["css/style.scss"])
             >>= return . fmap compressCss
 
     match "posts/*/images/**" $ do

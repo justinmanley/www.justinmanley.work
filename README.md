@@ -15,10 +15,13 @@ Images account for the largest portion of data required for each blog post, so
 they should be compressed, if possible. To compress all of the images for a blog
 post, run `tools/compress-images.sh posts/my-new-post/images`.
 
+### Setup
+This static site generator requires [Sass](https://sass-lang.com), and currently
+uses the Dart implementation of Sass/Scss (version 1.18.0).
+
 ### Development
 ```bash
-source ~/.bash_profile # set up PATH for rvm (SASS)
-cabal run site watch
+stack build && stack run site watch
 ```
 
 ### Deployment
