@@ -1,15 +1,6 @@
 <h3 class="home">Selected writing</h3>
 $for(posts)$
     $if(featured)$
-        <div class="home article-preview">
-            <h5 class="title"><a href=$if(source-url)$
-                    "$source-url$"
-                $else$
-                    "$url$"
-                $endif$
-            >$title$</a></h5>
-            <time class="date-published">$date$</time> $if(source)$ / $source$ $endif$
-            <p>$synopsis$</p>
-        </div>
+        $body$
     $endif$
 $endfor$
