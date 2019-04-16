@@ -40,6 +40,8 @@ executables:
     dependencies:
     - binary
     - hakyll
+    - text
+    - unordered-containers
     - www-justinmanley-work
 
 tests:

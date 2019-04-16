@@ -2,6 +2,7 @@
 title: Surface Tension
 date: March 25, 2017
 cover-image: ./images/holding-water.jpg
+synopsis: "TODO: Fill in synopsis."
 ---
 
 [Sustaining Presence]: http://events.stanford.edu/events/635/63511/

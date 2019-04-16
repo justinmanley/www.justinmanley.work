@@ -51,47 +51,6 @@ html, body {
     overflow-x: hidden;
 }
 
-header {
-    background-color: $brand-primary;
-
-    .site-title {
-        text-align: center;
-        padding-top: 40px;
-        padding-bottom: 40px;
-        margin: 0;
-        font-weight: normal;
-
-        a {
-            @include light-text();
-            font-family: $font-family-serif;
-            text-decoration: none;
-        }
-    }
-
-    .site-subtitle {
-        font-family: $font-family-sans-serif;
-        color: #fff;
-        text-align: center;
-        margin: 0;
-        padding-bottom: 60px;
-    }
-
-    /* The padding on the .skyline-inner element is critical:
-     * https://www.smashingmagazine.com/2013/07/simple-responsive-images-with-css-background-images/
-     */
-    .skyline {
-        width: 100%;
-        background-size: 100%;
-        background-image: url(/assets/images/skyline/600x158.png);
-        background-repeat: no-repeat;
-    }
-
-    .skyline-inner {
-        height: 0;
-        padding-top: percentage(158/600);
-    }
-}
-
 // Used as the gutter for the navbar and text content on mobile.
 $mobile-padding-outer: 5%;
 
@@ -174,48 +133,19 @@ article {
     }
 }
 
-// Twitter feed is only shown on desktop.
-.twitter-container {
-    display: none;    
-    height: 0;
-    width: 0;
+.home {
+    padding-left: $mobile-padding-outer;
+    padding-right: $mobile-padding-outer;
 }
 
-footer {
-    background-color: $brand-primary;
-    text-align: center;
-    color: #fff;
-    padding-top: 80px;
-    padding-bottom: 80px;
-
-    .contact-me {
-        padding-bottom: 30px;
-    }
-
-    .contact-link {
-        @include light-text();
-        font-size: 3em;
-        padding-left: 30px;
-        &:first-child {
-            padding-left: 0;
-        }
-    }
+.article-preview {
+    padding-bottom: 10px;
 }
 
 $article-width: 600px;
 
 // Tablets and up
 @include media-breakpoint-up(md) {
-    header {
-        .skyline {
-            background-image: url(/assets/images/skyline/1200x316.png)
-        }
-
-        .skyline-inner {
-            padding-top: percentage(316/1200);
-        }
-    }
-
     nav {
         .nav-items {
             width: $article-width;
@@ -242,14 +172,6 @@ $article-width: 600px;
 // Desktop and up
 @include media-breakpoint-up(lg) {
     header {
-        .skyline {
-            background-image: url(/assets/images/skyline/1920x279.png)
-        }
-
-        .skyline-inner {
-            padding-top: percentage(279/1920);
-        }
-
         .site-title {
             font-size: 3.5em;
         }
@@ -284,33 +206,15 @@ $article-width: 600px;
         display: inline-block;
         vertical-align: top;
     }
+
     main {
         width: map-get($grid-breakpoints, 'lg');    
         margin: 0 auto;
     }
 
-    // The width of the Twitter timeline widget.
-    $twitter-width: 300px; 
-    
-    // Padding between the article and the Twitter timeline widget.
-    // Not sure why the extra 7px is necessary, but without it, the Twitter timeline gets
-    // bumped to the very bottom of the page.
-    $twitter-padding: map-get($grid-breakpoints, 'lg') - $article-width - $twitter-width - 7px;
-
-    // Show a Twitter timeline on the right-hand side of the page on medium
-    // screens and larger.
-    .twitter-container {
-        padding-left: $twitter-padding;
-        display: inline-block;
-        vertical-align: top;
-        height: 600px;
-        width: $twitter-width + $twitter-padding;
-    }
-
-    .twitter-widget {
-        border: 1px solid rgba(15, 70, 100, 0.117647);
-        border-radius: 2px;
+    .home {
+        padding-left: 0;
+        padding-right: 0;
     }
 }
-
 

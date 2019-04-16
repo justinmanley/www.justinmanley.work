@@ -15,6 +15,28 @@ Images account for the largest portion of data required for each blog post, so
 they should be compressed, if possible. To compress all of the images for a blog
 post, run `tools/compress-images.sh posts/my-new-post/images`.
 
+#### Metadata specification
+Metadata should be added to new posts using the following specification (although
+note that metadata is loosely typed, so the data structure given here is not
+actually compiled).
+
+```haskell
+data PostMetadata = PostMetadata
+    { title :: String
+    , date :: String               -- formatted as "Month, Day Year"
+    , synposis :: String
+    , featured :: Maybe Bool       -- optional
+    , extras :: ExtraPostMetadata
+    }
+
+data ExtraPostMetadata
+    = BlogPost {}
+    | ExternallyPublishedPost
+        { source :: String
+        , sourceUrl :: String  -- URL
+        }
+```
+
 ### Setup
 This static site generator requires [Sass](https://sass-lang.com), and currently
 uses the Dart implementation of Sass/Scss (version 1.18.0).

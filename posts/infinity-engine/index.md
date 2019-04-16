@@ -2,6 +2,7 @@
 title: Skepticism and Despair in <i>The Infinity Engine</i>
 date: May 21, 2017
 cover-image: ./images/pipetting.jpg
+synopsis: DO NOT SUBMIT
 ---
 
 [Roberta Breitmore Construction Chart]: http://www.bitforms.com/leeson/roberta-construction-chart-2

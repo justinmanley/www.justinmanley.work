@@ -1,10 +1,13 @@
 -----------------------------------------------------------------------------
 {-# LANGUAGE OverloadedStrings #-}
-import           Data.Monoid (mappend)
-import           Hakyll
-import Data.Typeable
+
 import Data.Binary (Binary)
-import Debug.Trace (trace)
+import qualified Data.HashMap.Strict as HashMap
+import Data.Maybe (isJust)
+import Data.Monoid (mappend)
+import Data.Text (Text)
+import Data.Typeable
+import Hakyll
 
 import OutOfTheYards.Content.Normalize (normalizeUrls)
 -----------------------------------------------------------------------------
@@ -28,7 +31,17 @@ main = hakyll $ do
         route   idRoute
         compile copyFileCompiler
 
-    match "posts/**/*.md" $ do
+    match "templates/*" $ compile templateCompiler
+
+    -- Metadata for posts published elsewhere on the internet.
+    matchMetadata "posts/**/*.md" hasSource $
+        -- Posts which have a 'source' field are published somewhere else on the internet.
+        -- As a result, they typically do not have a 'body', and should not be included in
+        -- the archive of posts published on this website.
+        compile $ pandocCompiler
+
+    -- Full content and metadata of posts published on this website.
+    matchMetadata "posts/**/*.md" (not . hasSource) $ do
         route $ setExtension "html"
         compile $ pandocCompiler
             >>= saveSnapshot "post-body"
@@ -41,19 +54,15 @@ main = hakyll $ do
     create ["index.html"] $ do
         route idRoute
         compile $ do
-            posts <- recentFirst 
-                =<< loadAllSnapshots "posts/**/*.md" "post-full"
-
+            let featuredPosts = recentFirst =<< loadAll "posts/**/*.md"
             let archiveCtx =
-                    listField "posts" postCtx (return posts) `mappend`
+                    listField "posts" postCtx featuredPosts `mappend`
                     defaultContext
 
             makeItem ""
-                >>= loadAndApplyTemplate "templates/archive.html" archiveCtx
+                >>= loadAndApplyTemplate "templates/home.html" archiveCtx
                 >>= loadAndApplyTemplate "templates/default.html" archiveCtx
                 >>= relativizeUrls
-
-    match "templates/*" $ compile templateCompiler
 
     create ["feed/atom.xml"] $ do
         route idRoute
@@ -61,10 +70,21 @@ main = hakyll $ do
             let feedCtx = postCtx `mappend`
                     bodyField "description"
 
-            posts <- fmap (take 10) . recentFirst =<< loadAllSnapshots "posts/**/*.md" "post-body"
+            posts <- fmap (take 10) . recentFirst =<< loadAllSnapshotsMatchingMetadata "posts/**/*.md" "post-body" (not . hasSource)
             renderAtom feedConfiguration feedCtx posts
 
 -----------------------------------------------------------------------------
+hasMetadata :: Text -> Metadata -> Bool
+hasMetadata key = isJust . HashMap.lookup key
+
+hasSource :: Metadata -> Bool
+hasSource = hasMetadata "source"
+
+loadAllSnapshotsMatchingMetadata :: (Binary a, Typeable a) => Pattern -> Snapshot -> (Metadata -> Bool) -> Compiler [Item a]
+loadAllSnapshotsMatchingMetadata pattern snapshot metadataPred = do
+    matching <- map fst . filter (metadataPred . snd) <$> getAllMetadata pattern
+    mapM (\i -> loadSnapshot i snapshot) matching
+
 postCtx =
     dateField "date" "%B %e, %Y" `mappend`
     defaultContext
