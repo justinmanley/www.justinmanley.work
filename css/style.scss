@@ -142,6 +142,29 @@ article {
     padding-bottom: 40px;
 }
 
+.gallery {
+    display: flex;
+    flex-flow: row wrap;
+
+    img {
+        width: 100%;
+    }
+}
+
+.gallery-item {
+    flex-basis: 100%;
+    margin-bottom: 30px;
+}
+
+.gallery-title, .gallery-item-synopsis, .gallery-item-title {
+    padding-left: $mobile-padding-outer;
+    padding-right: $mobile-padding-outer;
+}
+
+.gallery-title {
+    padding-bottom: 30px;
+}
+
 $article-width: 600px;
 
 // Tablets and up
@@ -166,6 +189,21 @@ $article-width: 600px;
                 padding-right: 0;
             }
         }
+    }
+
+    .home {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .gallery-item {
+        flex-basis: 50%;
+        margin-right: 30px;
+    }
+
+    .gallery-title, .gallery-item-synopsis, .gallery-item-title {
+        padding-left: 0;
+        padding-right: 0;
     }
 }
 
@@ -212,9 +250,8 @@ $article-width: 600px;
         margin: 0 auto;
     }
 
-    .home {
-        padding-left: 0;
-        padding-right: 0;
+    .gallery-item {
+        flex-basis: 20%;
     }
 }
 

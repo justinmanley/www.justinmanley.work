@@ -29,11 +29,12 @@ main = hakyll $ do
             >>= withItemBody (unixFilter "sass" ["css/style.scss"])
             >>= return . fmap compressCss
 
+    match "templates/*" $ compile templateCompiler
+
+    -- Writing
     match "posts/*/images/**" $ do
         route   idRoute
         compile copyFileCompiler
-
-    match "templates/*" $ compile templateCompiler
 
     -- Metadata for posts published elsewhere on the internet.
     matchMetadata "posts/**/*.md" hasSource $ do
@@ -61,20 +62,6 @@ main = hakyll $ do
                 >>= loadAndApplyTemplate "templates/default.html" postCtx
                 >>= relativizeUrls
 
-    create ["index.html"] $ do
-        route idRoute
-        compile $ do
-            posts1 <- recentFirst =<< loadAllSnapshots "posts/**/*.md" "post-preview"
-            let posts = trace ("posts: " ++ show posts1) posts1
-            let homeCtx =
-                    listField "posts" postCtx (return posts) `mappend`
-                    defaultContext
-
-            makeItem ""
-                >>= loadAndApplyTemplate "templates/home.html" homeCtx
-                >>= loadAndApplyTemplate "templates/default.html" homeCtx
-                >>= relativizeUrls
-
     create ["writing/index.html"] $ do
         route idRoute
         compile $ do
@@ -86,6 +73,51 @@ main = hakyll $ do
             makeItem ""
                 >>= loadAndApplyTemplate "templates/writing.html" archiveCtx
                 >>= loadAndApplyTemplate "templates/default.html" archiveCtx
+                >>= relativizeUrls
+
+    -- Art
+    match "artworks/*/images/**" $ do
+        route   idRoute
+        compile copyFileCompiler
+
+    match "artworks/**/*.md" $ do
+        route $ setExtension "html"
+        compile $ do
+            pandocCompiler
+                >>= loadAndApplyTemplate "templates/artwork_preview.html" postCtx
+                >>= normalizeUrls postCtx
+                >>= saveSnapshot "artwork-preview"
+
+            pandocCompiler
+                >>= loadAndApplyTemplate "templates/artwork.html" postCtx
+                >>= loadAndApplyTemplate "templates/default.html" postCtx
+                >>= relativizeUrls
+
+    create ["art/index.html"] $ do
+        route idRoute
+        compile $ do
+            let artworks = recentFirst =<< loadAllSnapshots "artworks/**/*.md" "artwork-preview"
+            let galleryCtx =
+                    listField "artworks" postCtx artworks `mappend`
+                    defaultContext
+
+            makeItem ""
+                >>= loadAndApplyTemplate "templates/gallery.html" galleryCtx
+                >>= loadAndApplyTemplate "templates/default.html" galleryCtx
+                >>= relativizeUrls
+
+    -- Home
+    create ["index.html"] $ do
+        route idRoute
+        compile $ do
+            let posts = recentFirst =<< loadAllSnapshots "posts/**/*.md" "post-preview"
+            let homeCtx =
+                    listField "posts" postCtx posts `mappend`
+                    defaultContext
+
+            makeItem ""
+                >>= loadAndApplyTemplate "templates/home.html" homeCtx
+                >>= loadAndApplyTemplate "templates/default.html" homeCtx
                 >>= relativizeUrls
 
     create ["feed/atom.xml"] $ do
@@ -110,6 +142,7 @@ hasSource = hasMetadata "source"
 postPreviewCompiler :: Compiler (Item String)
 postPreviewCompiler = pandocCompiler
     >>= loadAndApplyTemplate "templates/post_preview.html" postCtx
+    >>= normalizeUrls postCtx
     >>= saveSnapshot "post-preview"
 
 loadAllSnapshotsMatchingMetadata :: (Binary a, Typeable a) => Pattern -> Snapshot -> (Metadata -> Bool) -> Compiler [Item a]
