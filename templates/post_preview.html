@@ -5,6 +5,7 @@
             "$url$"
         $endif$
     >$title$</a></h5>
-    <div>$synopsis$</div>
-    <time class="date-published">$date$</time> $if(source)$ / $source$ $endif$
+    <div class="article-synopsis">$synopsis$</div>
+    <time class="date-published text-secondary">$date$</time>
+    $if(source)$<span class="text-secondary">&nbsp; · &nbsp; $source$</span>$endif$
 </div>

@@ -99,7 +99,6 @@ article {
         }
     }
     .date-published {
-        color: $gray-light;
         display: block;
         padding-bottom: 10px;
     }
@@ -133,6 +132,10 @@ article {
     }
 }
 
+.text-secondary {
+    color: $gray-light;
+}
+
 .home {
     padding-left: $mobile-padding-outer;
     padding-right: $mobile-padding-outer;
@@ -140,6 +143,10 @@ article {
 
 .article-preview {
     padding-bottom: 40px;
+}
+
+.article-synopsis {
+    padding-bottom: 10px;
 }
 
 .gallery {
