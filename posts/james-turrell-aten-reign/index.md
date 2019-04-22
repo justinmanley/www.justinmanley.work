@@ -2,7 +2,7 @@
 title: "Light Makes Wright: James Turrell at the Guggenheim"
 date: September 17, 2013
 cover-image: ./images/aten-reign-purple.jpg 
-synopsis: "TODO: Fill in synopsis."
+synopsis: James Turell's intervention at the Guggenheim challenges and accentuates the most radical aspects of Frank Lloyd Wright's design. 
 ---
 
 [James Turrell]: http://jamesturrell.com/
@@ -29,7 +29,7 @@ It is here on the floor of the rotunda that you first feel the effects of the in
 <figcaption>The Guggenheim is a uniquely sociable museum.</figcaption>
 </figure>
 
-_Aten Reign_ returns the museum to a more solitary, introverted ideal.  The piece occupies the entire six-story rotunda and is created  by a six-tiered cone of white fabric suspended from the top of the rotunda lit from behind by countless LED lights.  The scrim used to create to the installation hides covers the museum’s spiral ramp.  As your head turns back and your eyes upwards, the crowds on the floor of the rotunda vanish, and you become aware of the purity and simplicity of _Aten Reign_.  The luminous ovals are uncluttered – no crowds up here!  The diagonal lines of the spiral ramp are restless and dynamic.  The horizontal structure of the installation communicates stability, an architectural reassurance that this is a safe place for repose and meditation.  _Aten Reign_ embraces the teeming crowds below calmly, quietly, without brimming over.  Gone – until September 25th – are the days when one looked up and saw spectators looking down or across from every level of the spiral ramp.  No matter how full the rotunda, each visitor experiences _Aten Reign_ alone.
+_Aten Reign_ returns the museum to a more solitary, introverted ideal.  The piece occupies the entire six-story rotunda and is created  by a six-tiered cone of white fabric suspended from the top of the rotunda lit from behind by countless LED lights.  The scrim used to create the installation hides the museum’s spiral ramp.  As your head turns back and your eyes upwards, the crowds on the floor of the rotunda vanish, and you become aware of the purity and simplicity of _Aten Reign_.  The luminous ovals are uncluttered – no crowds up here!  The diagonal lines of the spiral ramp are restless and dynamic.  The horizontal structure of the installation communicates stability, an architectural reassurance that this is a safe place for repose and meditation.  _Aten Reign_ embraces the teeming crowds below calmly, quietly, without brimming over.  Gone – until September 25th – are the days when one looked up and saw spectators looking down or across from every level of the spiral ramp.  No matter how full the rotunda, each visitor experiences _Aten Reign_ alone.
 
 The continuity of Frank Lloyd Wright’s exhibition spaces here was just as revolutionary and just as shocking as their sociability.  Previous museums had conformed to traditional notions of architecture in which the interior is divided up into a series of self-contained exhibition spaces.  At the Guggenheim, Wright erased internal barriers by casting the primary exhibition space as a continuous spiral ramp.  The ramp, open to the central rotunda along its entire length, allowed space to flow freely and united the entire museum within a single enormous room.
 
@@ -42,7 +42,7 @@ The fabric scrim hides the rotunda and blocks those cross-atrium views that anim
 <figcaption>Section drawing of Aten Reign. In black, the original structure of the Guggenheim museum; in red, Turrell's installation. Notice the scrims sealing hiding the apparatus from spectators on the ramp (also in red).</figcaption>
 </figure>
 
-_Aten Reign_ and the other installations present at the Guggenheim for this exhibition – _Afrum_, Ronin, Iltar – are typical of Turrell’s work in that the apparatus used are always carefully concealed.  The white scrim sealing off the gap between the ramp and the rotunda bears evidence to this; its purpose is to hide the metal scaffolding and LED lights used to create _Aten Reign_.
+_Aten Reign_ and the other installations present at the Guggenheim for this exhibition – _Afrum_, _Ronin_, _Iltar_ – are typical of Turrell’s work in that the apparatus used are always carefully concealed.  The white scrim sealing off the gap between the ramp and the rotunda bears evidence to this; its purpose is to hide the metal scaffolding and LED lights used to create _Aten Reign_.
 
 When I saw _Afrum_ at the Guggenheim, I walked into the room and stood at a distance from the cube.  I was self-conscious: I was noticing myself noticing the light.  Meanwhile, behind me, several children – surely not more than five years old – entered the room.  Followed by several mothers, they ran up to the cube of light at the corner of room, putting their hands in it and laughing at the shadows it made.  The bright light of the projector mounted high in the opposite wall caught the eye of one of these toddlers, and he turned: “Look!,” he pointed, and the other toddlers turned too, gazing up at the source of the light.  That gave their mothers enough time to catch them and tow them out of the room – but they left a lasting impression on me.
 
@@ -55,4 +55,4 @@ Turrell is a master of illusion – and, as with all illusions, we – the viewe
 
 The Kunsthaus installation is simpler because its apparatus was more easily concealed and so intruded less into the life of the museum.  _Aten Reign_, by contrast, pushes into every part of the space. Sometimes, as on the ramp, its intrusions are uncomfortable and uncomplimentary.  Its secret is that the architectural extremes that Frank Lloyd Wright sought to capture are exposed most clearly in these moments.
 
-It is rare that a remarkable building is so drastically altered, or that the result should be so illuminating.  Turrell’s _Aten Reign_ is an important moment of reflection in the architectural life of the Guggenheim Museum.  It is open for a few more days only – don’t miss it.
+It is rare that a remarkable building is so drastically altered, or that the result should be so illuminating.  Turrell’s _Aten Reign_ is an important moment of reflection in the architectural life of the Guggenheim Museum.

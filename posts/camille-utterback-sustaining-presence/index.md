@@ -2,7 +2,7 @@
 title: Surface Tension
 date: March 25, 2017
 cover-image: ./images/holding-water.jpg
-synopsis: "TODO: Fill in synopsis."
+synopsis: Camille Utterback offers a critique of the universal and transparent digital screen with a collection of glass surfaces whose form is intertwined with the content projected upon them.
 ---
 
 [Sustaining Presence]: http://events.stanford.edu/events/635/63511/

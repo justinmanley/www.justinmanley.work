@@ -2,7 +2,7 @@
 title: The Death and Life of Dante-Harper Townhomes
 date: December 27, 2015
 cover-image: ./images/2015-facade.jpg  
-synopsis: "TODO: Fill in synopsis."
+synopsis: Although Theaster Gates' artworks hang in prestigious museums around the world, his most important legacy is the infrastructure he has created to support Black artists on the South Side of Chicago.
 ---
 
 [Chiraq]:                                   https://www.youtube.com/watch?v=R9HuKssWhrU
@@ -46,7 +46,7 @@ Once a bustling working-class neighborhood, Greater Grand Crossing was hollowed 
 <figcaption>DA+HC was closed down and boarded up in 2007. Image © 2015 Google.</figcaption>
 </figure>
 
-Gates has sought to transform the neighborhood since he arrived in 2006. He recalled in a 2014 interv\iew: “You know my block is a violent block...When I moved there, people didn’t want to visit...I was really determined for Sixty-Ninth and Dorchester to be the most important place in the city...There’s still extreme violence, and yet beautiful things should happen in black space, because violent things happen everywhere. Right?”
+Gates has sought to transform the neighborhood since he arrived in 2006. He recalled in a 2014 interview: “You know my block is a violent block...When I moved there, people didn’t want to visit...I was really determined for Sixty-Ninth and Dorchester to be the most important place in the city...There’s still extreme violence, and yet beautiful things should happen in black space, because violent things happen everywhere. Right?”
 
 DA+HC sits on 70th Street between Dante and Harper Avenues in the middle of this community, across from an elementary school, a playground, and one of those verdant vacant lots. The housing complex was originally designed by the Chicago Housing Authority (CHA) in the late 1970s, and opened in 1981 with 36 units of public housing in seven two-story brick buildings.
 

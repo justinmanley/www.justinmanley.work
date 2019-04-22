@@ -2,7 +2,7 @@
 title: "Permanence and Program: Farewell to the American Folk Art Museum"
 date: January 9, 2014
 cover-image: ./images/afam-facade.jpg
-synopsis: Hello
+synopsis: The American Folk Art Museum Building contained the seeds of its own destruction.
 ---
 
 [Muschamp review]: http://www.nytimes.com/2001/12/14/arts/architecture-review-fireside-intimacy-for-folk-art-museum.html
