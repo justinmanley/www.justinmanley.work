@@ -11,7 +11,13 @@ $font-family-sans-serif:
     "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif; 
 $font-family-base: Cardo, $font-family-serif;
 
+// Used as the gutter for the navbar and text content on mobile.
+$mobile-padding-outer: 5%;
+
+$article-width: 600px;
+
 @import '../bower_components/bootstrap/scss/bootstrap.scss';
+@import 'navbar.scss';
 
 // Light text on a dark background.
 @mixin light-text() {
@@ -49,32 +55,6 @@ html, body {
     // I'm not sure why this is required, but without it, I get an empty
     // space on the right of the page when the viewport is < 600px.
     overflow-x: hidden;
-}
-
-// Used as the gutter for the navbar and text content on mobile.
-$mobile-padding-outer: 5%;
-
-nav {
-    background-color: $gray-lighter;
-    text-transform: uppercase;
-    font-family: $font-family-sans-serif;
-    padding: 10px 0;
-    a:hover {
-        text-decoration: none;
-    }
-    .nav-item {
-        display: inline;
-        padding-left: 20px;
-        &:first-child {
-            padding-left: 0;
-        }
-    }
-    // Styles that control the horizontal position of nav links should be placed on this class.
-    .nav-items {
-        margin-top: 0;
-        margin-bottom: 0;
-        padding-left: $mobile-padding-outer;
-    }
 }
 
 main {
@@ -146,7 +126,7 @@ article {
 }
 
 .article-synopsis {
-    padding-bottom: 10px;
+    padding-bottom: 20px;
 }
 
 .gallery {
@@ -172,18 +152,8 @@ article {
     padding-bottom: 30px;
 }
 
-$article-width: 600px;
-
 // Tablets and up
 @include media-breakpoint-up(md) {
-    nav {
-        .nav-items {
-            width: $article-width;
-            margin: 0 auto;
-            padding-left: 0; // reset from $mobile-padding-outer
-        } 
-    }
-
     .content { 
         width: $article-width;
         margin: 0 auto;
@@ -223,26 +193,6 @@ $article-width: 600px;
 
         .site-title, .site-subtitle {
             padding: 0 0 30px 0;
-        }
-    }
-
-    nav {
-        .nav-item {
-            padding-left: 30px;
-            display: inline;
-            &:first-child {
-                padding-left: 0;
-            }
-        }
-
-        .nav-items {
-            width: map-get($grid-breakpoints, 'lg');    
-            margin: 0 auto;
-            padding-left: 0; // reset from $mobile-padding-outer
-        } 
-           
-        .fa-external-link {
-            padding-left: 5px;
         }
     }
 

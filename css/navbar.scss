@@ -1,0 +1,112 @@
+@import '../bower_components/mathsass/dist/_math.scss';
+
+// NOTE: This value must be updated each time a menu item is added or removed.
+$num-nav-items: 1;
+
+// Adapted from this post: https://medium.freecodecamp.org/how-to-build-a-responsive-navbar-with-a-toggle-menu-using-flexbox-3438e1d08783.
+// Modified in order to animate the opening and closing of the menu on mobile.
+nav {
+    font-family: $font-family-sans-serif;
+    padding: 10px $mobile-padding-outer;
+    text-transform: uppercase;
+
+    a {
+        &:not(.nav-brand) {
+            color: $gray-light;   
+            &:hover {
+                color: $gray;
+            }
+        }
+
+        &:hover {
+            text-decoration: none;
+        }
+    }
+}
+
+.nav-groups, .nav-group {
+    display: flex;
+    flex-direction: column;
+}
+
+// Styles that control the horizontal position of nav links should be placed on this class.
+.nav-group {
+    margin-top: 0;
+    margin-bottom: 0;
+    overflow: hidden;
+    transition: max-height (0.25s * sqrt($num-nav-items)) ease-out;
+    padding: 0;
+    text-align: right;
+    margin-left: 0;
+}
+
+
+.nav-item {
+    display: block;  // Suppress bullets on <li> elements.
+    padding-top: 10px;
+}
+
+.nav-toggle {
+    align-self: flex-end;
+    display: initial;
+    position: absolute;
+    cursor: pointer;
+    color: $gray-light;   
+    &:hover {
+        color: $gray;
+    }
+} 
+
+.nav-collapsed {
+    max-height: 0;
+}
+
+.nav-expanded {
+    // This value should be slightly greater than the actual height of the fully-expanded menu.
+    // If this value is less than the fully-expanded menu height, some of the menu items
+    // will be cut off, and will not display on the screen. If the value is significantly greater
+    // than the fully-expanded menu height, the transition animation will not play properly, since
+    // the beginning or the end will be lost animating the 'max-height' property past the point
+    // where any changes are actually visible.
+    max-height: 35px * $num-nav-items;
+}
+
+// Tablets and up
+@include media-breakpoint-up(md) {
+    .nav-groups {
+        width: $article-width;
+        margin: 0 auto;
+        padding: 10px 0;  // Reset padding from $mobile-padding-outer.
+    }
+
+    .nav-groups, .nav-group {
+        flex-direction: row;
+    }
+
+    .nav-item:not(:last-child) {
+        padding-right: 30px;
+    }
+
+    .nav-group {
+        overflow: initial;
+        text-align: initial;
+        margin-left: auto;
+    }
+
+    .nav-toggle {
+        display: none;
+    }
+}
+
+// Desktop and up
+@include media-breakpoint-up(lg) {
+    nav {
+        width: map-get($grid-breakpoints, 'lg');    
+        margin: 0 auto;
+        padding: 10px 0;
+    }
+
+    .nav-groups {
+        margin: 0;
+    }
+}

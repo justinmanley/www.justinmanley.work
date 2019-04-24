@@ -23,7 +23,7 @@ main = hakyll $ do
         route   idRoute
         compile copyFileCompiler
 
-    match "css/style.scss" $ do
+    match "css/*.scss" $ do
         route $ setExtension "css"
         compile $ getResourceString 
             >>= withItemBody (unixFilter "sass" ["css/style.scss"])
