@@ -22,12 +22,23 @@
         </script>
     </head>
     <body>
-        <nav>
-            <ul class="nav-items">
-                <li class="nav-item"><a href="../../" class="navlink">Justin Manley</a></li>
-                <li class="nav-item"><a href="../../writing" class="navlink">Writing</a></li>
-            </ul>
-        </nav>
+		<nav>
+            <div class="nav-groups">
+                <div class="nav-item"><a href="../../" class="nav-brand">Justin Manley</a></div>
+                <div class="nav-item nav-toggle">Menu</div>
+                <ul class="nav-group nav-collapsed">
+                    <!--
+                        NOTE: The $num-nav-items variable in navbar.scss must be updated
+                        whenever a nav-item is added or removed. If $num-nav-items is not
+                        incremented when a new nav-item is added, that nav-item will not
+                        appear on mobile when the menu is expanded; if $num-nav-items is
+                        not decremented when a nav-item is removed, the menu-collapsing
+                        animation will appear to lag.
+                    -->
+                    <li class="nav-item"><a href="../../writing">Writing</a></li>
+                </ul>
+            </div>
+		</nav>
         <main><div class="content">
     <article>
         <h1 class="title"><a href="../../posts/dorchester-art-housing-collaborative/index.html">The Death and Life of Dante-Harper Townhomes</a></h1>
@@ -92,5 +103,29 @@ Looking down into the atrium of the Stony Island Arts Bank. The pillars around t
     </article>
 </div>
 </main>
+		<script>
+            // TODO: Move this into an external script.
+			function toggleNavigationMenu() {
+			  const navs = document.querySelectorAll('.nav-group')
+			  
+                navs.forEach(nav => {
+                    if (nav.classList.contains('nav-expanded')) {
+                        nav.classList.remove('nav-expanded');
+                        nav.classList.add('nav-collapsed');
+                    } else {
+                        if (nav.classList.contains('nav-collapsed')) {
+                            nav.classList.remove('nav-collapsed');
+                        }
+                        nav.classList.add('nav-expanded');
+                    }
+                });
+			}
+
+			document
+                .querySelector('.nav-toggle')
+                .addEventListener('click', toggleNavigationMenu);
+		</script>
     </body>
+	<script>
+	</script>
 </html>
