@@ -23,11 +23,14 @@ main = hakyll $ do
         route   idRoute
         compile copyFileCompiler
 
-    match "css/*.scss" $ do
+    create ["css/style.css"] $ do
         route $ setExtension "css"
-        compile $ getResourceString 
-            >>= withItemBody (unixFilter "sass" ["css/style.scss"])
-            >>= return . fmap compressCss
+        sassStylesheets <- makePatternDependency "css/*.scss"
+        rulesExtraDependencies [sassStylesheets] $ do
+            compile $ do
+                makeItem ""
+                    >>= withItemBody (unixFilter "sass" ["css/style.scss"])
+                    >>= return . fmap compressCss
 
     match "templates/*" $ compile templateCompiler
 
