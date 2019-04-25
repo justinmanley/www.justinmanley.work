@@ -1,14 +1,10 @@
-@font-face {
-    font-family: 'Aleo';
-    src: url('/assets/fonts/aleo-regular-webfont.woff');
-}
-
+// Set up variables for all stylesheets to use
 $brand-primary: #db1d0f;
 
-$font-family-serif: 
+$font-family-serif:
     Aleo, Georgia, "Times New Roman", Times, serif;
-$font-family-sans-serif: 
-    "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif; 
+$font-family-sans-serif:
+    "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 $font-family-base: Cardo, $font-family-serif;
 
 // Used as the gutter for the navbar and text content on mobile.
@@ -16,163 +12,193 @@ $mobile-padding-outer: 5%;
 
 $article-width: 600px;
 
+
+// Import sub-stylesheets. Some of these stylesheets use variables set above,
+// so it's important that the import statements come after the variable
+// declarations.
 @import '../bower_components/bootstrap/scss/bootstrap.scss';
 @import 'navbar.scss';
 @import 'gallery.scss';
 
+
 // Light text on a dark background.
 @mixin light-text() {
-    color: #fff;
-    &:hover {
-        color: $gray-lighter;
-    } 
+	color: #fff;
+
+	&:hover {
+		color: $gray-lighter;
+	}
 }
 // Class for when it doesn't make sense to use the mixin.
 .light-text {
-    @include light-text();
+	@include light-text();
 }
 
 // Ensure that the element with class $content-class will always
 // have aspect ratio $width : $height.
 @mixin fixed-aspect-ratio($content-class, $width, $height) {
-    position: relative;
-    &:before {
-        display: block;
-        content: "";
-        width: 100%;
-        padding-top: ($height / $width) * 100%;
-    }
-    .#{$content-class} {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        height: 100%;
-    }
+	position: relative;
+
+	&::before {
+		display: block;
+		content: "";
+		width: 100%;
+		padding-top: ($height / $width) * 100%;
+	}
+
+	.#{$content-class} {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		height: 100%;
+	}
 }
 
-html, body {
-    // I'm not sure why this is required, but without it, I get an empty
-    // space on the right of the page when the viewport is < 600px.
-    overflow-x: hidden;
+@font-face {
+	font-family: 'Aleo';
+	src: url('/assets/fonts/aleo-regular-webfont.woff');
+}
+
+html,
+body {
+	// I'm not sure why this is required, but without it, I get an empty
+	// space on the right of the page when the viewport is < 600px.
+	overflow-x: hidden;
 }
 
 main {
-    // Space between the navbar and the articles / Twitter feed beneath.
-    padding-top: 50px;
+	// Space between the navbar and the articles / Twitter feed beneath.
+	padding-top: 50px;
 }
 
 article {
-    // Provides space between successive articles.
-    padding-bottom: 50px;
+	// Provides space between successive articles.
+	padding-bottom: 50px;
+	font-size: 1.3em;
 
-    font-size: 1.3em;
+	.title {
+		color: $brand-primary;
+		font-size: 2em;
 
-    .title {
-        color: $brand-primary;
-        font-size: 2em;
-        a {
-            text-decoration: none;
-            &:hover {
-                text-decoration: none;
-            }
-        }
-    }
-    .date-published {
-        display: block;
-        padding-bottom: 10px;
-    }
-    // Left and right gutters are placed on the paragraph and caption elements,
-    // rather than the article tag, so that images expand to fill the full 
-    // width of the screen on mobile.
-    // These selectors should be kept in sync with the declaration below which
-    // removes this padding for tablets and larger screens.
-    .title, p, figcaption, .date-published {
-        padding-left: $mobile-padding-outer;
-        padding-right: $mobile-padding-outer;
-    }
-    figure {
-        padding-bottom: 20px;
-    }
-    figcaption {
-        color: $gray-light;
-        font-family: $font-family-sans-serif;
-        font-size: 0.8em;
-        padding-top: 5px;
-    }
-    img {
-        width: 100%;
-        @include center-block();
-    }
-    .note {
-        color: $gray-light;
-    }
-    .youtube-container {
-        @include fixed-aspect-ratio('youtube-video', 560, 315);        
-    }
+		a {
+			text-decoration: none;
+
+			&:hover {
+				text-decoration: none;
+			}
+		}
+	}
+
+	.date-published {
+		display: block;
+		padding-bottom: 10px;
+	}
+	// Left and right gutters are placed on the paragraph and caption elements,
+	// rather than the article tag, so that images expand to fill the full 
+	// width of the screen on mobile.
+	// These selectors should be kept in sync with the declaration below which
+	// removes this padding for tablets and larger screens.
+	.title,
+	p,
+	figcaption,
+	.date-published {
+		padding-left: $mobile-padding-outer;
+		padding-right: $mobile-padding-outer;
+	}
+
+	figure {
+		padding-bottom: 20px;
+	}
+
+	figcaption {
+		color: $gray-light;
+		font-family: $font-family-sans-serif;
+		font-size: 0.8em;
+		padding-top: 5px;
+	}
+
+	img {
+		width: 100%;
+
+		@include center-block();
+	}
+
+	.note {
+		color: $gray-light;
+	}
+
+	.youtube-container {
+		@include fixed-aspect-ratio('youtube-video', 560, 315);
+	}
 }
 
 .text-secondary {
-    color: $gray-light;
+	color: $gray-light;
 }
 
 .home {
-    padding-left: $mobile-padding-outer;
-    padding-right: $mobile-padding-outer;
+	padding-left: $mobile-padding-outer;
+	padding-right: $mobile-padding-outer;
 }
 
 .article-preview {
-    padding-bottom: 40px;
+	padding-bottom: 40px;
 }
 
 .article-synopsis {
-    padding-bottom: 20px;
+	padding-bottom: 20px;
 }
 
 // Tablets and up
 @include media-breakpoint-up(md) {
-    .content { 
-        width: $article-width;
-        margin: 0 auto;
-        article {
-            // Reset the horizontal padding used for mobile devices.
-            // This should be kept in sync with the selectors used for mobile
-            // devices. 
-            .title, p, figcaption, .date-published {
-                padding-left: 0;
-                padding-right: 0;
-            }
-        }
-    }
+	.content {
+		width: $article-width;
+		margin: 0 auto;
 
-    .home {
-        padding-left: 0;
-        padding-right: 0;
-    }
+		article {
+			// Reset the horizontal padding used for mobile devices.
+			// This should be kept in sync with the selectors used for mobile
+			// devices. 
+			.title,
+			p,
+			figcaption,
+			.date-published {
+				padding-left: 0;
+				padding-right: 0;
+			}
+		}
+	}
+
+	.home {
+		padding-left: 0;
+		padding-right: 0;
+	}
 }
 
 // Desktop and up
 @include media-breakpoint-up(lg) {
-    header {
-        .site-title {
-            font-size: 3.5em;
-        }
+	header {
+		.site-title {
+			font-size: 3.5em;
+		}
 
-        .site-title, .site-subtitle {
-            padding: 0 0 30px 0;
-        }
-    }
+		.site-title,
+		.site-subtitle {
+			padding: 0 0 30px 0;
+		}
+	}
 
-    .content { 
-        width: $article-width;
-        display: inline-block;
-        vertical-align: top;
-    }
+	.content {
+		width: $article-width;
+		display: inline-block;
+		vertical-align: top;
+	}
 
-    main {
-        width: map-get($grid-breakpoints, 'lg');    
-        margin: 0 auto;
-    }
+	main {
+		width: map-get($grid-breakpoints, 'lg');
+		margin: 0 auto;
+	}
 }
 

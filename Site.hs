@@ -29,7 +29,8 @@ main = hakyll $ do
         rulesExtraDependencies [sassStylesheets] $ do
             compile $ do
                 makeItem ""
-                    >>= withItemBody (unixFilter "sass" ["css/style.scss"])
+                    >>= checkSassStylesheets
+                    >>= compileSass  
                     >>= return . fmap compressCss
 
     match "templates/*" $ compile templateCompiler
@@ -152,6 +153,21 @@ loadAllSnapshotsMatchingMetadata :: (Binary a, Typeable a) => Pattern -> Snapsho
 loadAllSnapshotsMatchingMetadata pattern snapshot metadataPred = do
     matching <- map fst . filter (metadataPred . snd) <$> getAllMetadata pattern
     mapM (\i -> loadSnapshot i snapshot) matching
+
+-- If this compiler fails with `exit code 1...no such file or directory`,
+-- then you need to install `stylelint`. The `stylelint` dependencies are
+-- specified in the `package.json` file, so the binary can be installed
+-- with just `npm install`. The output of this action is not actually used.
+-- If this compiler fails with `exit code 2`, then there is a lint issue
+-- with the CSS, and you should run `npx stylelint css/*.scss` at the command
+-- line to diagnose the problem.
+checkSassStylesheets :: Item String -> Compiler (Item String)
+checkSassStylesheets = withItemBody (unixFilter "npx" ["stylelint", "css/*.scss"])
+
+-- If this compiler fails, then you may need to install the `sass` binary (see
+-- README for more details).
+compileSass :: Item String -> Compiler (Item String)
+compileSass = withItemBody (unixFilter "sass" ["css/style.scss"])
 
 postCtx =
     dateField "date" "%B %e, %Y" `mappend`

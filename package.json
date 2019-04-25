@@ -1,0 +1,27 @@
+{
+  "name": "www-justinmanley-work",
+  "version": "1.0.0",
+  "description": "Personal website and portfolio.",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/justinmanley/www.justinmanley.work.git"
+  },
+  "author": "Justin Manley",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/justinmanley/www.justinmanley.work/issues"
+  },
+  "homepage": "https://github.com/justinmanley/www.justinmanley.work#readme",
+  "devDependencies": {
+    "stylelint": "^10.0.1",
+    "stylelint-config-recommended-scss": "^3.3.0",
+    "stylelint-config-standard": "^18.3.0",
+    "stylelint-scss": "^3.6.0"
+  }
+}
