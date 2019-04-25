@@ -1,0 +1,42 @@
+.gallery {
+    img {
+        width: 100%;
+    }
+}
+
+.gallery-item {
+    margin-bottom: 50px;
+}
+
+.gallery-title, .gallery-item-synopsis, .gallery-item-title {
+    padding-left: $mobile-padding-outer;
+    padding-right: $mobile-padding-outer;
+}
+
+.gallery-title {
+    padding-bottom: 30px;
+}
+
+// Phones in landscope mode and up
+@include media-breakpoint-up(sm) {
+    .gallery {
+        padding: 0 $mobile-padding-outer;
+        display: grid;
+        grid-template-columns: 45% 45%;
+        grid-column-gap: 10%;
+    }
+}
+
+// Tablets and up
+@include media-breakpoint-up(md) {
+    .gallery {
+        padding: initial;
+        grid-template-columns: 180px 180px 180px;
+        grid-column-gap: 30px;
+    }
+
+    .gallery-title, .gallery-item-synopsis, .gallery-item-title {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}

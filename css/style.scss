@@ -18,6 +18,7 @@ $article-width: 600px;
 
 @import '../bower_components/bootstrap/scss/bootstrap.scss';
 @import 'navbar.scss';
+@import 'gallery.scss';
 
 // Light text on a dark background.
 @mixin light-text() {
@@ -129,29 +130,6 @@ article {
     padding-bottom: 20px;
 }
 
-.gallery {
-    display: flex;
-    flex-flow: row wrap;
-
-    img {
-        width: 100%;
-    }
-}
-
-.gallery-item {
-    flex-basis: 100%;
-    margin-bottom: 30px;
-}
-
-.gallery-title, .gallery-item-synopsis, .gallery-item-title {
-    padding-left: $mobile-padding-outer;
-    padding-right: $mobile-padding-outer;
-}
-
-.gallery-title {
-    padding-bottom: 30px;
-}
-
 // Tablets and up
 @include media-breakpoint-up(md) {
     .content { 
@@ -169,16 +147,6 @@ article {
     }
 
     .home {
-        padding-left: 0;
-        padding-right: 0;
-    }
-
-    .gallery-item {
-        flex-basis: 50%;
-        margin-right: 30px;
-    }
-
-    .gallery-title, .gallery-item-synopsis, .gallery-item-title {
         padding-left: 0;
         padding-right: 0;
     }
@@ -205,10 +173,6 @@ article {
     main {
         width: map-get($grid-breakpoints, 'lg');    
         margin: 0 auto;
-    }
-
-    .gallery-item {
-        flex-basis: 20%;
     }
 }
 
