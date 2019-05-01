@@ -11,6 +11,9 @@ bower_components
 # Sass
 .sass-cache
 
+# NodeJS
+node_modules
+
 # Stack
 .stack-work/
 www-justinmanley-work.cabal
