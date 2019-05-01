@@ -1,9 +1,8 @@
 #!/bin/bash
 
-# This script deploys the site to Github Pages in-place (that is, without cloning, reinstalling
-# dependencies, and rebuilding from scratch). The site is deployed by pushing the contents of the
-# _site directory to Github Pages. This makes deployment much faster than deploying from scratch,
-# but requires care to ensure that the site is built correctly before it is run.
+# This script clones the repository from Github, downloads dependencies, builds the site, and then
+# deploys the site to Github Pages. The site is deployed by pushing the contents of the
+# _site directory to Github Pages.
 
 # exit script with nonzero exit code if any command fails
 set -e
@@ -11,8 +10,22 @@ set -e
 # echo each command
 set -x
 
+DIR=$(mktemp -d)
+git clone https://github.com/justinmanley/www.justinmanley.work.git "${DIR}"
+cd "${DIR}"
+
+npm install
+bower install
+stack build && stack run site build 
+
 # add generated site to git 
-sed --in-place '/_site\/*/d' .gitignore
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    # macOS uses standard sed by default, not GNU sed.
+    sed -i '' '/_site\/*/d' .gitignore
+else
+    # On other operating systems, use GNU sed.
+    sed --in-place '/_site\/*/d' .gitignore
+fi
 git add --all _site
 
 # deploy to gh-pages branch.  See: 
@@ -30,7 +43,5 @@ git checkout gh-pages
 git cherry-pick $(git log gh-pages-staging -1 --pretty=oneline | awk '{ print $1 }') --strategy-option=theirs 
 git push origin gh-pages
 
-# cleanup
-git checkout master
-git reset --hard HEAD~1 # delete the latest commit and remove added files from the index
-git branch -D gh-pages-staging
+cd -
+rm -rf "${DIR}"
