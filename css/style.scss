@@ -132,6 +132,15 @@ article {
 	.youtube-container {
 		@include fixed-aspect-ratio('youtube-video', 560, 315);
 	}
+
+	// Mosaic videos must have an 8x10 aspect ratio.
+	.mosaic-container {
+		@include fixed-aspect-ratio('mosaic-video', 560, 448);
+	}
+    
+	.divider {
+		text-align: center;
+	}
 }
 
 .text-secondary {
@@ -201,4 +210,3 @@ article {
 		margin: 0 auto;
 	}
 }
-
