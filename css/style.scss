@@ -95,11 +95,17 @@ article {
 		display: block;
 		padding-bottom: 10px;
 	}
+
 	// Left and right gutters are placed on the paragraph and caption elements,
 	// rather than the article tag, so that images expand to fill the full 
 	// width of the screen on mobile.
+	// 
 	// These selectors should be kept in sync with the declaration below which
 	// removes this padding for tablets and larger screens.
+	// 
+	// This is separate from the .content-block element because elements to which
+	// these selectors are applied should only have padding added when they are
+	// inside an <article> element (esp. .date-published).
 	.title,
 	p,
 	figcaption,
@@ -143,6 +149,9 @@ article {
 	}
 }
 
+// The outer padding is placed on this selector, separate from the .content selector,
+// to allow for full-bleed images inside the .content element, which should not have
+// the padding normally applied to other elements inside the .content element.
 .content-block {
 	padding-left: $mobile-padding-outer;
 	padding-right: $mobile-padding-outer;
@@ -154,14 +163,10 @@ article {
 
 .page-title {
 	padding-bottom: 30px;
-	padding-left: $mobile-padding-outer;
-	padding-right: $mobile-padding-outer;
 }
 
 .article-preview {
 	padding-bottom: 40px;
-	padding-left: $mobile-padding-outer;
-	padding-right: $mobile-padding-outer;
 }
 
 .article-synopsis {
@@ -186,20 +191,9 @@ article {
 				padding-right: 0;
 			}
 		}
-
-
-		.article-preview {
-			padding-left: 0;
-			padding-right: 0;
-		}
 	}
 
 	.content-block {
-		padding-left: 0;
-		padding-right: 0;
-	}
-
-	.page-title {
 		padding-left: 0;
 		padding-right: 0;
 	}
