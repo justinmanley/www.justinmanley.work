@@ -185,28 +185,3 @@ article {
 		padding-right: 0;
 	}
 }
-
-// Desktop and up
-@include media-breakpoint-up(lg) {
-	header {
-		.site-title {
-			font-size: 3.5em;
-		}
-
-		.site-title,
-		.site-subtitle {
-			padding: 0 0 30px 0;
-		}
-	}
-
-	.content {
-		width: $article-width;
-		display: inline-block;
-		vertical-align: top;
-	}
-
-	main {
-		width: map-get($grid-breakpoints, 'lg');
-		margin: 0 auto;
-	}
-}

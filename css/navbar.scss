@@ -101,16 +101,3 @@ nav {
 		display: none;
 	}
 }
-
-// Desktop and up
-@include media-breakpoint-up(lg) {
-	nav {
-		width: map-get($grid-breakpoints, 'lg');
-		margin: 0 auto;
-		padding: 10px 0;
-	}
-
-	.nav-groups {
-		margin: 0;
-	}
-}
