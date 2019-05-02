@@ -15,10 +15,6 @@
 	padding-right: $mobile-padding-outer;
 }
 
-.gallery-title {
-	padding-bottom: 30px;
-}
-
 // Phones in landscope mode and up
 @include media-breakpoint-up(sm) {
 	.gallery {

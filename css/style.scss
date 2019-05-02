@@ -147,13 +147,16 @@ article {
 	color: $gray-light;
 }
 
-.home {
+.page-title {
+	padding-bottom: 30px;
 	padding-left: $mobile-padding-outer;
 	padding-right: $mobile-padding-outer;
 }
 
 .article-preview {
 	padding-bottom: 40px;
+	padding-left: $mobile-padding-outer;
+	padding-right: $mobile-padding-outer;
 }
 
 .article-synopsis {
@@ -178,9 +181,15 @@ article {
 				padding-right: 0;
 			}
 		}
+
+
+		.article-preview {
+			padding-left: 0;
+			padding-right: 0;
+		}
 	}
 
-	.home {
+	.page-title {
 		padding-left: 0;
 		padding-right: 0;
 	}

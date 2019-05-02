@@ -1,0 +1,12 @@
+<h3 class="page-title">Talks</h3>
+$for(talks)$
+    <div class="home article-preview">
+        $if(event-url)$
+            <h5 class="title"><a href="$event-url$">$title$</a></h5>
+        $else$
+            <h5 class="title">$title$</h5>
+        $endif$
+        <time class="date-published text-secondary">$date$</time>
+        <span class="text-secondary">&nbsp; · &nbsp; $venue$</span>
+    </div>
+$endfor$
