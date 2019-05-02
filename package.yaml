@@ -39,6 +39,7 @@ executables:
     - -with-rtsopts=-N
     dependencies:
     - binary
+    - filepath
     - hakyll
     - text
     - unordered-containers

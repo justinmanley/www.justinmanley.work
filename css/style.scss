@@ -143,6 +143,11 @@ article {
 	}
 }
 
+.content-block {
+	padding-left: $mobile-padding-outer;
+	padding-right: $mobile-padding-outer;
+}
+
 .text-secondary {
 	color: $gray-light;
 }
@@ -187,6 +192,11 @@ article {
 			padding-left: 0;
 			padding-right: 0;
 		}
+	}
+
+	.content-block {
+		padding-left: 0;
+		padding-right: 0;
 	}
 
 	.page-title {

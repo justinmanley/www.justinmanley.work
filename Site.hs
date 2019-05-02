@@ -3,13 +3,13 @@
 
 import Data.Binary (Binary)
 import qualified Data.HashMap.Strict as HashMap
-import Data.Maybe (isJust)
+import Data.List (stripPrefix)
+import Data.Maybe (isJust, fromMaybe)
 import Data.Monoid (mappend)
 import Data.Text (Text)
 import Data.Typeable
 import Hakyll
-
-import Debug.Trace (trace)
+import System.FilePath (combine, splitExtension)
 
 import OutOfTheYards.Content.Normalize (normalizeUrls)
 -----------------------------------------------------------------------------
@@ -79,6 +79,24 @@ main = hakyll $ do
                 >>= loadAndApplyTemplate "templates/default.html" archiveCtx
                 >>= relativizeUrls
 
+    -- Talks
+    match "talks/*.md" $ do
+        -- Omit the `route` statement in order to ensure that talks appear
+        -- only on the aggregation page, not as individual pages.
+        compile $ pandocCompiler
+
+    create ["talks/index.html"] $ do
+        route idRoute
+        compile $ do
+            let talks = recentFirst =<< loadAll "talks/*.md"
+            let talksCtx =
+                    listField "talks" postCtx talks `mappend`
+                    defaultContext
+
+            makeItem ""
+                >>= loadAndApplyTemplate "templates/talks.html" talksCtx
+                >>= loadAndApplyTemplate "templates/default.html" talksCtx
+
     -- Art
     match "artworks/*/images/**" $ do
         route   idRoute
@@ -109,6 +127,14 @@ main = hakyll $ do
                 >>= loadAndApplyTemplate "templates/gallery.html" galleryCtx
                 >>= loadAndApplyTemplate "templates/default.html" galleryCtx
                 >>= relativizeUrls
+
+    -- Pages
+    match "pages/*.md" $ do
+        route pagesRoutes
+        compile $ do
+            pandocCompiler
+                >>= loadAndApplyTemplate "templates/page.html" postCtx
+                >>= loadAndApplyTemplate "templates/default.html" postCtx
 
     -- Home
     create ["index.html"] $ do
@@ -172,6 +198,15 @@ compileSass = withItemBody (unixFilter "sass" ["css/style.scss"])
 postCtx =
     dateField "date" "%B %e, %Y" `mappend`
     defaultContext
+
+-- This route performs the following mapping:
+--    pages/x.md -> x/index.html
+-- This allows such pages to be referenced as just x/ (rather than x.html).
+-- That is, this route maps pages/talks.md to talks/index.html.
+pagesRoutes :: Routes
+pagesRoutes = customRoute $  addIndexHtml . fromMaybe "" . stripPrefix "pages/" . toFilePath where
+    addIndexHtml :: FilePath -> FilePath
+    addIndexHtml = flip combine "index.html" . fst . splitExtension
 
 
 -- Configuration
