@@ -11,7 +11,7 @@ set -e
 set -x
 
 DIR=$(mktemp -d)
-git clone https://github.com/justinmanley/www.justinmanley.work.git "${DIR}"
+git clone --depth=1 https://github.com/justinmanley/www.justinmanley.work.git "${DIR}"
 cd "${DIR}"
 
 npm install
@@ -39,7 +39,11 @@ git subtree split --prefix _site -b gh-pages-staging
 # Revert changes to .gitignore in order to move to the gh-pages branch.
 git checkout .gitignore
 
-git checkout gh-pages
+# Make non-master branches available again after cloning with --depth=1.
+git remote set-branches origin '*'  
+git fetch origin gh-pages
+
+git checkout --track origin/gh-pages
 git cherry-pick $(git log gh-pages-staging -1 --pretty=oneline | awk '{ print $1 }') --strategy-option=theirs 
 git push origin gh-pages
 
