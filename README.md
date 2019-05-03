@@ -41,6 +41,9 @@ data ExtraPostMetadata
 This static site generator requires [Sass](https://sass-lang.com), and currently
 uses the Dart implementation of Sass/Scss (version 1.18.0).
 
+In order to enable local git hooks (for running tests before committing, etc),
+run `git config core.hooksPath .githooks`.
+
 ### Development
 ```bash
 stack build && stack run site watch
