@@ -17,22 +17,11 @@ $article-width: 600px;
 // so it's important that the import statements come after the variable
 // declarations.
 @import '../bower_components/bootstrap/scss/bootstrap.scss';
-@import 'navbar.scss';
+
+@import 'footer.scss';
 @import 'gallery.scss';
+@import 'navbar.scss';
 
-
-// Light text on a dark background.
-@mixin light-text() {
-	color: #fff;
-
-	&:hover {
-		color: $gray-lighter;
-	}
-}
-// Class for when it doesn't make sense to use the mixin.
-.light-text {
-	@include light-text();
-}
 
 // Ensure that the element with class $content-class will always
 // have aspect ratio $width : $height.

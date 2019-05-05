@@ -1,0 +1,31 @@
+$subtle-icon-color: #bbb;
+
+footer {
+	color: $gray-light;
+	text-align: center;
+	border-top: 1px solid $gray-lighter;
+	margin-top: 40px;
+	padding-top: 40px;
+	padding-bottom: 40px;
+}
+
+.contact-links {
+	padding-bottom: 30px;
+}
+
+.contact-link {
+	color: $subtle-icon-color;
+	font-size: 3em;
+	padding-left: 30px;
+	&:first-child {
+		padding-left: 0;
+	}
+
+	&:hover {
+		color: $gray-light;
+	}
+}
+
+.attributions {
+	text-align: left;  
+}
