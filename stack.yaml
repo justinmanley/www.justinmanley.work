@@ -38,7 +38,11 @@ packages:
 # using the same syntax as the packages field.
 # (e.g., acme-missiles-0.3)
 extra-deps:
+- Chart-1.9.1@sha256:cc50e1e65738ab2d6c30ae9e3f138962f87667d81f7860a0deeca9053f6d21ed
+- Chart-diagrams-1.9.2@sha256:2284b9767babf2859e777c599e9298f5b915e17a4250d05c9b22851504ff6991
+- diagrams-postscript-1.4.1@sha256:a39c44f8a93929de88e5c363290d5bb8bc93ba15cd36af5c9ca5b620d51cdf68
 - hakyll-4.12.5.1@sha256:d1948b265e6628bcb6875571212f9acefe23179c73ca4f87f417b290ff381ca6
+- hip-1.5.3.0@sha256:11a3b06a222abae8d2f1da717890b24392de1df22a2c2bb388922565a73dd9be
 - lrucache-1.2.0.1@sha256:18fc3d7052012c7ab3cd395160f34b53c5e1ec5379cc45185baf35b90ffadc2e
 
 # Override default flag values for local packages and extra-deps

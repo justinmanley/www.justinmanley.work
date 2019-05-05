@@ -49,6 +49,14 @@ run `git config core.hooksPath .githooks`.
 stack build && stack run site watch
 ```
 
+Note that running the screenshot tests requires running the following steps:
+  1. Downlaod the chromedriver binary and make it available on the PATH so Selenium can find it
+     (note that the chromedriver binary version will need to match the installed version of Chrome;
+     at the time of writing, we use version 73, which means that chromedriver must be version 74).
+  2. Download a Selenium standalone .jar and run it using java -jar <selenium standalone jarfile>
+     (at the time of writing, we use version 3.141.59).
+  2. Run the Hakyll local server
+
 ### Deployment
 ```
 tools/deploy.sh
