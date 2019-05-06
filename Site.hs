@@ -1,7 +1,9 @@
 -----------------------------------------------------------------------------
 {-# LANGUAGE OverloadedStrings #-}
 
+import Control.Applicative (empty)
 import Data.Binary (Binary)
+import Data.Functor ((<&>))
 import qualified Data.HashMap.Strict as HashMap
 import Data.List (stripPrefix)
 import Data.Maybe (isJust, fromMaybe)
@@ -9,7 +11,9 @@ import Data.Monoid (mappend)
 import Data.Text (Text)
 import Data.Typeable
 import Hakyll
-import System.FilePath (combine, splitExtension)
+import System.FilePath (combine, splitExtension, takeBaseName, takeDirectory)
+
+import Debug.Trace (trace)
 
 import OutOfTheYards.Content.Normalize (normalizeUrls)
 -----------------------------------------------------------------------------
@@ -32,7 +36,7 @@ main = hakyll $ do
                     >>= compileSass  
                     >>= return . fmap compressCss
 
-    match "templates/*" $ compile templateCompiler
+    match "templates/*" $ compile templateBodyCompiler
 
     -- Writing
     match "posts/*/images/**" $ do
@@ -59,10 +63,10 @@ main = hakyll $ do
             -- HTML for the standalone post).
             pandocCompiler
                 >>= saveSnapshot "post-body"
-                >>= loadAndApplyTemplate "templates/post.html" postCtx
-                >>= normalizeUrls postCtx
+                >>= loadAndApplyTemplate "templates/post.html" siteCtx
+                >>= normalizeUrls siteCtx
                 >>= saveSnapshot "post-full"
-                >>= loadAndApplyTemplate "templates/default.html" postCtx
+                >>= loadAndApplyTemplate "templates/default.html" siteCtx
                 >>= relativizeUrls
 
     create ["writing/index.html"] $ do
@@ -70,12 +74,13 @@ main = hakyll $ do
         compile $ do
             let posts = recentFirst =<< loadAllSnapshots "posts/**/*.md" "post-preview"
             let archiveCtx =
-                    listField "posts" postCtx posts `mappend`
+                    listField "posts" siteCtx posts `mappend`
                     defaultContext
 
             makeItem ""
-                >>= loadAndApplyTemplate "templates/writing.html" archiveCtx
-                >>= loadAndApplyTemplate "templates/default.html" archiveCtx
+                >>= loadTemplateWithMetadataAndApply "templates/writing.html" archiveCtx
+                <&> withNameInTitle
+                >>= uncurry (loadAndApplyTemplate "templates/default.html")
                 >>= relativizeUrls
 
     -- Talks
@@ -89,12 +94,13 @@ main = hakyll $ do
         compile $ do
             let talks = recentFirst =<< loadAll "talks/*.md"
             let talksCtx =
-                    listField "talks" postCtx talks `mappend`
+                    listField "talks" siteCtx talks `mappend`
                     defaultContext
 
             makeItem ""
-                >>= loadAndApplyTemplate "templates/talks.html" talksCtx
-                >>= loadAndApplyTemplate "templates/default.html" talksCtx
+                >>= loadTemplateWithMetadataAndApply "templates/talks.html" talksCtx
+                <&> withNameInTitle
+                >>= uncurry (loadAndApplyTemplate "templates/default.html")
 
     -- Art
     match "artworks/*/images/**" $ do
@@ -105,13 +111,13 @@ main = hakyll $ do
         route $ setExtension "html"
         compile $ do
             pandocCompiler
-                >>= loadAndApplyTemplate "templates/artwork_preview.html" postCtx
-                >>= normalizeUrls postCtx
+                >>= loadAndApplyTemplate "templates/artwork_preview.html" siteCtx
+                >>= normalizeUrls siteCtx
                 >>= saveSnapshot "artwork-preview"
 
             pandocCompiler
-                >>= loadAndApplyTemplate "templates/artwork.html" postCtx
-                >>= loadAndApplyTemplate "templates/default.html" postCtx
+                >>= loadAndApplyTemplate "templates/artwork.html" siteCtx
+                >>= loadAndApplyTemplate "templates/default.html" siteCtx
                 >>= relativizeUrls
 
     create ["art/index.html"] $ do
@@ -119,21 +125,24 @@ main = hakyll $ do
         compile $ do
             let artworks = recentFirst =<< loadAllSnapshots "artworks/**/*.md" "artwork-preview"
             let galleryCtx =
-                    listField "artworks" postCtx artworks `mappend`
+                    listField "artworks" siteCtx artworks `mappend`
                     defaultContext
 
             makeItem ""
-                >>= loadAndApplyTemplate "templates/gallery.html" galleryCtx
-                >>= loadAndApplyTemplate "templates/default.html" galleryCtx
+                >>= loadTemplateWithMetadataAndApply "templates/gallery.html" galleryCtx
+                <&> withNameInTitle
+                >>= uncurry (loadAndApplyTemplate "templates/default.html")
                 >>= relativizeUrls
 
     -- Pages
     match "pages/*.md" $ do
         route pagesRoutes
         compile $ do
+            let pageCtx = mapContextIf (== "title") withName siteCtx
+
             pandocCompiler
-                >>= loadAndApplyTemplate "templates/page.html" postCtx
-                >>= loadAndApplyTemplate "templates/default.html" postCtx
+                >>= loadAndApplyTemplate "templates/page.html" siteCtx
+                >>= loadAndApplyTemplate "templates/default.html" pageCtx
 
     -- Home
     create ["index.html"] $ do
@@ -141,18 +150,19 @@ main = hakyll $ do
         compile $ do
             let posts = recentFirst =<< loadAllSnapshots "posts/**/*.md" "post-preview"
             let homeCtx =
-                    listField "posts" postCtx posts `mappend`
+                    listField "posts" siteCtx posts `mappend`
                     defaultContext
 
             makeItem ""
-                >>= loadAndApplyTemplate "templates/home.html" homeCtx
-                >>= loadAndApplyTemplate "templates/default.html" homeCtx
+                >>= loadTemplateWithMetadataAndApply "templates/home.html" homeCtx
+                <&> withNameInTitle
+                >>= uncurry (loadAndApplyTemplate "templates/default.html")
                 >>= relativizeUrls
 
     create ["feed/atom.xml"] $ do
         route idRoute
         compile $ do
-            let feedCtx = postCtx `mappend`
+            let feedCtx = siteCtx `mappend`
                     bodyField "description"
 
             posts <- fmap (take 10) . recentFirst =<< loadAllSnapshotsMatchingMetadata "posts/**/*.md" "post-body" (not . hasSource)
@@ -170,8 +180,8 @@ hasSource = hasMetadata "source"
 
 postPreviewCompiler :: Compiler (Item String)
 postPreviewCompiler = pandocCompiler
-    >>= loadAndApplyTemplate "templates/post_preview.html" postCtx
-    >>= normalizeUrls postCtx
+    >>= loadAndApplyTemplate "templates/post_preview.html" siteCtx
+    >>= normalizeUrls siteCtx
     >>= saveSnapshot "post-preview"
 
 loadAllSnapshotsMatchingMetadata :: (Binary a, Typeable a) => Pattern -> Snapshot -> (Metadata -> Bool) -> Compiler [Item a]
@@ -184,7 +194,7 @@ loadAllSnapshotsMatchingMetadata pattern snapshot metadataPred = do
 compileSass :: Item String -> Compiler (Item String)
 compileSass = withItemBody (unixFilter "sass" ["css/style.scss"])
 
-postCtx =
+siteCtx =
     dateField "date" "%B %e, %Y" `mappend`
     defaultContext
 
@@ -197,14 +207,60 @@ pagesRoutes = customRoute $  addIndexHtml . fromMaybe "" . stripPrefix "pages/" 
     addIndexHtml :: FilePath -> FilePath
     addIndexHtml = flip combine "index.html" . fst . splitExtension
 
+-- Extend `Hakyll.Web.Template.loadAndApplyTemplate` to read metadata from the *template* (rather than the
+-- item included into the template), add that metadata into the Context, and pass the modified Context
+-- on to the next template to use for processing. This is especially helpful for passing data from
+-- single-page templates (like `Writing`, `Art`, `Talks`, etc) to the top-level (default) template.
+loadTemplateWithMetadataAndApply :: Identifier -> Context a -> Item a -> Compiler (Context a, Item String)
+loadTemplateWithMetadataAndApply templateIdentifier context item = do
+    -- From `loadAndApplyTemplate`.
+    tpl <- loadBody templateIdentifier
+    result <- applyTemplate tpl context item
+
+    -- From `Hakyll.Web.Template.Context.metadataField`.
+    let templateMetadataField = Context $ \k _ i -> do
+            value <- getMetadataField templateIdentifier k
+            maybe empty (return . StringField) value
+
+    return (templateMetadataField `mappend` context, result)
+
+mapFst :: (a -> b) -> (a, c) -> (b, c)
+mapFst f (x, y) = (f x, y)
+
+-- Extend `Hakyll.Web.Template.Context.mapContext` to take a predicate indicating
+-- whether the map function should be applied to a value at a particular key.
+mapContextIf :: (String -> Bool) -> (String -> String) -> Context a -> Context a
+mapContextIf keyPredicate f (Context c) = Context $ \k a i -> do
+    fld <- c k a i
+    if keyPredicate k
+    then
+        case fld of
+            StringField str -> return $ StringField (f str)
+            ListField _ _   -> fail $
+                "Hakyll.Web.Template.Context.mapContext: " ++
+                "can't map over a ListField!"
+    else return fld
+
+withNameInTitle :: (Context String, a) -> (Context String, a)
+withNameInTitle = mapFst (mapContextIf (== "title") withName)
+
 
 -- Configuration
 
+name :: String
+name = "Justin Manley"
+
+tagline :: String
+tagline = "Writer, artist, and software artisan."
+
+withName :: String -> String
+withName title = name ++ " | " ++ title
+
 feedConfiguration :: FeedConfiguration
 feedConfiguration = FeedConfiguration
-    { feedTitle = "Out of the Yards"
-    , feedDescription = "Writing about digital art, technology, and architecture."
-    , feedAuthorName = "Justin Manley"
+    { feedTitle = name
+    , feedDescription = withName tagline
+    , feedAuthorName = name
     , feedAuthorEmail = "manleyjster@gmail.com"
-    , feedRoot = "http://outoftheyards.com"
+    , feedRoot = "http://justinmanley.work"
     }
