@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <title>Out of the Yards</title>
-    <link href="http://outoftheyards.com/feed/atom.xml" rel="self" />
-    <link href="http://outoftheyards.com" />
-    <id>http://outoftheyards.com/feed/atom.xml</id>
+    <title>Justin Manley</title>
+    <link href="http://justinmanley.work/feed/atom.xml" rel="self" />
+    <link href="http://justinmanley.work" />
+    <id>http://justinmanley.work/feed/atom.xml</id>
     <author>
         <name>Justin Manley</name>
         <email>manleyjster@gmail.com</email>
@@ -11,8 +11,8 @@
     <updated>2017-05-21T00:00:00Z</updated>
     <entry>
     <title>Skepticism and Despair in <i>The Infinity Engine</i></title>
-    <link href="http://outoftheyards.com/posts/infinity-engine/index.html" />
-    <id>http://outoftheyards.com/posts/infinity-engine/index.html</id>
+    <link href="http://justinmanley.work/posts/infinity-engine/index.html" />
+    <id>http://justinmanley.work/posts/infinity-engine/index.html</id>
     <published>2017-05-21T00:00:00Z</published>
     <updated>2017-05-21T00:00:00Z</updated>
     <summary type="html"><![CDATA[<p>In <em>The Infinity Engine</em> (2014 - 2017), artist Lynn Hershman Leeson offers a concentrated experience of the contemporary debate over the implications of genetic modification and other emerging biotechnologies. The multimedia installation traces the movement of these technologies through society from inception in the laboratory to eventual acceptance into living human bodies. For me, a layperson, the <em>The Infinity Engine</em> awakens a disheartening awareness of the uncertainty of our biological future and my own lack of agency.</p>
@@ -41,8 +41,8 @@ Two boxes hold hundreds of pages of technical reports, patents filings, Supreme 
 </entry>
 <entry>
     <title>Surface Tension</title>
-    <link href="http://outoftheyards.com/posts/camille-utterback-sustaining-presence/index.html" />
-    <id>http://outoftheyards.com/posts/camille-utterback-sustaining-presence/index.html</id>
+    <link href="http://justinmanley.work/posts/camille-utterback-sustaining-presence/index.html" />
+    <id>http://justinmanley.work/posts/camille-utterback-sustaining-presence/index.html</id>
     <published>2017-03-25T00:00:00Z</published>
     <updated>2017-03-25T00:00:00Z</updated>
     <summary type="html"><![CDATA[<p>Winston Churchill once said, “We make our buildings and afterwards they make us.” The same is true of technology. Linear perspective,<sup><a href="#rationalization-of-sight">1</a></sup> the printing press,<sup><a href="#printing-press">2</a></sup> the camera,<sup><a href="#on-photography">3</a></sup> the computer;<sup><a href="#second-self">4</a></sup> these technologies have changed irreversibly the way the world appears to us, how we relate to each other, and the way we see ourselves. Digital display technology is poised now to effect a similar transformation in the way that we see the world. Already ubiquitous on cellphone screens, digital images will become increasingly inseparable from physical reality with the spread of augmented and virtual reality technologies. In her <a href="http://events.stanford.edu/events/635/63511/">show of digital installation art</a> at the Stanford Art Gallery, artist Camille Utterback offers a critique of the digital screen and a hopeful exploration of the possibilities of an augmented reality which is deeply based in the physical world.</p>
@@ -87,8 +87,8 @@ Two boxes hold hundreds of pages of technical reports, patents filings, Supreme 
 </entry>
 <entry>
     <title>I Have No Memory of This Place</title>
-    <link href="http://outoftheyards.com/posts/sohei-nishino-new-work/index.html" />
-    <id>http://outoftheyards.com/posts/sohei-nishino-new-work/index.html</id>
+    <link href="http://justinmanley.work/posts/sohei-nishino-new-work/index.html" />
+    <id>http://justinmanley.work/posts/sohei-nishino-new-work/index.html</id>
     <published>2017-01-04T00:00:00Z</published>
     <updated>2017-01-04T00:00:00Z</updated>
     <summary type="html"><![CDATA[<p>When I first saw <a href="http://soheinishino.net/">Sohei Nishino</a>’s map of San Francisco at SFMOMA, I felt an inexplicable, irrational sense of resentment. Behind me, a teenager crowed to his friends: “I don’t even have to look at the label, I can tell that one is San Francisco.” Nishino’s map of San Francisco is instantly recognizable from a distance, but as I inspected its details, I felt indignant in spite of myself. <a href="https://www.youtube.com/watch?v=bSrf8EgSyDg">Nishino’s city wasn’t the San Francisco that I knew</a>. Missing were the familiar sights that dominate my memories of the city: Mission Street’s shabby bodegas and dollar stores; the bookshops and taquerias fronting on narrow, shaded sidewalks along 24th Street; the cliffs of Thornton State Beach, draped with spiky succulent sea fig.</p>
@@ -125,8 +125,8 @@ Twin Peaks appears twice in Nishino’s map of San Francisco. Images courtesy of
 </entry>
 <entry>
     <title>Culture and Spatial Perception in the Art of teamLab</title>
-    <link href="http://outoftheyards.com/posts/teamLab-living-digital-space-future-parks/index.html" />
-    <id>http://outoftheyards.com/posts/teamLab-living-digital-space-future-parks/index.html</id>
+    <link href="http://justinmanley.work/posts/teamLab-living-digital-space-future-parks/index.html" />
+    <id>http://justinmanley.work/posts/teamLab-living-digital-space-future-parks/index.html</id>
     <published>2016-11-10T00:00:00Z</published>
     <updated>2016-11-10T00:00:00Z</updated>
     <summary type="html"><![CDATA[<p>The best visual spectacle in the Bay Area right now is the show of digital installation art by Japanese art group <a href="http://www.team-lab.net/">teamLab</a> at <a href="http://www.pacegallery.com/">Pace Art + Technology</a> in Menlo Park. The show is a vast warren of dazzling sights: a <a href="http://exhibition.team-lab.net/siliconvalley/art/art01.html">narrow path through a forest of glowing LEDs</a>, a <a href="http://exhibition.team-lab.net/siliconvalley/art/art09.html">cave full of projected flowers endlessly blooming and dying</a>, a <a href="http://exhibition.team-lab.net/siliconvalley/art/art02.html">hazy world of dark waves stretching into infinity</a>. The twenty artworks are beautiful, intricate, and masterfully executed, but they quickly blur together into a highbrow funhouse, a sophisticated trade show. The show is grounded in teamLab’s homegrown theory of spatial perception and motivated by the group’s ambitions for social harmony and the advancement of Japanese art. These ideas might have elevated the show, but they are underdeveloped and unconvincing. Nevertheless, they suggest exciting new directions for inquiry into the relationship between culture and perception.</p>
@@ -196,8 +196,8 @@ In the framed line test (FLT), subjects are shown a line inside a frame (above, 
 </entry>
 <entry>
     <title>Three Excursions in Artificial Existence</title>
-    <link href="http://outoftheyards.com/posts/three-excursions-in-artificial-existence/index.html" />
-    <id>http://outoftheyards.com/posts/three-excursions-in-artificial-existence/index.html</id>
+    <link href="http://justinmanley.work/posts/three-excursions-in-artificial-existence/index.html" />
+    <id>http://justinmanley.work/posts/three-excursions-in-artificial-existence/index.html</id>
     <published>2016-02-17T00:00:00Z</published>
     <updated>2016-02-17T00:00:00Z</updated>
     <summary type="html"><![CDATA[<p>The creation of a true artificial intelligence is likely still decades away, but as limited forms of machine intelligence become increasingly ubiquitous, questions about the relationship between we humans and our semisentient creations will become ever more pressing. <a href="http://neat.thecjm.org/">NEAT: New Experiments in Art and Technology</a>, on view this past fall at the <a href="http://www.thecjm.org/">Contemporary Jewish Museum</a> in San Francisco, offered a few compelling explorations of artificial existence. Arranged among unremarkable interactive visualizations and video artworks, these artificial beings were both formally inventive and technologically topical.</p>
@@ -241,8 +241,8 @@ In the framed line test (FLT), subjects are shown a line inside a frame (above, 
 </entry>
 <entry>
     <title>The Death and Life of Dante-Harper Townhomes</title>
-    <link href="http://outoftheyards.com/posts/dorchester-art-housing-collaborative/index.html" />
-    <id>http://outoftheyards.com/posts/dorchester-art-housing-collaborative/index.html</id>
+    <link href="http://justinmanley.work/posts/dorchester-art-housing-collaborative/index.html" />
+    <id>http://justinmanley.work/posts/dorchester-art-housing-collaborative/index.html</id>
     <published>2015-12-27T00:00:00Z</published>
     <updated>2015-12-27T00:00:00Z</updated>
     <summary type="html"><![CDATA[<p>While Spike Lee’s <a href="https://www.youtube.com/watch?v=R9HuKssWhrU">Chiraq</a> plays in theaters, Theaster is playing out a different vision of life on Chicago’s South Side, driven by Black culture instead of ‘black-on-black’ violence, and animated by art, rather than guns.</p>
@@ -304,8 +304,8 @@ Looking down into the atrium of the Stony Island Arts Bank. The pillars around t
 </entry>
 <entry>
     <title>Permanence and Program: Farewell to the American Folk Art Museum</title>
-    <link href="http://outoftheyards.com/posts/farewell-to-the-folk-art-museum/index.html" />
-    <id>http://outoftheyards.com/posts/farewell-to-the-folk-art-museum/index.html</id>
+    <link href="http://justinmanley.work/posts/farewell-to-the-folk-art-museum/index.html" />
+    <id>http://justinmanley.work/posts/farewell-to-the-folk-art-museum/index.html</id>
     <published>2014-01-09T00:00:00Z</published>
     <updated>2014-01-09T00:00:00Z</updated>
     <summary type="html"><![CDATA[<p>Architectural critics and preservationists have been working themselves into a frenzy since the Museum of Modern Art announced last Wednesday its final decision to demolish the American Folk Art Museum building. MoMA’s announcement comes at the end of six months of extended deliberation, and MoMA has made it clear that this is their final decision. In light of this, the mainstream critics’ self-righteous outrage does more harm than good and obscures valuable insights into permanence, program, and flexibility in architecture.</p>
@@ -344,8 +344,8 @@ The cover image for this piece is by <a href="https://www.flickr.com/photos/davi
 </entry>
 <entry>
     <title>Light Makes Wright: James Turrell at the Guggenheim</title>
-    <link href="http://outoftheyards.com/posts/james-turrell-aten-reign/index.html" />
-    <id>http://outoftheyards.com/posts/james-turrell-aten-reign/index.html</id>
+    <link href="http://justinmanley.work/posts/james-turrell-aten-reign/index.html" />
+    <id>http://justinmanley.work/posts/james-turrell-aten-reign/index.html</id>
     <published>2013-09-17T00:00:00Z</published>
     <updated>2013-09-17T00:00:00Z</updated>
     <summary type="html"><![CDATA[<p>Light is everywhere, and yet too often familiarity blinds us to its power and possibilities. In his monolithic new installation <em><a href="http://web.guggenheim.org/exhibitions/turrell/">Aten Reign</a></em> artist <a href="http://jamesturrell.com/">James Turrell</a> provides a striking reminder of the power of light to affect our spatial experiences. The exhibit remains at the <a href="http://www.guggenheim.org/">Guggenheim Museum</a> in New York City through September 25.</p>
