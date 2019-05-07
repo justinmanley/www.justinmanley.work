@@ -11,9 +11,9 @@ git stash save -q --keep-index $STASH_NAME
 ./tools/test.sh
 TEST_STATUS=$?
 
-STASHES=$(git stash list)
-if [[ $STASHES == "$STASH_NAME" ]]; then
-  git stash pop -q
+STASH_NUM=$(git stash list | grep $STASH_NAME | sed -E 's/stash@\{(.*)\}.*/\1/')
+if [ -n "$STASH_NUM" ]; then
+    git stash pop -q stash@{$STASH_NUM}
 fi
 
 exit $TEST_STATUS
