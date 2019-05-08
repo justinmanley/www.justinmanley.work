@@ -43,8 +43,14 @@ main = hakyll $ do
         route   idRoute
         compile copyFileCompiler
 
+    -- Miscellaneous files associated with each post.
+    match "posts/*/files/**" $ do
+        route idRoute
+        compile copyFileCompiler
+        
+
     -- Metadata for posts published elsewhere on the internet.
-    matchMetadata "posts/**/*.md" hasSource $ do
+    matchMetadata "posts/**/*.md" hasSourceUrl $ do
         -- Posts which have a 'source' field are published somewhere else on the
         -- internet. As a result, they typically do not have a 'body', and
         -- should not be published as standalone posts on this website. Omitting
@@ -53,7 +59,7 @@ main = hakyll $ do
         compile $ postPreviewCompiler
 
     -- Full content and metadata of posts published on this website.
-    matchMetadata "posts/**/*.md" (not . hasSource) $ do
+    matchMetadata "posts/**/*.md" (not . hasSourceUrl) $ do
         route $ setExtension "html"
         compile $ do
             postPreviewCompiler
@@ -165,7 +171,7 @@ main = hakyll $ do
             let feedCtx = siteCtx `mappend`
                     bodyField "description"
 
-            posts <- fmap (take 10) . recentFirst =<< loadAllSnapshotsMatchingMetadata "posts/**/*.md" "post-body" (not . hasSource)
+            posts <- fmap (take 10) . recentFirst =<< loadAllSnapshotsMatchingMetadata "posts/**/*.md" "post-body" (not . hasSourceUrl)
             renderAtom feedConfiguration feedCtx posts
 
 -----------------------------------------------------------------------------
@@ -175,8 +181,8 @@ main = hakyll $ do
 hasMetadata :: Text -> Metadata -> Bool
 hasMetadata key = isJust . HashMap.lookup key
 
-hasSource :: Metadata -> Bool
-hasSource = hasMetadata "source"
+hasSourceUrl :: Metadata -> Bool
+hasSourceUrl = hasMetadata "source-url"
 
 postPreviewCompiler :: Compiler (Item String)
 postPreviewCompiler = pandocCompiler
