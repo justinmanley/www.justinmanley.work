@@ -1,11 +1,11 @@
 ---
 title: A Sunroom of One's Own
-synopsis: TODO
+synopsis: Two familiar styles of Chicago dwellings show how changing public perception of the perils of city life shaped domestic architecture over the half-century between 1910 and 1960.
 cover-image: ./images/twilight_sunroom_symmetry.jpg
 source: Grey City
 date: May 13, 2014
 ---
-It’s a clear, warm Saturday morning in May, and my sunroom is full of light and the sounds drifting up from the sidewalk. Across the street, a black dog turns the corner sedately, trailing his human behind. On the sidewalk just below, a mother pushing a yellow stroller passes an elderly woman trundling a wire cart full of grocery bags. Down the block, a car alarm goes off again, and I grimace.
+It’s a clear, warm Saturday morning in May, and my sunroom is full of light and the sounds drifting up from the sidewalk. Across the street, a black dog turns the corner sedately, trailing his human behind. On the sidewalk just below, a mother pushing a yellow stroller passes an elderly woman trundling a wire cart full of grocery bags.
 
 Looking out from my sunroom, I can see the flat roof of Kimbark Plaza, just a block away to the south. In the other direction, twin rows of Victorian houses line South Woodlawn Avenue to the north. A block away along East 52nd Street, I can see the low profiles of modern townhomes built during urban renewal in the mid-1960s. As the sidewalk ballet—the stroller, the dog, the car alarm—plays out below, these taciturn buildings echo the stories of a century of history in Hyde Park.
 
