@@ -16,3 +16,8 @@ He is interested in:
 </div>
 
 Justin holds a B.S. in Mathematics from the University of Chicago and works as a software engineer at Google.
+
+To receive occasional (roughly biannual) updates on Justin's latest writing and projects, you can subscribe
+to his [newsletter][].
+
+[newsletter]: https://tinyletter.com/justinmanley
