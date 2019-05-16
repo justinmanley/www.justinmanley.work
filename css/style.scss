@@ -6,6 +6,7 @@ $font-family-serif:
 $font-family-sans-serif:
     "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 $font-family-base: Cardo, $font-family-serif;
+$primary-font-size: 1.3em;
 
 // Used as the gutter for the navbar and text content on mobile.
 $mobile-padding-outer: 5%;
@@ -65,7 +66,7 @@ main {
 article {
 	// Provides space between successive articles.
 	padding-bottom: 50px;
-	font-size: 1.3em;
+	font-size: $primary-font-size;
 
 	.title {
 		color: $brand-primary;
@@ -155,7 +156,7 @@ article {
 }
 
 .article-preview {
-	font-size: 1.3em;
+	font-size: $primary-font-size;
 	padding-bottom: 60px;
 }
 

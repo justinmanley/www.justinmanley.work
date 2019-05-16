@@ -12,12 +12,13 @@
 }
 
 .newsletter-description {
-	font-size: 1.3em;
+	font-size: $primary-font-size;
 }
 
 .newsletter-email {
 	border: 1px solid $gray-light;
 	padding: 10px;
+	width: 200px;
 
 	&:focus {
 		outline: none;
@@ -26,8 +27,11 @@
 }
 
 .newsletter-subscribe {
-	background: $subtle-icon-color;
-	border: 1px solid $subtle-icon-color;
+	$button-default-color: $subtle-icon-color;
+	$button-active-color: $gray-light;
+
+	background: $button-default-color;
+	border: 1px solid $button-default-color;
 	color: white;
 	font-family: $font-family-sans-serif;
 	margin-left: 10px;
@@ -35,13 +39,13 @@
 	text-transform: uppercase;
 
 	&:hover {
-		background: $gray-light;
-		border-color: $gray-light;
+		background: $button-active-color;
+		border-color: $button-active-color;
 	}
 
 	&:active {
-		background: darken($gray-light, 10%);
-		border-color: darken($gray-light, 10%);
+		background: darken($button-active-color, 10%);
+		border-color: darken($button-active-color, 10%);
 	}
 
 	&:focus {
@@ -53,5 +57,6 @@
 @include media-breakpoint-up(sm) {
 	.newsletter-email {
 		width: 250px;
+		font-size: $primary-font-size;
 	}
 }
