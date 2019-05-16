@@ -1,0 +1,57 @@
+.newsletter {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	justify-content: center;
+	padding-bottom: 50px;
+}
+
+.newsletter-form {
+	display: flex;
+	margin: 0 auto;
+}
+
+.newsletter-description {
+	font-size: 1.3em;
+}
+
+.newsletter-email {
+	border: 1px solid $gray-light;
+	padding: 10px;
+
+	&:focus {
+		outline: none;
+		border-color: darken($gray, 10%);
+	}
+}
+
+.newsletter-subscribe {
+	background: $subtle-icon-color;
+	border: 1px solid $subtle-icon-color;
+	color: white;
+	font-family: $font-family-sans-serif;
+	margin-left: 10px;
+	padding: 10px;
+	text-transform: uppercase;
+
+	&:hover {
+		background: $gray-light;
+		border-color: $gray-light;
+	}
+
+	&:active {
+		background: darken($gray-light, 10%);
+		border-color: darken($gray-light, 10%);
+	}
+
+	&:focus {
+		outline: none;
+	}
+}
+
+// Phones in landscope mode and up
+@include media-breakpoint-up(sm) {
+	.newsletter-email {
+		width: 250px;
+	}
+}
