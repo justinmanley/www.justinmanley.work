@@ -4,6 +4,7 @@ date: January 4, 2017
 cover-image: ./images/san-francisco.jpg
 synopsis: Sohei Nishino's visual/spatial memories trouble the apparent truthfulness of maps and photographs.
 featured: true
+tags: art
 ---
 
 [Sohei Nishino]: http://soheinishino.net/

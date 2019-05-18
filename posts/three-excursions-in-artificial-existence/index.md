@@ -3,6 +3,7 @@ title: Three Excursions in Artificial Existence
 date: February 17, 2016
 cover-image: ./images/forever.jpg
 synopsis: Sympathetic machines by Alan Rath and Paolo Salvagione.
+tags: art
 ---
 
 [NEAT]: http://neat.thecjm.org/

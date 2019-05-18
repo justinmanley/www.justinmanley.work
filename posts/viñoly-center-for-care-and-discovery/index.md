@@ -3,6 +3,7 @@ title: Patient-Centered Design in the Foreground at Viñoly's New Hospital
 date: May 2, 2013
 synopsis: Spaces of quiet twilight in the middle of a hulking hospital.
 cover-image: ./images/North_Elevation_Small_10-12.jpg 
+tags: architecture
 ---
 The ego and expertise of the architect are both embodied in the University of Chicago Medical Center’s newest hospital, the Center for Care and Discovery, designed by Rafael Vinoly Architects.  The enormous hospital was Vinoly’s idea, successfully pitched eight years ago to the UCMC as the board began to plan the renewal of Mitchell Hospital.
 

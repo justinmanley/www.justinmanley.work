@@ -3,6 +3,7 @@ title: Skepticism and Despair in <i>The Infinity Engine</i>
 date: May 21, 2017
 cover-image: ./images/pipetting.jpg
 synopsis: White-coated chemists with shadowed faces fabricate artificial body parts while society debates the promises and dangers of genetic engineering.
+tags: art
 ---
 
 [Roberta Breitmore Construction Chart]: http://www.bitforms.com/leeson/roberta-construction-chart-2

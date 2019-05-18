@@ -3,6 +3,7 @@ title: "Light Makes Wright: James Turrell at the Guggenheim"
 date: September 17, 2013
 cover-image: ./images/aten-reign-purple.jpg 
 synopsis: James Turell's intervention at the Guggenheim challenges and accentuates the most radical aspects of Frank Lloyd Wright's design. 
+tags: art, architecture
 ---
 
 [James Turrell]: http://jamesturrell.com/

@@ -1,13 +1,14 @@
 -----------------------------------------------------------------------------
 {-# LANGUAGE OverloadedStrings #-}
 
-import Control.Applicative (empty)
+import Control.Applicative (empty, (<|>))
 import Data.Binary (Binary)
 import Data.Functor ((<&>))
 import qualified Data.HashMap.Strict as HashMap
-import Data.List (stripPrefix)
-import Data.Maybe (isJust, fromMaybe)
+import Data.List (stripPrefix, nub)
+import Data.Maybe (isJust, fromMaybe, maybe)
 import Data.Monoid (mappend)
+import Data.String (fromString)
 import Data.Text (Text)
 import Data.Typeable
 import Hakyll
@@ -47,7 +48,6 @@ main = hakyll $ do
     match "posts/*/files/**" $ do
         route idRoute
         compile copyFileCompiler
-        
 
     -- Metadata for posts published elsewhere on the internet.
     matchMetadata "posts/**/*.md" hasSourceUrl $ do
@@ -78,7 +78,7 @@ main = hakyll $ do
     create ["writing/index.html"] $ do
         route idRoute
         compile $ do
-            let posts = recentFirst =<< loadAllSnapshots "posts/**/*.md" "post-preview"
+            let posts = recentFirst =<< loadAllSnapshotsMatchingMetadata "posts/**/*.md" "post-preview" (not . hasTag "tech")
             let archiveCtx =
                     listField "posts" siteCtx posts `mappend`
                     defaultContext
@@ -88,6 +88,9 @@ main = hakyll $ do
                 <&> withNameInTitle
                 >>= uncurry (loadAndApplyTemplate "templates/default.html")
                 >>= relativizeUrls
+
+    -- Topic-specific writing archive pages
+    mapM_ createWritingArchiveByTag =<< getAllTags "posts/**/*.md"
 
     -- Talks
     match "talks/*.md" $ do
@@ -218,17 +221,27 @@ pagesRoutes = customRoute $  addIndexHtml . fromMaybe "" . stripPrefix "pages/" 
 -- on to the next template to use for processing. This is especially helpful for passing data from
 -- single-page templates (like `Writing`, `Art`, `Talks`, etc) to the top-level (default) template.
 loadTemplateWithMetadataAndApply :: Identifier -> Context a -> Item a -> Compiler (Context a, Item String)
-loadTemplateWithMetadataAndApply templateIdentifier context item = do
+loadTemplateWithMetadataAndApply templateIdentifier context item =
+    loadTemplateWithMetadataAndApplyBy templateIdentifier context mappend item 
+
+loadTemplateWithMetadataAndApplyBy :: Identifier
+    -> Context a
+    -> (Context a -> Context a -> Context a)
+    -> Item a
+    -> Compiler (Context a, Item String)
+loadTemplateWithMetadataAndApplyBy templateIdentifier context mergeContexts item = do
     -- From `loadAndApplyTemplate`.
     tpl <- loadBody templateIdentifier
-    result <- applyTemplate tpl context item
 
     -- From `Hakyll.Web.Template.Context.metadataField`.
     let templateMetadataField = Context $ \k _ i -> do
             value <- getMetadataField templateIdentifier k
             maybe empty (return . StringField) value
+    let mergedContext = mergeContexts templateMetadataField context
 
-    return (templateMetadataField `mappend` context, result)
+    result <- applyTemplate tpl mergedContext item
+
+    return (mergedContext, result)
 
 mapFst :: (a -> b) -> (a, c) -> (b, c)
 mapFst f (x, y) = (f x, y)
@@ -249,6 +262,43 @@ mapContextIf keyPredicate f (Context c) = Context $ \k a i -> do
 
 withNameInTitle :: (Context String, a) -> (Context String, a)
 withNameInTitle = mapFst (mapContextIf (== "title") withName)
+
+getTagsFromMetadata :: Metadata -> [String]
+getTagsFromMetadata metadata = fromMaybe [] $
+    (lookupStringList "tags" metadata)
+        <|> (map trim . splitAll "," <$> lookupString "tags" metadata)
+
+getAllTags :: MonadMetadata m => Pattern -> m [String]
+getAllTags pattern = do
+    allTags <- (map $ getTagsFromMetadata . snd) <$> (getAllMetadata pattern)
+    return $ (nub . concat $ allTags)
+
+hasTag :: String -> Metadata -> Bool
+hasTag tag metadata = tag `elem` getTagsFromMetadata metadata
+
+-- Apply a compiler and pass along its context along with the compiled result.
+-- Useful for constructing chains of template compilations.
+withContext :: (Context a -> Item a -> Compiler b) -> Context a -> (Item a -> Compiler (Context a, b))
+withContext f ctx item = do
+    compiled <- f ctx item
+    return (ctx, compiled)
+
+createWritingArchiveByTag :: String -> Rules ()
+createWritingArchiveByTag tag =
+    create [fromString $ "writing/" ++ tag ++ "/index.html"] $ do
+        route idRoute
+        compile $ do
+            let posts = recentFirst =<< loadAllSnapshotsMatchingMetadata "posts/**/*.md" "post-preview" (hasTag tag)
+            let archiveCtx =
+                    listField "posts" siteCtx posts `mappend`
+                    constField "title" ("Writings on " ++ tag) `mappend`
+                    defaultContext
+
+            makeItem ""
+                >>= withContext (loadAndApplyTemplate "templates/writing.html") archiveCtx
+                <&> withNameInTitle
+                >>= uncurry (loadAndApplyTemplate "templates/default.html")
+                >>= relativizeUrls
 
 
 -- Configuration

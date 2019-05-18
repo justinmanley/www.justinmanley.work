@@ -5,4 +5,5 @@ synopsis: A video installation of people making music throughout the rooms of an
 source: Squarecylinder
 source-url: https://www.squarecylinder.com/2017/12/ragnar-kjartanssons-the-visitors-sfmoma/
 featured: true
+tags: art
 ---

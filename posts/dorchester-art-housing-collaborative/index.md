@@ -3,6 +3,7 @@ title: The Death and Life of Dante-Harper Townhomes
 date: December 27, 2015
 cover-image: ./images/2015-facade.jpg  
 synopsis: Although Theaster Gates' artworks hang in prestigious museums around the world, his most important legacy is the infrastructure he has created to support Black artists on the South Side of Chicago.
+tags: architecture
 ---
 
 [Chiraq]:                                   https://www.youtube.com/watch?v=R9HuKssWhrU

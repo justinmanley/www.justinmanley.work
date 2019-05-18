@@ -4,6 +4,7 @@ synopsis: Two familiar styles of Chicago dwellings show how changing public perc
 cover-image: ./images/twilight_sunroom_symmetry.jpg
 source: Grey City
 date: May 13, 2014
+tags: architecture
 ---
 It’s a clear, warm Saturday morning in May, and my sunroom is full of light and the sounds drifting up from the sidewalk. Across the street, a black dog turns the corner sedately, trailing his human behind. On the sidewalk just below, a mother pushing a yellow stroller passes an elderly woman trundling a wire cart full of grocery bags.
 
