@@ -1,4 +1,4 @@
-module OutOfTheYards.Content.Normalize (normalizeUrls) where
+module Site.Url (normalizeUrls) where
 
 import Hakyll
 import qualified Network.URL as URL
@@ -38,7 +38,6 @@ normalizeImageSrc prefix tagName attr =
             , attrVal = rootedUrl
             }
     else attr
-
 
 -- Transform all relative URLs to be absolute rooted URLs.
 normalizeUrls :: Context String -> Item String -> Compiler (Item String)

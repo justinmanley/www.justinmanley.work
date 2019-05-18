@@ -16,7 +16,7 @@ import System.FilePath (combine, splitExtension, takeBaseName, takeDirectory)
 
 import Debug.Trace (trace)
 
-import OutOfTheYards.Content.Normalize (normalizeUrls)
+import Site.Url (normalizeUrls)
 -----------------------------------------------------------------------------
 main :: IO ()
 main = hakyll $ do
