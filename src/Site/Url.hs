@@ -1,5 +1,6 @@
-module Site.Url (normalizeUrls) where
+module Site.Url (normalizeUrls, normalizeUrlsWithRoute) where
 
+import Data.List (stripPrefix)
 import Hakyll
 import qualified Network.URL as URL
 import Text.XML.Light
@@ -39,20 +40,43 @@ normalizeImageSrc prefix tagName attr =
             }
     else attr
 
+-- It is always safe to remove the suffix '/index.html' from link href's
+-- because browsers will automatically service '/index.html' if such a file
+-- is present in the target directory. Stripping '/index.html' is nice
+-- because it makes URLs shorter and hides the implementation, allowing pages
+-- to be served differently in the future without changing the URL path.
+normalizeLinks :: QName -> Attr -> Attr
+normalizeLinks tagName attr =
+    if qName tagName == "a" && (qName . attrKey) attr == "href"
+    then
+        let -- TODO: Replace stripSuffix with a library implementation if one exists.
+            stripSuffix :: Eq a => [a] -> [a] -> [a]
+            stripSuffix prefix xs = case stripPrefix (reverse prefix) (reverse xs) of
+                Just ys -> reverse ys
+                Nothing -> xs
+            hrefUrl = attrVal attr
+        in Attr
+            { attrKey = attrKey attr
+            , attrVal = stripSuffix "/index.html" hrefUrl
+            }
+    else attr
+
+-- Visible for testing
+normalizeUrlsWithRoute maybeRoute item = case maybeRoute of
+    Nothing -> item
+    Just route ->
+        let prefix = dropFileName route
+            t = concatMap showContent
+                . map (mapAttrs $ normalizeImageSrc prefix)
+                . map (mapAttrs normalizeLinks)
+                . parseXML
+        in Item
+            { itemBody = t $ itemBody item
+            , itemIdentifier = itemIdentifier item
+            }
+
 -- Transform all relative URLs to be absolute rooted URLs.
 normalizeUrls :: Context String -> Item String -> Compiler (Item String)
-normalizeUrls ctx item =  do
+normalizeUrls ctx item = do
     maybeRoute <- getRoute (itemIdentifier item)
-
-    return $ case maybeRoute of 
-        Nothing -> item
-        Just route -> 
-            let prefix = dropFileName route
-                t = concatMap showContent 
-                    . map (mapAttrs $ normalizeImageSrc prefix) 
-                    . parseXML
-            in Item 
-                { itemBody =  t $ itemBody item
-                , itemIdentifier = itemIdentifier item 
-                }
-
+    return $ normalizeUrlsWithRoute maybeRoute item

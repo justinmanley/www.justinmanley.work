@@ -54,6 +54,7 @@ tests:
     - -rtsopts
     - -with-rtsopts=-N
     dependencies:
+    - hakyll
+    - hspec
     - www-justinmanley-work
     - xml
-    - hspec
