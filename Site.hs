@@ -17,6 +17,7 @@ import System.FilePath (combine, splitExtension, takeBaseName, takeDirectory)
 import Debug.Trace (trace)
 
 import Site.Url (normalizeUrls)
+import Site.PostLength (minutesToReadPost)
 -----------------------------------------------------------------------------
 main :: IO ()
 main = hakyll $ do
@@ -188,10 +189,19 @@ hasSourceUrl :: Metadata -> Bool
 hasSourceUrl = hasMetadata "source-url"
 
 postPreviewCompiler :: Compiler (Item String)
-postPreviewCompiler = pandocCompiler
-    >>= loadAndApplyTemplate "templates/post_preview.html" siteCtx
-    >>= normalizeUrls siteCtx
-    >>= saveSnapshot "post-preview"
+postPreviewCompiler = do
+    -- Place siteCtx first in order to allow `length` fields specified in
+    -- the metadata in index.md files to override the length calculated here.
+    -- This is useful for posts with a `source-url` field, which do not have
+    -- any text specified, and for which the reading time calculated by
+    -- `postLength` is "0 min read". A `length` specified manually in the
+    -- index.md metadata can override the calculated length.
+    let postCtx = siteCtx `mappend` field "length" postLength 
+
+    pandocCompiler
+        >>= loadAndApplyTemplate "templates/post_preview.html" postCtx
+        >>= normalizeUrls siteCtx
+        >>= saveSnapshot "post-preview"
 
 loadAllSnapshotsMatchingMetadata :: (Binary a, Typeable a) => Pattern -> Snapshot -> (Metadata -> Bool) -> Compiler [Item a]
 loadAllSnapshotsMatchingMetadata pattern snapshot metadataPred = do
@@ -300,6 +310,8 @@ createWritingArchiveByTag tag =
                 >>= uncurry (loadAndApplyTemplate "templates/default.html")
                 >>= relativizeUrls
 
+postLength :: Item String -> Compiler String
+postLength item = return . show . minutesToReadPost . itemBody $ item
 
 -- Configuration
 
