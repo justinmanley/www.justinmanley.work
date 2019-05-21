@@ -196,7 +196,10 @@ postPreviewCompiler = do
     -- any text specified, and for which the reading time calculated by
     -- `postLength` is "0 min read". A `length` specified manually in the
     -- index.md metadata can override the calculated length.
-    let postCtx = siteCtx `mappend` field "length" postLength 
+    let postCtx =
+            dateField "date" "%B %Y" `mappend`  -- Simplified date for post preview in archive.
+            siteCtx `mappend`
+            field "length" postLength 
 
     pandocCompiler
         >>= loadAndApplyTemplate "templates/post_preview.html" postCtx

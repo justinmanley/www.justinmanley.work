@@ -20,7 +20,7 @@ totalWords = sum
     . extractTextContentsAsForest
     . parseXML
 
--- Based on a guess of the average person's reading speed.
+-- Average human reading speed
 wordsPerMinute :: Int
 wordsPerMinute = 200
 
