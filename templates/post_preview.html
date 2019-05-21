@@ -3,8 +3,11 @@
             "$source-url$"
         $else$
             "$url$"
-        $endif$
-    >$title$</a></h4>
+        $endif$>
+            $title$
+            $if(source-url)$<span class="fa fa-external-link external-link-icon"></span>$endif$
+        </a>
+    </h4>
     <div class="article-synopsis">$synopsis$</div>
     <time class="date-published text-secondary">$date$</time>
     $if(source)$<span class="text-secondary">&nbsp; · &nbsp; $source$</span>$endif$
