@@ -1,7 +1,7 @@
 ---
 title: Beauty in the Mind of the Beholder
 date: September 9, 2019
-cover-image: ./images/2019_09_08_18_37_54_2275.png
+cover-image: ./images/2019_09_08_23_37_59_2275.png
 ---
 
 Over four weekends in 1958 and 1959, 40 of the world’s most creative and accomplished architects gathered in Berkeley, California to participate in a psychology study. They assembled at Berkeley’s Institute for Personality Assessment Research (IPAR), which was then at the forefront of the burgeoning field of the psychology of creativity.
@@ -14,12 +14,12 @@ For technical viewers, the similarity of the trained convolutional filters to th
 
 While _Beauty_ can be documented in the form of grids of still or moving images, the artwork itself consists of the [parameters][] of the neural network, along with the [code][] necessary to execute it.
 
-<div style="padding:60% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/358725441?portrait=0" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+<div style="padding:60% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/358831025?portrait=0" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
 
 <br />
 
 <figure>
-<img src="./images/2019_09_08_18_37_54_0.png"></img>
+<img src="./images/2019_09_08_23_37_59_0.png"></img>
 <figcaption>The original mosaics used to initialize the neural network. From left to right, the mosaics used in this piece are by: (top row) Raphael Soriano, Warren Callister, Louis Kahn, Henry Hill, (middle row) Paul Hayden Kirk, Donn Emmons, Richard Neutra, Victor Lundy, (bottom row) Gardner Dailey, Pietro Belluschi, Worley Wong, and John Johansen.</figcaption>
 </figure>
 
@@ -40,5 +40,5 @@ The network is a variant of the [MobileNet][] architecture, trained for [Neural 
 [IPSR]: https://ipsr.berkeley.edu/
 [The Creative Architect]: https://www.monacellipress.com/book/the-creative-architect/
 
-[parameters]: ./files/weights_mosaicnet_2019_09_08_18_37_54__01_0.088.hdf5
+[parameters]: ./files/weights_mosaicnet_2019_09_08_23_37_59__01_0.088.hdf5
 [code]: https://github.com/justinmanley/image-quality-assessment/tree/mosaics
