@@ -16,6 +16,8 @@ While _Beauty_ can be documented in the form of grids of still or moving images,
 
 <div style="padding:60% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/358725441?portrait=0" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
 
+<br />
+
 <figure>
 <img src="./images/2019_09_08_18_37_54_0.png"></img>
 <figcaption>The original mosaics used to initialize the neural network. From left to right, the mosaics used in this piece are by: (top row) Raphael Soriano, Warren Callister, Louis Kahn, Henry Hill, (middle row) Paul Hayden Kirk, Donn Emmons, Richard Neutra, Victor Lundy, (bottom row) Gardner Dailey, Pietro Belluschi, Worley Wong, and John Johansen.</figcaption>
