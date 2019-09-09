@@ -51,6 +51,10 @@ main = hakyll $ do
         route idRoute
         compile copyFileCompiler
 
+    match "artworks/*/files/**" $ do
+        route idRoute
+        compile copyFileCompiler
+
     -- Metadata for posts published elsewhere on the internet.
     matchMetadata "posts/**/*.md" hasSourceUrl $ do
         -- Posts which have a 'source' field are published somewhere else on the
