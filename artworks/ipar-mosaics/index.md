@@ -2,6 +2,7 @@
 title: Algorithms of Human and Machine Creativity
 date: April 3, 2019
 cover-image: ./images/2019-03-29_008_30_15.png
+include-in-gallery: False
 ---
 
 Over four weekends in 1958 and 1959, 40 of the world’s most creative and accomplished architects gathered in Berkeley, California to participate in a psychology study. They assembled at Berkeley’s Institute for Personality Assessment Research (IPAR), which was then at the forefront of the burgeoning field of the psychology of creativity.

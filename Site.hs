@@ -3,6 +3,7 @@
 
 import Control.Applicative (empty, (<|>))
 import Data.Binary (Binary)
+import Data.Char (toLower)
 import Data.Functor ((<&>))
 import qualified Data.HashMap.Strict as HashMap
 import Data.List (stripPrefix, nub)
@@ -133,7 +134,7 @@ main = hakyll $ do
     create ["art/index.html"] $ do
         route idRoute
         compile $ do
-            let artworks = recentFirst =<< loadAllSnapshots "artworks/**/*.md" "artwork-preview"
+            let artworks = recentFirst =<< loadAllSnapshotsMatchingMetadata "artworks/**/*.md" "artwork-preview" includeArtworkInGallery
             let galleryCtx =
                     listField "artworks" siteCtx artworks `mappend`
                     defaultContext
@@ -288,6 +289,17 @@ getAllTags pattern = do
 
 hasTag :: String -> Metadata -> Bool
 hasTag tag metadata = tag `elem` getTagsFromMetadata metadata
+
+includeArtworkInGallery :: Metadata -> Bool
+includeArtworkInGallery = lookupBoolWithDefault "include-in-gallery" True
+
+lookupBoolWithDefault :: String -> Bool -> Metadata -> Bool
+lookupBoolWithDefault s defaultValue metadata = case lookupString s metadata of
+    Just boolString -> case map toLower boolString of
+        "false" -> False
+        "true" -> True
+        _ -> error $ "Not a valid Bool: " ++ boolString ++ ". Valid Bools are: True, False."
+    Nothing -> defaultValue
 
 -- Apply a compiler and pass along its context along with the compiled result.
 -- Useful for constructing chains of template compilations.
