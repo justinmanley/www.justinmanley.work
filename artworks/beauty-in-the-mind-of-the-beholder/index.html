@@ -64,9 +64,13 @@
 The original mosaics used to initialize the neural network. From left to right, the mosaics used in this piece are by: (top row) Raphael Soriano, Warren Callister, Louis Kahn, Henry Hill, (middle row) Paul Hayden Kirk, Donn Emmons, Richard Neutra, Victor Lundy, (bottom row) Gardner Dailey, Pietro Belluschi, Worley Wong, and John Johansen.
 </figcaption>
 </figure>
-<h3 id="acknowledgments">Acknowledgments</h3>
+<h3 class="section-header">
+Acknowledgments
+</h3>
 <p>Thanks to Elizabeth Peele at the <a href="https://ipsr.berkeley.edu/">UC Berkeley Institute of Personality and Social Research</a> for providing images of the architects’ mosaics. For more details on the IPSR study, see Pierluigi Serraino’s excellent book <a href="https://www.monacellipress.com/book/the-creative-architect/">The Creative Architect: Inside the Great Midcentury Personality Study</a>.</p>
-<h3 id="technical-details">Technical details</h3>
+<h3 class="section-header">
+Technical details
+</h3>
 <p>The network is a variant of the <a href="https://arxiv.org/abs/1704.04861">MobileNet</a> architecture, trained for <a href="https://ai.googleblog.com/2017/12/introducing-nima-neural-image-assessment.html">Neural Image Assessment (NIMA)</a> on the <a href="http://academictorrents.com/details/71631f83b11d3d79d8f84efe0a7e12f0ac001460">Aesthetic Visual Analysis (AVA) dataset</a>, a collection of images from <a href="https://www.dpchallenge.com/">dpchallenge.com</a>. The mosaics are decorrelated using PCA <a href="https://en.wikipedia.org/wiki/Whitening_transformation">whitening</a> before being injected into the network, and the weights from each step of training are restored for display using the inverse of the transformation matrix derived from the PCA of the original mosaics. The mosaics are used as convolutional filters with an 8x10 kernel in the lowest level of the network.</p>
 </article>
 </div>
