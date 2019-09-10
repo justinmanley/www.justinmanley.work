@@ -23,11 +23,11 @@ While _Beauty_ can be documented in the form of grids of still or moving images,
 <figcaption>The original mosaics used to initialize the neural network. From left to right, the mosaics used in this piece are by: (top row) Raphael Soriano, Warren Callister, Louis Kahn, Henry Hill, (middle row) Paul Hayden Kirk, Donn Emmons, Richard Neutra, Victor Lundy, (bottom row) Gardner Dailey, Pietro Belluschi, Worley Wong, and John Johansen.</figcaption>
 </figure>
 
-### Acknowledgments
+<h3 class="section-header">Acknowledgments</h3>
 
 Thanks to Elizabeth Peele at the [UC Berkeley Institute of Personality and Social Research][IPSR] for providing images of the architects’ mosaics. For more details on the IPSR study, see Pierluigi Serraino's excellent book [The Creative Architect: Inside the Great Midcentury Personality Study][The Creative Architect].
 
-### Technical details
+<h3 class="section-header">Technical details</h3>
 
 The network is a variant of the [MobileNet][] architecture, trained for [Neural Image Assessment (NIMA)][NIMA] on the [Aesthetic Visual Analysis (AVA) dataset][AVA], a collection of images from [dpchallenge.com][]. The mosaics are decorrelated using PCA [whitening][] before being injected into the network, and the weights from each step of training are restored for display using the inverse of the transformation matrix derived from the PCA of the original mosaics. The mosaics are used as convolutional filters with an 8x10 kernel in the lowest level of the network.
 

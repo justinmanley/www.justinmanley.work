@@ -99,7 +99,8 @@ article {
 	.title,
 	p,
 	figcaption,
-	.date-published {
+	.date-published,
+    .section-header {
 		padding-left: $mobile-padding-outer;
 		padding-right: $mobile-padding-outer;
 	}
@@ -181,7 +182,8 @@ article {
 			.title,
 			p,
 			figcaption,
-			.date-published {
+			.date-published,
+            .section-header {
 				padding-left: 0;
 				padding-right: 0;
 			}
