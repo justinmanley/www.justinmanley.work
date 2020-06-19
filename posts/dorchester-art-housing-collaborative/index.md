@@ -28,8 +28,6 @@ tags: architecture
 [Teleological Study with Hose]:             http://theastergates.com/artwork/2819882_Teleological_Study_with_Hose.html
 [Ain't I a Man]:                            http://theastergates.com/artwork/2819859_Ain_t_I_a_Man.html
 
-While Spike Lee’s [Chiraq][] plays in theaters, Theaster is playing out a different vision of life on Chicago’s South Side, driven by Black culture instead of ‘black-on-black’ violence, and animated by art, rather than guns. 
-
 Chicago artist Theaster Gates bought an abandoned bank building for just $1 from the City of Chicago in 2013. Since then, his fans have eagerly awaited the debut of the [Stony Island Arts Bank][], an exhibition space and archive which opened in October to much fanfare. Though it’s an impressive demonstration of Gates’ fundraising chops (it cost $3.5M to make the building structurally sound), the building is architecturally underwhelming at present. Except for the lavish library at the back of the building, the Arts Bank is little more than an empty shell. 
 
 While [design blogs][Dezeen on Arts Bank] and Instagrammers slaver over the empty Arts Bank, an important project just two blocks South has gone largely unnoticed. This project, a renovated mixed-income housing development called [Dorchester Art + Housing Collaborative][] (DA+HC), deserves attention. Gates and his nonprofit [Rebuild Foundation][] partnered with [Brinshore Development][] and architects [Landon Bone Baker Architects][] (LBBA) to create DA+HC, and the playful, generous redesign by LBBA makes it a star example of mixed-income housing redevelopment in Chicago. DA+HC is an important step in Gates’ overarching project to turn Greater Grand Crossing into a cultural hub.
