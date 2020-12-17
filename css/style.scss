@@ -1,3 +1,5 @@
+@use 'sass:color';
+
 // Set up variables for all stylesheets to use
 $brand-primary: #db1d0f;
 
@@ -7,12 +9,12 @@ $font-family-sans-serif:
     "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 $font-family-base: Cardo, $font-family-serif;
 $primary-font-size: 1.3em;
+$font-color-subtle: color.scale($brand-primary, $lightness: 50%);
 
 // Used as the gutter for the navbar and text content on mobile.
 $mobile-padding-outer: 5%;
 
 $article-width: 600px;
-
 
 // Import sub-stylesheets. Some of these stylesheets use variables set above,
 // so it's important that the import statements come after the variable
@@ -99,6 +101,7 @@ article {
 	.title,
 	p,
 	figcaption,
+    h5,
 	.date-published,
     .section-header {
 		padding-left: $mobile-padding-outer;
@@ -138,6 +141,23 @@ article {
 	.divider {
 		text-align: center;
 	}
+
+    .footnotes {
+        font-size: 0.85em;
+        color: $gray-light;
+        a {
+            color: $font-color-subtle;
+        }
+    }
+
+    hr {
+        padding-bottom: 20px;
+    }
+
+    h5 {
+        color: $gray-light;
+        padding-top: 20px;
+    }
 }
 
 // The outer padding is placed on this selector, separate from the .content selector,
@@ -150,6 +170,9 @@ article {
 
 .text-secondary {
 	color: $gray-light;
+    a {
+        color: $font-color-subtle;
+    }
 }
 
 .page-title {
@@ -182,6 +205,7 @@ article {
 			.title,
 			p,
 			figcaption,
+            h5,
 			.date-published,
             .section-header {
 				padding-left: 0;

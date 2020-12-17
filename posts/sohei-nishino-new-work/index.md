@@ -59,13 +59,19 @@ We expect our cognitive maps to serve as truthful representations and reliable g
 
 -----------
 
-Thanks to Abigail Kelly for reading this piece and giving wonderful, helpful feedback.
+<p class="text-secondary">Thanks to Abigail Kelly for reading this piece and giving wonderful, helpful feedback.</p>
 
-For further reading, see my [full list of sources][sources].
+<p class="text-secondary">For further reading, see my [full list of sources][sources].</p>
 
-<a name="image-of-the-city">1:</a> Lynch, Kevin. _The Image of the City_. 87.
 
-<a name="on-photography">2: </a> Sontag, Susan. _On Photography_. London: Penguin, 1977.
+##### Notes
 
-<a name="gunning">3: </a> Gunning, Tom. "What's the Point of an Index? Or, Faking Photographs." Still Moving (2008): 40.
+<div class="footnotes">
 
+<a name="image-of-the-city">1.</a> Lynch, Kevin. _The Image of the City_. 87.
+
+<a name="on-photography">2.</a> Sontag, Susan. _On Photography_. London: Penguin, 1977.
+
+<a name="gunning">3.</a> Gunning, Tom. "What's the Point of an Index? Or, Faking Photographs." Still Moving (2008): 40.
+
+</div>

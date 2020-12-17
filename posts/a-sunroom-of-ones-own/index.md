@@ -6,6 +6,19 @@ source: Grey City
 date: May 13, 2014
 tags: architecture
 ---
+
+[Matt Frankel]: https://www.flickr.com/photos/fratmankel/
+[Grey City]: https://www.chicagomaroon.com/greycity/
+[Chicago Maroon]: https://www.chicagomaroon.com/
+[article pdf]: ./files/Grey_City_Spring_2013_p02-7.pdf
+[Jane's Walks]: https://marthafrish.wordpress.com/2015/04/23/janes-walk-chicago-hyde-park-north-the-legacy-of-urban-renewal/
+[Liam Lee]: https://www.studioliamlee.com/about
+[Directory to apartments]: https://babel.hathitrust.org/cgi/pt?id=njp.32101078303375;view=thumb;seq=5
+[55th & Lake Park, 1955]: http://photoarchive.lib.uchicago.edu/db.xqy?one=apf2-03950.xml
+[55th & Lake Park, 1961]: http://photoarchive.lib.uchicago.edu/db.xqy?one=apf2-03954.xml
+[Special Collections]: https://www.lib.uchicago.edu/scrc/
+[Ben Weese]: https://en.wikipedia.org/wiki/Ben_Weese
+
 It’s a clear, warm Saturday morning in May, and my sunroom is full of light and the sounds drifting up from the sidewalk. Across the street, a black dog turns the corner sedately, trailing his human behind. On the sidewalk just below, a mother pushing a yellow stroller passes an elderly woman trundling a wire cart full of grocery bags.
 
 Looking out from my sunroom, I can see the flat roof of Kimbark Plaza, just a block away to the south. In the other direction, twin rows of Victorian houses line South Woodlawn Avenue to the north. A block away along East 52nd Street, I can see the low profiles of modern townhomes built during urban renewal in the mid-1960s. As the sidewalk ballet—the stroller, the dog, the car alarm—plays out below, these taciturn buildings echo the stories of a century of history in Hyde Park.
@@ -90,21 +103,12 @@ Ironically, the shared spaces of the townhome developments often created communi
 
 As an urban form, these courtyards reflected the collective unity of their residents in the face of the still-dangerous urban landscape. In the same way, the extreme flatness of the facades of Pei’s and Weese’s townhomes is harsh, but at mid-century it served as a statement of solidarity. The uniformity of these facades declared that the residents stood together as a bulwark against the physical deterioration of Hyde Park. If, today, walking along East 55th Street, the yellow-brick townhouses seem like fortresses, it’s because they once were.
 
+-----------
+
 <p class="text-secondary">This article originally appeared in print in [Grey City][], the [Chicago Maroon][]'s quarterly magazine ([pdf][article pdf]). This article provided the source material for [Jane's Walks][] in 2014 and 2015, focused on Hyde Park's modern townhomes.</p>
 
 <p class="text-secondary">Thanks to Diane Herrmann for speaking to me and showing me around her home, an I.M. Pei E-model townhome, and to Jewel Davis, who lives in a Hyde Park six-flat apartment, for speaking to me about her experience of the six-flat sunroom apartments.</p>
 
 <p class="text-secondary">All photographs not otherwise attributed were commissioned for this article and captured by the skilled [Matt Frankel][].</p>
 
-[Matt Frankel]: https://www.flickr.com/photos/fratmankel/
-[Grey City]: https://www.chicagomaroon.com/greycity/
-[Chicago Maroon]: https://www.chicagomaroon.com/
-[article pdf]: ./files/Grey_City_Spring_2013_p02-7.pdf
-[Jane's Walks]: https://marthafrish.wordpress.com/2015/04/23/janes-walk-chicago-hyde-park-north-the-legacy-of-urban-renewal/
-[Liam Lee]: https://www.studioliamlee.com/about
-[Directory to apartments]: https://babel.hathitrust.org/cgi/pt?id=njp.32101078303375;view=thumb;seq=5
-[55th & Lake Park, 1955]: http://photoarchive.lib.uchicago.edu/db.xqy?one=apf2-03950.xml
-[55th & Lake Park, 1961]: http://photoarchive.lib.uchicago.edu/db.xqy?one=apf2-03954.xml
-[Special Collections]: https://www.lib.uchicago.edu/scrc/
 
-[Ben Weese]: https://en.wikipedia.org/wiki/Ben_Weese

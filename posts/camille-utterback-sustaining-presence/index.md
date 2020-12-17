@@ -17,7 +17,7 @@ tags: art
 
 [Abby LaPier]: https://abbylapier.com/
 [sources]: https://docs.google.com/document/d/1RQjTmWoGaPzDGnQMYfEyynjl8Ou-dWl3FB_g39f2WvE/pub
-[On the Rationalization of Sight]: http://www.metmuseum.org/art/metpublications/Papers_On_the_Rationalization_of_Sight
+[_On the Rationalization of Sight_]: http://www.metmuseum.org/art/metpublications/Papers_On_the_Rationalization_of_Sight
 
 Winston Churchill once said, “We make our buildings and afterwards they make us.” The same is true of technology. Linear perspective,<sup>[1](#rationalization-of-sight)</sup> the printing press,<sup>[2](#printing-press)</sup> the camera,<sup>[3](#on-photography)</sup> the computer;<sup>[4](#second-self)</sup> these technologies have changed irreversibly the way the world appears to us, how we relate to each other, and the way we see ourselves. Digital display technology is poised now to effect a similar transformation in the way that we see the world. Already ubiquitous on cellphone screens, digital images will become increasingly inseparable from physical reality with the spread of augmented and virtual reality technologies. In her [show of digital installation art][Sustaining Presence] at the Stanford Art Gallery, artist Camille Utterback offers a critique of the digital screen and a hopeful exploration of the possibilities of an augmented reality which is deeply based in the physical world.
 
@@ -58,21 +58,26 @@ Marshall McLuhan writes that, “the “message” of any medium or technology i
 
 -----------
 
-Thanks to [Abby LaPier][] for a wonderfully productive conversation which suggested many of the ideas in this piece.
+<p class="text-secondary">Thanks to [Abby LaPier][] for a wonderfully productive conversation which suggested many of the ideas in this piece.</p>
 
-For further reading on these topics, see my [full list of sources][sources].
+<p class="text-secondary">For further reading on these topics, see my [full list of sources][sources].</p>
 
-<a name="rationalization-of-sight">1:</a> William Ivins, [_On the Rationalization of Sight_] (1938).
+##### Notes
 
-<a name="printing-press">2:</a> Elizabeth Eisenstein, _The Printing Press as an Agent of Change_ (1979).
+<div class="footnotes">
 
-<a name="on-photography">3:</a> Susan Sontag, _On Photography_ (1977).
+<a name="rationalization-of-sight">1.</a> William Ivins, [_On the Rationalization of Sight_][] (1938).
 
-<a name="second-self">4:</a> Sherry Turkle, _The Second Self: Computers and the Human Spirit_ (1984).
+<a name="printing-press">2.</a> Elizabeth Eisenstein, _The Printing Press as an Agent of Change_ (1979).
 
-<a name="modernist-painting">5:</a> Clement Greenberg, _Modernist Painting_ (1960).
+<a name="on-photography">3.</a> Susan Sontag, _On Photography_ (1977).
 
-<a name="medium-is-the-message">6:</a> Marshall McLuhan, “The Medium is the Message,” in _Understanding Media: The Extensions of Man_ (1964).
+<a name="second-self">4.</a> Sherry Turkle, _The Second Self: Computers and the Human Spirit_ (1984).
 
-<a name="simulation-and-its-discontents">7:</a> Sherry Turkle, _Simulation and Its Discontents_ (2009), 45.
+<a name="modernist-painting">5.</a> Clement Greenberg, _Modernist Painting_ (1960).
 
+<a name="medium-is-the-message">6.</a> Marshall McLuhan, “The Medium is the Message,” in _Understanding Media: The Extensions of Man_ (1964).
+
+<a name="simulation-and-its-discontents">7.</a> Sherry Turkle, _Simulation and Its Discontents_ (2009), 45.
+
+</div>

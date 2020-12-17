@@ -99,26 +99,31 @@ The idea for a machine with dancing arms first occurred to Rath in childhood. _R
 I said the best place to view _Again_ is from fifteen feet back. It is possible also to come close to _Again_ and to stand so that the pulley belts and red electrical wires inside the arm are visible. At this distance, consciousness disappears, and the work appears entirely mechanical. It is easy to resume the illusion of consciousness (just step backwards), but impossible to hold both impressions in mind at the same time. This experience of walking around _Again_ demonstrates how personal is the judgment of an other’s consciousness. Originating as it does in subjective, first-person experience, it is possible that consciousness will always be fundamentally beyond the reach of science. Yet it is clear that we need a science of consciousness. Left alone, our judgments of consciousness are too much guided by convenience: we anthropomorphize our pets and convince ourselves of the mindlessness of the cows and chicken whose flesh fills our plates. A complete philosophy of consciousness must embrace both the scientific and the subjective. Until such a philosophy is devised, _Again_ will serve as a rare reminder of the way that these two modes of knowing are tangled in the experience of self and other.
 
 -----------
+<p class="text-secondary">Thanks to Abigail Kelly, Amantia Muhedini, and Mike Webb for commenting on drafts of this essay.</p>
 
-Thanks to Abigail Kelly, Amantia Muhedini, and Mike Webb for commenting on drafts of this essay.
+<p class="text-secondary">This essay originally appeared in the catalog [_Alan Rath: Virtual Unreality_][], published by the [San Jose Institute of Contemporary Art][] and [Hosfelt Gallery][] on the occasion of the retrospective [exhibition][] of the same name.</p>
 
-This essay originally appeared in the catalog [_Alan Rath: Virtual Unreality_][], published by the [San Jose Institute of Contemporary Art][] and [Hosfelt Gallery][] on the occasion of the retrospective [exhibition][] of the same name.
+##### Notes
 
-<a name="subjective-experience">1:</a> Philosophers Thomas Nagel and John Searle exemplify this tradition in the philosophy of mind. See Nagel, “What is it like to be a bat?” and Searle, “Reductionism and the Irreducibility of Consciousness” in _Emergence: Contemporary Readings in Philosophy and Science_, ed. Mark A. Bedau and Paul Humphreys (2008). 
+<div class="footnotes">
 
-<a name="dennett">2:</a> Dennett, _The Intentional Stance_ (1987) and _Consciousness Explained_ (1991). For a wonderful overview of Dennett’s approach to consciousness, see the short essay “Real Patterns,” in _Emergence: Contemporary Readings in Philosophy and Science_, ed. Mark A. Bedau and Paul Humphreys (2008).
+<a name="subjective-experience">1.</a> Philosophers Thomas Nagel and John Searle exemplify this tradition in the philosophy of mind. See Nagel, “What is it like to be a bat?” and Searle, “Reductionism and the Irreducibility of Consciousness” in _Emergence: Contemporary Readings in Philosophy and Science_, ed. Mark A. Bedau and Paul Humphreys (2008). 
 
-<a name="mimicking-facial-expressions">3: </a> The original publication is "Newborn Infants Imitate Adult Facial Gestures," by Meltzoff & Moore (1983). See “The role of imitation in understanding persons and developing a theory of mind,” by Meltzoff & Gopnik (1993) for an overview of the confirming studies which followed this initial experiment.
+<a name="dennett">2.</a> Dennett, _The Intentional Stance_ (1987) and _Consciousness Explained_ (1991). For a wonderful overview of Dennett’s approach to consciousness, see the short essay “Real Patterns,” in _Emergence: Contemporary Readings in Philosophy and Science_, ed. Mark A. Bedau and Paul Humphreys (2008).
 
-<a name="full-awareness">4: </a> Tomasello, _The Cultural Origins of Human Cognition_ (1999), p. 174.
+<a name="mimicking-facial-expressions">3.</a> The original publication is "Newborn Infants Imitate Adult Facial Gestures," by Meltzoff & Moore (1983). See “The role of imitation in understanding persons and developing a theory of mind,” by Meltzoff & Gopnik (1993) for an overview of the confirming studies which followed this initial experiment.
 
-<a name="cognitive-labor-symmetry">5: </a> For an interesting discussion of studies in the mental labor of observing symmetries, see Daniel Dennett, “Towards a Cognitive Theory of Consciousness”, pp. 219 - 221.
+<a name="full-awareness">4.</a> Tomasello, _The Cultural Origins of Human Cognition_ (1999), p. 174.
 
-<a name="pointing">6: </a> Tomasello, “Joint Attention as Social Cognition” in _Joint Attention: Its Origin and Role in Development_, ed. Chris Moore and Philip J. Dunham (2016), pp. 103 - 105. 
+<a name="cognitive-labor-symmetry">5.</a> For an interesting discussion of studies in the mental labor of observing symmetries, see Daniel Dennett, “Towards a Cognitive Theory of Consciousness”, pp. 219 - 221.
 
-<a name="joint-attention-study">7: </a> Jerome Bruner. “From Joint Attention to the Meeting of Minds: An Introduction” in _Joint Attention: Its Origin and Role in Development_, ed. Chris Moore and Philip J. Dunham (2016), p. 7.
+<a name="pointing">6.</a> Tomasello, “Joint Attention as Social Cognition” in _Joint Attention: Its Origin and Role in Development_, ed. Chris Moore and Philip J. Dunham (2016), pp. 103 - 105. 
 
-<a name="following-gaze">8: </a> Scaife, Michael and Jerome Bruner. “The capacity for joint visual attention in the infant,” 
+<a name="joint-attention-study">7.</a> Jerome Bruner. “From Joint Attention to the Meeting of Minds: An Introduction” in _Joint Attention: Its Origin and Role in Development_, ed. Chris Moore and Philip J. Dunham (2016), p. 7.
+
+<a name="following-gaze">8.</a> Scaife, Michael and Jerome Bruner. “The capacity for joint visual attention in the infant,” 
 Nature, volume 253, pp. 265–266 (24 January 1975).
 
-<a name="joint-attention">9: </a> Tomasello, _The Cultural Origins of Human Cognition_, pp. 62 - 70.
+<a name="joint-attention">9.</a> Tomasello, _The Cultural Origins of Human Cognition_, pp. 62 - 70.
+
+</div>

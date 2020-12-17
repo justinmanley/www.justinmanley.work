@@ -110,15 +110,20 @@ In any case, the gallery may not be the best forum for teamLab’s utopian missi
 
 -----------
 
-Thanks to Abigail Kelly, [Abby LaPier][], Michael Webb, [Sally Fama-Cochrane][] and Professors [Camille Utterback][] and [Yukio Lippit][] for fruitful conversations and suggestions.
+<p class="text-secondary">Thanks to Abigail Kelly, [Abby LaPier][], Michael Webb, [Sally Fama-Cochrane][] and Professors [Camille Utterback][] and [Yukio Lippit][] for fruitful conversations and suggestions.</p>
 
-For further reading, see _Cultural Modes of Seeing Through Cultural Modes of Being_ (Duffy & Kitayama), _[The Psychology of Perspective and Renaissance Art][Kubovy]_ (Kubovy), and teamLab’s _[Dialogue between Toshiyuki Inoko and Yuji Yamashita][Toshiyuki Inoko interview]_ (Erimi), or see my [full list of sources][sources].
+<p class="text-secondary">For further reading, see _Cultural Modes of Seeing Through Cultural Modes of Being_ (Duffy & Kitayama), _[The Psychology of Perspective and Renaissance Art][Kubovy]_ (Kubovy), and teamLab’s _[Dialogue between Toshiyuki Inoko and Yuji Yamashita][Toshiyuki Inoko interview]_ (Erimi), or see my [full list of sources][sources].</p>
 
-<a name="culture-and-the-self">1</a>: Markus, Hazel and Shinobu Kitayama. “Culture and the Self: Implications for Cognition, Emotion, and Motivation.”
+##### Notes
 
-<a name="cultural-modes-of-seeing-55">2</a>: Duffy, Sean & Shinobu Kitayama. "Cultural Modes of Seeing through Cultural Modes of Being" in _Social Psychology of Visual Perception_. 55.
+<div class="footnotes">
 
-<a name="cultural-modes-of-seeing-57">3</a>: Ibid. 57.
+<a name="culture-and-the-self">1.</a> Markus, Hazel and Shinobu Kitayama. “Culture and the Self: Implications for Cognition, Emotion, and Motivation.”
 
-<a name="spatial-perspective-taking">4</a>: Tversky, Barbara and Bridgette Martin Hard. "Embodied and disembodied cognition: Spatial perspective-taking."
+<a name="cultural-modes-of-seeing-55">2.</a> Duffy, Sean & Shinobu Kitayama. "Cultural Modes of Seeing through Cultural Modes of Being" in _Social Psychology of Visual Perception_. 55.
 
+<a name="cultural-modes-of-seeing-57">3.</a> Ibid. 57.
+
+<a name="spatial-perspective-taking">4.</a> Tversky, Barbara and Bridgette Martin Hard. "Embodied and disembodied cognition: Spatial perspective-taking."
+
+</div>

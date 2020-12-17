@@ -41,4 +41,10 @@ I leave _The Infinity Engine_ the way I came, past the eerie video installation.
 
 -----------
   
-<a name="sontag">1: </a> Sontag, Susan. "The Aesthetics of Solitude" in _Studies of Radical Will_. New York: Farrar, Straus and Giroux, 1969.
+##### Notes
+
+<div class="footnotes">
+
+<a name="sontag">1.</a> Sontag, Susan. "The Aesthetics of Solitude" in _Studies of Radical Will_. New York: Farrar, Straus and Giroux, 1969.
+
+</div>
