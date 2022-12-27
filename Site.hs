@@ -5,7 +5,8 @@ import Control.Applicative (empty, (<|>))
 import Data.Binary (Binary)
 import Data.Char (toLower)
 import Data.Functor ((<&>))
-import qualified Data.HashMap.Strict as HashMap
+import qualified Data.Aeson.KeyMap as KeyMap
+import qualified Data.Aeson.Key as Key
 import Data.List (stripPrefix, nub)
 import Data.Maybe (isJust, fromMaybe, maybe)
 import Data.Monoid (mappend)
@@ -188,7 +189,7 @@ main = hakyll $ do
 -- Helpers
 
 hasMetadata :: Text -> Metadata -> Bool
-hasMetadata key = isJust . HashMap.lookup key
+hasMetadata key = isJust . KeyMap.lookup (Key.fromText key)
 
 hasSourceUrl :: Metadata -> Bool
 hasSourceUrl = hasMetadata "source-url"

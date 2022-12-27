@@ -39,6 +39,7 @@ executables:
     - -rtsopts
     - -with-rtsopts=-N
     dependencies:
+    - aeson
     - binary
     - filepath
     - hakyll
