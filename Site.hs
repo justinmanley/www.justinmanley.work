@@ -20,6 +20,8 @@ import Debug.Trace (trace)
 
 import Site.Url (normalizeUrls)
 import Site.PostLength (minutesToReadPost)
+
+import qualified Projects
 -----------------------------------------------------------------------------
 main :: IO ()
 main = hakyll $ do
@@ -159,6 +161,9 @@ main = hakyll $ do
             pandocCompiler
                 >>= loadAndApplyTemplate "templates/page.html" siteCtx
                 >>= loadAndApplyTemplate "templates/default.html" pageCtx
+
+    -- Projects
+    Projects.compile siteCtx
 
     -- Home
     create ["index.html"] $ do
