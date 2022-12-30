@@ -1,1 +1,40 @@
-$body$
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Main</title>
+
+    <script src="./page.js"></script>
+    <script src="./main.js"></script>
+    <script src="./elm-canvas.js"></script>
+
+    <style>
+        .body {
+            margin: 0;
+            position: relative;
+        }
+
+        p {
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body class="body">
+    <canvas id="canvas"></canvas>
+    <div style="width: 600px; margin: 0 auto;">
+        <div id="article">
+            $body$
+
+
+        </div>
+    </div>
+    <script>
+        const app = Elm.Main.init({
+            node: document.getElementById('canvas')
+        });
+        initialize(app);
+    </script>
+</body>
+
+</html>
