@@ -1,21 +1,24 @@
 module Site.PostLength (minutesToReadPost, extractTextContentsAsForest, totalWords) where
 
-import Data.Tree (Tree(Node), Forest, rootLabel, subForest)
-import Text.XML.Light (Content(CRef, Elem, Text), Element(..), parseXML, cdData)
+import Data.Tree (Forest, Tree (Node), rootLabel, subForest)
+import Text.XML.Light (Content (CRef, Elem, Text), Element (..), cdData, parseXML)
 
 extractTextContentsAsForest :: [Content] -> Forest String
-extractTextContentsAsForest c = 
-    let extractTextContentAsForest c = case c of
-            Elem e -> concatMap extractTextContentAsForest (elContent e)
-            Text cData -> [Node
-                { rootLabel = cdData cData
-                , subForest = []
-                }]
-            CRef s -> []
-    in concatMap extractTextContentAsForest c
+extractTextContentsAsForest c =
+  let extractTextContentAsForest c = case c of
+        Elem e -> concatMap extractTextContentAsForest (elContent e)
+        Text cData ->
+          [ Node
+              { rootLabel = cdData cData,
+                subForest = []
+              }
+          ]
+        CRef s -> []
+   in concatMap extractTextContentAsForest c
 
 totalWords :: String -> Int
-totalWords = sum
+totalWords =
+  sum
     . (map $ sum . fmap (length . words))
     . extractTextContentsAsForest
     . parseXML
