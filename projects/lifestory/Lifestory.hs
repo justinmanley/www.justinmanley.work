@@ -3,6 +3,7 @@
 
 module Lifestory.Lifestory (compile) where
 
+import Data.Functor ((<&>))
 import Data.List (isPrefixOf, stripPrefix)
 import Data.Text as Text (Text, pack, replace, unpack)
 import Debug.Trace (trace)
@@ -13,9 +14,11 @@ import Hakyll
     Item (itemBody),
     Routes,
     Rules,
+    compressCss,
     copyFileCompiler,
     customRoute,
     defaultContext,
+    getResourceString,
     getRoute,
     idRoute,
     listFieldWith,
@@ -28,6 +31,8 @@ import Hakyll
     setExtension,
     templateBodyCompiler,
     toSiteRoot,
+    unixFilter,
+    withItemBody,
     withUrls,
   )
 import Hakyll qualified
@@ -56,7 +61,7 @@ compile projectsContext = do
     Hakyll.compile copyFileCompiler
 
   match "projects/lifestory/version/*/patterns/*.rle" $ do
-    route $ idRoute
+    route idRoute
     Hakyll.compile copyFileCompiler
 
   match "projects/lifestory/version/*/template.html" $ Hakyll.compile templateBodyCompiler
@@ -68,6 +73,13 @@ compile projectsContext = do
         >>= loadAndApplyVersionedTemplate projectsContext
         >>= fullPathForItemCompiler
         >>= relativizeUrls
+
+  match "projects/lifestory/version/*/style.scss" $ do
+    route $ setExtension "css"
+    Hakyll.compile $ do
+      getResourceString
+        >>= compileSass
+        <&> fmap compressCss
 
 loadAndApplyVersionedTemplate :: Context String -> Item String -> Compiler (Item String)
 loadAndApplyVersionedTemplate context item =
@@ -104,3 +116,10 @@ fullPathForItem root path =
   case stripPrefix "./" path of
     Nothing -> path
     Just basePath -> "/" ++ removeString "index.html" root ++ basePath
+
+-- TODO: See if it is possible to consolidate this with the compileSass
+-- function in Site.hs.
+-- If this compiler fails, then you may need to install the `sass` binary (see
+-- README for more details).
+compileSass :: Item String -> Compiler (Item String)
+compileSass = withItemBody (unixFilter "sass" ["--stdin"])

@@ -8,21 +8,13 @@
     <script src="./main.js"></script>
     <script src="./elm-canvas.js"></script>
 
-    <style>
-        .body {
-            margin: 0;
-            position: relative;
-        }
 
-        p {
-            margin: 0;
-        }
-    </style>
+    <link rel="stylesheet" href="./style.css">
 </head>
 
 <body class="body">
     <canvas id="canvas"></canvas>
-    <div style="width: 600px; margin: 0 auto;">
+    <div class="content">
         <div id="article">
             $body$
 
@@ -33,7 +25,9 @@
         const app = Elm.Main.init({
             node: document.getElementById('canvas')
         });
-        initialize(app);
+        initialize(app, {
+            fontSizeToCellSize: fontSize => fontSize / 2
+        });
     </script>
 </body>
 
