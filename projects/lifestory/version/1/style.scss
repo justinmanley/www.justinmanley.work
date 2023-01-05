@@ -1,0 +1,40 @@
+@import './bower_components/bootstrap/scss/_variables.scss';
+@import './bower_components/bootstrap/scss/_mixins.scss';
+
+$primary-font-size: 1.5 * 18px;
+$primary-line-height-scaling-factor: 1.2;
+
+$grid-cell-size: $primary-font-size * $primary-line-height-scaling-factor;
+
+.body {
+    margin: 0;
+    position: relative;
+}
+
+p {
+    font-size: $primary-font-size;
+    font-family: sans-serif;
+    line-height: $primary-line-height-scaling-factor;
+    margin: 0 0 $grid-cell-size;
+}
+
+.title {
+    padding-top: 4 * $grid-cell-size;
+    padding-bottom: 4 * $grid-cell-size;
+}
+
+.content {
+    margin: 0 (2 * $grid-cell-size);
+}
+
+
+/*
+// Tablets and up
+@include media-breakpoint-up(md) {
+    .content {
+        // width: $article-width;
+        width: 600px;
+        margin: 0 auto;
+    }
+}
+*/

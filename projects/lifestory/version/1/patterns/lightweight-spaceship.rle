@@ -1,0 +1,8 @@
+#N Lightweight spaceship
+#O John Conway
+#C A very well-known period 4 c/2 orthogonal spaceship.
+#C www.conwaylife.com/wiki/index.php?title=Lightweight_spaceship
+# MOVEMENT DIRECTION (2, 0) PERIOD 4
+# MAXIMUM EXTENT TOP -1 LEFT 0 BOTTOM 4 RIGHT 7
+x = 5, y = 5, rule = B3/S23
+b4o$o3bo$4bo$o2bo!
