@@ -1,5 +1,5 @@
 ---
-lifescroll: af171467f6c9ed97fe31478807dd522195c21f9a
+lifescroll: 4e678eff2505db992000b0225a5ad8949cea776c
 ---
 <div class="title">
   <pattern-anchor src=./patterns/lifestory.rle></pattern-anchor>

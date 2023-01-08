@@ -5310,6 +5310,21 @@ var $author$project$Main$init = function (_v0) {
 var $author$project$Main$ParsingError = function (a) {
 	return {$: 'ParsingError', a: a};
 };
+var $elm$core$Platform$Sub$batch = _Platform_batch;
+var $author$project$Main$Click = function (a) {
+	return {$: 'Click', a: a};
+};
+var $elm$json$Json$Decode$field = _Json_decodeField;
+var $elm$json$Json$Decode$float = _Json_decodeFloat;
+var $author$project$Main$clickDecoder = A3(
+	$elm$json$Json$Decode$map2,
+	F2(
+		function (a, b) {
+			return $author$project$Main$Click(
+				_Utils_Tuple2(a, b));
+		}),
+	A2($elm$json$Json$Decode$field, 'pageX', $elm$json$Json$Decode$float),
+	A2($elm$json$Json$Decode$field, 'pageY', $elm$json$Json$Decode$float));
 var $elm$json$Json$Decode$decodeValue = _Json_run;
 var $author$project$Main$PageUpdate = function (a) {
 	return {$: 'PageUpdate', a: a};
@@ -5317,7 +5332,6 @@ var $author$project$Main$PageUpdate = function (a) {
 var $author$project$Main$ScrollPage = function (a) {
 	return {$: 'ScrollPage', a: a};
 };
-var $elm$json$Json$Decode$field = _Json_decodeField;
 var $elm$json$Json$Decode$at = F2(
 	function (fields, decoder) {
 		return A3($elm$core$List$foldr, $elm$json$Json$Decode$field, decoder, fields);
@@ -5326,7 +5340,6 @@ var $author$project$BoundingRectangle$BoundingRectangle = F4(
 	function (top, left, bottom, right) {
 		return {bottom: bottom, left: left, right: right, top: top};
 	});
-var $elm$json$Json$Decode$float = _Json_decodeFloat;
 var $elm$json$Json$Decode$map4 = _Json_map4;
 var $author$project$BoundingRectangle$decoder = A5(
 	$elm$json$Json$Decode$map4,
@@ -5405,58 +5418,33 @@ var $author$project$Main$decoder = $elm$json$Json$Decode$oneOf(
 var $elm$core$Platform$Sub$map = _Platform_map;
 var $elm$json$Json$Decode$value = _Json_decodeValue;
 var $author$project$Main$messageReceiver = _Platform_incomingPort('messageReceiver', $elm$json$Json$Decode$value);
-var $author$project$Main$subscriptions = function (model) {
-	return A2(
-		$elm$core$Platform$Sub$map,
-		function (value) {
-			if (value.$ === 'Ok') {
-				var msg = value.a;
-				return msg;
-			} else {
-				var error = value.a;
-				return $author$project$Main$ParsingError(error);
-			}
-		},
-		$author$project$Main$messageReceiver(
-			$elm$json$Json$Decode$decodeValue($author$project$Main$decoder)));
+var $elm$browser$Browser$Events$Document = {$: 'Document'};
+var $elm$browser$Browser$Events$MySub = F3(
+	function (a, b, c) {
+		return {$: 'MySub', a: a, b: b, c: c};
+	});
+var $elm$browser$Browser$Events$State = F2(
+	function (subs, pids) {
+		return {pids: pids, subs: subs};
+	});
+var $elm$browser$Browser$Events$init = $elm$core$Task$succeed(
+	A2($elm$browser$Browser$Events$State, _List_Nil, $elm$core$Dict$empty));
+var $elm$browser$Browser$Events$nodeToKey = function (node) {
+	if (node.$ === 'Document') {
+		return 'd_';
+	} else {
+		return 'w_';
+	}
 };
-var $elm$core$Dict$foldl = F3(
-	function (func, acc, dict) {
-		foldl:
-		while (true) {
-			if (dict.$ === 'RBEmpty_elm_builtin') {
-				return acc;
-			} else {
-				var key = dict.b;
-				var value = dict.c;
-				var left = dict.d;
-				var right = dict.e;
-				var $temp$func = func,
-					$temp$acc = A3(
-					func,
-					key,
-					value,
-					A3($elm$core$Dict$foldl, func, acc, left)),
-					$temp$dict = right;
-				func = $temp$func;
-				acc = $temp$acc;
-				dict = $temp$dict;
-				continue foldl;
-			}
-		}
-	});
-var $elm$core$Set$foldl = F3(
-	function (func, initialState, _v0) {
-		var dict = _v0.a;
-		return A3(
-			$elm$core$Dict$foldl,
-			F3(
-				function (key, _v1, state) {
-					return A2(func, key, state);
-				}),
-			initialState,
-			dict);
-	});
+var $elm$browser$Browser$Events$addKey = function (sub) {
+	var node = sub.a;
+	var name = sub.b;
+	return _Utils_Tuple2(
+		_Utils_ap(
+			$elm$browser$Browser$Events$nodeToKey(node),
+			name),
+		sub);
+};
 var $elm$core$Dict$Black = {$: 'Black'};
 var $elm$core$Dict$RBNode_elm_builtin = F5(
 	function (a, b, c, d, e) {
@@ -5566,6 +5554,301 @@ var $elm$core$Dict$insert = F3(
 			return x;
 		}
 	});
+var $elm$core$Dict$fromList = function (assocs) {
+	return A3(
+		$elm$core$List$foldl,
+		F2(
+			function (_v0, dict) {
+				var key = _v0.a;
+				var value = _v0.b;
+				return A3($elm$core$Dict$insert, key, value, dict);
+			}),
+		$elm$core$Dict$empty,
+		assocs);
+};
+var $elm$core$Process$kill = _Scheduler_kill;
+var $elm$core$Dict$foldl = F3(
+	function (func, acc, dict) {
+		foldl:
+		while (true) {
+			if (dict.$ === 'RBEmpty_elm_builtin') {
+				return acc;
+			} else {
+				var key = dict.b;
+				var value = dict.c;
+				var left = dict.d;
+				var right = dict.e;
+				var $temp$func = func,
+					$temp$acc = A3(
+					func,
+					key,
+					value,
+					A3($elm$core$Dict$foldl, func, acc, left)),
+					$temp$dict = right;
+				func = $temp$func;
+				acc = $temp$acc;
+				dict = $temp$dict;
+				continue foldl;
+			}
+		}
+	});
+var $elm$core$Dict$merge = F6(
+	function (leftStep, bothStep, rightStep, leftDict, rightDict, initialResult) {
+		var stepState = F3(
+			function (rKey, rValue, _v0) {
+				stepState:
+				while (true) {
+					var list = _v0.a;
+					var result = _v0.b;
+					if (!list.b) {
+						return _Utils_Tuple2(
+							list,
+							A3(rightStep, rKey, rValue, result));
+					} else {
+						var _v2 = list.a;
+						var lKey = _v2.a;
+						var lValue = _v2.b;
+						var rest = list.b;
+						if (_Utils_cmp(lKey, rKey) < 0) {
+							var $temp$rKey = rKey,
+								$temp$rValue = rValue,
+								$temp$_v0 = _Utils_Tuple2(
+								rest,
+								A3(leftStep, lKey, lValue, result));
+							rKey = $temp$rKey;
+							rValue = $temp$rValue;
+							_v0 = $temp$_v0;
+							continue stepState;
+						} else {
+							if (_Utils_cmp(lKey, rKey) > 0) {
+								return _Utils_Tuple2(
+									list,
+									A3(rightStep, rKey, rValue, result));
+							} else {
+								return _Utils_Tuple2(
+									rest,
+									A4(bothStep, lKey, lValue, rValue, result));
+							}
+						}
+					}
+				}
+			});
+		var _v3 = A3(
+			$elm$core$Dict$foldl,
+			stepState,
+			_Utils_Tuple2(
+				$elm$core$Dict$toList(leftDict),
+				initialResult),
+			rightDict);
+		var leftovers = _v3.a;
+		var intermediateResult = _v3.b;
+		return A3(
+			$elm$core$List$foldl,
+			F2(
+				function (_v4, result) {
+					var k = _v4.a;
+					var v = _v4.b;
+					return A3(leftStep, k, v, result);
+				}),
+			intermediateResult,
+			leftovers);
+	});
+var $elm$browser$Browser$Events$Event = F2(
+	function (key, event) {
+		return {event: event, key: key};
+	});
+var $elm$core$Platform$sendToSelf = _Platform_sendToSelf;
+var $elm$browser$Browser$Events$spawn = F3(
+	function (router, key, _v0) {
+		var node = _v0.a;
+		var name = _v0.b;
+		var actualNode = function () {
+			if (node.$ === 'Document') {
+				return _Browser_doc;
+			} else {
+				return _Browser_window;
+			}
+		}();
+		return A2(
+			$elm$core$Task$map,
+			function (value) {
+				return _Utils_Tuple2(key, value);
+			},
+			A3(
+				_Browser_on,
+				actualNode,
+				name,
+				function (event) {
+					return A2(
+						$elm$core$Platform$sendToSelf,
+						router,
+						A2($elm$browser$Browser$Events$Event, key, event));
+				}));
+	});
+var $elm$core$Dict$union = F2(
+	function (t1, t2) {
+		return A3($elm$core$Dict$foldl, $elm$core$Dict$insert, t2, t1);
+	});
+var $elm$browser$Browser$Events$onEffects = F3(
+	function (router, subs, state) {
+		var stepRight = F3(
+			function (key, sub, _v6) {
+				var deads = _v6.a;
+				var lives = _v6.b;
+				var news = _v6.c;
+				return _Utils_Tuple3(
+					deads,
+					lives,
+					A2(
+						$elm$core$List$cons,
+						A3($elm$browser$Browser$Events$spawn, router, key, sub),
+						news));
+			});
+		var stepLeft = F3(
+			function (_v4, pid, _v5) {
+				var deads = _v5.a;
+				var lives = _v5.b;
+				var news = _v5.c;
+				return _Utils_Tuple3(
+					A2($elm$core$List$cons, pid, deads),
+					lives,
+					news);
+			});
+		var stepBoth = F4(
+			function (key, pid, _v2, _v3) {
+				var deads = _v3.a;
+				var lives = _v3.b;
+				var news = _v3.c;
+				return _Utils_Tuple3(
+					deads,
+					A3($elm$core$Dict$insert, key, pid, lives),
+					news);
+			});
+		var newSubs = A2($elm$core$List$map, $elm$browser$Browser$Events$addKey, subs);
+		var _v0 = A6(
+			$elm$core$Dict$merge,
+			stepLeft,
+			stepBoth,
+			stepRight,
+			state.pids,
+			$elm$core$Dict$fromList(newSubs),
+			_Utils_Tuple3(_List_Nil, $elm$core$Dict$empty, _List_Nil));
+		var deadPids = _v0.a;
+		var livePids = _v0.b;
+		var makeNewPids = _v0.c;
+		return A2(
+			$elm$core$Task$andThen,
+			function (pids) {
+				return $elm$core$Task$succeed(
+					A2(
+						$elm$browser$Browser$Events$State,
+						newSubs,
+						A2(
+							$elm$core$Dict$union,
+							livePids,
+							$elm$core$Dict$fromList(pids))));
+			},
+			A2(
+				$elm$core$Task$andThen,
+				function (_v1) {
+					return $elm$core$Task$sequence(makeNewPids);
+				},
+				$elm$core$Task$sequence(
+					A2($elm$core$List$map, $elm$core$Process$kill, deadPids))));
+	});
+var $elm$core$List$maybeCons = F3(
+	function (f, mx, xs) {
+		var _v0 = f(mx);
+		if (_v0.$ === 'Just') {
+			var x = _v0.a;
+			return A2($elm$core$List$cons, x, xs);
+		} else {
+			return xs;
+		}
+	});
+var $elm$core$List$filterMap = F2(
+	function (f, xs) {
+		return A3(
+			$elm$core$List$foldr,
+			$elm$core$List$maybeCons(f),
+			_List_Nil,
+			xs);
+	});
+var $elm$browser$Browser$Events$onSelfMsg = F3(
+	function (router, _v0, state) {
+		var key = _v0.key;
+		var event = _v0.event;
+		var toMessage = function (_v2) {
+			var subKey = _v2.a;
+			var _v3 = _v2.b;
+			var node = _v3.a;
+			var name = _v3.b;
+			var decoder = _v3.c;
+			return _Utils_eq(subKey, key) ? A2(_Browser_decodeEvent, decoder, event) : $elm$core$Maybe$Nothing;
+		};
+		var messages = A2($elm$core$List$filterMap, toMessage, state.subs);
+		return A2(
+			$elm$core$Task$andThen,
+			function (_v1) {
+				return $elm$core$Task$succeed(state);
+			},
+			$elm$core$Task$sequence(
+				A2(
+					$elm$core$List$map,
+					$elm$core$Platform$sendToApp(router),
+					messages)));
+	});
+var $elm$browser$Browser$Events$subMap = F2(
+	function (func, _v0) {
+		var node = _v0.a;
+		var name = _v0.b;
+		var decoder = _v0.c;
+		return A3(
+			$elm$browser$Browser$Events$MySub,
+			node,
+			name,
+			A2($elm$json$Json$Decode$map, func, decoder));
+	});
+_Platform_effectManagers['Browser.Events'] = _Platform_createManager($elm$browser$Browser$Events$init, $elm$browser$Browser$Events$onEffects, $elm$browser$Browser$Events$onSelfMsg, 0, $elm$browser$Browser$Events$subMap);
+var $elm$browser$Browser$Events$subscription = _Platform_leaf('Browser.Events');
+var $elm$browser$Browser$Events$on = F3(
+	function (node, name, decoder) {
+		return $elm$browser$Browser$Events$subscription(
+			A3($elm$browser$Browser$Events$MySub, node, name, decoder));
+	});
+var $elm$browser$Browser$Events$onClick = A2($elm$browser$Browser$Events$on, $elm$browser$Browser$Events$Document, 'click');
+var $author$project$Main$subscriptions = function (model) {
+	return $elm$core$Platform$Sub$batch(
+		_List_fromArray(
+			[
+				A2(
+				$elm$core$Platform$Sub$map,
+				function (value) {
+					if (value.$ === 'Ok') {
+						var msg = value.a;
+						return msg;
+					} else {
+						var error = value.a;
+						return $author$project$Main$ParsingError(error);
+					}
+				},
+				$author$project$Main$messageReceiver(
+					$elm$json$Json$Decode$decodeValue($author$project$Main$decoder))),
+				$elm$browser$Browser$Events$onClick($author$project$Main$clickDecoder)
+			]));
+};
+var $elm$core$Set$foldl = F3(
+	function (func, initialState, _v0) {
+		var dict = _v0.a;
+		return A3(
+			$elm$core$Dict$foldl,
+			F3(
+				function (key, _v1, state) {
+					return A2(func, key, state);
+				}),
+			initialState,
+			dict);
+	});
 var $elm$core$Set$insert = F2(
 	function (key, _v0) {
 		var dict = _v0.a;
@@ -5632,24 +5915,6 @@ var $author$project$Main$insertPattern = F3(
 			atomicUpdateRegions: A2($elm$core$List$cons, pattern.atomicUpdateRegion, grid.atomicUpdateRegions),
 			cells: A3($elm$core$Set$foldl, insertWithConflictLogging, grid.cells, pattern.cells)
 		};
-	});
-var $elm$core$List$maybeCons = F3(
-	function (f, mx, xs) {
-		var _v0 = f(mx);
-		if (_v0.$ === 'Just') {
-			var x = _v0.a;
-			return A2($elm$core$List$cons, x, xs);
-		} else {
-			return xs;
-		}
-	});
-var $elm$core$List$filterMap = F2(
-	function (f, xs) {
-		return A3(
-			$elm$core$List$foldr,
-			$elm$core$List$maybeCons(f),
-			_List_Nil,
-			xs);
 	});
 var $author$project$Vector2$x = $elm$core$Tuple$first;
 var $elm$core$Tuple$second = function (_v0) {
@@ -5772,10 +6037,6 @@ var $author$project$Life$RleParser$nextGridLine = F2(
 			_Utils_update(
 				gridState,
 				{x: 0, y: gridState.y + count}));
-	});
-var $elm$core$Dict$union = F2(
-	function (t1, t2) {
-		return A3($elm$core$Dict$foldl, $elm$core$Dict$insert, t2, t1);
 	});
 var $elm$core$Set$union = F2(
 	function (_v0, _v1) {
@@ -6794,6 +7055,10 @@ var $author$project$Life$RleParser$parse = A2(
 	$elm$core$Basics$composeR,
 	$elm$parser$Parser$run($author$project$Life$RleParser$lines),
 	$elm$core$Result$map($author$project$Life$RleParser$setAtomicUpdateBoundsFromCellsIfEmpty));
+var $author$project$PageCoordinate$toGrid = F2(
+	function (cellSizeInPixels, x) {
+		return $elm$core$Basics$floor(x / cellSizeInPixels);
+	});
 var $author$project$BoundingRectangle$width = function (bounds) {
 	return bounds.right - bounds.left;
 };
@@ -6808,14 +7073,13 @@ var $elm$core$Maybe$withDefault = F2(
 	});
 var $author$project$PatternAnchor$toPattern = F3(
 	function (cellSizeInPixels, article, anchor) {
-		var toGrid = function (f) {
-			return $elm$core$Basics$floor(f / cellSizeInPixels);
-		};
 		var articleCenter = article.left + ($author$project$BoundingRectangle$width(article) / 2);
 		var offset = function (bounds) {
 			return _Utils_Tuple2(
-				toGrid(articleCenter) - (($author$project$BoundingRectangle$width(bounds) / 2) | 0),
-				toGrid(
+				A2($author$project$PageCoordinate$toGrid, cellSizeInPixels, articleCenter) - (($author$project$BoundingRectangle$width(bounds) / 2) | 0),
+				A2(
+					$author$project$PageCoordinate$toGrid,
+					cellSizeInPixels,
 					anchor.bounds.top + ($author$project$BoundingRectangle$height(anchor.bounds) / 2)) - (($author$project$BoundingRectangle$height(bounds) / 2) | 0));
 		};
 		var _v0 = $author$project$Life$RleParser$parse(anchor.patternRle);
@@ -7557,11 +7821,16 @@ var $elm$core$Set$partition = F2(
 			$elm$core$Set$Set_elm_builtin(dict1),
 			$elm$core$Set$Set_elm_builtin(dict2));
 	});
+var $author$project$Life$Viewport$numProtectedBottomCells = 6;
+var $author$project$Life$Viewport$steppableVerticalBounds = function (viewport) {
+	var viewportVerticalBounds = $author$project$BoundingRectangle$vertical(viewport);
+	return {end: viewportVerticalBounds.end - $author$project$Life$Viewport$numProtectedBottomCells, start: viewportVerticalBounds.start};
+};
 var $author$project$Life$Viewport$next = F2(
 	function (viewport, _v0) {
 		var cells = _v0.cells;
 		var atomicUpdateRegions = _v0.atomicUpdateRegions;
-		var viewportVerticalBounds = $author$project$BoundingRectangle$vertical(viewport);
+		var viewportVerticalBounds = $author$project$Life$Viewport$steppableVerticalBounds(viewport);
 		var belongsToFrozenAtomicUpdateRegion = F2(
 			function (cell, _v3) {
 				var bounds = _v3.bounds;
@@ -7594,29 +7863,64 @@ var $author$project$Life$Viewport$next = F2(
 		};
 	});
 var $author$project$Life$Viewport$scrolledCellsPerStep = 4;
+var $author$project$PageCoordinates$toGrid = F2(
+	function (cellSizeInPixels, _v0) {
+		var top = _v0.top;
+		var left = _v0.left;
+		var bottom = _v0.bottom;
+		var right = _v0.right;
+		return {
+			bottom: A2($author$project$PageCoordinate$toGrid, cellSizeInPixels, bottom),
+			left: A2($author$project$PageCoordinate$toGrid, cellSizeInPixels, left),
+			right: A2($author$project$PageCoordinate$toGrid, cellSizeInPixels, right),
+			top: A2($author$project$PageCoordinate$toGrid, cellSizeInPixels, top)
+		};
+	});
 var $author$project$Life$Viewport$scroll = F4(
 	function (cellSizeInPixels, mostRecentScrollPosition, viewport, grid) {
-		var toGridCellsCoordinates = function (pageCoordinate) {
+		var pixelsToSteps = function (pageCoordinate) {
 			return $elm$core$Basics$floor(pageCoordinate / (cellSizeInPixels * $author$project$Life$Viewport$scrolledCellsPerStep));
-		};
-		var toGrid = function (x) {
-			return $elm$core$Basics$floor(x / cellSizeInPixels);
 		};
 		var numSteps = A2(
 			$elm$core$Basics$max,
 			0,
-			toGridCellsCoordinates(viewport.top) - toGridCellsCoordinates(mostRecentScrollPosition));
-		var gridViewport = {
-			bottom: toGrid(viewport.bottom),
-			left: toGrid(viewport.left),
-			right: toGrid(viewport.right),
-			top: toGrid(viewport.top)
-		};
+			pixelsToSteps(viewport.top) - pixelsToSteps(mostRecentScrollPosition));
 		return A3(
 			$JohnBugner$elm_loop$Loop$for,
 			numSteps,
-			$author$project$Life$Viewport$next(gridViewport),
+			$author$project$Life$Viewport$next(
+				A2($author$project$PageCoordinates$toGrid, cellSizeInPixels, viewport)),
 			grid);
+	});
+var $author$project$Vector2$map = F2(
+	function (f, _v0) {
+		var x1 = _v0.a;
+		var y1 = _v0.b;
+		return _Utils_Tuple2(
+			f(x1),
+			f(y1));
+	});
+var $elm$core$Set$remove = F2(
+	function (key, _v0) {
+		var dict = _v0.a;
+		return $elm$core$Set$Set_elm_builtin(
+			A2($elm$core$Dict$remove, key, dict));
+	});
+var $author$project$Life$Life$toggleCell = F2(
+	function (position, grid) {
+		return A2($elm$core$Set$member, position, grid) ? A2($elm$core$Set$remove, position, grid) : A2($elm$core$Set$insert, position, grid);
+	});
+var $author$project$Life$Viewport$toggleCell = F3(
+	function (cellSizeInPixels, position, grid) {
+		var gridPosition = A2(
+			$author$project$Vector2$map,
+			$author$project$PageCoordinate$toGrid(cellSizeInPixels),
+			position);
+		return _Utils_update(
+			grid,
+			{
+				cells: A2($author$project$Life$Life$toggleCell, gridPosition, grid.cells)
+			});
 	});
 var $author$project$ScrollState$update = F2(
 	function (position, _v0) {
@@ -7648,6 +7952,15 @@ var $author$project$Main$update = F2(
 							life: A4($author$project$Life$Viewport$scroll, model.page.cellSizeInPixels, model.scroll.mostRecent, viewport, model.life),
 							scroll: A2($author$project$ScrollState$update, viewport.top, model.scroll),
 							viewport: viewport
+						}),
+					$elm$core$Platform$Cmd$none);
+			case 'Click':
+				var position = msg.a;
+				return _Utils_Tuple2(
+					_Utils_update(
+						model,
+						{
+							life: A3($author$project$Life$Viewport$toggleCell, model.page.cellSizeInPixels, position, model.life)
 						}),
 					$elm$core$Platform$Cmd$none);
 			default:
@@ -7824,6 +8137,22 @@ var $joakin$elm_canvas$Canvas$Settings$fill = function (color) {
 	return $joakin$elm_canvas$Canvas$Internal$Canvas$SettingDrawOp(
 		$joakin$elm_canvas$Canvas$Internal$Canvas$Fill(color));
 };
+var $elm$core$List$filter = F2(
+	function (isGood, list) {
+		return A3(
+			$elm$core$List$foldr,
+			F2(
+				function (x, xs) {
+					return isGood(x) ? A2($elm$core$List$cons, x, xs) : xs;
+				}),
+			_List_Nil,
+			list);
+	});
+var $author$project$Life$Life$gridLineHalfWidth = 2;
+var $author$project$BoundingRectangle$pointIsContainedIn = F2(
+	function (bounds, cell) {
+		return A2($author$project$BoundingRectangle$containsPoint, cell, bounds);
+	});
 var $joakin$elm_canvas$Canvas$Internal$Canvas$Rect = F3(
 	function (a, b, c) {
 		return {$: 'Rect', a: a, b: b, c: c};
@@ -7965,10 +8294,11 @@ var $author$project$Life$Life$render = F3(
 			return A2(
 				square,
 				_Utils_Tuple2(
-					$author$project$Vector2$x(position) * cellSize,
+					($author$project$Vector2$x(position) * cellSize) + $author$project$Life$Life$gridLineHalfWidth,
 					$author$project$Vector2$y(position) * cellSize),
-				cellSize);
+				cellSize - (2 * $author$project$Life$Life$gridLineHalfWidth));
 		};
+		var gridViewport = A2($author$project$PageCoordinates$toGrid, cellSize, viewport);
 		return A2(
 			$joakin$elm_canvas$Canvas$shapes,
 			_List_fromArray(
@@ -7983,7 +8313,10 @@ var $author$project$Life$Life$render = F3(
 			A2(
 				$elm$core$List$map,
 				renderCell,
-				$elm$core$Set$toList(cells)));
+				A2(
+					$elm$core$List$filter,
+					$author$project$BoundingRectangle$pointIsContainedIn(gridViewport),
+					$elm$core$Set$toList(cells))));
 	});
 var $avh4$elm_color$Color$darkGray = A4($avh4$elm_color$Color$RgbaSpace, 186 / 255, 189 / 255, 182 / 255, 1.0);
 var $author$project$Life$Debug$debugStrokeHalfWidth = 2;
