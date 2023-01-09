@@ -1,6 +1,7 @@
 ---
 lifescroll: 4e678eff2505db992000b0225a5ad8949cea776c
 ---
+
 <div class="title">
   <pattern-anchor src=./patterns/lifestory.rle></pattern-anchor>
 </div>
@@ -43,7 +44,7 @@ I skipped ahead: “Conway’s genetic laws are delightfully simple. First note 
 
 <pattern-anchor src=./patterns/triplets.rle></pattern-anchor>
 
-I remember reading these rules with Mariam. She was eight or nine years old then, I in my mid-twenties. As we read, she stopped me to ask the meaning of words she didn’t know. Not mathematical words like “orthogonal” — she had learned that long ago — but “solitaire” and “desiderata.” Instead of a checkerboard we used graph paper, and instead of checkers, we used Smarties, the hard, puck-shaped sugar candies Mariam and I both loved.
+I remember reading these rules with Mariam. She was eight years old. As we read, she stopped me to ask the meaning of words she didn’t know. Not mathematical words like “orthogonal” — she had learned that long ago — but “solitaire” and “desiderata.” Instead of a checkerboard we used graph paper, and instead of checkers, we used Smarties, the hard, puck-shaped sugar candies Mariam and I both loved.
 
 I described one shape after another — three counters in a row, then four counters in the shape of l, L, Z, T — and challenged Mariam to evolve the patterns forward by applying Conway’s rules.
 
@@ -109,21 +110,23 @@ Still, when Mariam told me about Lifeline, a newsletter for Life enthusiasts, I 
 
 As a child, she had shared all her discoveries with me, and even as I lost track of the specifics, I cheered her accomplishments. As Mariam withdrew and became private in the way of teenagers, I knew only from catching glimpses of gliders on the computer screen that she was still exploring Life. In college, she told me occasionally about things she had found. Then, nothing.
 
-[comment]: # TODO: Add glider synthesis of Schick Engine here. Or maybe below where Mariam talks about masturbation.
-
 At Mariam’s the day before, flipping through the box of floppy disks, I had found a videocassette at the back of the box. The videocassette was labeled “Mariam / Life rant.” I had added it to the box of Mariam’s things I was bringing home with me.
 
 It was one of those old 8mm cassettes, so it wouldn’t fit in my VHS player. After an hour of searching, I found my old Sony Video8 recorder, slid the cassette in, and pressed play.
 
 The video shows a baby sitting on a carpet playing with blocks. Off camera, two women are talking. One woman — from the quality of the sound, I guess she is the person holding the camera — exclaims: “Ooh! We should do it like an interview. Suppose you’re on television, and I’m interviewing you.”
 
-The camera swings away from the baby and Mariam appears. My breath caught. In the video, she is kneeling on the carpet, fingering one of the baby’s colored blocks. She looks so young and full of life, not grey and emaciated as she had become in the final months of her cancer. I guessed she was in her mid-twenties, a few years out of college. It was good to remember her like this.
+<pattern-anchor src=./patterns/two-figures-side-by-side.rle></pattern-anchor>
+
+The camera swings away from the baby and Mariam appears. My breath caught. In the video, she is kneeling on the carpet, fingering one of the baby’s colored blocks. She looks so young and full of life, not grey and gaunt as she had become in the final months of her cancer. I guessed she was in her mid-twenties, a few years out of college. It was good to remember her like this.
 
 The voice behind the camera says, “So, Mariam, tell me why you’re over the Game of Life.”
 
 Mariam looks uncomfortable. Watching, I imagined she did not expect to have the video camera turned on her and did not appreciate it. For a second, I wondered if she would refuse. But then she shakes her hair defiantly and looks at the camera. 
 
 “I’m tired of feeling like I don’t belong. Remember LIFELINE, that newsletter for Life enthusiasts? Did you ever seen any woman’s name anywhere in LIFELINE? The whole thing is so male. I mean, think about it. This obsession with finding glider syntheses for all common patterns. It’s mathematical masturbation. A bunch of dudes jerking off together as though putting enough sperm in one place might spontaneously create a baby without the inconvenience of female involvement. It’s sort of pathetic, isn’t it?”
+
+<pattern-anchor src=./patterns/schick-engine.rle></pattern-anchor>
 
 The other voice protests in mock horror: “Mariam! In front of David!”
 
@@ -137,13 +140,19 @@ Mariam shrugs.
 
 “Yeah, they can be beautiful. And you can use glider syntheses to build things. But who cares? It has nothing to do with life — real life. If you study chemistry or electrical engineering or whatever, you can use what you learn to make things happen in the real world. I think that’s how the Life guys think of themselves. Like Priestley or Faraday or Dalton or Pasteur — finding new ways to isolate elements and combine them together. I suppose a glider synthesis is a bit like a chemical reaction.
 
+<pattern-anchor src=./patterns/gosper-glider-gun.rle></pattern-anchor>
+
 Or maybe they think of themselves like astronomers looking out into another world. Like Galileo and Kepler and Copernicus. Have you noticed how they’re obsessed with attribution? They’re so careful to catalog who first noticed each pattern and when he found it (it’s always a ‘he’). Just like Halley’s Comet and the Kuiper Belt and the Oort Cloud, there’s the Gosper gun and the Schick engine and the Corderman switch engine. There’s even a pattern called Kok’s galaxy! It’s right there in the name. They call it a galaxy!”
+
+<pattern-anchor src=./patterns/koks-galaxy.rle></pattern-anchor>
 
 Ashlyn cuts in, “But it’s not like a comet or a galaxy is something you can touch. Andromeda is 2.5 million light years away. At that distance, it’s about as abstract as a pattern in Life.”
 
 Ashlyn and Mariam had both majored in physics in college. When she graduated, Ashlyn had become a physicist, teaching and doing research at the state university.
 
 “At least it’s real, though. It’s part of the world,” Mariam says. She pauses. “I’ll tell you what they are, all the Life enthusiasts. They’re a bunch of boys collecting baseball cards. You know how some of them call their collections of oscillators and still lives ‘stamp collections’? That’s what it is to them! Life is a male hobby, like fixing up old cars. It’s for men to posture and compete with other men for irrelevant prizes. If men want to spend their time on pointless hobbies, that’s fine. It’s easy to find time to explore Life after work if someone else is doing your laundry and making dinner and changing diapers and cleaning the house. But we don’t have that luxury, you and me. You can keep playing Life if you want to, but I’m out.”
+
+<pattern-anchor src=./patterns/stamp-collection-still-lives.rle></pattern-anchor>
 
 The video crackled then and went black. A few seconds later, it showed a baby (David?) playing outdoors in a sandbox. I turned off the recorder and sat back.
 
@@ -161,9 +170,11 @@ Ashlyn tilted her head.
 
 Ashlyn was no longer looking at me, but off into the distance. “We went backpacking in Utah over spring break one year, and she told me she saw a scattering of blinkers and beehives and blocks when she looked up at the stars. There was a shooting star, and she asked me if I had seen the glider.”
 
+<pattern-anchor src=./patterns/field-of-stars.rle></pattern-anchor>
+
 She looked back at me. “I remember she ranted about how male-dominated the Life community was. All that was true, and still is true today. But mostly, I think she was lonely and frustrated. The other Life enthusiasts she knew — all of them men — were polite, but distant. I don’t think she ever felt accepted as one of them. And because Life enthusiasts build on each others’ work, being left out of conversations — in letters, in private email chains — meant that she felt like she was always behind. She was always disappointed in what she had accomplished in Life. On top of all that, non-Life enthusiasts thought her strange for having such an abstract and yet consuming hobby.”
 
-Ashlyn rubbed her nose and gave an awkward laugh. “I’m sorry, I don’t mean to be such a downer. Today of all days, we should be remembering Mariam at her best.”
+Ashlyn rubbed her nose and gave an awkward laugh. “I’m sorry, I don’t mean to be such a downer. I should be remembering Mariam at her best.”
 
 I told her there was no need to apologize. Then I confessed that I hadn’t been asking just because of the video. I told her about the program running on Mariam’s terminal, and the files on her computer, and the floppy disks going back fifteen years.
 
@@ -204,3 +215,5 @@ It was dark outside when I got back from the reception. On my way home, I had tu
 But she had stirred something in me, some memory of the excitement I had felt when looking at the my first Life patterns so many years ago. I remembered the surprise I had felt when the shortcut I had tried to take in evolving my big ‘M’ pattern hadn’t worked — how Life had proved more complicated than I thought.
 
 I booted up my computer, opened my web browser, and found a web site offering a program which could be used to run Life. I downloaded it. And I began to play.
+
+<pattern-anchor src=./patterns/halfmax.rle></pattern-anchor>

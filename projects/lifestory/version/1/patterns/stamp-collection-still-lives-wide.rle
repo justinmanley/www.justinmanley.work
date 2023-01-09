@@ -1,0 +1,10 @@
+# This consists of multiple patterns. From left to right, top to bottom:
+#   https://conwaylife.com/wiki/Shillelagh
+#   Cis-mirrored R-bee
+#   https://conwaylife.com/wiki/Dead_spark_coil
+#   https://conwaylife.com/wiki/Fourteener
+x = 36, y = 5, rule = B3/S23
+b2o15b2o3b2o8b2o$bo6bo3bo5bobobobo4b2o2bobo$2bo4bobobobo6bobo6bo5bo$o
+bo4bobobobo4bobobobo5b5o$2o6b2ob2o5b2o3b2o7bo!
+5bo$4bobo$5bo2$3b5o$2bo5bo$bobo3bobo$bobobobobo$2obobobob2o$o2b5o2bo$
+2bo5bo$3b5o$5bo!

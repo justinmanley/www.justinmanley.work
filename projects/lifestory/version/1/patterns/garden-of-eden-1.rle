@@ -3,6 +3,7 @@
 #C The first Garden of Eden that was explicitly constructed. Found in 
 #C 1971.
 #C www.conwaylife.com/wiki/index.php?title=Garden_of_Eden_1
+# MAXIMUM EXTENT TOP -20 LEFT -6 BOTTOM 17 RIGHT 33 (plus a glider)
 x = 28, y = 9, rule = B3/S23
 28o$2obob3ob3ob2obobobobobobo$obob3ob3ob4ob3obobobobo$5ob3ob3ob4ob9o$
 obob2ob3ob3obob3obobobobo$4ob3ob3ob5ob2obobobo$b2ob3ob3ob3obobob8o$2o
