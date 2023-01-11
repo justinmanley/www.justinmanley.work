@@ -1,11 +1,13 @@
-[
-    {
-        "bounds": {
-            "top": -2,
-            "left": -2,
-            "bottom": 11,
-            "right": 11
-        },
-        "stepCriterion": "FullyContainedWithinSteppableRegion"
-    }
-]
+{
+    "atomicUpdateRegions": [
+        {
+            "bounds": {
+                "top": -2,
+                "left": -2,
+                "bottom": 11,
+                "right": 11
+            },
+            "stepCriterion": "FullyContainedWithinSteppableRegion"
+        }
+    ]
+}

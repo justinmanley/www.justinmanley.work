@@ -5387,15 +5387,15 @@ var $author$project$DebugSettings$decoder = function () {
 			]));
 }();
 var $author$project$PatternAnchor$PatternAnchor = F4(
-	function (id, patternRle, atomicUpdateRegionsJson, bounds) {
-		return {atomicUpdateRegionsJson: atomicUpdateRegionsJson, bounds: bounds, id: id, patternRle: patternRle};
+	function (id, patternRle, renderingOptions, bounds) {
+		return {bounds: bounds, id: id, patternRle: patternRle, renderingOptions: renderingOptions};
 	});
 var $author$project$PatternAnchor$decoder = A5(
 	$elm$json$Json$Decode$map4,
 	$author$project$PatternAnchor$PatternAnchor,
 	A2($elm$json$Json$Decode$field, 'id', $elm$json$Json$Decode$string),
 	A2($elm$json$Json$Decode$field, 'patternRle', $elm$json$Json$Decode$string),
-	A2($elm$json$Json$Decode$field, 'atomicUpdateRegionsJson', $elm$json$Json$Decode$string),
+	A2($elm$json$Json$Decode$field, 'patternRenderingOptionsJson', $elm$json$Json$Decode$string),
 	A2(
 		$elm$json$Json$Decode$field,
 		'bounds',
@@ -5949,61 +5949,19 @@ var $author$project$Main$insertPattern = F3(
 			cells: A3($elm$core$Set$foldl, insertWithConflictLogging, grid.cells, pattern.cells)
 		};
 	});
-var $author$project$Vector2$x = $elm$core$Tuple$first;
-var $elm$core$Tuple$second = function (_v0) {
-	var y = _v0.b;
-	return y;
-};
-var $author$project$Vector2$y = $elm$core$Tuple$second;
-var $author$project$Vector2$add = F2(
-	function (v1, v2) {
-		return _Utils_Tuple2(
-			$author$project$Vector2$x(v1) + $author$project$Vector2$x(v2),
-			$author$project$Vector2$y(v1) + $author$project$Vector2$y(v2));
-	});
-var $elm$core$Basics$composeR = F3(
-	function (f, g, x) {
-		return g(
-			f(x));
-	});
-var $elm$core$Basics$min = F2(
-	function (x, y) {
-		return (_Utils_cmp(x, y) < 0) ? x : y;
-	});
-var $author$project$Life$GridCells$bounds = function (cells) {
-	var _v0 = $elm$core$Set$toList(cells);
-	if (!_v0.b) {
-		return $elm$core$Maybe$Nothing;
-	} else {
-		return $elm$core$Maybe$Just(
-			{
-				bottom: A3(
-					$elm$core$Set$foldl,
-					A2($elm$core$Basics$composeR, $author$project$Vector2$y, $elm$core$Basics$max),
-					0,
-					cells) + 1,
-				left: A3(
-					$elm$core$Set$foldl,
-					A2($elm$core$Basics$composeR, $author$project$Vector2$x, $elm$core$Basics$min),
-					0,
-					cells),
-				right: A3(
-					$elm$core$Set$foldl,
-					A2($elm$core$Basics$composeR, $author$project$Vector2$x, $elm$core$Basics$max),
-					0,
-					cells) + 1,
-				top: A3(
-					$elm$core$Set$foldl,
-					A2($elm$core$Basics$composeR, $author$project$Vector2$y, $elm$core$Basics$min),
-					0,
-					cells)
-			});
-	}
+var $author$project$BoundingRectangle$horizontal = function (_v0) {
+	var left = _v0.left;
+	var right = _v0.right;
+	return {end: right, start: left};
 };
 var $elm$parser$Parser$deadEndsToString = function (deadEnds) {
 	return 'TODO deadEndsToString';
 };
 var $elm$json$Json$Decode$decodeString = _Json_runOnString;
+var $author$project$Life$PatternRenderingOptions$PatternRenderingOptions = F2(
+	function (atomicUpdateRegions, focusRegion) {
+		return {atomicUpdateRegions: atomicUpdateRegions, focusRegion: focusRegion};
+	});
 var $author$project$Life$AtomicUpdateRegion$AtomicUpdateRegion$AtomicUpdateRegion = F5(
 	function (bounds, movement, boundsEdgeMovements, stepCriterion, stepsElapsed) {
 		return {bounds: bounds, boundsEdgeMovements: boundsEdgeMovements, movement: movement, stepCriterion: stepCriterion, stepsElapsed: stepsElapsed};
@@ -6106,8 +6064,76 @@ var $author$project$Life$AtomicUpdateRegion$AtomicUpdateRegion$decoder = functio
 		A2($elm$json$Json$Decode$field, 'stepCriterion', $author$project$Life$AtomicUpdateRegion$StepCriterion$decoder),
 		$elm$json$Json$Decode$succeed(0));
 }();
+var $author$project$Life$PatternRenderingOptions$decoder = A3(
+	$elm$json$Json$Decode$map2,
+	$author$project$Life$PatternRenderingOptions$PatternRenderingOptions,
+	A2(
+		$elm$json$Json$Decode$field,
+		'atomicUpdateRegions',
+		$elm$json$Json$Decode$list($author$project$Life$AtomicUpdateRegion$AtomicUpdateRegion$decoder)),
+	$elm$json$Json$Decode$maybe(
+		A2(
+			$elm$json$Json$Decode$field,
+			'focusRegion',
+			$author$project$BoundingRectangle$decoder($elm$json$Json$Decode$int))));
+var $author$project$Vector2$x = $elm$core$Tuple$first;
+var $elm$core$Tuple$second = function (_v0) {
+	var y = _v0.b;
+	return y;
+};
+var $author$project$Vector2$y = $elm$core$Tuple$second;
+var $author$project$Vector2$add = F2(
+	function (v1, v2) {
+		return _Utils_Tuple2(
+			$author$project$Vector2$x(v1) + $author$project$Vector2$x(v2),
+			$author$project$Vector2$y(v1) + $author$project$Vector2$y(v2));
+	});
+var $elm$core$Basics$composeR = F3(
+	function (f, g, x) {
+		return g(
+			f(x));
+	});
+var $elm$core$Basics$min = F2(
+	function (x, y) {
+		return (_Utils_cmp(x, y) < 0) ? x : y;
+	});
+var $author$project$Life$GridCells$bounds = function (cells) {
+	var _v0 = $elm$core$Set$toList(cells);
+	if (!_v0.b) {
+		return $elm$core$Maybe$Nothing;
+	} else {
+		return $elm$core$Maybe$Just(
+			{
+				bottom: A3(
+					$elm$core$Set$foldl,
+					A2($elm$core$Basics$composeR, $author$project$Vector2$y, $elm$core$Basics$max),
+					0,
+					cells) + 1,
+				left: A3(
+					$elm$core$Set$foldl,
+					A2($elm$core$Basics$composeR, $author$project$Vector2$x, $elm$core$Basics$min),
+					0,
+					cells),
+				right: A3(
+					$elm$core$Set$foldl,
+					A2($elm$core$Basics$composeR, $author$project$Vector2$x, $elm$core$Basics$max),
+					0,
+					cells) + 1,
+				top: A3(
+					$elm$core$Set$foldl,
+					A2($elm$core$Basics$composeR, $author$project$Vector2$y, $elm$core$Basics$min),
+					0,
+					cells)
+			});
+	}
+};
 var $author$project$BoundingRectangle$height = function (bounds) {
 	return bounds.bottom - bounds.top;
+};
+var $author$project$Interval$length = function (_v0) {
+	var start = _v0.start;
+	var end = _v0.end;
+	return end - start;
 };
 var $elm$core$Set$fromList = function (list) {
 	return A3($elm$core$List$foldl, $elm$core$Set$insert, $elm$core$Set$empty, list);
@@ -6132,6 +6158,48 @@ var $author$project$BoundingRectangle$offsetBy = F2(
 		var x = _v0.a;
 		var y = _v0.b;
 		return {bottom: y + bounds.bottom, left: x + bounds.left, right: x + bounds.right, top: y + bounds.top};
+	});
+var $author$project$PageCoordinate$toGrid = F2(
+	function (cellSizeInPixels, x) {
+		return $elm$core$Basics$floor(x / cellSizeInPixels);
+	});
+var $author$project$BoundingRectangle$width = function (bounds) {
+	return bounds.right - bounds.left;
+};
+var $author$project$PatternAnchor$layout = F4(
+	function (_v0, cells, atomicUpdateRegions, focusRegion) {
+		var preferredHorizontalRange = _v0.preferredHorizontalRange;
+		var cellSizeInPixels = _v0.cellSizeInPixels;
+		var reserved = _v0.reserved;
+		var preferredHorizontalCenter = preferredHorizontalRange.start + ($author$project$Interval$length(preferredHorizontalRange) / 2);
+		var topLeftPositionToAlignWithPatternAnchorTopAndCenterHorizontally = function (gridBounds) {
+			return _Utils_Tuple2(
+				(A2($author$project$PageCoordinate$toGrid, cellSizeInPixels, preferredHorizontalCenter) - (($author$project$BoundingRectangle$width(gridBounds) / 2) | 0)) - gridBounds.left,
+				(A2(
+					$author$project$PageCoordinate$toGrid,
+					cellSizeInPixels,
+					reserved.top + ($author$project$BoundingRectangle$height(reserved) / 2)) - (($author$project$BoundingRectangle$height(gridBounds) / 2) | 0)) - gridBounds.top);
+		};
+		var initialBounds = A2(
+			$elm$core$Maybe$withDefault,
+			$author$project$BoundingRectangle$empty(0),
+			$author$project$Life$GridCells$bounds(cells));
+		var topLeft = topLeftPositionToAlignWithPatternAnchorTopAndCenterHorizontally(
+			A2($elm$core$Maybe$withDefault, initialBounds, focusRegion));
+		var offsetAtomicUpdateRegion = function (atomicUpdateRegion) {
+			return _Utils_update(
+				atomicUpdateRegion,
+				{
+					bounds: A2($author$project$BoundingRectangle$offsetBy, topLeft, atomicUpdateRegion.bounds)
+				});
+		};
+		return {
+			atomicUpdateRegions: A2($elm$core$List$map, offsetAtomicUpdateRegion, atomicUpdateRegions),
+			cells: A2(
+				$elm$core$Set$map,
+				$author$project$Vector2$add(topLeft),
+				cells)
+		};
 	});
 var $author$project$Life$RleParser$initGrid = {completed: false, gridCells: $elm$core$Set$empty, x: 0, y: 0};
 var $elm$parser$Parser$Done = function (a) {
@@ -7005,24 +7073,8 @@ var $elm$parser$Parser$run = F2(
 		}
 	});
 var $author$project$Life$RleParser$parse = $elm$parser$Parser$run($author$project$Life$RleParser$lines);
-var $author$project$PageCoordinate$toGrid = F2(
-	function (cellSizeInPixels, x) {
-		return $elm$core$Basics$floor(x / cellSizeInPixels);
-	});
-var $author$project$BoundingRectangle$width = function (bounds) {
-	return bounds.right - bounds.left;
-};
 var $author$project$PatternAnchor$toPattern = F3(
-	function (cellSizeInPixels, article, anchor) {
-		var articleCenter = article.left + ($author$project$BoundingRectangle$width(article) / 2);
-		var offset = function (bounds) {
-			return _Utils_Tuple2(
-				A2($author$project$PageCoordinate$toGrid, cellSizeInPixels, articleCenter) - (($author$project$BoundingRectangle$width(bounds) / 2) | 0),
-				A2(
-					$author$project$PageCoordinate$toGrid,
-					cellSizeInPixels,
-					anchor.bounds.top + ($author$project$BoundingRectangle$height(anchor.bounds) / 2)) - (($author$project$BoundingRectangle$height(bounds) / 2) | 0));
-		};
+	function (cellSizeInPixels, preferredHorizontalRange, anchor) {
 		var _v0 = $author$project$Life$RleParser$parse(anchor.patternRle);
 		if (_v0.$ === 'Err') {
 			var err = _v0.a;
@@ -7032,38 +7084,19 @@ var $author$project$PatternAnchor$toPattern = F3(
 				$elm$core$Maybe$Nothing);
 		} else {
 			var cells = _v0.a;
-			var initialBounds = A2(
-				$elm$core$Maybe$withDefault,
-				$author$project$BoundingRectangle$empty(0),
-				$author$project$Life$GridCells$bounds(cells));
-			var start = offset(initialBounds);
-			var offsetAtomicUpdateRegion = function (atomicUpdateRegion) {
-				return _Utils_update(
-					atomicUpdateRegion,
-					{
-						bounds: A2($author$project$BoundingRectangle$offsetBy, start, atomicUpdateRegion.bounds)
-					});
-			};
-			var _v1 = A2(
-				$elm$json$Json$Decode$decodeString,
-				$elm$json$Json$Decode$list($author$project$Life$AtomicUpdateRegion$AtomicUpdateRegion$decoder),
-				anchor.atomicUpdateRegionsJson);
+			var _v1 = A2($elm$json$Json$Decode$decodeString, $author$project$Life$PatternRenderingOptions$decoder, anchor.renderingOptions);
 			if (_v1.$ === 'Err') {
 				var err = _v1.a;
 				return A2(
 					$author$project$DebugSettings$log,
-					'Could not parse atomic update regions ' + (anchor.id + ('. ' + $elm$json$Json$Decode$errorToString(err))),
+					'Could not parse rendering options ' + (anchor.id + ('. ' + $elm$json$Json$Decode$errorToString(err))),
 					$elm$core$Maybe$Nothing);
 			} else {
-				var atomicUpdateRegions = _v1.a;
+				var atomicUpdateRegions = _v1.a.atomicUpdateRegions;
+				var focusRegion = _v1.a.focusRegion;
+				var params = {cellSizeInPixels: cellSizeInPixels, preferredHorizontalRange: preferredHorizontalRange, reserved: anchor.bounds};
 				return $elm$core$Maybe$Just(
-					{
-						atomicUpdateRegions: A2($elm$core$List$map, offsetAtomicUpdateRegion, atomicUpdateRegions),
-						cells: A2(
-							$elm$core$Set$map,
-							$author$project$Vector2$add(start),
-							cells)
-					});
+					A4($author$project$PatternAnchor$layout, params, cells, atomicUpdateRegions, focusRegion));
 			}
 		}
 	});
@@ -7073,7 +7106,10 @@ var $author$project$Page$patterns = function (_v0) {
 	var anchors = _v0.anchors;
 	return A2(
 		$elm$core$List$filterMap,
-		A2($author$project$PatternAnchor$toPattern, cellSizeInPixels, article),
+		A2(
+			$author$project$PatternAnchor$toPattern,
+			cellSizeInPixels,
+			$author$project$BoundingRectangle$horizontal(article)),
 		anchors);
 };
 var $author$project$Main$insertPatterns = F2(

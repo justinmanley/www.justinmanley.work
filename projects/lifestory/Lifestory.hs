@@ -149,5 +149,5 @@ addAtomicUpdateRegionToPatternAnchors =
 
     transformAttr (k, v) =
       if k == "src"
-        then [(k, v), ("atomic-update-regions", replaceString "rle" "json" v)]
+        then [(k, v), ("rendering-options", replaceString "rle" "json" v)]
         else [(k, v)]

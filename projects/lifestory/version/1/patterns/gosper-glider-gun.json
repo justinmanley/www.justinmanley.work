@@ -1,21 +1,23 @@
-[
-    {
-        "bounds": {
-            "top": 0,
-            "left": 0,
-            "bottom": 9,
-            "right": 36
-        },
-        "boundsEdgeMovements": {
-            "bottom": {
-                "direction": 1,
-                "period": 4
+{
+    "atomicUpdateRegions": [
+        {
+            "bounds": {
+                "top": 0,
+                "left": 0,
+                "bottom": 9,
+                "right": 36
             },
-            "right": {
-                "direction": 1,
-                "period": 4
-            }
-        },
-        "stepCriterion": "AnyIntersectionWithSteppableRegion"
-    }
-]
+            "boundsEdgeMovements": {
+                "bottom": {
+                    "direction": 1,
+                    "period": 4
+                },
+                "right": {
+                    "direction": 1,
+                    "period": 4
+                }
+            },
+            "stepCriterion": "AnyIntersectionWithSteppableRegion"
+        }
+    ]
+}
