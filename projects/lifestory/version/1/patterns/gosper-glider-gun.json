@@ -6,6 +6,16 @@
             "bottom": 9,
             "right": 36
         },
-        "stepCriterion": "FullyContainedWithinSteppableRegion"
+        "boundsEdgeMovements": {
+            "bottom": {
+                "direction": 1,
+                "period": 4
+            },
+            "right": {
+                "direction": 1,
+                "period": 4
+            }
+        },
+        "stepCriterion": "AnyIntersectionWithSteppableRegion"
     }
 ]

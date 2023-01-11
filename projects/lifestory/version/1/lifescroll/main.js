@@ -5289,7 +5289,9 @@ var $elm$core$Task$perform = F2(
 				A2($elm$core$Task$map, toMessage, task)));
 	});
 var $elm$browser$Browser$element = _Browser_element;
-var $author$project$BoundingRectangle$empty = {bottom: 0, left: 0, right: 0, top: 0};
+var $author$project$BoundingRectangle$empty = function (value) {
+	return {bottom: value, left: value, right: value, top: value};
+};
 var $elm$core$Set$Set_elm_builtin = function (a) {
 	return {$: 'Set_elm_builtin', a: a};
 };
@@ -5299,9 +5301,20 @@ var $elm$core$Set$empty = $elm$core$Set$Set_elm_builtin($elm$core$Dict$empty);
 var $author$project$Life$GridCells$empty = $elm$core$Set$empty;
 var $author$project$Life$Life$empty = {atomicUpdateRegions: _List_Nil, cells: $author$project$Life$GridCells$empty};
 var $author$project$DebugSettings$empty = {atomicUpdates: false, grid: false, layout: false, log: false, reserved: false};
-var $author$project$Page$empty = {anchors: _List_Nil, article: $author$project$BoundingRectangle$empty, body: $author$project$BoundingRectangle$empty, cellSizeInPixels: 16, debug: $author$project$DebugSettings$empty};
+var $author$project$Page$empty = {
+	anchors: _List_Nil,
+	article: $author$project$BoundingRectangle$empty(0),
+	body: $author$project$BoundingRectangle$empty(0),
+	cellSizeInPixels: 16,
+	debug: $author$project$DebugSettings$empty
+};
 var $author$project$ScrollState$empty = {furthest: 0, mostRecent: 0};
-var $author$project$Main$emptyModel = {life: $author$project$Life$Life$empty, page: $author$project$Page$empty, scroll: $author$project$ScrollState$empty, viewport: $author$project$BoundingRectangle$empty};
+var $author$project$Main$emptyModel = {
+	life: $author$project$Life$Life$empty,
+	page: $author$project$Page$empty,
+	scroll: $author$project$ScrollState$empty,
+	viewport: $author$project$BoundingRectangle$empty(0)
+};
 var $elm$core$Platform$Cmd$batch = _Platform_batch;
 var $elm$core$Platform$Cmd$none = $elm$core$Platform$Cmd$batch(_List_Nil);
 var $author$project$Main$init = function (_v0) {
@@ -5991,14 +6004,39 @@ var $elm$parser$Parser$deadEndsToString = function (deadEnds) {
 	return 'TODO deadEndsToString';
 };
 var $elm$json$Json$Decode$decodeString = _Json_runOnString;
-var $author$project$Life$AtomicUpdateRegion$AtomicUpdateRegion$AtomicUpdateRegion = F4(
-	function (bounds, movement, stepCriterion, stepsElapsed) {
-		return {bounds: bounds, movement: movement, stepCriterion: stepCriterion, stepsElapsed: stepsElapsed};
+var $author$project$Life$AtomicUpdateRegion$AtomicUpdateRegion$AtomicUpdateRegion = F5(
+	function (bounds, movement, boundsEdgeMovements, stepCriterion, stepsElapsed) {
+		return {bounds: bounds, boundsEdgeMovements: boundsEdgeMovements, movement: movement, stepCriterion: stepCriterion, stepsElapsed: stepsElapsed};
 	});
 var $author$project$Life$AtomicUpdateRegion$Movement$Movement = F2(
 	function (direction, period) {
 		return {direction: direction, period: period};
 	});
+var $elm$json$Json$Decode$int = _Json_decodeInt;
+var $author$project$Life$AtomicUpdateRegion$EdgeMovement$decoder = A3(
+	$elm$json$Json$Decode$map2,
+	$author$project$Life$AtomicUpdateRegion$Movement$Movement,
+	A2($elm$json$Json$Decode$field, 'direction', $elm$json$Json$Decode$int),
+	A2($elm$json$Json$Decode$field, 'period', $elm$json$Json$Decode$int));
+var $elm$json$Json$Decode$maybe = function (decoder) {
+	return $elm$json$Json$Decode$oneOf(
+		_List_fromArray(
+			[
+				A2($elm$json$Json$Decode$map, $elm$core$Maybe$Just, decoder),
+				$elm$json$Json$Decode$succeed($elm$core$Maybe$Nothing)
+			]));
+};
+var $author$project$Life$AtomicUpdateRegion$BoundingRectangleEdgeMovements$decoder = A5(
+	$elm$json$Json$Decode$map4,
+	$author$project$BoundingRectangle$BoundingRectangle,
+	$elm$json$Json$Decode$maybe(
+		A2($elm$json$Json$Decode$field, 'top', $author$project$Life$AtomicUpdateRegion$EdgeMovement$decoder)),
+	$elm$json$Json$Decode$maybe(
+		A2($elm$json$Json$Decode$field, 'left', $author$project$Life$AtomicUpdateRegion$EdgeMovement$decoder)),
+	$elm$json$Json$Decode$maybe(
+		A2($elm$json$Json$Decode$field, 'bottom', $author$project$Life$AtomicUpdateRegion$EdgeMovement$decoder)),
+	$elm$json$Json$Decode$maybe(
+		A2($elm$json$Json$Decode$field, 'right', $author$project$Life$AtomicUpdateRegion$EdgeMovement$decoder)));
 var $elm$core$Tuple$pair = F2(
 	function (a, b) {
 		return _Utils_Tuple2(a, b);
@@ -6010,8 +6048,7 @@ var $author$project$Vector2$decoder = function (valueDecoder) {
 		A2($elm$json$Json$Decode$field, 'x', valueDecoder),
 		A2($elm$json$Json$Decode$field, 'y', valueDecoder));
 };
-var $elm$json$Json$Decode$int = _Json_decodeInt;
-var $author$project$Life$AtomicUpdateRegion$Movement$decoder = A3(
+var $author$project$Life$AtomicUpdateRegion$Movement2$decoder = A3(
 	$elm$json$Json$Decode$map2,
 	$author$project$Life$AtomicUpdateRegion$Movement$Movement,
 	A2(
@@ -6036,25 +6073,39 @@ var $author$project$Life$AtomicUpdateRegion$StepCriterion$decoder = A2(
 		}
 	},
 	$elm$json$Json$Decode$string);
-var $elm$json$Json$Decode$maybe = function (decoder) {
-	return $elm$json$Json$Decode$oneOf(
-		_List_fromArray(
-			[
-				A2($elm$json$Json$Decode$map, $elm$core$Maybe$Just, decoder),
-				$elm$json$Json$Decode$succeed($elm$core$Maybe$Nothing)
-			]));
-};
-var $author$project$Life$AtomicUpdateRegion$AtomicUpdateRegion$decoder = A5(
-	$elm$json$Json$Decode$map4,
-	$author$project$Life$AtomicUpdateRegion$AtomicUpdateRegion$AtomicUpdateRegion,
-	A2(
-		$elm$json$Json$Decode$field,
-		'bounds',
-		$author$project$BoundingRectangle$decoder($elm$json$Json$Decode$int)),
-	$elm$json$Json$Decode$maybe(
-		A2($elm$json$Json$Decode$field, 'movement', $author$project$Life$AtomicUpdateRegion$Movement$decoder)),
-	A2($elm$json$Json$Decode$field, 'stepCriterion', $author$project$Life$AtomicUpdateRegion$StepCriterion$decoder),
-	$elm$json$Json$Decode$succeed(0));
+var $elm$core$Maybe$withDefault = F2(
+	function (_default, maybe) {
+		if (maybe.$ === 'Just') {
+			var value = maybe.a;
+			return value;
+		} else {
+			return _default;
+		}
+	});
+var $author$project$Life$AtomicUpdateRegion$AtomicUpdateRegion$decoder = function () {
+	var maybeWithDefault = F2(
+		function (defaultValue, d) {
+			return A2(
+				$elm$json$Json$Decode$map,
+				$elm$core$Maybe$withDefault(defaultValue),
+				$elm$json$Json$Decode$maybe(d));
+		});
+	return A6(
+		$elm$json$Json$Decode$map5,
+		$author$project$Life$AtomicUpdateRegion$AtomicUpdateRegion$AtomicUpdateRegion,
+		A2(
+			$elm$json$Json$Decode$field,
+			'bounds',
+			$author$project$BoundingRectangle$decoder($elm$json$Json$Decode$int)),
+		$elm$json$Json$Decode$maybe(
+			A2($elm$json$Json$Decode$field, 'movement', $author$project$Life$AtomicUpdateRegion$Movement2$decoder)),
+		A2(
+			maybeWithDefault,
+			$author$project$BoundingRectangle$empty($elm$core$Maybe$Nothing),
+			A2($elm$json$Json$Decode$field, 'boundsEdgeMovements', $author$project$Life$AtomicUpdateRegion$BoundingRectangleEdgeMovements$decoder)),
+		A2($elm$json$Json$Decode$field, 'stepCriterion', $author$project$Life$AtomicUpdateRegion$StepCriterion$decoder),
+		$elm$json$Json$Decode$succeed(0));
+}();
 var $author$project$BoundingRectangle$height = function (bounds) {
 	return bounds.bottom - bounds.top;
 };
@@ -6082,7 +6133,7 @@ var $author$project$BoundingRectangle$offsetBy = F2(
 		var y = _v0.b;
 		return {bottom: y + bounds.bottom, left: x + bounds.left, right: x + bounds.right, top: y + bounds.top};
 	});
-var $author$project$Life$RleParser$initGrid = {gridCells: $elm$core$Set$empty, x: 0, y: 0};
+var $author$project$Life$RleParser$initGrid = {completed: false, gridCells: $elm$core$Set$empty, x: 0, y: 0};
 var $elm$parser$Parser$Done = function (a) {
 	return {$: 'Done', a: a};
 };
@@ -6292,6 +6343,35 @@ var $author$project$Life$RleParser$cellToken = $elm$parser$Parser$oneOf(
 			},
 			$elm$parser$Parser$token('$'))
 		]));
+var $elm$parser$Parser$Problem = function (a) {
+	return {$: 'Problem', a: a};
+};
+var $elm$parser$Parser$Advanced$problem = function (x) {
+	return $elm$parser$Parser$Advanced$Parser(
+		function (s) {
+			return A2(
+				$elm$parser$Parser$Advanced$Bad,
+				false,
+				A2($elm$parser$Parser$Advanced$fromState, s, x));
+		});
+};
+var $elm$parser$Parser$problem = function (msg) {
+	return $elm$parser$Parser$Advanced$problem(
+		$elm$parser$Parser$Problem(msg));
+};
+var $elm$parser$Parser$Advanced$succeed = function (a) {
+	return $elm$parser$Parser$Advanced$Parser(
+		function (s) {
+			return A3($elm$parser$Parser$Advanced$Good, false, a, s);
+		});
+};
+var $elm$parser$Parser$succeed = $elm$parser$Parser$Advanced$succeed;
+var $author$project$Life$RleParser$complete = function (gridState) {
+	return gridState.completed ? $elm$parser$Parser$problem('Pattern contains multiple exclamation points (!).') : $elm$parser$Parser$succeed(
+		_Utils_update(
+			gridState,
+			{completed: true}));
+};
 var $elm$parser$Parser$ExpectingEnd = {$: 'ExpectingEnd'};
 var $elm$parser$Parser$Advanced$end = function (x) {
 	return $elm$parser$Parser$Advanced$Parser(
@@ -6515,13 +6595,6 @@ var $elm$parser$Parser$Advanced$int = F2(
 	});
 var $elm$parser$Parser$int = A2($elm$parser$Parser$Advanced$int, $elm$parser$Parser$ExpectingInt, $elm$parser$Parser$ExpectingInt);
 var $author$project$Parser$Extra$nat = $elm$parser$Parser$int;
-var $elm$parser$Parser$Advanced$succeed = function (a) {
-	return $elm$parser$Parser$Advanced$Parser(
-		function (s) {
-			return A3($elm$parser$Parser$Advanced$Good, false, a, s);
-		});
-};
-var $elm$parser$Parser$succeed = $elm$parser$Parser$Advanced$succeed;
 var $elm$parser$Parser$ExpectingSymbol = function (a) {
 	return {$: 'ExpectingSymbol', a: a};
 };
@@ -6545,22 +6618,6 @@ var $author$project$Parser$Extra$int = $elm$parser$Parser$oneOf(
 			$author$project$Parser$Extra$nat),
 			$author$project$Parser$Extra$nat
 		]));
-var $elm$parser$Parser$Problem = function (a) {
-	return {$: 'Problem', a: a};
-};
-var $elm$parser$Parser$Advanced$problem = function (x) {
-	return $elm$parser$Parser$Advanced$Parser(
-		function (s) {
-			return A2(
-				$elm$parser$Parser$Advanced$Bad,
-				false,
-				A2($elm$parser$Parser$Advanced$fromState, s, x));
-		});
-};
-var $elm$parser$Parser$problem = function (msg) {
-	return $elm$parser$Parser$Advanced$problem(
-		$elm$parser$Parser$Problem(msg));
-};
 var $author$project$Life$RleParser$cell = function (gridState) {
 	return $elm$parser$Parser$oneOf(
 		_List_fromArray(
@@ -6585,8 +6642,10 @@ var $author$project$Life$RleParser$cell = function (gridState) {
 				$elm$parser$Parser$token('$')),
 				A2(
 				$elm$parser$Parser$ignorer,
-				$elm$parser$Parser$succeed(
-					$elm$parser$Parser$Done(gridState)),
+				A2(
+					$elm$parser$Parser$map,
+					$elm$parser$Parser$Done,
+					$author$project$Life$RleParser$complete(gridState)),
 				$elm$parser$Parser$token('!')),
 				A2(
 				$elm$parser$Parser$ignorer,
@@ -6953,15 +7012,6 @@ var $author$project$PageCoordinate$toGrid = F2(
 var $author$project$BoundingRectangle$width = function (bounds) {
 	return bounds.right - bounds.left;
 };
-var $elm$core$Maybe$withDefault = F2(
-	function (_default, maybe) {
-		if (maybe.$ === 'Just') {
-			var value = maybe.a;
-			return value;
-		} else {
-			return _default;
-		}
-	});
 var $author$project$PatternAnchor$toPattern = F3(
 	function (cellSizeInPixels, article, anchor) {
 		var articleCenter = article.left + ($author$project$BoundingRectangle$width(article) / 2);
@@ -6984,7 +7034,7 @@ var $author$project$PatternAnchor$toPattern = F3(
 			var cells = _v0.a;
 			var initialBounds = A2(
 				$elm$core$Maybe$withDefault,
-				$author$project$BoundingRectangle$empty,
+				$author$project$BoundingRectangle$empty(0),
 				$author$project$Life$GridCells$bounds(cells));
 			var start = offset(initialBounds);
 			var offsetAtomicUpdateRegion = function (atomicUpdateRegion) {
@@ -7133,20 +7183,61 @@ var $author$project$Life$AtomicUpdateRegion$AtomicUpdateRegion$moveBy = F3(
 	function (movement, stepsElapsed, boundingRectangle) {
 		return (!A2($elm$core$Basics$modBy, movement.period, stepsElapsed)) ? A2($author$project$BoundingRectangle$offsetBy, movement.direction, boundingRectangle) : boundingRectangle;
 	});
+var $author$project$Life$AtomicUpdateRegion$AtomicUpdateRegion$moveBounds = F3(
+	function (maybeMovement, stepsElapsed, boundingRectangle) {
+		if (maybeMovement.$ === 'Just') {
+			var movement = maybeMovement.a;
+			return A3($author$project$Life$AtomicUpdateRegion$AtomicUpdateRegion$moveBy, movement, stepsElapsed, boundingRectangle);
+		} else {
+			return boundingRectangle;
+		}
+	});
+var $elm$core$Maybe$map = F2(
+	function (f, maybe) {
+		if (maybe.$ === 'Just') {
+			var value = maybe.a;
+			return $elm$core$Maybe$Just(
+				f(value));
+		} else {
+			return $elm$core$Maybe$Nothing;
+		}
+	});
+var $author$project$BoundingRectangle$map2 = F3(
+	function (f, a, b) {
+		return {
+			bottom: A2(f, a.bottom, b.bottom),
+			left: A2(f, a.left, b.left),
+			right: A2(f, a.right, b.right),
+			top: A2(f, a.top, b.top)
+		};
+	});
+var $author$project$Life$AtomicUpdateRegion$BoundingRectangleEdgeMovements$moveEdges = F3(
+	function (stepsElapsed, edgeMovements, bounds) {
+		var moveEdge = F2(
+			function (edge, _v0) {
+				var period = _v0.period;
+				var direction = _v0.direction;
+				return (!A2($elm$core$Basics$modBy, period, stepsElapsed)) ? (edge + direction) : edge;
+			});
+		var maybeMoveEdge = function (edge) {
+			return A2(
+				$elm$core$Basics$composeR,
+				$elm$core$Maybe$map(
+					moveEdge(edge)),
+				$elm$core$Maybe$withDefault(edge));
+		};
+		return A3($author$project$BoundingRectangle$map2, maybeMoveEdge, bounds, edgeMovements);
+	});
 var $author$project$Life$AtomicUpdateRegion$AtomicUpdateRegion$next = function (region) {
 	var stepsElapsed = region.stepsElapsed + 1;
 	return _Utils_update(
 		region,
 		{
-			bounds: function () {
-				var _v0 = region.movement;
-				if (_v0.$ === 'Just') {
-					var movement = _v0.a;
-					return A3($author$project$Life$AtomicUpdateRegion$AtomicUpdateRegion$moveBy, movement, stepsElapsed, region.bounds);
-				} else {
-					return region.bounds;
-				}
-			}(),
+			bounds: A3(
+				$author$project$Life$AtomicUpdateRegion$BoundingRectangleEdgeMovements$moveEdges,
+				stepsElapsed,
+				region.boundsEdgeMovements,
+				A3($author$project$Life$AtomicUpdateRegion$AtomicUpdateRegion$moveBounds, region.movement, stepsElapsed, region.bounds)),
 			stepsElapsed: stepsElapsed
 		});
 };
