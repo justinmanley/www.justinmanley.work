@@ -1,0 +1,18 @@
+[
+    {
+        "bounds": {
+            "top": -1,
+            "left": 0,
+            "bottom": 4,
+            "right": 7
+        },
+        "movement": {
+            "direction": {
+                "x": 2,
+                "y": 0
+            },
+            "period": 4
+        },
+        "stepCriterion": "FullyContainedWithinSteppableRegion"
+    }
+]

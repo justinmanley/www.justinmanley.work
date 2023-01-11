@@ -5,6 +5,7 @@ module Lifestory.Lifestory (compile) where
 
 import Data.Functor ((<&>))
 import Data.List (isPrefixOf, stripPrefix)
+import Data.Set qualified as Set
 import Data.Text as Text (Text, pack, replace, unpack)
 import Debug.Trace (trace)
 import Hakyll
@@ -39,6 +40,7 @@ import Hakyll qualified
 import Hakyll.Core.Identifier as Identifier
 import Hakyll.Core.Item (itemIdentifier)
 import System.FilePath (joinPath)
+import Text.HTML.TagSoup qualified as TagSoup
 
 compile :: Context String -> Rules ()
 compile projectsContext = do
@@ -64,15 +66,21 @@ compile projectsContext = do
     route idRoute
     Hakyll.compile copyFileCompiler
 
+  match "projects/lifestory/version/*/patterns/*.json" $ do
+    route idRoute
+    Hakyll.compile copyFileCompiler
+
   match "projects/lifestory/version/*/template.html" $ Hakyll.compile templateBodyCompiler
 
-  match "projects/lifestory/version/*/index.md" $ do
-    route $ setExtension "html"
-    Hakyll.compile $ do
-      pandocCompiler
-        >>= loadAndApplyVersionedTemplate projectsContext
-        >>= fullPathForItemCompiler
-        >>= relativizeUrls
+  match "projects/lifestory/version/*/index.md" $
+    do
+      route $ setExtension "html"
+      Hakyll.compile $ do
+        pandocCompiler
+          >>= loadAndApplyVersionedTemplate projectsContext
+          >>= fullPathForItemCompiler
+          >>= relativizeUrls
+          <&> fmap addAtomicUpdateRegionToPatternAnchors
 
   match "projects/lifestory/version/*/style.scss" $ do
     route $ setExtension "css"
@@ -98,7 +106,10 @@ removeSubstringRoute :: Text -> Routes
 removeSubstringRoute substring = customRoute $ removeString substring . Identifier.toFilePath
 
 removeString :: Text -> String -> String
-removeString substring = Text.unpack . replace substring "" . Text.pack
+removeString substring = replaceString substring ""
+
+replaceString :: Text -> Text -> String -> String
+replaceString find replacement = Text.unpack . replace find replacement . Text.pack
 
 -- Surely there is a better way to do this? I'm not sure why this is even
 -- necessary in the first place. For some reason, page-relative links are
@@ -123,3 +134,20 @@ fullPathForItem root path =
 -- README for more details).
 compileSass :: Item String -> Compiler (Item String)
 compileSass = withItemBody (unixFilter "sass" ["--stdin"])
+
+-- I would prefer to use Text.XML.Light along with (a modified version of)
+-- Site.Urls.mapAttrs. However, Text.XML.Light.showContent garbles the HTML
+-- output, encoding the <pattern-anchor> tag with &gt; and &lt; characters,
+-- and I'm not sure how to fix it. It's easier to use TagSoup instead.
+addAtomicUpdateRegionToPatternAnchors :: String -> String
+addAtomicUpdateRegionToPatternAnchors =
+  TagSoup.renderTags . map tag . TagSoup.parseTags
+  where
+    tag (TagSoup.TagOpen tagName attributes) =
+      TagSoup.TagOpen tagName $ concatMap transformAttr attributes
+    tag x = x
+
+    transformAttr (k, v) =
+      if k == "src"
+        then [(k, v), ("atomic-update-regions", replaceString "rle" "json" v)]
+        else [(k, v)]

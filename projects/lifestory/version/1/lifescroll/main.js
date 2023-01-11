@@ -5341,13 +5341,15 @@ var $author$project$BoundingRectangle$BoundingRectangle = F4(
 		return {bottom: bottom, left: left, right: right, top: top};
 	});
 var $elm$json$Json$Decode$map4 = _Json_map4;
-var $author$project$BoundingRectangle$decoder = A5(
-	$elm$json$Json$Decode$map4,
-	$author$project$BoundingRectangle$BoundingRectangle,
-	A2($elm$json$Json$Decode$field, 'top', $elm$json$Json$Decode$float),
-	A2($elm$json$Json$Decode$field, 'left', $elm$json$Json$Decode$float),
-	A2($elm$json$Json$Decode$field, 'bottom', $elm$json$Json$Decode$float),
-	A2($elm$json$Json$Decode$field, 'right', $elm$json$Json$Decode$float));
+var $author$project$BoundingRectangle$decoder = function (valueDecoder) {
+	return A5(
+		$elm$json$Json$Decode$map4,
+		$author$project$BoundingRectangle$BoundingRectangle,
+		A2($elm$json$Json$Decode$field, 'top', valueDecoder),
+		A2($elm$json$Json$Decode$field, 'left', valueDecoder),
+		A2($elm$json$Json$Decode$field, 'bottom', valueDecoder),
+		A2($elm$json$Json$Decode$field, 'right', valueDecoder));
+};
 var $author$project$Page$Page = F5(
 	function (anchors, body, article, debug, cellSizeInPixels) {
 		return {anchors: anchors, article: article, body: body, cellSizeInPixels: cellSizeInPixels, debug: debug};
@@ -5371,17 +5373,20 @@ var $author$project$DebugSettings$decoder = function () {
 				$elm$json$Json$Decode$succeed($author$project$DebugSettings$empty)
 			]));
 }();
-var $author$project$PatternAnchor$PatternAnchor = F3(
-	function (id, patternRle, bounds) {
-		return {bounds: bounds, id: id, patternRle: patternRle};
+var $author$project$PatternAnchor$PatternAnchor = F4(
+	function (id, patternRle, atomicUpdateRegionsJson, bounds) {
+		return {atomicUpdateRegionsJson: atomicUpdateRegionsJson, bounds: bounds, id: id, patternRle: patternRle};
 	});
-var $elm$json$Json$Decode$map3 = _Json_map3;
-var $author$project$PatternAnchor$decoder = A4(
-	$elm$json$Json$Decode$map3,
+var $author$project$PatternAnchor$decoder = A5(
+	$elm$json$Json$Decode$map4,
 	$author$project$PatternAnchor$PatternAnchor,
 	A2($elm$json$Json$Decode$field, 'id', $elm$json$Json$Decode$string),
-	A2($elm$json$Json$Decode$field, 'rle', $elm$json$Json$Decode$string),
-	A2($elm$json$Json$Decode$field, 'bounds', $author$project$BoundingRectangle$decoder));
+	A2($elm$json$Json$Decode$field, 'patternRle', $elm$json$Json$Decode$string),
+	A2($elm$json$Json$Decode$field, 'atomicUpdateRegionsJson', $elm$json$Json$Decode$string),
+	A2(
+		$elm$json$Json$Decode$field,
+		'bounds',
+		$author$project$BoundingRectangle$decoder($elm$json$Json$Decode$float)));
 var $elm$json$Json$Decode$list = _Json_decodeList;
 var $elm$json$Json$Decode$map5 = _Json_map5;
 var $author$project$Page$decoder = A6(
@@ -5391,8 +5396,14 @@ var $author$project$Page$decoder = A6(
 		$elm$json$Json$Decode$field,
 		'patterns',
 		$elm$json$Json$Decode$list($author$project$PatternAnchor$decoder)),
-	A2($elm$json$Json$Decode$field, 'body', $author$project$BoundingRectangle$decoder),
-	A2($elm$json$Json$Decode$field, 'article', $author$project$BoundingRectangle$decoder),
+	A2(
+		$elm$json$Json$Decode$field,
+		'body',
+		$author$project$BoundingRectangle$decoder($elm$json$Json$Decode$float)),
+	A2(
+		$elm$json$Json$Decode$field,
+		'article',
+		$author$project$BoundingRectangle$decoder($elm$json$Json$Decode$float)),
 	A2($elm$json$Json$Decode$field, 'debug', $author$project$DebugSettings$decoder),
 	A2($elm$json$Json$Decode$field, 'cellSizeInPixels', $elm$json$Json$Decode$float));
 var $author$project$Main$decoder = $elm$json$Json$Decode$oneOf(
@@ -5413,7 +5424,7 @@ var $author$project$Main$decoder = $elm$json$Json$Decode$oneOf(
 				$elm$json$Json$Decode$at,
 				_List_fromArray(
 					['ScrollPage', 'viewport']),
-				$author$project$BoundingRectangle$decoder))
+				$author$project$BoundingRectangle$decoder($elm$json$Json$Decode$float)))
 		]));
 var $elm$core$Platform$Sub$map = _Platform_map;
 var $elm$json$Json$Decode$value = _Json_decodeValue;
@@ -5837,6 +5848,14 @@ var $author$project$Main$subscriptions = function (model) {
 				$elm$browser$Browser$Events$onClick($author$project$Main$clickDecoder)
 			]));
 };
+var $elm$core$List$append = F2(
+	function (xs, ys) {
+		if (!ys.b) {
+			return xs;
+		} else {
+			return A3($elm$core$List$foldr, $elm$core$List$cons, ys, xs);
+		}
+	});
 var $elm$core$Set$foldl = F3(
 	function (func, initialState, _v0) {
 		var dict = _v0.a;
@@ -5901,9 +5920,10 @@ var $elm$core$Set$member = F2(
 		return A2($elm$core$Dict$member, key, dict);
 	});
 var $elm$core$Debug$log = _Debug_log;
+var $author$project$DebugSettings$log = $elm$core$Debug$log;
 var $author$project$DebugSettings$withLogging = F2(
 	function (enabled, message) {
-		return enabled ? $elm$core$Debug$log(message) : $elm$core$Basics$identity;
+		return enabled ? $author$project$DebugSettings$log(message) : $elm$core$Basics$identity;
 	});
 var $author$project$Main$insertPattern = F3(
 	function (loggingEnabled, pattern, grid) {
@@ -5912,7 +5932,7 @@ var $author$project$Main$insertPattern = F3(
 				return A2($elm$core$Set$member, cell, allCells) ? A3($author$project$DebugSettings$withLogging, loggingEnabled, 'found a conflict while attempting to insert pattern', allCells) : A2($elm$core$Set$insert, cell, allCells);
 			});
 		return {
-			atomicUpdateRegions: A2($elm$core$List$cons, pattern.atomicUpdateRegion, grid.atomicUpdateRegions),
+			atomicUpdateRegions: A2($elm$core$List$append, grid.atomicUpdateRegions, pattern.atomicUpdateRegions),
 			cells: A3($elm$core$Set$foldl, insertWithConflictLogging, grid.cells, pattern.cells)
 		};
 	});
@@ -5970,6 +5990,71 @@ var $author$project$Life$GridCells$bounds = function (cells) {
 var $elm$parser$Parser$deadEndsToString = function (deadEnds) {
 	return 'TODO deadEndsToString';
 };
+var $elm$json$Json$Decode$decodeString = _Json_runOnString;
+var $author$project$Life$AtomicUpdateRegion$AtomicUpdateRegion$AtomicUpdateRegion = F4(
+	function (bounds, movement, stepCriterion, stepsElapsed) {
+		return {bounds: bounds, movement: movement, stepCriterion: stepCriterion, stepsElapsed: stepsElapsed};
+	});
+var $author$project$Life$AtomicUpdateRegion$Movement$Movement = F2(
+	function (direction, period) {
+		return {direction: direction, period: period};
+	});
+var $elm$core$Tuple$pair = F2(
+	function (a, b) {
+		return _Utils_Tuple2(a, b);
+	});
+var $author$project$Vector2$decoder = function (valueDecoder) {
+	return A3(
+		$elm$json$Json$Decode$map2,
+		$elm$core$Tuple$pair,
+		A2($elm$json$Json$Decode$field, 'x', valueDecoder),
+		A2($elm$json$Json$Decode$field, 'y', valueDecoder));
+};
+var $elm$json$Json$Decode$int = _Json_decodeInt;
+var $author$project$Life$AtomicUpdateRegion$Movement$decoder = A3(
+	$elm$json$Json$Decode$map2,
+	$author$project$Life$AtomicUpdateRegion$Movement$Movement,
+	A2(
+		$elm$json$Json$Decode$field,
+		'direction',
+		$author$project$Vector2$decoder($elm$json$Json$Decode$int)),
+	A2($elm$json$Json$Decode$field, 'period', $elm$json$Json$Decode$int));
+var $author$project$Life$AtomicUpdateRegion$StepCriterion$AnyIntersectionWithSteppableRegion = {$: 'AnyIntersectionWithSteppableRegion'};
+var $author$project$Life$AtomicUpdateRegion$StepCriterion$FullyContainedWithinSteppableRegion = {$: 'FullyContainedWithinSteppableRegion'};
+var $elm$json$Json$Decode$andThen = _Json_andThen;
+var $elm$json$Json$Decode$fail = _Json_fail;
+var $author$project$Life$AtomicUpdateRegion$StepCriterion$decoder = A2(
+	$elm$json$Json$Decode$andThen,
+	function (str) {
+		switch (str) {
+			case 'AnyIntersectionWithSteppableRegion':
+				return $elm$json$Json$Decode$succeed($author$project$Life$AtomicUpdateRegion$StepCriterion$AnyIntersectionWithSteppableRegion);
+			case 'FullyContainedWithinSteppableRegion':
+				return $elm$json$Json$Decode$succeed($author$project$Life$AtomicUpdateRegion$StepCriterion$FullyContainedWithinSteppableRegion);
+			default:
+				return $elm$json$Json$Decode$fail('Unrecognized step criterion: ' + str);
+		}
+	},
+	$elm$json$Json$Decode$string);
+var $elm$json$Json$Decode$maybe = function (decoder) {
+	return $elm$json$Json$Decode$oneOf(
+		_List_fromArray(
+			[
+				A2($elm$json$Json$Decode$map, $elm$core$Maybe$Just, decoder),
+				$elm$json$Json$Decode$succeed($elm$core$Maybe$Nothing)
+			]));
+};
+var $author$project$Life$AtomicUpdateRegion$AtomicUpdateRegion$decoder = A5(
+	$elm$json$Json$Decode$map4,
+	$author$project$Life$AtomicUpdateRegion$AtomicUpdateRegion$AtomicUpdateRegion,
+	A2(
+		$elm$json$Json$Decode$field,
+		'bounds',
+		$author$project$BoundingRectangle$decoder($elm$json$Json$Decode$int)),
+	$elm$json$Json$Decode$maybe(
+		A2($elm$json$Json$Decode$field, 'movement', $author$project$Life$AtomicUpdateRegion$Movement$decoder)),
+	A2($elm$json$Json$Decode$field, 'stepCriterion', $author$project$Life$AtomicUpdateRegion$StepCriterion$decoder),
+	$elm$json$Json$Decode$succeed(0));
 var $author$project$BoundingRectangle$height = function (bounds) {
 	return bounds.bottom - bounds.top;
 };
@@ -5997,40 +6082,13 @@ var $author$project$BoundingRectangle$offsetBy = F2(
 		var y = _v0.b;
 		return {bottom: y + bounds.bottom, left: x + bounds.left, right: x + bounds.right, top: y + bounds.top};
 	});
-var $author$project$Life$AtomicUpdateRegion$empty = {bounds: $author$project$BoundingRectangle$empty, movement: $elm$core$Maybe$Nothing, stepsElapsed: 0};
-var $author$project$Life$Pattern$empty = {atomicUpdateRegion: $author$project$Life$AtomicUpdateRegion$empty, cells: $elm$core$Set$empty};
+var $author$project$Life$RleParser$initGrid = {gridCells: $elm$core$Set$empty, x: 0, y: 0};
 var $elm$parser$Parser$Done = function (a) {
 	return {$: 'Done', a: a};
 };
 var $elm$parser$Parser$Loop = function (a) {
 	return {$: 'Loop', a: a};
 };
-var $author$project$Life$RleParser$addComment = F2(
-	function (pattern, c) {
-		return _Utils_update(
-			pattern,
-			{
-				atomicUpdateRegion: function () {
-					var atomicUpdateRegion = pattern.atomicUpdateRegion;
-					switch (c.$) {
-						case 'MovementComment':
-							var movement = c.a;
-							return _Utils_update(
-								atomicUpdateRegion,
-								{
-									movement: $elm$core$Maybe$Just(movement)
-								});
-						case 'MaximumBoundsComment':
-							var bounds = c.a;
-							return _Utils_update(
-								atomicUpdateRegion,
-								{bounds: bounds});
-						default:
-							return atomicUpdateRegion;
-					}
-				}()
-			});
-	});
 var $author$project$Life$RleParser$nextGridLine = F2(
 	function (gridState, count) {
 		return $elm$parser$Parser$Loop(
@@ -6528,7 +6586,7 @@ var $author$project$Life$RleParser$cell = function (gridState) {
 				A2(
 				$elm$parser$Parser$ignorer,
 				$elm$parser$Parser$succeed(
-					$elm$parser$Parser$Done(gridState.gridCells)),
+					$elm$parser$Parser$Done(gridState)),
 				$elm$parser$Parser$token('!')),
 				A2(
 				$elm$parser$Parser$ignorer,
@@ -6538,12 +6596,11 @@ var $author$project$Life$RleParser$cell = function (gridState) {
 				A2(
 				$elm$parser$Parser$ignorer,
 				$elm$parser$Parser$succeed(
-					$elm$parser$Parser$Done(gridState.gridCells)),
+					$elm$parser$Parser$Done(gridState)),
 				$elm$parser$Parser$end),
 				$elm$parser$Parser$problem('Invalid RLE string. I support only two states, so use `b` and `o` for cells')
 			]));
 };
-var $author$project$Life$RleParser$initGrid = {gridCells: $elm$core$Set$empty, x: 0, y: 0};
 var $elm$parser$Parser$Advanced$loopHelp = F4(
 	function (p, state, callback, s0) {
 		loopHelp:
@@ -6611,13 +6668,8 @@ var $elm$parser$Parser$loop = F2(
 					callback(s));
 			});
 	});
-var $author$project$Life$RleParser$cells = A2($elm$parser$Parser$loop, $author$project$Life$RleParser$initGrid, $author$project$Life$RleParser$cell);
-var $author$project$Life$RleParser$Ignored = {$: 'Ignored'};
-var $author$project$Life$RleParser$MaximumBoundsComment = function (a) {
-	return {$: 'MaximumBoundsComment', a: a};
-};
-var $author$project$Life$RleParser$MovementComment = function (a) {
-	return {$: 'MovementComment', a: a};
+var $author$project$Life$RleParser$cells = function (gridState) {
+	return A2($elm$parser$Parser$loop, gridState, $author$project$Life$RleParser$cell);
 };
 var $elm$parser$Parser$Advanced$findSubString = _Parser_findSubString;
 var $elm$parser$Parser$Advanced$chompUntil = function (_v0) {
@@ -6691,7 +6743,7 @@ var $elm$parser$Parser$Advanced$chompWhile = function (isGood) {
 		});
 };
 var $elm$parser$Parser$chompWhile = $elm$parser$Parser$Advanced$chompWhile;
-var $author$project$Life$RleParser$spacesOrTabs = $elm$parser$Parser$chompWhile(
+var $author$project$Parser$Extra$spacesOrTabs = $elm$parser$Parser$chompWhile(
 	function (c) {
 		return _Utils_eq(
 			c,
@@ -6699,143 +6751,25 @@ var $author$project$Life$RleParser$spacesOrTabs = $elm$parser$Parser$chompWhile(
 			c,
 			_Utils_chr('\t'));
 	});
-var $author$project$Life$RleParser$maximumComment = A2(
-	$elm$parser$Parser$keeper,
-	A2(
-		$elm$parser$Parser$keeper,
-		A2(
-			$elm$parser$Parser$keeper,
-			A2(
-				$elm$parser$Parser$keeper,
-				A2(
-					$elm$parser$Parser$ignorer,
-					A2(
-						$elm$parser$Parser$ignorer,
-						A2(
-							$elm$parser$Parser$ignorer,
-							A2(
-								$elm$parser$Parser$ignorer,
-								$elm$parser$Parser$succeed($author$project$BoundingRectangle$BoundingRectangle),
-								$elm$parser$Parser$token('MAXIMUM EXTENT')),
-							$author$project$Life$RleParser$spacesOrTabs),
-						$elm$parser$Parser$token('TOP')),
-					$author$project$Life$RleParser$spacesOrTabs),
-				A2(
-					$elm$parser$Parser$ignorer,
-					A2(
-						$elm$parser$Parser$ignorer,
-						A2($elm$parser$Parser$ignorer, $author$project$Parser$Extra$int, $author$project$Life$RleParser$spacesOrTabs),
-						$elm$parser$Parser$token('LEFT')),
-					$author$project$Life$RleParser$spacesOrTabs)),
-			A2(
-				$elm$parser$Parser$ignorer,
-				A2(
-					$elm$parser$Parser$ignorer,
-					A2($elm$parser$Parser$ignorer, $author$project$Parser$Extra$int, $author$project$Life$RleParser$spacesOrTabs),
-					$elm$parser$Parser$token('BOTTOM')),
-				$author$project$Life$RleParser$spacesOrTabs)),
-		A2(
-			$elm$parser$Parser$ignorer,
-			A2(
-				$elm$parser$Parser$ignorer,
-				A2($elm$parser$Parser$ignorer, $author$project$Parser$Extra$int, $author$project$Life$RleParser$spacesOrTabs),
-				$elm$parser$Parser$token('RIGHT')),
-			$author$project$Life$RleParser$spacesOrTabs)),
-	$author$project$Parser$Extra$int);
-var $author$project$Life$RleParser$movementComment = function () {
-	var toMovement = F3(
-		function (x, y, period) {
-			return {
-				direction: _Utils_Tuple2(x, y),
-				period: period
-			};
-		});
-	return A2(
-		$elm$parser$Parser$keeper,
-		A2(
-			$elm$parser$Parser$keeper,
-			A2(
-				$elm$parser$Parser$keeper,
-				A2(
-					$elm$parser$Parser$ignorer,
-					A2(
-						$elm$parser$Parser$ignorer,
-						A2(
-							$elm$parser$Parser$ignorer,
-							A2(
-								$elm$parser$Parser$ignorer,
-								A2(
-									$elm$parser$Parser$ignorer,
-									A2(
-										$elm$parser$Parser$ignorer,
-										$elm$parser$Parser$succeed(toMovement),
-										$elm$parser$Parser$token('MOVEMENT')),
-									$author$project$Life$RleParser$spacesOrTabs),
-								$elm$parser$Parser$token('DIRECTION')),
-							$author$project$Life$RleParser$spacesOrTabs),
-						$elm$parser$Parser$symbol('(')),
-					$author$project$Life$RleParser$spacesOrTabs),
-				A2(
-					$elm$parser$Parser$ignorer,
-					A2(
-						$elm$parser$Parser$ignorer,
-						A2($elm$parser$Parser$ignorer, $author$project$Parser$Extra$int, $author$project$Life$RleParser$spacesOrTabs),
-						$elm$parser$Parser$symbol(',')),
-					$author$project$Life$RleParser$spacesOrTabs)),
-			A2(
-				$elm$parser$Parser$ignorer,
-				A2(
-					$elm$parser$Parser$ignorer,
-					A2(
-						$elm$parser$Parser$ignorer,
-						A2(
-							$elm$parser$Parser$ignorer,
-							A2($elm$parser$Parser$ignorer, $author$project$Parser$Extra$int, $author$project$Life$RleParser$spacesOrTabs),
-							$elm$parser$Parser$symbol(')')),
-						$author$project$Life$RleParser$spacesOrTabs),
-					$elm$parser$Parser$symbol('PERIOD')),
-				$author$project$Life$RleParser$spacesOrTabs)),
-		$author$project$Parser$Extra$int);
-}();
 var $author$project$Life$RleParser$comment = A2(
-	$elm$parser$Parser$keeper,
+	$elm$parser$Parser$ignorer,
 	A2(
 		$elm$parser$Parser$ignorer,
 		A2(
 			$elm$parser$Parser$ignorer,
-			$elm$parser$Parser$succeed($elm$core$Basics$identity),
+			$elm$parser$Parser$succeed(_Utils_Tuple0),
 			$elm$parser$Parser$symbol('#')),
-		$author$project$Life$RleParser$spacesOrTabs),
-	A2(
-		$elm$parser$Parser$ignorer,
-		$elm$parser$Parser$oneOf(
-			_List_fromArray(
-				[
-					A2(
-					$elm$parser$Parser$keeper,
-					$elm$parser$Parser$succeed($author$project$Life$RleParser$MovementComment),
-					$author$project$Life$RleParser$movementComment),
-					A2(
-					$elm$parser$Parser$keeper,
-					$elm$parser$Parser$succeed($author$project$Life$RleParser$MaximumBoundsComment),
-					$author$project$Life$RleParser$maximumComment),
-					$elm$parser$Parser$succeed($author$project$Life$RleParser$Ignored)
-				])),
-		$elm$parser$Parser$oneOf(
-			_List_fromArray(
-				[
-					$elm$parser$Parser$chompUntil('\n'),
-					A2(
-					$elm$parser$Parser$ignorer,
-					$elm$parser$Parser$chompWhile(
-						$elm$core$Basics$always(true)),
-					$elm$parser$Parser$end)
-				]))));
-var $elm$core$Basics$composeL = F3(
-	function (g, f, x) {
-		return g(
-			f(x));
-	});
+		$author$project$Parser$Extra$spacesOrTabs),
+	$elm$parser$Parser$oneOf(
+		_List_fromArray(
+			[
+				$elm$parser$Parser$chompUntil('\n'),
+				A2(
+				$elm$parser$Parser$ignorer,
+				$elm$parser$Parser$chompWhile(
+					$elm$core$Basics$always(true)),
+				$elm$parser$Parser$end)
+			])));
 var $author$project$Size2$Size2 = F2(
 	function (width, height) {
 		return {height: height, width: width};
@@ -6854,13 +6788,13 @@ var $author$project$Life$RleParser$rule = A2(
 						$elm$parser$Parser$ignorer,
 						A2(
 							$elm$parser$Parser$ignorer,
-							$author$project$Life$RleParser$spacesOrTabs,
+							$author$project$Parser$Extra$spacesOrTabs,
 							$elm$parser$Parser$symbol(',')),
-						$author$project$Life$RleParser$spacesOrTabs),
+						$author$project$Parser$Extra$spacesOrTabs),
 					$elm$parser$Parser$token('rule')),
-				$author$project$Life$RleParser$spacesOrTabs),
+				$author$project$Parser$Extra$spacesOrTabs),
 			$elm$parser$Parser$symbol('=')),
-		$author$project$Life$RleParser$spacesOrTabs),
+		$author$project$Parser$Extra$spacesOrTabs),
 	$elm$parser$Parser$token('B3/S23'));
 var $author$project$Life$RleParser$extent = A2(
 	$elm$parser$Parser$keeper,
@@ -6877,11 +6811,11 @@ var $author$project$Life$RleParser$extent = A2(
 						A2(
 							$elm$parser$Parser$ignorer,
 							$elm$parser$Parser$succeed($author$project$Size2$Size2),
-							$author$project$Life$RleParser$spacesOrTabs),
+							$author$project$Parser$Extra$spacesOrTabs),
 						$elm$parser$Parser$symbol('x')),
-					$author$project$Life$RleParser$spacesOrTabs),
+					$author$project$Parser$Extra$spacesOrTabs),
 				$elm$parser$Parser$symbol('=')),
-			$author$project$Life$RleParser$spacesOrTabs),
+			$author$project$Parser$Extra$spacesOrTabs),
 		A2(
 			$elm$parser$Parser$ignorer,
 			A2(
@@ -6894,29 +6828,32 @@ var $author$project$Life$RleParser$extent = A2(
 							$elm$parser$Parser$ignorer,
 							A2(
 								$elm$parser$Parser$ignorer,
-								A2($elm$parser$Parser$ignorer, $author$project$Parser$Extra$int, $author$project$Life$RleParser$spacesOrTabs),
+								A2($elm$parser$Parser$ignorer, $author$project$Parser$Extra$int, $author$project$Parser$Extra$spacesOrTabs),
 								$elm$parser$Parser$symbol(',')),
-							$author$project$Life$RleParser$spacesOrTabs),
+							$author$project$Parser$Extra$spacesOrTabs),
 						$elm$parser$Parser$symbol('y')),
-					$author$project$Life$RleParser$spacesOrTabs),
+					$author$project$Parser$Extra$spacesOrTabs),
 				$elm$parser$Parser$symbol('=')),
-			$author$project$Life$RleParser$spacesOrTabs)),
+			$author$project$Parser$Extra$spacesOrTabs)),
 	A2(
 		$elm$parser$Parser$ignorer,
 		$author$project$Parser$Extra$int,
 		$elm$parser$Parser$oneOf(
 			_List_fromArray(
-				[$author$project$Life$RleParser$rule, $author$project$Life$RleParser$spacesOrTabs]))));
-var $author$project$Life$Pattern$setCells = F2(
-	function (pattern, cells) {
-		return _Utils_update(
-			pattern,
-			{cells: cells});
-	});
-var $author$project$Life$RleParser$line = function (pattern) {
+				[$author$project$Life$RleParser$rule, $author$project$Parser$Extra$spacesOrTabs]))));
+var $author$project$Life$RleParser$getCells = function (gridState) {
+	return gridState.gridCells;
+};
+var $author$project$Life$RleParser$line = function (gridState) {
 	return $elm$parser$Parser$oneOf(
 		_List_fromArray(
 			[
+				A2(
+				$elm$parser$Parser$ignorer,
+				$elm$parser$Parser$succeed(
+					$elm$parser$Parser$Done(
+						$author$project$Life$RleParser$getCells(gridState))),
+				$elm$parser$Parser$end),
 				A2(
 				$elm$parser$Parser$ignorer,
 				A2(
@@ -6927,51 +6864,28 @@ var $author$project$Life$RleParser$line = function (pattern) {
 								A2(
 								$elm$parser$Parser$ignorer,
 								$elm$parser$Parser$succeed(
-									$elm$parser$Parser$Loop(pattern)),
+									$elm$parser$Parser$Loop(gridState)),
 								$author$project$Life$RleParser$extent),
 								A2(
-								$elm$parser$Parser$keeper,
+								$elm$parser$Parser$ignorer,
 								$elm$parser$Parser$succeed(
-									A2(
-										$elm$core$Basics$composeL,
-										$elm$parser$Parser$Done,
-										$author$project$Life$Pattern$setCells(pattern))),
-								$author$project$Life$RleParser$cells),
+									$elm$parser$Parser$Loop(gridState)),
+								$author$project$Life$RleParser$comment),
 								A2(
 								$elm$parser$Parser$keeper,
-								$elm$parser$Parser$succeed(
-									A2(
-										$elm$core$Basics$composeL,
-										$elm$parser$Parser$Loop,
-										$author$project$Life$RleParser$addComment(pattern))),
-								$author$project$Life$RleParser$comment)
+								$elm$parser$Parser$succeed($elm$parser$Parser$Loop),
+								$author$project$Life$RleParser$cells(gridState))
 							])),
-					$author$project$Life$RleParser$spacesOrTabs),
+					$author$project$Parser$Extra$spacesOrTabs),
 				$elm$parser$Parser$oneOf(
 					_List_fromArray(
 						[
 							$elm$parser$Parser$symbol('\n'),
 							$elm$parser$Parser$end
-						]))),
-				A2(
-				$elm$parser$Parser$ignorer,
-				$elm$parser$Parser$succeed(
-					$elm$parser$Parser$Done(pattern)),
-				$elm$parser$Parser$end)
+						])))
 			]));
 };
-var $author$project$Life$RleParser$lines = A2($elm$parser$Parser$loop, $author$project$Life$Pattern$empty, $author$project$Life$RleParser$line);
-var $elm$core$Result$map = F2(
-	function (func, ra) {
-		if (ra.$ === 'Ok') {
-			var a = ra.a;
-			return $elm$core$Result$Ok(
-				func(a));
-		} else {
-			var e = ra.a;
-			return $elm$core$Result$Err(e);
-		}
-	});
+var $author$project$Life$RleParser$lines = A2($elm$parser$Parser$loop, $author$project$Life$RleParser$initGrid, $author$project$Life$RleParser$line);
 var $elm$parser$Parser$DeadEnd = F3(
 	function (row, col, problem) {
 		return {col: col, problem: problem, row: row};
@@ -7031,30 +6945,7 @@ var $elm$parser$Parser$run = F2(
 				A2($elm$core$List$map, $elm$parser$Parser$problemToDeadEnd, problems));
 		}
 	});
-var $author$project$Life$RleParser$setAtomicUpdateBoundsFromCellsIfEmpty = function (pattern) {
-	var atomicUpdateRegion = pattern.atomicUpdateRegion;
-	if (_Utils_eq(pattern.atomicUpdateRegion.bounds, $author$project$BoundingRectangle$empty)) {
-		var _v0 = $author$project$Life$GridCells$bounds(pattern.cells);
-		if (_v0.$ === 'Nothing') {
-			return pattern;
-		} else {
-			var cellBounds = _v0.a;
-			return _Utils_update(
-				pattern,
-				{
-					atomicUpdateRegion: _Utils_update(
-						atomicUpdateRegion,
-						{bounds: cellBounds})
-				});
-		}
-	} else {
-		return pattern;
-	}
-};
-var $author$project$Life$RleParser$parse = A2(
-	$elm$core$Basics$composeR,
-	$elm$parser$Parser$run($author$project$Life$RleParser$lines),
-	$elm$core$Result$map($author$project$Life$RleParser$setAtomicUpdateBoundsFromCellsIfEmpty));
+var $author$project$Life$RleParser$parse = $elm$parser$Parser$run($author$project$Life$RleParser$lines);
 var $author$project$PageCoordinate$toGrid = F2(
 	function (cellSizeInPixels, x) {
 		return $elm$core$Basics$floor(x / cellSizeInPixels);
@@ -7085,30 +6976,45 @@ var $author$project$PatternAnchor$toPattern = F3(
 		var _v0 = $author$project$Life$RleParser$parse(anchor.patternRle);
 		if (_v0.$ === 'Err') {
 			var err = _v0.a;
-			return A3(
-				$author$project$DebugSettings$withLogging,
-				true,
+			return A2(
+				$author$project$DebugSettings$log,
 				'Could not parse pattern ' + (anchor.id + $elm$parser$Parser$deadEndsToString(err)),
 				$elm$core$Maybe$Nothing);
 		} else {
-			var pattern = _v0.a;
+			var cells = _v0.a;
 			var initialBounds = A2(
 				$elm$core$Maybe$withDefault,
 				$author$project$BoundingRectangle$empty,
-				$author$project$Life$GridCells$bounds(pattern.cells));
+				$author$project$Life$GridCells$bounds(cells));
 			var start = offset(initialBounds);
-			return $elm$core$Maybe$Just(
-				{
-					atomicUpdateRegion: {
-						bounds: A2($author$project$BoundingRectangle$offsetBy, start, pattern.atomicUpdateRegion.bounds),
-						movement: pattern.atomicUpdateRegion.movement,
-						stepsElapsed: pattern.atomicUpdateRegion.stepsElapsed
-					},
-					cells: A2(
-						$elm$core$Set$map,
-						$author$project$Vector2$add(start),
-						pattern.cells)
-				});
+			var offsetAtomicUpdateRegion = function (atomicUpdateRegion) {
+				return _Utils_update(
+					atomicUpdateRegion,
+					{
+						bounds: A2($author$project$BoundingRectangle$offsetBy, start, atomicUpdateRegion.bounds)
+					});
+			};
+			var _v1 = A2(
+				$elm$json$Json$Decode$decodeString,
+				$elm$json$Json$Decode$list($author$project$Life$AtomicUpdateRegion$AtomicUpdateRegion$decoder),
+				anchor.atomicUpdateRegionsJson);
+			if (_v1.$ === 'Err') {
+				var err = _v1.a;
+				return A2(
+					$author$project$DebugSettings$log,
+					'Could not parse atomic update regions ' + (anchor.id + ('. ' + $elm$json$Json$Decode$errorToString(err))),
+					$elm$core$Maybe$Nothing);
+			} else {
+				var atomicUpdateRegions = _v1.a;
+				return $elm$core$Maybe$Just(
+					{
+						atomicUpdateRegions: A2($elm$core$List$map, offsetAtomicUpdateRegion, atomicUpdateRegions),
+						cells: A2(
+							$elm$core$Set$map,
+							$author$project$Vector2$add(start),
+							cells)
+					});
+			}
 		}
 	});
 var $author$project$Page$patterns = function (_v0) {
@@ -7171,6 +7077,19 @@ var $elm$core$List$any = F2(
 			}
 		}
 	});
+var $author$project$Life$AtomicUpdateRegion$AtomicUpdateRegion$bounds = function (region) {
+	return region.bounds;
+};
+var $author$project$Interval$containsValue = F2(
+	function (value, _v0) {
+		var start = _v0.start;
+		var end = _v0.end;
+		return (_Utils_cmp(start, value) < 1) && (_Utils_cmp(value, end) < 1);
+	});
+var $author$project$Interval$containedIn = F2(
+	function (interval, value) {
+		return A2($author$project$Interval$containsValue, value, interval);
+	});
 var $author$project$BoundingRectangle$containsPoint = F2(
 	function (_v0, _v1) {
 		var x = _v0.a;
@@ -7181,78 +7100,56 @@ var $author$project$BoundingRectangle$containsPoint = F2(
 		var right = _v1.right;
 		return ((_Utils_cmp(left, x) < 1) && (_Utils_cmp(x, right) < 1)) && ((_Utils_cmp(top, y) < 1) && (_Utils_cmp(y, bottom) < 1));
 	});
-var $author$project$Interval$containsValue = F2(
-	function (value, _v0) {
-		var start = _v0.start;
-		var end = _v0.end;
-		return (_Utils_cmp(start, value) < 1) && (_Utils_cmp(value, end) < 1);
-	});
-var $author$project$Interval$intersect = F2(
-	function (a, b) {
-		return {
-			end: A2($elm$core$Basics$min, a.end, b.end),
-			start: A2($elm$core$Basics$max, a.start, b.start)
-		};
-	});
-var $author$project$Interval$length = function (_v0) {
-	var start = _v0.start;
-	var end = _v0.end;
-	return end - start;
-};
-var $author$project$Interval$hasPartialIntersection = F2(
-	function (a, b) {
-		var intersectionLength = $author$project$Interval$length(
-			A2($author$project$Interval$intersect, a, b));
-		return (_Utils_cmp(
-			intersectionLength,
-			$author$project$Interval$length(a)) < 0) && (_Utils_cmp(
-			intersectionLength,
-			$author$project$Interval$length(b)) < 0);
-	});
 var $author$project$Interval$contains = F2(
 	function (query, container) {
 		return (_Utils_cmp(container.start, query.start) < 1) && (_Utils_cmp(query.end, container.end) < 1);
+	});
+var $author$project$Interval$hasIntersectionWith = F2(
+	function (a, b) {
+		return (_Utils_cmp(b.start, a.end) < 0) || (_Utils_cmp(a.start, b.end) < 0);
 	});
 var $author$project$BoundingRectangle$vertical = function (_v0) {
 	var top = _v0.top;
 	var bottom = _v0.bottom;
 	return {end: bottom, start: top};
 };
-var $author$project$Life$AtomicUpdateRegion$isSteppable = F2(
-	function (viewportVerticalBounds, _v0) {
-		var bounds = _v0.bounds;
-		return A2(
-			$author$project$Interval$contains,
-			$author$project$BoundingRectangle$vertical(bounds),
-			viewportVerticalBounds);
-	});
-var $elm$core$Basics$modBy = _Basics_modBy;
-var $author$project$Life$AtomicUpdateRegion$moveBy = F3(
-	function (movement, stepsElapsed, bounds) {
-		return (!A2($elm$core$Basics$modBy, movement.period, stepsElapsed)) ? A2($author$project$BoundingRectangle$offsetBy, movement.direction, bounds) : bounds;
-	});
-var $author$project$Life$AtomicUpdateRegion$next = F2(
+var $author$project$Life$AtomicUpdateRegion$AtomicUpdateRegion$isSteppable = F2(
 	function (viewportVerticalBounds, region) {
-		if (A2($author$project$Life$AtomicUpdateRegion$isSteppable, viewportVerticalBounds, region)) {
-			var stepsElapsed = region.stepsElapsed + 1;
-			return _Utils_update(
-				region,
-				{
-					bounds: function () {
-						var _v0 = region.movement;
-						if (_v0.$ === 'Just') {
-							var movement = _v0.a;
-							return A3($author$project$Life$AtomicUpdateRegion$moveBy, movement, stepsElapsed, region.bounds);
-						} else {
-							return region.bounds;
-						}
-					}(),
-					stepsElapsed: stepsElapsed
-				});
+		var _v0 = region.stepCriterion;
+		if (_v0.$ === 'AnyIntersectionWithSteppableRegion') {
+			return A2(
+				$author$project$Interval$hasIntersectionWith,
+				viewportVerticalBounds,
+				$author$project$BoundingRectangle$vertical(region.bounds));
 		} else {
-			return region;
+			return A2(
+				$author$project$Interval$contains,
+				$author$project$BoundingRectangle$vertical(region.bounds),
+				viewportVerticalBounds);
 		}
 	});
+var $elm$core$Basics$modBy = _Basics_modBy;
+var $author$project$Life$AtomicUpdateRegion$AtomicUpdateRegion$moveBy = F3(
+	function (movement, stepsElapsed, boundingRectangle) {
+		return (!A2($elm$core$Basics$modBy, movement.period, stepsElapsed)) ? A2($author$project$BoundingRectangle$offsetBy, movement.direction, boundingRectangle) : boundingRectangle;
+	});
+var $author$project$Life$AtomicUpdateRegion$AtomicUpdateRegion$next = function (region) {
+	var stepsElapsed = region.stepsElapsed + 1;
+	return _Utils_update(
+		region,
+		{
+			bounds: function () {
+				var _v0 = region.movement;
+				if (_v0.$ === 'Just') {
+					var movement = _v0.a;
+					return A3($author$project$Life$AtomicUpdateRegion$AtomicUpdateRegion$moveBy, movement, stepsElapsed, region.bounds);
+				} else {
+					return region.bounds;
+				}
+			}(),
+			stepsElapsed: stepsElapsed
+		});
+};
 var $elm$core$Dict$getMin = function (dict) {
 	getMin:
 	while (true) {
@@ -7662,14 +7559,6 @@ var $author$project$Set$Extra$flatMap = function (f) {
 		A2($elm$core$Basics$composeR, f, $elm$core$Set$union),
 		$elm$core$Set$empty);
 };
-var $elm$core$List$append = F2(
-	function (xs, ys) {
-		if (!ys.b) {
-			return xs;
-		} else {
-			return A3($elm$core$List$foldr, $elm$core$List$cons, ys, xs);
-		}
-	});
 var $elm$core$List$concat = function (lists) {
 	return A3($elm$core$List$foldr, $elm$core$List$append, _List_Nil, lists);
 };
@@ -7693,10 +7582,6 @@ var $elm$core$List$repeatHelp = F3(
 var $elm$core$List$repeat = F2(
 	function (n, value) {
 		return A3($elm$core$List$repeatHelp, _List_Nil, n, value);
-	});
-var $elm$core$Tuple$pair = F2(
-	function (a, b) {
-		return _Utils_Tuple2(a, b);
 	});
 var $author$project$Life$ChebyshevCircle$zip = $elm$core$List$map2($elm$core$Tuple$pair);
 var $author$project$Life$ChebyshevCircle$chebyshevCircle = function (radius) {
@@ -7787,6 +7672,24 @@ var $author$project$Life$Life$next = function (grid) {
 		adjacentDeadCells);
 	return A2($elm$core$Set$union, survivors, newborns);
 };
+var $elm$core$List$partition = F2(
+	function (pred, list) {
+		var step = F2(
+			function (x, _v0) {
+				var trues = _v0.a;
+				var falses = _v0.b;
+				return pred(x) ? _Utils_Tuple2(
+					A2($elm$core$List$cons, x, trues),
+					falses) : _Utils_Tuple2(
+					trues,
+					A2($elm$core$List$cons, x, falses));
+			});
+		return A3(
+			$elm$core$List$foldr,
+			step,
+			_Utils_Tuple2(_List_Nil, _List_Nil),
+			list);
+	});
 var $elm$core$Dict$partition = F2(
 	function (isGood, dict) {
 		var add = F3(
@@ -7831,35 +7734,42 @@ var $author$project$Life$Viewport$next = F2(
 		var cells = _v0.cells;
 		var atomicUpdateRegions = _v0.atomicUpdateRegions;
 		var viewportVerticalBounds = $author$project$Life$Viewport$steppableVerticalBounds(viewport);
-		var belongsToFrozenAtomicUpdateRegion = F2(
-			function (cell, _v3) {
-				var bounds = _v3.bounds;
-				return A2(
-					$author$project$Interval$hasPartialIntersection,
-					viewportVerticalBounds,
-					$author$project$BoundingRectangle$vertical(bounds)) && A2($author$project$BoundingRectangle$containsPoint, cell, bounds);
-			});
-		var isSteppable = function (_v2) {
-			var x = _v2.a;
-			var y = _v2.b;
-			return A2($author$project$Interval$containsValue, y, viewportVerticalBounds) && (!A2(
+		var _v1 = A2(
+			$elm$core$List$partition,
+			$author$project$Life$AtomicUpdateRegion$AtomicUpdateRegion$isSteppable(viewportVerticalBounds),
+			atomicUpdateRegions);
+		var steppableRegions = _v1.a;
+		var notSteppableRegions = _v1.b;
+		var isCellSteppable = function (cell) {
+			return A2(
+				$author$project$Interval$containedIn,
+				viewportVerticalBounds,
+				$author$project$Vector2$y(cell)) ? (!A2(
 				$elm$core$List$any,
-				belongsToFrozenAtomicUpdateRegion(
-					_Utils_Tuple2(x, y)),
-				atomicUpdateRegions));
+				A2(
+					$elm$core$Basics$composeR,
+					$author$project$Life$AtomicUpdateRegion$AtomicUpdateRegion$bounds,
+					$author$project$BoundingRectangle$containsPoint(cell)),
+				notSteppableRegions)) : A2(
+				$elm$core$List$any,
+				A2(
+					$elm$core$Basics$composeR,
+					$author$project$Life$AtomicUpdateRegion$AtomicUpdateRegion$bounds,
+					$author$project$BoundingRectangle$containsPoint(cell)),
+				steppableRegions);
 		};
-		var _v1 = A2($elm$core$Set$partition, isSteppable, cells);
-		var steppable = _v1.a;
-		var notSteppable = _v1.b;
+		var _v2 = A2($elm$core$Set$partition, isCellSteppable, cells);
+		var steppableCells = _v2.a;
+		var notSteppableCells = _v2.b;
 		return {
 			atomicUpdateRegions: A2(
-				$elm$core$List$map,
-				$author$project$Life$AtomicUpdateRegion$next(viewportVerticalBounds),
-				atomicUpdateRegions),
+				$elm$core$List$append,
+				A2($elm$core$List$map, $author$project$Life$AtomicUpdateRegion$AtomicUpdateRegion$next, steppableRegions),
+				notSteppableRegions),
 			cells: A2(
 				$elm$core$Set$union,
-				$author$project$Life$Life$next(steppable),
-				notSteppable)
+				$author$project$Life$Life$next(steppableCells),
+				notSteppableCells)
 		};
 	});
 var $author$project$Life$Viewport$scrolledCellsPerStep = 4;
@@ -7966,9 +7876,8 @@ var $author$project$Main$update = F2(
 			default:
 				var error = msg.a;
 				return _Utils_Tuple2(
-					A3(
-						$author$project$DebugSettings$withLogging,
-						true,
+					A2(
+						$author$project$DebugSettings$log,
 						$elm$json$Json$Decode$errorToString(error),
 						model),
 					$elm$core$Platform$Cmd$none);
@@ -8317,6 +8226,11 @@ var $author$project$Life$Life$render = F3(
 					$elm$core$List$filter,
 					$author$project$BoundingRectangle$pointIsContainedIn(gridViewport),
 					$elm$core$Set$toList(cells))));
+	});
+var $elm$core$Basics$composeL = F3(
+	function (g, f, x) {
+		return g(
+			f(x));
 	});
 var $avh4$elm_color$Color$darkGray = A4($avh4$elm_color$Color$RgbaSpace, 186 / 255, 189 / 255, 182 / 255, 1.0);
 var $author$project$Life$Debug$debugStrokeHalfWidth = 2;
@@ -9174,7 +9088,7 @@ var $elm$html$Html$Attributes$attribute = $elm$virtual_dom$VirtualDom$attribute;
 var $joakin$elm_canvas$Canvas$Internal$Texture$TImage = function (a) {
 	return {$: 'TImage', a: a};
 };
-var $elm$json$Json$Decode$andThen = _Json_andThen;
+var $elm$json$Json$Decode$map3 = _Json_map3;
 var $joakin$elm_canvas$Canvas$Internal$Texture$decodeTextureImage = A2(
 	$elm$json$Json$Decode$andThen,
 	function (image) {

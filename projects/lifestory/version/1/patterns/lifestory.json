@@ -1,0 +1,11 @@
+[
+    {
+        "bounds": {
+            "top": 0,
+            "left": 0,
+            "bottom": 11,
+            "right": 24
+        },
+        "stepCriterion": "FullyContainedWithinSteppableRegion"
+    }
+]

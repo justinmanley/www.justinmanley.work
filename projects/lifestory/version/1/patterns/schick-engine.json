@@ -1,0 +1,11 @@
+[
+    {
+        "bounds": {
+            "top": 0,
+            "left": 0,
+            "bottom": 86,
+            "right": 90
+        },
+        "stepCriterion": "AnyIntersectionWithSteppableRegion"
+    }
+]
