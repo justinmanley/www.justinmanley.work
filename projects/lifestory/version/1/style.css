@@ -1,1 +1,1 @@
-.body{margin:0;position:relative}p{font-size:27px;font-family:sans-serif;line-height:1.2;margin:0 0 32.4px}.title{padding-top:129.6px;padding-bottom:129.6px}.content{margin:0 64.8px}pattern-anchor{display:block}
+.body{margin:0;position:relative;overscroll-behavior:none}p{font-size:27px;font-family:sans-serif;line-height:1.2;margin:0 0 32.4px}.title{padding-top:129.6px;padding-bottom:129.6px}.content{margin:0 64.8px}scrolling-game-of-life{display:block}pattern-anchor{display:block;width:100%}

@@ -1,0 +1,17 @@
+{
+    "reserve": {
+        "width": 17,
+        "height": 14
+    },
+    "atomicUpdateRegions": [
+        {
+            "bounds": {
+                "top": -6,
+                "left": -7,
+                "bottom": 10,
+                "right": 12
+            },
+            "stepCriterion": "FullyContainedWithinSteppableRegion"
+        }
+    ]
+}

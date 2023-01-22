@@ -4,27 +4,25 @@
     <meta charset="UTF-8">
     <title>Main</title>
 
-    <script src="../../../../projects/lifestory/version/1/page.js"></script>
-    <script src="../../../../projects/lifestory/version/1/main.js"></script>
-    <script src="../../../../projects/lifestory/version/1/elm-canvas.js"></script>
-
+    <script src="../../../../projects/lifestory/version/1/main.js" rendering-options="../../../../projects/lifestory/version/1/main.js"></script>
 
     <link rel="stylesheet" href="../../../../projects/lifestory/version/1/style.css">
 </head>
 
 <body class="body">
-    <canvas id="canvas"></canvas>
-    <div class="content">
-        <div id="article">
-            <div class="title">
-<p><pattern-anchor src="../../../../projects/lifestory/version/1/patterns/lifestory.rle"></pattern-anchor></p>
+    <scrolling-game-of-life grid-scale="2" id="life">
+
+        <div class="content" scrolling-game-of-life-center>
+            <div id="article">
+                <div class="title">
+<p><pattern-anchor src="../../../../projects/lifestory/version/1/patterns/lifestory.rle" rendering-options="../../../../projects/lifestory/version/1/patterns/lifestory.json"></pattern-anchor></p>
 </div>
 <p>A mother never recovers from the death of her child. It’s worse if you’re a single mother, and worse still if she’s your only child. Not a day passes that I don’t think about Mariam. I was twenty-five when I gave birth to her. Her dad left a few years later. From that day on, it was the two of us against the world. I thought it would always be that way.</p>
 <p>Then she died: cancer. She was forty. It should have been me. I had just reached retirement age, had just become officially “old,” and cancer is supposed to be a disease of old age. But that’s life: it never goes the way you expect.</p>
 <p>When Mariam was alive, we were close even when we were apart. When she was in college, she wrote me at least once a week. I lived for those letters. Later, once telephone calls became less expensive, we spoke almost every day. I thought we were as close as mother and daughter could be. But in the days since she died, I have wondered whether I knew her at all. Of all I have felt, that doubt — and the guilt that has come with it — has been the hardest to bear.</p>
 <p>It started when I was cleaning out her apartment. I was in Mariam’s study, a chilly room whose walls fit tightly around its single window. As I sat down in front of her computer, I saw myself reflected in the dark bulge of its glass screen. I gave the mouse a perfunctory shake as I reached with my other hand under the desk to feel around for the computer’s power button. But before I had found the power button, the screen flickered.</p>
 <p>It showed a terminal striped with lines of monospace text and a pattern of black and white squares changing according to a familiar logic. I froze, still twisted with one arm below the desk searching for the power button. What I was looking at made no sense. Marian had renounced Life years ago, I thought.</p>
-<p><pattern-anchor src="../../../../projects/lifestory/version/1/patterns/55p9h3v0.rle"></pattern-anchor></p>
+<p><pattern-anchor src="../../../../projects/lifestory/version/1/patterns/55p9h3v0.rle" rendering-options="../../../../projects/lifestory/version/1/patterns/55p9h3v0.json"></pattern-anchor></p>
 <p>I untwisted myself, pulled my eyes away from the changing squares, and looked to the text, which was the output of some command-line program Mariam had run (it must have been Mariam; who else could it have been?). The last line of text reported that it taken the program ten days to find the pattern of changing squares. The timestamp on that line showed it had been printed to the terminal earlier that day.</p>
 <p>A shiver ran up my spine. Mariam had written and run this program while she was still alive, and it had completed only after her death. She had never known its result, had never seen the pattern I watched as it danced on the screen.</p>
 <p>I began to explore the computer. In the folder containing the program in the terminal, I found other Life-related programs, along with lots of files I guessed might represent Life patterns. The timestamps on the files went back five years.</p>
@@ -40,62 +38,62 @@
 <li>Deaths. Each counter with four or more neighbors dies (is removed) from overpopulation. Every counter with one neighbor or none dies from isolation.</li>
 <li>Births. Each empty cell adjacent to exactly three neighbors — no more, no fewer, is a birth cell. A counter is placed on it at the next move.”</li>
 </ol>
-<p><pattern-anchor src="../../../../projects/lifestory/version/1/patterns/triplets.rle"></pattern-anchor></p>
+<p><pattern-anchor src="../../../../projects/lifestory/version/1/patterns/triplets.rle" rendering-options="../../../../projects/lifestory/version/1/patterns/triplets.json"></pattern-anchor></p>
 <p>I remember reading these rules with Mariam. She was eight years old. As we read, she stopped me to ask the meaning of words she didn’t know. Not mathematical words like “orthogonal” — she had learned that long ago — but “solitaire” and “desiderata.” Instead of a checkerboard we used graph paper, and instead of checkers, we used Smarties, the hard, puck-shaped sugar candies Mariam and I both loved.</p>
 <p>I described one shape after another — three counters in a row, then four counters in the shape of l, L, Z, T — and challenged Mariam to evolve the patterns forward by applying Conway’s rules.</p>
-<p><pattern-anchor src="../../../../projects/lifestory/version/1/patterns/tetrominoes.rle"></pattern-anchor></p>
+<p><pattern-anchor src="../../../../projects/lifestory/version/1/patterns/tetrominoes.rle" rendering-options="../../../../projects/lifestory/version/1/patterns/tetrominoes.json"></pattern-anchor></p>
 <p>At first, Mariam made mistakes. But she grew confident as she practiced. When she finished evolving the ’T,’ which took nine generations and used twenty counters at its peak, she looked up at me with a grin on her face.</p>
 <p>“I want to make my own pattern. I’ll challenge you,” she said.</p>
-<p><pattern-anchor src="../../../../projects/lifestory/version/1/patterns/little-m.rle"></pattern-anchor></p>
+<p><pattern-anchor src="../../../../projects/lifestory/version/1/patterns/little-m.rle" rendering-options="../../../../projects/lifestory/version/1/patterns/little-m.json"></pattern-anchor></p>
 <p>She pushed Smarties around on her sheet of graph paper, looking for a pleasing arrangement. She decided on nine counters arranged in the shape of an M, for “Mariam.” I teased her, asking how she knew the “M” wasn’t for me, and she grinned again. “Because I’m going to win,” she retorted.</p>
 <p>We began to step the pattern forward, stopping after each step to review each other’s work. If we both had the same answer, the person who finished first took a Smartie from the pile of extras. If we had different answers, we started again from the previous step and evolved it more slowly. In that case, the person who got it right took a candy from the pile.</p>
 <p>Mariam won, and I teased her: “You win, little ‘M’. How about a rematch for big ‘M’?”</p>
 <p>I recreated her original pattern on my graph paper and modified it, extending the pattern upwards at the corners to turn it into a capital ‘M.’</p>
 <p>“You’re on.”</p>
 <p>The first step of the pattern was like the first step of the little ‘M’ stretched vertically by one cell. I got the next step wrong because I tried to take a shortcut, reproducing the third step of the little ‘M,’ also stretched vertically by one cell. The bottom of the third steps were the same, but the tops were completely different. By the fifth step, all resemblance between the two patterns had vanished. That, I think, was when we both began to appreciate how subtle and sensitive Life was.</p>
-<p><pattern-anchor src="../../../../projects/lifestory/version/1/patterns/big-m.rle"></pattern-anchor></p>
+<p><pattern-anchor src="../../../../projects/lifestory/version/1/patterns/big-m.rle" rendering-options="../../../../projects/lifestory/version/1/patterns/big-m.json"></pattern-anchor></p>
 <p>By the tenth step, Mariam was getting impatient. We had only read the beginning of the article together. Then, while Mariam worked on the simple patterns — what Gardner called the tetrominoes, patterns of four counters — I had read ahead. I showed her a five-cell pattern, the r-pentomino, that Gardner said had been tracked for 460 generations and was still going. Nobody knew then when it stabilized, or if it stabilized at all.</p>
-<p><pattern-anchor src="../../../../projects/lifestory/version/1/patterns/r-pentomino.rle"></pattern-anchor></p>
+<p><pattern-anchor src="../../../../projects/lifestory/version/1/patterns/r-pentomino.rle" rendering-options="../../../../projects/lifestory/version/1/patterns/r-pentomino.json"></pattern-anchor></p>
 <p>I remember how she gaped at me then, disbelieving but not daunted. She said brightly that perhaps our big ‘M’ would last for even longer. After all, it began with more than twice as many counters as the five in the r-pentomino. Why should it not last twice as long? She gave me another challenging grin, as if to say that she thought she could outlast me. Mariam always relished a challenge.</p>
 <p>We were evenly matched, our candy hoards the same size (if whoever counted remembered to include the two Smarties Mariam popped into her mouth after winning them). But from the twenty-sixth step, I pulled ahead, finishing every step before Mariam.</p>
 <p>Six steps later, Mariam noticed something.</p>
 <p>“I’ve seen these patterns before.” She pointed at two wedge shapes positioned on either side of the growing pattern, oriented outwards. “We saw them a few steps ago. But they were closer to the center then.” She paused. “They’ve moved!”</p>
 <p>“Yeah.” I wasn’t surprised. She looked at me hard, squinting with mock suspicion.</p>
 <p>I confessed. “I saw a diagram of that shape in the article, and when it appeared, I recognized it right away. It’s called a glider.”</p>
-<p><pattern-anchor src="../../../../projects/lifestory/version/1/patterns/glider.rle"></pattern-anchor></p>
+<p><pattern-anchor src="../../../../projects/lifestory/version/1/patterns/glider.rle" rendering-options="../../../../projects/lifestory/version/1/patterns/glider.json"></pattern-anchor></p>
 <p>“Cheater!”</p>
 <p>I defended myself: “Silly! We hadn’t gotten to it yet. How was I supposed to know we would see a glider on the second pattern we tried?”</p>
 <p>Mariam relented. “Ok, tell me about it.”</p>
 <p>“Gardner says it is the smallest pattern which moves. Apparently patterns that move are called ‘spaceships.’ He says there are three other known spaceships, but he’s kept them ‘secret as a challenge for readers.’ We could try to find one. What do you think?”</p>
-<p><pattern-anchor src="../../../../projects/lifestory/version/1/patterns/lightweight-spaceship.rle"></pattern-anchor></p>
+<p><pattern-anchor src="../../../../projects/lifestory/version/1/patterns/lightweight-spaceship.rle" rendering-options="../../../../projects/lifestory/version/1/patterns/lightweight-spaceship.json"></pattern-anchor></p>
 <p>From that day, Life rapidly became Mariam’s favorite pastime. We still sat together on the sofa to read the latest “Mathematical Games” column once a month, but once we finished working through the column’s simple puzzles, Mariam would invariably return to Life.</p>
 <p>She worked out Life histories with a pencil and graph paper, and kept a collection of her favorite patterns bundled together in a manila folder.</p>
 <p>I remember when she learned the concept of a Garden of Eden, a pattern which no configuration of counters will ever produce. Mariam spent weeks trying to construct Garden-of-Eden patterns. She told me with a child’s openness that these patterns were lonely because they had no fathers (that’s how Life enthusiasts phrased it then; now, I imagine, they would say “parents”). She planned to find as many as she could and gather them together so they wouldn’t be lonely any more. I suppose that was when I began to resent Life for giving Mariam something I couldn’t.</p>
-<p><pattern-anchor src="../../../../projects/lifestory/version/1/patterns/garden-of-eden-1.rle"></pattern-anchor></p>
+<p><pattern-anchor src="../../../../projects/lifestory/version/1/patterns/garden-of-eden-1.rle" rendering-options="../../../../projects/lifestory/version/1/patterns/garden-of-eden-1.json"></pattern-anchor></p>
 <p>Still, when Mariam told me about Lifeline, a newsletter for Life enthusiasts, I subscribed. And when, at the age of fifteen, she begged for a computer, telling me having one in the house would help her learn useful skills, I bought us a brand-new TRS-80, even though I knew she would mostly use it to expand her forays into Life.</p>
 <p>As a child, she had shared all her discoveries with me, and even as I lost track of the specifics, I cheered her accomplishments. As Mariam withdrew and became private in the way of teenagers, I knew only from catching glimpses of gliders on the computer screen that she was still exploring Life. In college, she told me occasionally about things she had found. Then, nothing.</p>
 <p>At Mariam’s the day before, flipping through the box of floppy disks, I had found a videocassette at the back of the box. The videocassette was labeled “Mariam / Life rant.” I had added it to the box of Mariam’s things I was bringing home with me.</p>
 <p>It was one of those old 8mm cassettes, so it wouldn’t fit in my VHS player. After an hour of searching, I found my old Sony Video8 recorder, slid the cassette in, and pressed play.</p>
 <p>The video shows a baby sitting on a carpet playing with blocks. Off camera, two women are talking. One woman — from the quality of the sound, I guess she is the person holding the camera — exclaims: “Ooh! We should do it like an interview. Suppose you’re on television, and I’m interviewing you.”</p>
-<p><pattern-anchor src="../../../../projects/lifestory/version/1/patterns/two-figures-side-by-side.rle"></pattern-anchor></p>
+<p><pattern-anchor src="../../../../projects/lifestory/version/1/patterns/two-figures-side-by-side.rle" rendering-options="../../../../projects/lifestory/version/1/patterns/two-figures-side-by-side.json"></pattern-anchor></p>
 <p>The camera swings away from the baby and Mariam appears. My breath caught. In the video, she is kneeling on the carpet, fingering one of the baby’s colored blocks. She looks so young and full of life, not grey and gaunt as she had become in the final months of her cancer. I guessed she was in her mid-twenties, a few years out of college. It was good to remember her like this.</p>
 <p>The voice behind the camera says, “So, Mariam, tell me why you’re over the Game of Life.”</p>
 <p>Mariam looks uncomfortable. Watching, I imagined she did not expect to have the video camera turned on her and did not appreciate it. For a second, I wondered if she would refuse. But then she shakes her hair defiantly and looks at the camera.</p>
 <p>“I’m tired of feeling like I don’t belong. Remember LIFELINE, that newsletter for Life enthusiasts? Did you ever seen any woman’s name anywhere in LIFELINE? The whole thing is so male. I mean, think about it. This obsession with finding glider syntheses for all common patterns. It’s mathematical masturbation. A bunch of dudes jerking off together as though putting enough sperm in one place might spontaneously create a baby without the inconvenience of female involvement. It’s sort of pathetic, isn’t it?”</p>
-<p><pattern-anchor src="../../../../projects/lifestory/version/1/patterns/schick-engine.rle"></pattern-anchor></p>
+<p><pattern-anchor src="../../../../projects/lifestory/version/1/patterns/schick-engine.rle" rendering-options="../../../../projects/lifestory/version/1/patterns/schick-engine.json"></pattern-anchor></p>
 <p>The other voice protests in mock horror: “Mariam! In front of David!”</p>
 <p>The camera swings back to the baby on the carpet, still playing with his blocks, happily oblivious.</p>
 <p>“Don’t worry, Ash. He’ll be fine,” Mariam says. “Just because he’s a boy doesn’t mean he can’t endure a little criticism of the patriarchy.”</p>
 <p>The camera bounces up and down, and there is laughter. Then the camera shifts back to Mariam and steadies, and the voice behind the camera — whom I guessed must be Ashlyn, Mariam’s best friend from college — reasons, “Womb envy aside, glider syntheses do actually work. And they’re useful for building things in Life. That’s the real reason everyone tries to find glider syntheses. Plus, they can be so magical. Spaceship syntheses especially. You can’t deny there’s something beautiful about seeing simple things come together and transform into something new and different.”</p>
 <p>Mariam shrugs.</p>
 <p>“Yeah, they can be beautiful. And you can use glider syntheses to build things. But who cares? It has nothing to do with life — real life. If you study chemistry or electrical engineering or whatever, you can use what you learn to make things happen in the real world. I think that’s how the Life guys think of themselves. Like Priestley or Faraday or Dalton or Pasteur — finding new ways to isolate elements and combine them together. I suppose a glider synthesis is a bit like a chemical reaction.</p>
-<p><pattern-anchor src="../../../../projects/lifestory/version/1/patterns/gosper-glider-gun.rle"></pattern-anchor></p>
+<p><pattern-anchor src="../../../../projects/lifestory/version/1/patterns/gosper-glider-gun.rle" rendering-options="../../../../projects/lifestory/version/1/patterns/gosper-glider-gun.json"></pattern-anchor></p>
 <p>Or maybe they think of themselves like astronomers looking out into another world. Like Galileo and Kepler and Copernicus. Have you noticed how they’re obsessed with attribution? They’re so careful to catalog who first noticed each pattern and when he found it (it’s always a ‘he’). Just like Halley’s Comet and the Kuiper Belt and the Oort Cloud, there’s the Gosper gun and the Schick engine and the Corderman switch engine. There’s even a pattern called Kok’s galaxy! It’s right there in the name. They call it a galaxy!”</p>
-<p><pattern-anchor src="../../../../projects/lifestory/version/1/patterns/koks-galaxy.rle"></pattern-anchor></p>
+<p><pattern-anchor src="../../../../projects/lifestory/version/1/patterns/koks-galaxy.rle" rendering-options="../../../../projects/lifestory/version/1/patterns/koks-galaxy.json"></pattern-anchor></p>
 <p>Ashlyn cuts in, “But it’s not like a comet or a galaxy is something you can touch. Andromeda is 2.5 million light years away. At that distance, it’s about as abstract as a pattern in Life.”</p>
 <p>Ashlyn and Mariam had both majored in physics in college. When she graduated, Ashlyn had become a physicist, teaching and doing research at the state university.</p>
 <p>“At least it’s real, though. It’s part of the world,” Mariam says. She pauses. “I’ll tell you what they are, all the Life enthusiasts. They’re a bunch of boys collecting baseball cards. You know how some of them call their collections of oscillators and still lives ‘stamp collections’? That’s what it is to them! Life is a male hobby, like fixing up old cars. It’s for men to posture and compete with other men for irrelevant prizes. If men want to spend their time on pointless hobbies, that’s fine. It’s easy to find time to explore Life after work if someone else is doing your laundry and making dinner and changing diapers and cleaning the house. But we don’t have that luxury, you and me. You can keep playing Life if you want to, but I’m out.”</p>
-<p><pattern-anchor src="../../../../projects/lifestory/version/1/patterns/stamp-collection-still-lives.rle"></pattern-anchor></p>
+<p><pattern-anchor src="../../../../projects/lifestory/version/1/patterns/stamp-collection-still-lives.rle" rendering-options="../../../../projects/lifestory/version/1/patterns/stamp-collection-still-lives.json"></pattern-anchor></p>
 <p>The video crackled then and went black. A few seconds later, it showed a baby (David?) playing outdoors in a sandbox. I turned off the recorder and sat back.</p>
 <p>I remember when Mariam renounced Life, twenty years ago. She had told me something similar, then. Not in so many words, and not the bit about masturbation. But I remember a similar sense that the whole enterprise was pointless. I sighed. I felt no closer to answering the question of why Mariam had returned to Life.</p>
 <p>I found Ashlyn’s phone number in one of Mariam’s address books. A few days later, we met up for coffee. She was somber, but when I told her about the video, she smiled in recognition.</p>
@@ -104,7 +102,7 @@
 <p>Ashlyn tilted her head.</p>
 <p>“It was a long time ago, and I don’t remember exactly what she said. But I think she felt like she was giving Life more than it gave her in return. For a while, in the middle of college, she was spending hours every day exploring Life. Sometimes she missed class because she lost track of time working on her pattern search programs, looking for new spaceships or oscillators or whatever. I’d get to the computer lab at eight in the evening and find her bleary-eyed like she’d been staring at a screen for hours. She’d have missed dinner. And she’d still be there when I left to go home.”</p>
 <p>Ashlyn was no longer looking at me, but off into the distance. “We went backpacking in Utah over spring break one year, and she told me she saw a scattering of blinkers and beehives and blocks when she looked up at the stars. There was a shooting star, and she asked me if I had seen the glider.”</p>
-<p><pattern-anchor src="../../../../projects/lifestory/version/1/patterns/field-of-stars.rle"></pattern-anchor></p>
+<p><pattern-anchor src="../../../../projects/lifestory/version/1/patterns/field-of-stars.rle" rendering-options="../../../../projects/lifestory/version/1/patterns/field-of-stars.json"></pattern-anchor></p>
 <p>She looked back at me. “I remember she ranted about how male-dominated the Life community was. All that was true, and still is true today. But mostly, I think she was lonely and frustrated. The other Life enthusiasts she knew — all of them men — were polite, but distant. I don’t think she ever felt accepted as one of them. And because Life enthusiasts build on each others’ work, being left out of conversations — in letters, in private email chains — meant that she felt like she was always behind. She was always disappointed in what she had accomplished in Life. On top of all that, non-Life enthusiasts thought her strange for having such an abstract and yet consuming hobby.”</p>
 <p>Ashlyn rubbed her nose and gave an awkward laugh. “I’m sorry, I don’t mean to be such a downer. I should be remembering Mariam at her best.”</p>
 <p>I told her there was no need to apologize. Then I confessed that I hadn’t been asking just because of the video. I told her about the program running on Mariam’s terminal, and the files on her computer, and the floppy disks going back fifteen years.</p>
@@ -127,18 +125,12 @@
 <p>It was dark outside when I got back from the reception. On my way home, I had turned over my conversation with Ashlyn. I hadn’t understood everything she had said; I had gotten lost when she started talking about conservation laws and time-reversibility.</p>
 <p>But she had stirred something in me, some memory of the excitement I had felt when looking at the my first Life patterns so many years ago. I remembered the surprise I had felt when the shortcut I had tried to take in evolving my big ‘M’ pattern hadn’t worked — how Life had proved more complicated than I thought.</p>
 <p>I booted up my computer, opened my web browser, and found a web site offering a program which could be used to run Life. I downloaded it. And I began to play.</p>
-<p><pattern-anchor src="../../../../projects/lifestory/version/1/patterns/halfmax.rle"></pattern-anchor></p>
-
-
+<p><pattern-anchor src="../../../../projects/lifestory/version/1/patterns/halfmax.rle" rendering-options="../../../../projects/lifestory/version/1/patterns/halfmax.json"></pattern-anchor></p>
+            </div>
         </div>
-    </div>
+    </scrolling-game-of-life>
     <script>
-        const app = Elm.Main.init({
-            node: document.getElementById('canvas')
-        });
-        initialize(app, {
-            fontSizeToCellSize: fontSize => fontSize / 2
-        });
+        document.getElementById('life').initialize();
     </script>
 </body>
 
