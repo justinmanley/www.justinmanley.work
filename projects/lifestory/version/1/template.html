@@ -4,30 +4,24 @@
     <meta charset="UTF-8">
     <title>Main</title>
 
-    <script src="./page.js"></script>
     <script src="./main.js"></script>
-    <script src="./elm-canvas.js"></script>
-
 
     <link rel="stylesheet" href="./style.css">
 </head>
 
 <body class="body">
-    <canvas id="canvas"></canvas>
-    <div class="content">
-        <div id="article">
-            $body$
+    <scrolling-game-of-life
+        grid-scale=2
+        id="life">
 
-
+        <div class="content" scrolling-game-of-life-center>
+            <div id="article">
+                $body$
+            </div>
         </div>
-    </div>
+    </scrolling-game-of-life>
     <script>
-        const app = Elm.Main.init({
-            node: document.getElementById('canvas')
-        });
-        initialize(app, {
-            fontSizeToCellSize: fontSize => fontSize / 2
-        });
+        document.getElementById('life').initialize();
     </script>
 </body>
 

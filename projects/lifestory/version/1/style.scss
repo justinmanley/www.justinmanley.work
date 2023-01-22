@@ -9,6 +9,7 @@ $grid-cell-size: $primary-font-size * $primary-line-height-scaling-factor;
 .body {
     margin: 0;
     position: relative;
+    overscroll-behavior: none;
 }
 
 p {
@@ -27,8 +28,13 @@ p {
     margin: 0 (2 * $grid-cell-size);
 }
 
+scrolling-game-of-life {
+    display: block;
+}
+
 pattern-anchor {
     display: block;
+    width: 100%;
 }
 
 /*

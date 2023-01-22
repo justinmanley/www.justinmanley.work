@@ -1,4 +1,8 @@
 {
+    "reserve": {
+        "width": 90,
+        "height": 20
+    },
     "atomicUpdateRegions": [
         {
             "bounds": {
@@ -13,7 +17,7 @@
                     "period": 2
                 }
             },
-            "stepCriterion": "FullyContainedWithinSteppableRegion"
+            "stepCriterion": "AnyIntersectionWithSteppableRegion"
         }
     ],
     "focusRegion": {

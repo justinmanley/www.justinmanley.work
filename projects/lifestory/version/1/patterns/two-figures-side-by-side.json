@@ -1,4 +1,8 @@
 {
+    "reserve": {
+        "width": 25,
+        "height": 15
+    },
     "atomicUpdateRegions": [
         {
             "bounds": {
