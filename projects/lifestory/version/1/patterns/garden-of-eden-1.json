@@ -3,15 +3,17 @@
         "width": 28,
         "height": 9
     },
-    "atomicUpdateRegions": [
-        {
-            "bounds": {
-                "top": -20,
-                "left": -6,
-                "bottom": 17,
-                "right": 33
-            },
-            "stepCriterion": "AnyIntersectionWithSteppableRegion"
-        }
-    ]
+    "atomicUpdate": {
+        "regions": [
+            {
+                "bounds": {
+                    "top": -20,
+                    "left": -6,
+                    "bottom": 17,
+                    "right": 33
+                }
+            }
+        ],
+        "stepCriterion": "AnyIntersectionWithSteppableRegion"
+    }
 }
