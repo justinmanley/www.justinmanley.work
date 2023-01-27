@@ -3,15 +3,32 @@
         "width": 24,
         "height": 11
     },
-    "atomicUpdateRegions": [
-        {
-            "bounds": {
-                "top": 0,
-                "left": 0,
-                "bottom": 11,
-                "right": 24
+    "atomicUpdate": {
+        "regions": [
+            {
+                "bounds": {
+                    "top": -12,
+                    "left": -11,
+                    "bottom": 19,
+                    "right": 34
+                }
             },
-            "stepCriterion": "FullyContainedWithinSteppableRegion"
-        }
-    ]
+            {
+                "bounds": {
+                    "top": -3,
+                    "left": 36,
+                    "bottom": 1,
+                    "right": 40
+                },
+                "movement": {
+                    "direction": {
+                        "x": -1,
+                        "y": 1
+                    },
+                    "period": 4
+                }
+            }
+        ],
+        "stepCriterion": "AnyIntersectionWithSteppableRegion"
+    }
 }

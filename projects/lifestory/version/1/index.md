@@ -1,10 +1,11 @@
 ---
-lifescroll: 1027c9559fb7f3974cfadd90f52bf1fb4bacddef 
+lifescroll: 435d8025a04a42a0291dfff1058349c2df30add9
 ---
 
 <div class="title">
   <pattern-anchor src=./patterns/lifestory.rle></pattern-anchor>
 </div>
+
 
 A mother never recovers from the death of her child. It’s worse if you’re a single mother, and worse still if she’s your only child. Not a day passes that I don’t think about Mariam. I was twenty-five when I gave birth to her. Her dad left a few years later. From that day on, it was the two of us against the world. I thought it would always be that way.
 
@@ -15,8 +16,6 @@ When Mariam was alive, we were close even when we were apart. When she was in co
 It started when I was cleaning out her apartment. I was in Mariam’s study, a chilly room whose walls fit tightly around its single window. As I sat down in front of her computer, I saw myself reflected in the dark bulge of its glass screen. I gave the mouse a perfunctory shake as I reached with my other hand under the desk to feel around for the computer’s power button. But before I had found the power button, the screen flickered.
 
 It showed a terminal striped with lines of monospace text and a pattern of black and white squares changing according to a familiar logic. I froze, still twisted with one arm below the desk searching for the power button. What I was looking at made no sense. Marian had renounced Life years ago, I thought.
-
-<pattern-anchor src=./patterns/55p9h3v0.rle></pattern-anchor>
 
 I untwisted myself, pulled my eyes away from the changing squares, and looked to the text, which was the output of some command-line program Mariam had run (it must have been Mariam; who else could it have been?). The last line of text reported that it taken the program ten days to find the pattern of changing squares. The timestamp on that line showed it had been printed to the terminal earlier that day.
 
