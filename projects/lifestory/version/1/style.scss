@@ -1,7 +1,7 @@
 @import './bower_components/bootstrap/scss/_variables.scss';
 @import './bower_components/bootstrap/scss/_mixins.scss';
 
-$primary-font-size: 1.5 * 18px;
+$primary-font-size: 2.5 * 18px;
 $primary-line-height-scaling-factor: 1.2;
 
 $grid-cell-size: $primary-font-size * $primary-line-height-scaling-factor;
@@ -12,9 +12,7 @@ $grid-cell-size: $primary-font-size * $primary-line-height-scaling-factor;
     overscroll-behavior: none;
 }
 
-p {
-    font-size: $primary-font-size;
-    font-family: sans-serif;
+p, li {
     line-height: $primary-line-height-scaling-factor;
     margin: 0 0 $grid-cell-size;
 }
@@ -25,13 +23,15 @@ p {
 }
 
 .content {
-    margin: 0 (2 * $grid-cell-size);
+    margin: 0 $grid-cell-size;
     color: black;
 }
 
 scrolling-game-of-life {
     display: block;
     color: #c5c9cd;
+    font-family: sans-serif;
+    font-size: $primary-font-size;
 }
 
 pattern-anchor {
