@@ -26,10 +26,12 @@ p {
 
 .content {
     margin: 0 (2 * $grid-cell-size);
+    color: black;
 }
 
 scrolling-game-of-life {
     display: block;
+    color: #c5c9cd;
 }
 
 pattern-anchor {
