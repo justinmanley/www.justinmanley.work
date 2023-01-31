@@ -5,6 +5,7 @@ $primary-font-size: 2.5 * 18px;
 $primary-line-height-scaling-factor: 1.2;
 
 $grid-cell-size: $primary-font-size * $primary-line-height-scaling-factor;
+$grid-cell-color: #c5c9cd;
 
 .body {
     margin: 0;
@@ -29,15 +30,36 @@ p, li {
 
 scrolling-game-of-life {
     display: block;
-    color: #c5c9cd;
+    color: $grid-cell-color;
     font-family: sans-serif;
     font-size: $primary-font-size;
 }
 
-pattern-anchor {
-    display: block;
-    width: 100%;
+.caption {
+    font-style: italic;
+    color: $grid-cell-color;
+    margin: 0 auto;
+    text-align: center;
 }
+
+pattern-anchor.interaction-prompt {
+    margin-left: 30px;
+}
+
+// smartphones, touchscreens
+@media (hover: none) and (pointer: coarse) {
+    .clickable {
+        display: none;
+    }
+}
+
+// mouse, touch pad
+@media (hover: hover) and (pointer: fine) {
+    .tappable {
+        display: none;
+    }
+}
+
 
 /*
 // Tablets and up

@@ -1,5 +1,5 @@
 ---
-lifescroll: ff39c8f2a1bb5c02d233f74867ee56e7edb64452
+lifescroll: 44ba1f5d76cb70218ee7093b304fd17f0668b5bf
 ---
 
 <div class="title">
@@ -15,17 +15,17 @@ When Mariam was alive, we were close even when we were apart. When she was in co
 
 It started when I was cleaning out her apartment. I was in Mariam’s study, a chilly room whose walls fit tightly around its single window. As I sat down in front of her computer, I saw myself reflected in the dark bulge of its glass screen. I gave the mouse a perfunctory shake as I reached with my other hand under the desk to feel around for the computer’s power button. But before I had found the power button, the screen flickered.
 
-It showed a terminal striped with lines of monospace text and a pattern of black and white squares changing according to a familiar logic. I froze, still twisted with one arm below the desk searching for the power button. What I was looking at made no sense. Marian had renounced Life years ago, I thought.
+It showed a terminal striped with lines of monospace text. The text, arranged in a simple table, gave an accounting of a strange inventory: beehives, blinkers, blocks, gliders, loaves, boats, toads. I slowly untwisted myself and drew my arm up from below the desk, eyes fixed on the screen. Those words — beehive, blinker, glider — were familiar. But they made no sense. Marian had renounced Life years ago, I thought.
 
-I untwisted myself, pulled my eyes away from the changing squares, and looked to the text, which was the output of some command-line program Mariam had run (it must have been Mariam; who else could it have been?). The last line of text reported that it taken the program ten days to find the pattern of changing squares. The timestamp on that line showed it had been printed to the terminal earlier that day.
+I scrolled upwards, to the top of the inventory, which I assumed was the output of some command-line program Mariam had run (it must have been Mariam; who else could it have been?). Above the inventory, a line of text announced: “Solution not found,” and described the inventory below as incidental “debris” generated in the course of the search (for what, I wondered?). The same line reported that the program had run for ten days. The timestamp on that line showed it had been printed to the terminal earlier that day.
 
-A shiver ran up my spine. Mariam had written and run this program while she was still alive, and it had completed only after her death. She had never known its result, had never seen the pattern I watched as it danced on the screen.
+A shiver ran up my spine. Mariam had written and run this program while she was still alive, and it had completed only after her death. She had been thinking about this program and its search during her final days, and she had never known its result. 
 
 I began to explore the computer. In the folder containing the program in the terminal, I found other Life-related programs, along with lots of files I guessed might represent Life patterns. The timestamps on the files went back five years. 
 
-Looking up from the screen, my gaze passed over on a box of floppy disks. I pulled the box towards me and began to flip through the disks. The paper labels on the disks were marked in ballpoint pen: “Oscillators ’87-’88,” “Spaceships ’91” and “Misc. Patterns.” The dates were all out of order, but taken together, I found disks going back fifteen years. It had been decades since Mariam and I explored Life together, and I had forgotten most of what I had once learned. But I remembered enough to know that oscillators and spaceships were part of Life.
+Looking up from the screen, my gaze passed over on a box of floppy disks. I pulled the box towards me and began to flip through the disks. The paper labels on the disks were marked in ballpoint pen: “Oscillators ’87-’88,” “Spaceships ’91” and “Misc. Patterns.” The dates were all out of order, but taken together, I found disks going back fifteen years. It had been decades since Mariam and I explored Life together, and I had forgotten most of what I had once learned. But the inventory on the computer and the labels on the disks dredged up old memories. 
 
-When Mariam died, I thought she had gone decades without Life. We all thought that, everyone who knew her. But in secret, she had continued simulating, solving, searching. Why?
+When Mariam died, I thought she had gone years without Life. We all thought that, everyone who knew her. But in secret, she had continued simulating, solving, searching. Why?
 
 When I got home from Mariam’s apartment that day, I pulled out a cardboard box containing a jumble of letters and photographs and theater playbills. I rifled through the sentimental miscellany. Finally, near the bottom of the stack, I found the magazine clipping I was looking for.
 
@@ -43,7 +43,14 @@ I skipped ahead: “Conway’s genetic laws are delightfully simple. First note 
 
 <pattern-anchor src=./patterns/triplets.rle></pattern-anchor>
 
-I remember reading these rules with Mariam. She was eight years old. As we read, she stopped me to ask the meaning of words she didn’t know. Not mathematical words like “orthogonal” — she had learned that long ago — but “solitaire” and “desiderata.” Instead of a checkerboard we used graph paper, and instead of checkers, we used Smarties, the hard, puck-shaped sugar candies Mariam and I both loved.
+<div class=caption>
+  <span class=clickable>Click</span>
+  <span class=tappable>Tap</span>
+  anywhere to turn cells on or off.
+  <pattern-anchor class=interaction-prompt src=./patterns/interaction-prompt.rle></pattern-anchor>
+</div>
+
+I remember reading these rules with Mariam. She was eight years old. As we read, she stopped me to ask the meaning of words she didn’t know. Not mathematical words like “orthogonal” — she had learned that long ago — but “solitaire” and “desiderata.” Instead of a checkerboard we used graph paper, and instead of checkers, we used the puck-shaped pastel-colored sugar candies Mariam and I both loved.
 
 I described one shape after another — three counters in a row, then four counters in the shape of l, L, Z, T — and challenged Mariam to evolve the patterns forward by applying Conway’s rules.
 
@@ -55,7 +62,7 @@ At first, Mariam made mistakes. But she grew confident as she practiced. When sh
 
 <pattern-anchor src=./patterns/little-m.rle></pattern-anchor>
 
-She pushed Smarties around on her sheet of graph paper, looking for a pleasing arrangement. She decided on nine counters arranged in the shape of an M, for “Mariam.” I teased her, asking how she knew the “M” wasn’t for me, and she grinned again. “Because I’m going to win,” she retorted.
+She pushed candies around on her sheet of graph paper, looking for a pleasing arrangement. She decided on nine counters arranged in the shape of an M, for “Mariam.” I teased her, asking how she knew the “M” wasn’t for me, and she grinned again. “Because I’m going to win,” she retorted.
 
 We began to step the pattern forward, stopping after each step to review each other’s work. If we both had the same answer, the person who finished first took a Smartie from the pile of extras. If we had different answers, we started again from the previous step and evolved it more slowly. In that case, the person who got it right took a candy from the pile.
 
@@ -75,7 +82,7 @@ By the tenth step, Mariam was getting impatient. We had only read the beginning 
 
 I remember how she gaped at me then, disbelieving but not daunted. She said brightly that perhaps our big ‘M’ would last for even longer. After all, it began with more than twice as many counters as the five in the r-pentomino. Why should it not last twice as long? She gave me another challenging grin, as if to say that she thought she could outlast me. Mariam always relished a challenge.
 
-We were evenly matched, our candy hoards the same size (if whoever counted remembered to include the two Smarties Mariam popped into her mouth after winning them). But from the twenty-sixth step, I pulled ahead, finishing every step before Mariam.
+We were evenly matched, our candy hoards the same size (if whoever counted remembered to include the two candies Mariam popped into her mouth after winning them). But from the twenty-sixth step, I pulled ahead, finishing every step before Mariam.
 
 Six steps later, Mariam noticed something.
 
@@ -137,11 +144,11 @@ The camera bounces up and down, and there is laughter. Then the camera shifts ba
 
 Mariam shrugs.
 
-“Yeah, they can be beautiful. And you can use glider syntheses to build things. But who cares? It has nothing to do with life — real life. If you study chemistry or electrical engineering or whatever, you can use what you learn to make things happen in the real world. I think that’s how the Life guys think of themselves. Like Priestley or Faraday or Dalton or Pasteur — finding new ways to isolate elements and combine them together. I suppose a glider synthesis is a bit like a chemical reaction.
+“Yeah, they can be beautiful. And you can use glider syntheses to build things. But who cares? It has nothing to do with life — real life. If you study chemistry or electrical engineering or whatever, you can use what you learn to make things happen in the real world. I think that’s how the Life guys think of themselves. Like Priestley or Faraday or Dalton or Pasteur — finding new ways to isolate elements and combine them together. I suppose a glider synthesis is a bit like a chemical reaction.”
 
 <pattern-anchor src=./patterns/gosper-glider-gun.rle></pattern-anchor>
 
-Or maybe they think of themselves like astronomers looking out into another world. Like Galileo and Kepler and Copernicus. Have you noticed how they’re obsessed with attribution? They’re so careful to catalog who first noticed each pattern and when he found it (it’s always a ‘he’). Just like Halley’s Comet and the Kuiper Belt and the Oort Cloud, there’s the Gosper gun and the Schick engine and the Corderman switch engine. There’s even a pattern called Kok’s galaxy! It’s right there in the name. They call it a galaxy!”
+“Or maybe,” Mariam continues, “they think of themselves like astronomers looking out into another world. Like Galileo and Kepler and Copernicus. Have you noticed how they’re obsessed with attribution? They’re so careful to catalog who first noticed each pattern and when he found it (it’s always a ‘he’). Just like Halley’s Comet and the Kuiper Belt and the Oort Cloud, there’s the Gosper gun and the Schick engine and the Corderman switch engine. There’s even a pattern called Kok’s galaxy! It’s right there in the name. They call it a galaxy!”
 
 <pattern-anchor src=./patterns/koks-galaxy.rle></pattern-anchor>
 
@@ -193,7 +200,7 @@ I couldn’t say any more. My throat was swollen with a great unhappy lump and m
 
 “If Mariam was so unhappy — if Life made her so lonely and frustrated and angry — would her life have been better if she had never known about Life? Should I have stuck to the zoo and the science museum?”
 
-I was wallowing in self-pity, a perfect funeral cliché. By rights, Ashlyn should have rolled her eyes, but she considered my question seriously.
+I was wallowing in self-pity, a perfect cliché of a survivor. By rights, Ashlyn should have rolled her eyes, but she considered my question seriously.
 
 “No. She said Life was as pointless as stamp collecting and fixing old cars, but I don’t think she ever really believed it. Life was the greatest adventure of her life, the greatest pleasure.
 
