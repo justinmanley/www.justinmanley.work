@@ -1,9 +1,9 @@
------------------------------------------------------------------------------
+{-# LANGUAGE ImportQualifiedPost #-}
 {-# LANGUAGE OverloadedStrings #-}
 
 import Control.Applicative (empty, (<|>))
-import qualified Data.Aeson.Key as Key
-import qualified Data.Aeson.KeyMap as KeyMap
+import Data.Aeson.Key qualified as Key
+import Data.Aeson.KeyMap qualified as KeyMap
 import Data.Binary (Binary)
 import Data.Char (toLower)
 import Data.Functor ((<&>))
@@ -15,7 +15,7 @@ import Data.Text (Text)
 import Data.Typeable
 import Debug.Trace (trace)
 import Hakyll
-import qualified Projects
+import Projects qualified
 import Site.PostLength (minutesToReadPost)
 import Site.Url (normalizeUrls)
 import System.FilePath (combine, splitExtension, takeBaseName, takeDirectory)
@@ -88,7 +88,7 @@ main = hakyll $ do
       let posts = recentFirst =<< loadAllSnapshotsMatchingMetadata "posts/**/*.md" "post-preview" (not . hasTag "tech")
       let archiveCtx =
             listField "posts" siteCtx posts
-              `mappend` defaultContext
+              `mappend` siteCtx
 
       makeItem ""
         >>= loadTemplateWithMetadataAndApply "templates/writing.html" archiveCtx
@@ -111,7 +111,7 @@ main = hakyll $ do
       let talks = recentFirst =<< loadAll "talks/*.md"
       let talksCtx =
             listField "talks" siteCtx talks
-              `mappend` defaultContext
+              `mappend` siteCtx
 
       makeItem ""
         >>= loadTemplateWithMetadataAndApply "templates/talks.html" talksCtx
@@ -142,7 +142,7 @@ main = hakyll $ do
       let artworks = recentFirst =<< loadAllSnapshotsMatchingMetadata "artworks/**/*.md" "artwork-preview" includeArtworkInGallery
       let galleryCtx =
             listField "artworks" siteCtx artworks
-              `mappend` defaultContext
+              `mappend` siteCtx
 
       makeItem ""
         >>= loadTemplateWithMetadataAndApply "templates/gallery.html" galleryCtx
@@ -170,7 +170,7 @@ main = hakyll $ do
       let posts = recentFirst =<< loadAllSnapshots "posts/**/*.md" "post-preview"
       let homeCtx =
             listField "posts" siteCtx posts
-              `mappend` defaultContext
+              `mappend` siteCtx
 
       makeItem ""
         >>= loadTemplateWithMetadataAndApply "templates/home.html" homeCtx
@@ -228,6 +228,7 @@ compileSass = withItemBody (unixFilter "sass" ["css/style.scss"])
 
 siteCtx =
   dateField "date" "%B %e, %Y"
+    `mappend` constField "head" ""
     `mappend` defaultContext
 
 -- This route performs the following mapping:
@@ -329,7 +330,7 @@ createWritingArchiveByTag tag =
       let archiveCtx =
             listField "posts" siteCtx posts
               `mappend` constField "title" ("Writings on " ++ tag)
-              `mappend` defaultContext
+              `mappend` siteCtx
 
       makeItem ""
         >>= withContext (loadAndApplyTemplate "templates/writing.html") archiveCtx

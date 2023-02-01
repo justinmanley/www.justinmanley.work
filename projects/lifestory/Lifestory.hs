@@ -7,7 +7,7 @@ import Data.Functor ((<&>))
 import Data.List (isPrefixOf, stripPrefix)
 import Data.Set qualified as Set
 import Data.Text as Text (Text, pack, replace, unpack)
-import Debug.Trace (trace)
+import Debug.Trace (trace, traceShow)
 import Hakyll
   ( Compiler,
     Context,
@@ -18,12 +18,13 @@ import Hakyll
     compressCss,
     copyFileCompiler,
     customRoute,
-    defaultContext,
+    field,
     getResourceString,
     getRoute,
     idRoute,
     listFieldWith,
     loadAndApplyTemplate,
+    loadBody,
     makeItem,
     match,
     pandocCompiler,
@@ -53,11 +54,6 @@ compile projectsContext = do
     route $ removeSubstringRoute "lifescroll/"
     Hakyll.compile copyFileCompiler
 
-  -- TODO: Replace this with a compiler which runs `npm install`.
-  match "projects/lifestory/version/*/lifescroll/node_modules/elm-canvas/elm-canvas.js" $ do
-    route $ removeSubstringRoute "lifescroll/node_modules/elm-canvas/"
-    Hakyll.compile copyFileCompiler
-
   match "projects/lifestory/version/*/lifescroll/page.js" $ do
     route $ removeSubstringRoute "lifescroll/"
     Hakyll.compile copyFileCompiler
@@ -70,14 +66,18 @@ compile projectsContext = do
     route idRoute
     Hakyll.compile copyFileCompiler
 
-  match "projects/lifestory/version/*/template.html" $ Hakyll.compile templateBodyCompiler
+  match "projects/lifestory/version/*/templates/*.html" $ Hakyll.compile templateBodyCompiler
+
+  match "projects/lifestory/version/*/fragments/*.html" $ do
+    Hakyll.compile pandocCompiler
 
   match "projects/lifestory/version/*/index.md" $
     do
       route $ setExtension "html"
       Hakyll.compile $ do
         pandocCompiler
-          >>= loadAndApplyVersionedTemplate projectsContext
+          >>= loadAndApplyVersionedTemplate "templates/body.html" projectsContext
+          >>= loadAndApplyTemplate "templates/default.html" context
           >>= fullPathForItemCompiler
           >>= relativizeUrls
           <&> fmap addAtomicUpdateRegionToPatternAnchors
@@ -88,16 +88,22 @@ compile projectsContext = do
       getResourceString
         >>= compileSass
         <&> fmap compressCss
+  where
+    context = field "head" (loadVersionedItemBody "fragments/head.html") <> projectsContext
 
-loadAndApplyVersionedTemplate :: Context String -> Item String -> Compiler (Item String)
-loadAndApplyVersionedTemplate context item =
-  loadAndApplyTemplate (versionedTemplateIdentifier item) context item
+loadAndApplyVersionedTemplate :: Text -> Context String -> Item String -> Compiler (Item String)
+loadAndApplyVersionedTemplate templateName context item =
+  loadAndApplyTemplate (versionedIdentifier templateName item) context item
 
-versionedTemplateIdentifier :: Item a -> Identifier
-versionedTemplateIdentifier =
+loadVersionedItemBody :: Text -> Item String -> Compiler String
+loadVersionedItemBody templateName item =
+  loadBody (versionedIdentifier templateName item)
+
+versionedIdentifier :: Text -> Item a -> Identifier
+versionedIdentifier templateName =
   Identifier.fromFilePath
     . Text.unpack
-    . replace "index.md" "template.html"
+    . replace "index.md" templateName
     . Text.pack
     . Identifier.toFilePath
     . itemIdentifier
@@ -147,6 +153,8 @@ addAtomicUpdateRegionToPatternAnchors =
       TagSoup.TagOpen tagName $ concatMap transformAttr attributes
     tag x = x
 
+    -- TODO: Restrict this to only pattern-anchor tags (it is currently
+    -- being applied to <script> tags as well.)
     transformAttr (k, v) =
       if k == "src"
         then [(k, v), ("rendering-options", replaceString "rle" "json" v)]

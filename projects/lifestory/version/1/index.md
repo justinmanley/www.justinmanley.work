@@ -1,4 +1,5 @@
 ---
+title: Life Story
 lifescroll: 44ba1f5d76cb70218ee7093b304fd17f0668b5bf
 ---
 

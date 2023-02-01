@@ -53,13 +53,6 @@ $article-width: 600px;
 	src: url('/assets/fonts/aleo-regular-webfont.woff');
 }
 
-html,
-body {
-	// I'm not sure why this is required, but without it, I get an empty
-	// space on the right of the page when the viewport is < 600px.
-	overflow-x: hidden;
-}
-
 main {
 	// Space between the navbar and the articles / Twitter feed beneath.
 	padding-top: 50px;
