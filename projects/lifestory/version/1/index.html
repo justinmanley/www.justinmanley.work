@@ -1,20 +1,53 @@
-<html>
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta charset="UTF-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Life Story</title>
+        <link rel="icon" href="../../../../assets/images/favicon.ico"></link>
+        <link rel="stylesheet" type="text/css" href="../../../../css/style.css"></link>
+        <link rel="stylesheet" href="../../../../assets/fonts/aleo-regular-webfont.woff" type="text/css" media="all">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cardo" type="text/css" media="all">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
 
-<head>
-    <meta charset="UTF-8">
-    <title>Life Story</title>
+        <script src="../../../../projects/lifestory/version/1/main.js" rendering-options="../../../../projects/lifestory/version/1/main.js"></script>
+<link rel="stylesheet" href="../../../../projects/lifestory/version/1/style.css">
 
-    <script src="../../../../projects/lifestory/version/1/main.js" rendering-options="../../../../projects/lifestory/version/1/main.js"></script>
-
-    <link rel="stylesheet" href="../../../../projects/lifestory/version/1/style.css">
-</head>
-
-<body class="body">
-    <scrolling-game-of-life grid-scale="2" id="life">
-
-        <div class="content" scrolling-game-of-life-center>
-            <div id="article">
-                <div class="title">
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+            ga('create', 'UA-43529705-1', 'auto');
+            ga('send', 'pageview');
+        </script>
+    </head>
+    <body>
+		<nav>
+            <div class="nav-groups">
+                <div class="nav-item"><a href="../../../../" class="nav-brand">Justin Manley</a></div>
+                <div class="nav-item nav-toggle">Menu</div>
+                <ul class="nav-group nav-collapsed">
+                    <!--
+                        NOTE: The $num-nav-items variable in navbar.scss must be updated
+                        whenever a nav-item is added or removed. If $num-nav-items is not
+                        incremented when a new nav-item is added, that nav-item will not
+                        appear on mobile when the menu is expanded; if $num-nav-items is
+                        not decremented when a nav-item is removed, the menu-collapsing
+                        animation will appear to lag.
+                    -->
+                    <li class="nav-item"><a href="../../../../about">About</a></li>
+                    <li class="nav-item"><a href="../../../../writing">Writing</a></li>
+                    <li class="nav-item"><a href="../../../../art">Art</a></li>
+                    <li class="nav-item"><a href="../../../../talks">Talks</a></li>
+                </ul>
+            </div>
+		</nav>
+        <main>
+            <div class="content"><scrolling-game-of-life scrolling-game-of-life-center grid-scale="2" id="life">
+    <article><div class="title">
 <p><pattern-anchor src="../../../../projects/lifestory/version/1/patterns/lifestory.rle" rendering-options="../../../../projects/lifestory/version/1/patterns/lifestory.json"></pattern-anchor></p>
 </div>
 <p>A mother never recovers from the death of her child. It’s worse if you’re a single mother, and worse still if she’s your only child. Not a day passes that I don’t think about Mariam. I was twenty-five when I gave birth to her. Her dad left a few years later. From that day on, it was the two of us against the world. I thought it would always be that way.</p>
@@ -130,13 +163,60 @@ anywhere to turn cells on or off.
 <p>It was dark outside when I got back from the reception. On my way home, I had turned over my conversation with Ashlyn. I hadn’t understood everything she had said; I had gotten lost when she started talking about conservation laws and time-reversibility.</p>
 <p>But she had stirred something in me, some memory of the excitement I had felt when looking at the my first Life patterns so many years ago. I remembered the surprise I had felt when the shortcut I had tried to take in evolving my big ‘M’ pattern hadn’t worked — how Life had proved more complicated than I thought.</p>
 <p>I booted up my computer, opened my web browser, and found a web site offering a program which could be used to run Life. I downloaded it. And I began to play.</p>
-<p><pattern-anchor src="../../../../projects/lifestory/version/1/patterns/halfmax.rle" rendering-options="../../../../projects/lifestory/version/1/patterns/halfmax.json"></pattern-anchor></p>
+<p><pattern-anchor src="../../../../projects/lifestory/version/1/patterns/halfmax.rle" rendering-options="../../../../projects/lifestory/version/1/patterns/halfmax.json"></pattern-anchor></p></article>
+</scrolling-game-of-life>
+<script>
+    document.getElementById('life').initialize();
+</script></div>
+        </main>
+        <footer>
+            <div class="content">
+                <div class="contact-links content-block">
+                    <a class="contact-link" href="//twitter.com/outoftheyards">
+                    		<span class="fa fa-twitter"></span></a>     
+					<a class="contact-link" href="//github.com/justinmanley">
+							<span class="fa fa-github"></span></a>     
+                    <a class="contact-link" href="mailto:manleyjster@gmail.com">
+                    		<span class="fa fa-envelope"></span></a>     
+                	<a class="contact-link" href="//linkedin.com/in/justinmanley/">
+                    		<span class="fa fa-linkedin"></span></a>     
+                </div>
+                <form class="newsletter content-block" action="https://tinyletter.com/justinmanley" method="post" target="popupwindow" onsubmit="window.open(&#39;https://tinyletter.com/justinmanley&#39;, &#39;popupwindow&#39;, &#39;scrollbars=yes,width=800,height=600&#39;);return true">
+                    <label for="tlemail" class="newsletter-description">Sign up for occasional email updates.</label>
+                    <div class="newsletter-form">
+                        <input type="text" name="email" id="tlemail" class="newsletter-email"></input>
+                        <input type="submit" value="Subscribe" class="newsletter-subscribe"></input>
+                    </div>
+                    <input type="hidden" value="1" name="embed"></input>
+                </form>
+                <div class="content-block">
+                    <p><a href="../../../../site-credits">About this site</a></p>
+                </div>
             </div>
-        </div>
-    </scrolling-game-of-life>
-    <script>
-        document.getElementById('life').initialize();
-    </script>
-</body>
+        </footer>
+		<script>
+            // TODO: Move this into an external script.
+			function toggleNavigationMenu() {
+			  const navs = document.querySelectorAll('.nav-group')
+			  
+                navs.forEach(nav => {
+                    if (nav.classList.contains('nav-expanded')) {
+                        nav.classList.remove('nav-expanded');
+                        nav.classList.add('nav-collapsed');
+                    } else {
+                        if (nav.classList.contains('nav-collapsed')) {
+                            nav.classList.remove('nav-collapsed');
+                        }
+                        nav.classList.add('nav-expanded');
+                    }
+                });
+			}
 
+			document
+                .querySelector('.nav-toggle')
+                .addEventListener('click', toggleNavigationMenu);
+		</script>
+    </body>
+	<script>
+	</script>
 </html>
