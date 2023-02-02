@@ -1,7 +1,7 @@
 {
     "reserve": {
-        "width": 34,
-        "height": 12
+        "width": 17,
+        "height": 8
     },
     "atomicUpdate": {
         "regions": [
@@ -9,11 +9,32 @@
                 "bounds": {
                     "top": 0,
                     "left": 0,
-                    "bottom": 12,
-                    "right": 34
+                    "bottom": 23,
+                    "right": 31
+                }
+            },
+            {
+                "bounds": {
+                    "top": 0,
+                    "left": 0,
+                    "bottom": 4,
+                    "right": 4
+                },
+                "movement": {
+                    "direction": {
+                        "x": 1,
+                        "y": 1
+                    },
+                    "period": 4
                 }
             }
         ],
-        "stepCriterion": "FullyContainedWithinSteppableRegion"
+        "stepCriterion": "AnyIntersectionWithSteppableRegion"
+    },
+    "focusRegion": {
+        "top": 15,
+        "left": 13,
+        "bottom": 23,
+        "right": 30
     }
 }
