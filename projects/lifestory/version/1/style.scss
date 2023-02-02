@@ -1,6 +1,12 @@
 @import './bower_components/bootstrap/scss/_variables.scss';
 @import './bower_components/bootstrap/scss/_mixins.scss';
 
+@import './css/variables.scss';
+
+@function tint($color, $percentage) {
+  @return mix(white, $color, $percentage);
+}
+
 $primary-font-size: 1.1 * 18px;
 $primary-line-height-scaling-factor: 1.2;
 
@@ -16,7 +22,7 @@ main {
     padding-top: 0;
 }
 
-article, .extra {
+article, .footer {
     margin: 0 $grid-cell-size;
     color: black;
     font-size: $primary-font-size;
@@ -45,7 +51,7 @@ scrolling-game-of-life {
     font-size: $primary-font-size;
 }
 
-.caption, .extra {
+.caption, .footer {
     font-style: italic;
     color: $grid-cell-color;
 }
@@ -58,15 +64,26 @@ scrolling-game-of-life {
     font-style: normal;
 }
 
-.extra {
+.footer {
+    h3 {
+        font-style: normal;
+        margin-top: 40px;
+    }
+
     ul {
         list-style-type: none;
+    }
+
+    a {
+        color: tint($brand-primary, 60%);
     }
 }
 
 pattern-anchor.interaction-prompt {
     margin-left: 20px;
 }
+
+
 
 // smartphones, touchscreens
 @media (hover: none) and (pointer: coarse) {

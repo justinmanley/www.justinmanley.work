@@ -94,7 +94,7 @@ compile projectsContext = do
   where
     context =
       field "head" (loadVersionedItemBody "fragments/head.html")
-        <> field "acknowledgments" (loadVersionedItemBody "fragments/acknowledgments.md")
+        <> field "footer" (loadVersionedItemBody "fragments/footer.md")
         <> projectsContext
 
 loadAndApplyVersionedTemplate :: Text -> Context String -> Item String -> Compiler (Item String)

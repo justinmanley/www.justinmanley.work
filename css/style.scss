@@ -1,7 +1,7 @@
 @use 'sass:color';
 
-// Set up variables for all stylesheets to use
-$brand-primary: #db1d0f;
+
+@import 'variables.scss';
 
 $font-family-serif:
     Aleo, Georgia, "Times New Roman", Times, serif;
