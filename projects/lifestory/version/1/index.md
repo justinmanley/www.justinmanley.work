@@ -53,7 +53,7 @@ I skipped ahead: “Conway’s genetic laws are delightfully simple. First note 
 
 I remember reading these rules with Mariam. She was eight years old. As we read, she stopped me to ask the meaning of words she didn’t know. Not mathematical words like “orthogonal” — she had learned that long ago — but “solitaire” and “desiderata.” Instead of a checkerboard we used graph paper, and instead of checkers, we used the puck-shaped pastel-colored sugar candies Mariam and I both loved.
 
-I described one shape after another — three counters in a row, then four counters in the shape of l, L, Z, T — and challenged Mariam to evolve the patterns forward by applying Conway’s rules.
+I described one shape after another — three counters in a row, then four counters in the shape of L, l, T, Z — and challenged Mariam to evolve the patterns forward by applying Conway’s rules.
 
 <pattern-anchor src=./patterns/tetrominoes.rle></pattern-anchor>
 

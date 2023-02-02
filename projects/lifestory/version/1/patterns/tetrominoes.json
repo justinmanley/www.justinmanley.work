@@ -1,6 +1,6 @@
 {
     "reserve": {
-        "width": 29,
+        "width": 23,
         "height": 9
     },
     "atomicUpdate": {
@@ -10,7 +10,7 @@
                     "top": -3,
                     "left": -1,
                     "bottom": 6,
-                    "right": 28
+                    "right": 23
                 }
             }
         ],
