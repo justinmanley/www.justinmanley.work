@@ -24,8 +24,8 @@
     },
     "focusRegion": {
         "top": 35,
-        "left": 60,
+        "left": 50,
         "bottom": 60,
-        "right": 90
+        "right": 80
     }
 }
