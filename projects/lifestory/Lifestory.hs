@@ -18,6 +18,7 @@ import Hakyll
     compressCss,
     copyFileCompiler,
     customRoute,
+    defaultContext,
     field,
     getResourceString,
     getRoute,
@@ -36,6 +37,7 @@ import Hakyll
     unixFilter,
     withItemBody,
     withUrls,
+    (.||.),
   )
 import Hakyll qualified
 import Hakyll.Core.Identifier as Identifier
@@ -66,9 +68,10 @@ compile projectsContext = do
     route idRoute
     Hakyll.compile copyFileCompiler
 
-  match "projects/lifestory/version/*/templates/*.html" $ Hakyll.compile templateBodyCompiler
+  match "projects/lifestory/version/*/templates/*.html" $
+    Hakyll.compile templateBodyCompiler
 
-  match "projects/lifestory/version/*/fragments/*.html" $ do
+  match ("projects/lifestory/version/*/fragments/*.md" .||. "projects/lifestory/version/*/fragments/*.html") $ do
     Hakyll.compile pandocCompiler
 
   match "projects/lifestory/version/*/index.md" $
@@ -76,7 +79,7 @@ compile projectsContext = do
       route $ setExtension "html"
       Hakyll.compile $ do
         pandocCompiler
-          >>= loadAndApplyVersionedTemplate "templates/body.html" projectsContext
+          >>= loadAndApplyVersionedTemplate "templates/body.html" context
           >>= loadAndApplyTemplate "templates/default.html" context
           >>= fullPathForItemCompiler
           >>= relativizeUrls
@@ -89,7 +92,10 @@ compile projectsContext = do
         >>= compileSass
         <&> fmap compressCss
   where
-    context = field "head" (loadVersionedItemBody "fragments/head.html") <> projectsContext
+    context =
+      field "head" (loadVersionedItemBody "fragments/head.html")
+        <> field "acknowledgments" (loadVersionedItemBody "fragments/acknowledgments.md")
+        <> projectsContext
 
 loadAndApplyVersionedTemplate :: Text -> Context String -> Item String -> Compiler (Item String)
 loadAndApplyVersionedTemplate templateName context item =

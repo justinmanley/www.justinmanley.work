@@ -16,7 +16,7 @@ main {
     padding-top: 0;
 }
 
-article {
+article, .extra {
     margin: 0 $grid-cell-size;
     color: black;
     font-size: $primary-font-size;
@@ -36,17 +36,32 @@ article {
 scrolling-game-of-life {
     display: block;
     color: $grid-cell-color;
-    font-family: sans-serif;
-    font-size: $primary-font-size;
     position: relative;
     z-index: -1;
 }
 
-.caption {
+.content {
+    font-family: sans-serif;
+    font-size: $primary-font-size;
+}
+
+.caption, .extra {
     font-style: italic;
     color: $grid-cell-color;
-    margin: 0 auto;
+}
+
+.caption {
     text-align: center;
+}
+
+.acknowledgment {
+    font-style: normal;
+}
+
+.extra {
+    ul {
+        list-style-type: none;
+    }
 }
 
 pattern-anchor.interaction-prompt {
