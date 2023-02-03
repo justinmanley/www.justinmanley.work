@@ -63,7 +63,7 @@ The solution I came up with is much less fancy than the dynamic connected compon
 
 Along with the cells, the library loads a file which specifies how the pattern should be rendered. That file can specify, among other things, if there are cells which should always be updated together: an "atomic" update. The atomic update for each pattern is represented by a list of rectangles, each of which can have optional movement or expansion, and can even spawn new rectangles.
 
-Below is the Gosper glider gun again, this time with its atomic update regions visualized. When you scroll the page up, whenever any part of the atomic update region intersects the viewport, the _entire_ pattern is updated. This prevents the pattern from being corrupted (though of course you can corrupt it yourself if you want to, by <span class="tappable">tapping</span><span class="clickable">clicking</span> it!).
+Below is the Gosper glider gun again, this time with its atomic update regions visualized. When you scroll down the page, whenever any part of the atomic update region intersects the viewport, the _entire_ pattern is updated. This prevents the pattern from being corrupted (though of course you can corrupt it yourself if you want to, by <span class="tappable">tapping</span><span class="clickable">clicking</span> it!).
 
 <pattern-anchor src=./patterns/gosper-glider-gun-with-atomic-update-visualized.rle></pattern-anchor>
 
