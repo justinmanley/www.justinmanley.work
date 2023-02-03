@@ -2,7 +2,7 @@
 
 The [Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life) is real, as are all the patterns mentioned above. The named patterns featured in this story are, in order:
 
-  - Triominoes and tetrominoes (three- and four-celled pattern) in Martin Gardner's 1970 _Scientific American_ article.
+  - Triominoes and tetrominoes (three- and four-celled patterns) in Martin Gardner's 1970 _Scientific American_ article.
   - [R-pentomino](https://conwaylife.com/wiki/R-pentomino)
   - [Lightweight spaceship](https://conwaylife.com/wiki/Lightweight_spaceship)
   - [Glider](https://conwaylife.com/wiki/Glider)
@@ -18,7 +18,7 @@ The [Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life) is rea
 
 The layout of cells in the title is based on Jason Kottke's [Silkscreen](https://kottke.org/plus/type/silkscreen) font.
 
-You can read about the process of writing this story [here](https://buttondown.email/lifestory/archive).
+You can read about [the process of writing this story](https://buttondown.email/lifestory/archive), the [technical challenges](/projects/lifestory/technical-challenges) of integrating the Life simulation into a text webpage, and the [technical architecture](https://github.com/justinmanley/lifescroll) of this page.
 
 <h3>Thanks</h3>
 

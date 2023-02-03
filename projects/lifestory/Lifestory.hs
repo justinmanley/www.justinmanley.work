@@ -52,29 +52,29 @@ compile projectsContext = do
 
   -- TODO: Replace this with a match for lifescroll/src/Main.elm and
   -- a compiler which runs `elm make --output=main.js`
-  match "projects/lifestory/version/*/lifescroll/main.js" $ do
+  match "projects/lifestory/**/lifescroll/main.js" $ do
     route $ removeSubstringRoute "lifescroll/"
     Hakyll.compile copyFileCompiler
 
-  match "projects/lifestory/version/*/lifescroll/page.js" $ do
+  match "projects/lifestory/**/lifescroll/page.js" $ do
     route $ removeSubstringRoute "lifescroll/"
     Hakyll.compile copyFileCompiler
 
-  match "projects/lifestory/version/*/patterns/*.rle" $ do
+  match "projects/lifestory/**/patterns/*.rle" $ do
     route idRoute
     Hakyll.compile copyFileCompiler
 
-  match "projects/lifestory/version/*/patterns/*.json" $ do
+  match "projects/lifestory/**/patterns/*.json" $ do
     route idRoute
     Hakyll.compile copyFileCompiler
 
-  match "projects/lifestory/version/*/templates/*.html" $
+  match "projects/lifestory/**/templates/*.html" $
     Hakyll.compile templateBodyCompiler
 
-  match ("projects/lifestory/version/*/fragments/*.md" .||. "projects/lifestory/version/*/fragments/*.html") $ do
+  match ("projects/lifestory/**/fragments/*.md" .||. "projects/lifestory/**/fragments/*.html") $ do
     Hakyll.compile pandocCompiler
 
-  match "projects/lifestory/version/*/index.md" $
+  match "projects/lifestory/**/index.md" $
     do
       route $ setExtension "html"
       Hakyll.compile $ do
@@ -85,7 +85,7 @@ compile projectsContext = do
           >>= relativizeUrls
           <&> fmap addAtomicUpdateRegionToPatternAnchors
 
-  match "projects/lifestory/version/*/style.scss" $ do
+  match "projects/lifestory/**/style.scss" $ do
     route $ setExtension "css"
     Hakyll.compile $ do
       getResourceString
@@ -155,12 +155,10 @@ addAtomicUpdateRegionToPatternAnchors :: String -> String
 addAtomicUpdateRegionToPatternAnchors =
   TagSoup.renderTags . map tag . TagSoup.parseTags
   where
-    tag (TagSoup.TagOpen tagName attributes) =
-      TagSoup.TagOpen tagName $ concatMap transformAttr attributes
+    tag (TagSoup.TagOpen "pattern-anchor" attributes) =
+      TagSoup.TagOpen "pattern-anchor" $ concatMap transformAttr attributes
     tag x = x
 
-    -- TODO: Restrict this to only pattern-anchor tags (it is currently
-    -- being applied to <script> tags as well.)
     transformAttr (k, v) =
       if k == "src"
         then [(k, v), ("rendering-options", replaceString "rle" "json" v)]

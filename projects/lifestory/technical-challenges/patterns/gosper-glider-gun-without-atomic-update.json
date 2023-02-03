@@ -1,0 +1,10 @@
+{
+    "reserve": {
+        "width": 36,
+        "height": 9
+    },
+    "atomicUpdate": {
+        "regions": [],
+        "stepCriterion": "AnyIntersectionWithSteppableRegion"
+    }
+}
