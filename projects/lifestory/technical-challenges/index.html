@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta charset="UTF-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>index</title>
+        <link rel="icon" href="../../../assets/images/favicon.ico"></link>
+        <link rel="stylesheet" type="text/css" href="../../../css/style.css"></link>
+        <link rel="stylesheet" href="../../../assets/fonts/aleo-regular-webfont.woff" type="text/css" media="all">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cardo" type="text/css" media="all">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+
+        <script src="../../../projects/lifestory/technical-challenges/main.js"></script>
+<link rel="stylesheet" href="../../../projects/lifestory/technical-challenges/style.css">
+
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+            ga('create', 'UA-43529705-1', 'auto');
+            ga('send', 'pageview');
+        </script>
+    </head>
+    <body>
+		<nav>
+            <div class="nav-groups">
+                <div class="nav-item"><a href="../../../" class="nav-brand">Justin Manley</a></div>
+                <div class="nav-item nav-toggle">Menu</div>
+                <ul class="nav-group nav-collapsed">
+                    <!--
+                        NOTE: The $num-nav-items variable in navbar.scss must be updated
+                        whenever a nav-item is added or removed. If $num-nav-items is not
+                        incremented when a new nav-item is added, that nav-item will not
+                        appear on mobile when the menu is expanded; if $num-nav-items is
+                        not decremented when a nav-item is removed, the menu-collapsing
+                        animation will appear to lag.
+                    -->
+                    <li class="nav-item"><a href="../../../about">About</a></li>
+                    <li class="nav-item"><a href="../../../writing">Writing</a></li>
+                    <li class="nav-item"><a href="../../../art">Art</a></li>
+                    <li class="nav-item"><a href="../../../talks">Talks</a></li>
+                </ul>
+            </div>
+		</nav>
+        <main>
+            <div class="content"><scrolling-game-of-life scrolling-game-of-life-center grid-scale="2" id="life">
+    <article><h1 class="title">
+<a href="$url$">Embedding the Game of Life in a scrolling webpage</a>
+</h1>
+<p>“Life Story” embeds interactive simulations of Conway’s Game of Life into a text about the same. The simulations are powered by a TypeScript library written specifically
+for the story. To readers, it (hopefully) seems as though text and patterns from the Game of Life are interleaved on the page and moving the page causes the patterns to evolve according to the Life update rule.</p>
+<p>However, this is an illusion. Or, more properly, two illusions:</p>
+<ol type="1">
+<li>Text and patterns are interleaved on the page</li>
+<li>Patterns evolve according to the Life update rule</li>
+</ol>
+<p>Neither of these is strictly true. But the code goes to great lengths to sustain the impression that they are. Here’s why that’s necessary, and how it’s done.</p>
+<h2 id="interleaving">Interleaving</h2>
+<p>The Game of Life is rendered using an HTML <code>&lt;canvas&gt;</code> element. The most natural way to layout this <code>&lt;canvas&gt;</code> element would be to have the element start at the top of the page and stretch all the way to the bottom, overlaying the entire text. However, large <code>&lt;canvas&gt;</code> elements slow down the page. In order to make the page perform well, the <code>&lt;canvas&gt;</code> must instead be sized to the <em>viewport</em> (i.e. the screen) rather than the page.</p>
+<p>This means that the patterns aren’t actually interleaved with the text. Instead, they sit in a separate layer on top of it. Whenever the page scrolls, the code rerenders each pattern in a slightly updated position on the screen. If the rendering is fast enough, it seems as though patterns and text are interleaved and so that the patterns move in tandem with the text. It seems like the patterns are <em>part</em> of the text.</p>
+<p>That’s a big <em>if</em>, though – because in order to make scrolling feel completely smooth and seamless, the page would ideally rerender the pattern at 60 frames per second, which means that all the Life evolution and rendering code must run in 16ms.</p>
+<p>When it doesn’t run this fast (and in practice, it never runs quite this fast), the Life patterns seem to slide around on top of the text.</p>
+<p>The library’s biggest performance optimization is that it runs the Life update calculations on the GPU. This makes a <em>big</em> difference in performance. However, it’s not perfect. Transferring data from the GPU back to the CPU is expensive – the page spends 1/3rd of its total script execution time just transferring the evolved Life state back from the GPU.</p>
+<p>If the Life update rule was the only logic the page needed to run, it would be a relatively simple matter to keep everything on the GPU and avoid ever transferring data back to the CPU. But as we’ll see below, it’s not that simple.</p>
+<h2 id="evolution">Evolution</h2>
+<p>In Conway’s Game of Life, the update rule is applied across the entire grid simultaneously.</p>
+<p>However, in the context of a scrolling webpage, only a small portion of the webpage is in view at any given time. Because “Life Story” includes patterns with distinctive initial shapes (but unremarkable end-states) as well as patterns which disappear and others which move offscreen, the update rule could not apply across the entire page simultaneously. Instead, the update rule only applies to the part of the page currently visible on the screen.</p>
+<p>However, this creates a problem at the edges of the screen (especially the top and bottom, since the library assumes the page will be scrolled vertically). When a pattern is scrolling onto the screen, there is always a split second when it is halfway onscreen and halfway offscreen. Applying the Life update rule to half of a pattern almost always corrupts the pattern.</p>
+<p>Consider the Gosper glider gun, a famous pattern:</p>
+<p><pattern-anchor src="../../../projects/lifestory/technical-challenges/patterns/gosper-glider-gun.rle" rendering-options="../../../projects/lifestory/technical-challenges/patterns/gosper-glider-gun.json"></pattern-anchor></p>
+<p>The hallmark of this pattern is that it produces a stream of gliders. The pattern above exhibits this expected behavior because the entire pattern is being updated simultaneously.</p>
+<p>Here’s the same pattern again.</p>
+<p><pattern-anchor src="../../../projects/lifestory/technical-challenges/patterns/gosper-glider-gun-without-atomic-update.rle" rendering-options="../../../projects/lifestory/technical-challenges/patterns/gosper-glider-gun-without-atomic-update.json"></pattern-anchor></p>
+<p>This is a copy of the Gosper glider gun. Its initial state is exactly the same as that of the glider gun above. As long as this pattern is fully on-screen, it will behave predictably. But if you scroll the page up and down so that the pattern moves on and offscreen repeatedly, you will see that the pattern quickly becomes corrupted. It doesn’t behave like the first pattern, producing a steady stream of gliders. Probably, it dissolves into a random collection of small still-lives and oscillators.</p>
+<p>My first attempt to solve this problem was to determine dynamically at each frame which cells were close enough to each other that they should be updated together (in graph-theoretic language, calculating the connected components). This maintained beautifully the integrity of patterns whose cells began and remained continguous for the pattern’s entire evolution. Even in noncontiguous patterns, the contiguous subcomponents of the pattern maintained their integrity individually. However, fixing only the connected components failed to maintain spatial and temporal symmetry and consistency <em>between</em> connected components.</p>
+<p>The Gosper glider gun is formed of multiple moving pieces which over the course of its evolution periodically connect and disconnect. If the Life update rule is applied to only part of the glider gun while its parts are disconnected, then the parts will be out of sync and the mechanism will not work as expected. The problem can also be seen with the gliders produced by the glider gun. The gun produces a glider every 30 steps. The gliders are widely separated; each is its own connected component. However, if they are evolved separately, then the first glider to leave the screen will be frozen in place just offscreen. When the next glider reaches the edge of the screen, it will interact with the first glider. This caused a kickback reaction which often propagated backwards through the stream of gliders and ultimately corrupted the glider gun itself.</p>
+<p><pattern-anchor src="../../../projects/lifestory/technical-challenges/patterns/gosper-glider-gun-with-partial-atomic-update.rle" rendering-options="../../../projects/lifestory/technical-challenges/patterns/gosper-glider-gun-with-partial-atomic-update.json"></pattern-anchor></p>
+<p>If these problems weren’t enough, there was also the problem of performance: computing the connected components is an expensive operation which noticeably slowed down scrolling and caused the patterns to slide around on top of the text.</p>
+<p>I knew as soon as I finished implementing it that the connected component approach would not work. But this initial implementation helped me understand more clearly the aspects of Life any solution would need to preserve.</p>
+<p>The Game of Life is hermetic and deterministic. The state of the grid (meaning: which cells are on and which cells are off) at one moment <em>completely</em> determines the entire future evolution of the grid.</p>
+<p>But when I ran the Life update on scroll, it was all too easy to induce patterns to evolve differently based on how quickly I scrolled them into view. This above, all, was what I wanted to avoid. Same inputs would need to always produce same outputs.</p>
+<p>The solution I came up with is much less fancy than the dynamic connected component calculation. It requires up-front manual work for each pattern, and doesn’t help with cells added by the reader (readers can <span class="tappable">tap</span><span class="clickable">click</span> to add or remove cells). However, despite these limitations, it works well to preserve the illusion that the whole grid is evolving according to the Life rule.</p>
+<p>Along with the cells, the library loads a file which specifies how the pattern should be rendered. That file can specify, among other things, if there are cells which should always be updated together: an “atomic” update. The atomic update for each pattern is represented by a list of rectangles, each of which can have optional movement or expansion, and can even spawn new rectangles.</p>
+<p>Below is the Gosper glider gun again, this time with its atomic update regions visualized. When you scroll down the page, whenever any part of the atomic update region intersects the viewport, the <em>entire</em> pattern is updated. This prevents the pattern from being corrupted (though of course you can corrupt it yourself if you want to, by <span class="tappable">tapping</span><span class="clickable">clicking</span> it!).</p>
+<p><pattern-anchor src="../../../projects/lifestory/technical-challenges/patterns/gosper-glider-gun-with-atomic-update-visualized.rle" rendering-options="../../../projects/lifestory/technical-challenges/patterns/gosper-glider-gun-with-atomic-update-visualized.json"></pattern-anchor></p>
+<p>In order to maintain the integrity of the Gosper glider gun, including the glider stream it produces, the pattern above specifices a static rectangle containing the main part of the glider gun, and then it generates a new rectangle every 30 steps to contain the outgoing glider.</p>
+<p>While this approach requires the bounding rectangles to be manually specified for each pattern to ensure the full pattern is contained within the atomic update regions, it has the advantage of being fast at runtime – it is easy to quickly perform bounding rectangle intersection and containment checks.</p>
+<p>The <code>?debug=atomic-updates</code> query param visualizes all the atomic updates on a page. Try adding it to this page or to “Life Story,” and you’ll see which parts of the page update atomically.</p>
+<p>And that’s it!</p>
+<p>If all goes well, when you read “Life Story,” the patterns will scroll perfectly in sync with the text and you’ll never spot any discrepancy between the evolution of patterns on the page, and their true evolution in the real Game of Life. But life isn’t always perfect. If you see something that doesn’t look right – if the mask slips – you now have some idea of what’s going on underneath.</p></article>
+</scrolling-game-of-life>
+<div class="footer"><p>Further reading:</p>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life">Game of Life</a></li>
+<li><a href="https://conwaylife.com/wiki/Gosper_glider_gun">Gosper glider gun</a></li>
+<li>“<a href="../../../projects/lifestory/version/1">Life Story</a>”</li>
+<li><a href="https://github.com/justinmanley/lifescroll">Code on GitHub</a></li>
+</ul></div>
+<script>
+    document.getElementById('life').initialize();
+</script></div>
+        </main>
+        <footer>
+            <div class="content">
+                <div class="contact-links content-block">
+                    <a class="contact-link" href="//twitter.com/outoftheyards">
+                    		<span class="fa fa-twitter"></span></a>     
+					<a class="contact-link" href="//github.com/justinmanley">
+							<span class="fa fa-github"></span></a>     
+                    <a class="contact-link" href="mailto:manleyjster@gmail.com">
+                    		<span class="fa fa-envelope"></span></a>     
+                	<a class="contact-link" href="//linkedin.com/in/justinmanley/">
+                    		<span class="fa fa-linkedin"></span></a>     
+                </div>
+                <form class="newsletter content-block" action="https://tinyletter.com/justinmanley" method="post" target="popupwindow" onsubmit="window.open(&#39;https://tinyletter.com/justinmanley&#39;, &#39;popupwindow&#39;, &#39;scrollbars=yes,width=800,height=600&#39;);return true">
+                    <label for="tlemail" class="newsletter-description">Sign up for occasional email updates.</label>
+                    <div class="newsletter-form">
+                        <input type="text" name="email" id="tlemail" class="newsletter-email"></input>
+                        <input type="submit" value="Subscribe" class="newsletter-subscribe"></input>
+                    </div>
+                    <input type="hidden" value="1" name="embed"></input>
+                </form>
+                <div class="content-block">
+                    <p><a href="../../../site-credits">About this site</a></p>
+                </div>
+            </div>
+        </footer>
+		<script>
+            // TODO: Move this into an external script.
+			function toggleNavigationMenu() {
+			  const navs = document.querySelectorAll('.nav-group')
+			  
+                navs.forEach(nav => {
+                    if (nav.classList.contains('nav-expanded')) {
+                        nav.classList.remove('nav-expanded');
+                        nav.classList.add('nav-collapsed');
+                    } else {
+                        if (nav.classList.contains('nav-collapsed')) {
+                            nav.classList.remove('nav-collapsed');
+                        }
+                        nav.classList.add('nav-expanded');
+                    }
+                });
+			}
+
+			document
+                .querySelector('.nav-toggle')
+                .addEventListener('click', toggleNavigationMenu);
+		</script>
+    </body>
+	<script>
+	</script>
+</html>

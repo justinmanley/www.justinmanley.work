@@ -1,4 +1,2 @@
-x = 34, y = 12, rule = B3/S23
-4b2o16bo$4bobo14bobo$5b2o14bobo3bo3b3o$22bo4bo$3o24bo$17b3o10bo$14bo8b
-2o4bobo$o13bo8b2o4b2o$o3b3o7bo3bo14bo$o5bo10bobo13bo$5bo3b3o5bobo6b3o
-4bo$18bo!
+x = 30, y = 23, rule = B3/S23
+bo$2bo$3o13$29bo$29bo$29bo$26bo$25bobo$14bo11bo$13bobo$14bo!
