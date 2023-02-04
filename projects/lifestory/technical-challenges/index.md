@@ -2,8 +2,8 @@
 title: How to embed Conway's Game of Life in a scrollable web page
 ---
 
-"Life Story" embeds interactive simulations of Conway's Game of Life into a text about the same. The simulations are powered by a TypeScript library written specifically
-for the story. To readers, it (hopefully) seems as though text and patterns from the Game of Life are interleaved on the page and moving the page causes the patterns to evolve according to the Life update rule.
+My short illustrated narrative "[Life Story](/projects/lifestory/version/1)" embeds interactive simulations of [Conway's Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life) into a text about the same. The simulations are powered by a [TypeScript library written specifically
+for the story](https://github.com/justinmanley/lifescroll). To readers, it (hopefully) seems as though text and patterns from the Game of Life are interleaved on the page and moving the page causes the patterns to evolve according to the Life update rule.
 
 However, this is an illusion. Or, more properly, two illusions:
 
@@ -34,7 +34,7 @@ However, in the context of a scrolling webpage, only a small portion of the webp
 
 However, this creates a problem at the edges of the screen (especially the top and bottom, since the library assumes the page will be scrolled vertically). When a pattern is scrolling onto the screen, there is always a split second when it is halfway onscreen and halfway offscreen. Applying the Life update rule to half of a pattern almost always corrupts the pattern.
 
-Consider the Gosper glider gun, a famous pattern:
+Consider the [Gosper glider gun](https://conwaylife.com/wiki/Gosper_glider_gun), a famous pattern:
 
 <pattern-anchor src=./patterns/gosper-glider-gun.rle></pattern-anchor>
 

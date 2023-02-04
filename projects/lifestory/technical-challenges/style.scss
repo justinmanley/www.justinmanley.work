@@ -41,11 +41,9 @@ article, .footer {
 
 scrolling-game-of-life {
     color: $grid-cell-color;
-    position: relative;
-    z-index: -1;
 }
 
-.content {
+main .content {
     font-size: $primary-font-size;
 }
 
@@ -89,8 +87,6 @@ pattern-anchor.interaction-prompt {
     margin-left: 20px;
 }
 
-
-
 // smartphones, touchscreens
 @media (hover: none) and (pointer: coarse) {
     .clickable {
@@ -104,15 +100,3 @@ pattern-anchor.interaction-prompt {
         display: none;
     }
 }
-
-
-/*
-// Tablets and up
-@include media-breakpoint-up(md) {
-    .content {
-        // width: $article-width;
-        width: 600px;
-        margin: 0 auto;
-    }
-}
-*/
