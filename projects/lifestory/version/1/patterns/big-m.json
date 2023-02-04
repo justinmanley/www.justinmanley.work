@@ -12,6 +12,36 @@
                     "bottom": 10,
                     "right": 12
                 }
+            },
+            {
+                "bounds": {
+                    "top": 4,
+                    "left": 3,
+                    "bottom": 8,
+                    "right": 7
+                },
+                "movement": {
+                    "direction": {
+                        "x": -1,
+                        "y": -1
+                    },
+                    "period": 4
+                }
+            },
+            {
+                "bounds": {
+                    "top": 4,
+                    "left": -2,
+                    "bottom": 8,
+                    "right": 2
+                },
+                "movement": {
+                    "direction": {
+                        "x": 1,
+                        "y": -1
+                    },
+                    "period": 4
+                }
             }
         ],
         "stepCriterion": "FullyContainedWithinSteppableRegion",

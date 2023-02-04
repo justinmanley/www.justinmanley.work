@@ -4,7 +4,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta charset="UTF-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>index</title>
+        <title>How to embed Conway&#39;s Game of Life in a scrollable web page</title>
         <link rel="icon" href="../../../assets/images/favicon.ico"></link>
         <link rel="stylesheet" type="text/css" href="../../../css/style.css"></link>
         <link rel="stylesheet" href="../../../assets/fonts/aleo-regular-webfont.woff" type="text/css" media="all">
@@ -46,12 +46,11 @@
             </div>
 		</nav>
         <main>
-            <div class="content"><scrolling-game-of-life scrolling-game-of-life-center grid-scale="2" id="life">
-    <article><h1 class="title">
-<a href="$url$">Embedding the Game of Life in a scrolling webpage</a>
-</h1>
-<p>“Life Story” embeds interactive simulations of Conway’s Game of Life into a text about the same. The simulations are powered by a TypeScript library written specifically
-for the story. To readers, it (hopefully) seems as though text and patterns from the Game of Life are interleaved on the page and moving the page causes the patterns to evolve according to the Life update rule.</p>
+            <div class="content"><scrolling-game-of-life grid-scale="2" interactivity="pattern-anchors" id="life">
+    <article>
+        <h1 class="title"><a href="../../../projects/lifestory/technical-challenges/index.html">How to embed Conway&#39;s Game of Life in a scrollable web page</a></h1>
+        <p>My short illustrated narrative “<a href="../../../projects/lifestory/version/1">Life Story</a>” embeds interactive simulations of <a href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life">Conway’s Game of Life</a> into a text about the same. The simulations are powered by a <a href="https://github.com/justinmanley/lifescroll">TypeScript library written specifically
+for the story</a>. To readers, it (hopefully) seems as though text and patterns from the Game of Life are interleaved on the page and moving the page causes the patterns to evolve according to the Life update rule.</p>
 <p>However, this is an illusion. Or, more properly, two illusions:</p>
 <ol type="1">
 <li>Text and patterns are interleaved on the page</li>
@@ -69,7 +68,7 @@ for the story. To readers, it (hopefully) seems as though text and patterns from
 <p>In Conway’s Game of Life, the update rule is applied across the entire grid simultaneously.</p>
 <p>However, in the context of a scrolling webpage, only a small portion of the webpage is in view at any given time. Because “Life Story” includes patterns with distinctive initial shapes (but unremarkable end-states) as well as patterns which disappear and others which move offscreen, the update rule could not apply across the entire page simultaneously. Instead, the update rule only applies to the part of the page currently visible on the screen.</p>
 <p>However, this creates a problem at the edges of the screen (especially the top and bottom, since the library assumes the page will be scrolled vertically). When a pattern is scrolling onto the screen, there is always a split second when it is halfway onscreen and halfway offscreen. Applying the Life update rule to half of a pattern almost always corrupts the pattern.</p>
-<p>Consider the Gosper glider gun, a famous pattern:</p>
+<p>Consider the <a href="https://conwaylife.com/wiki/Gosper_glider_gun">Gosper glider gun</a>, a famous pattern:</p>
 <p><pattern-anchor src="../../../projects/lifestory/technical-challenges/patterns/gosper-glider-gun.rle" rendering-options="../../../projects/lifestory/technical-challenges/patterns/gosper-glider-gun.json"></pattern-anchor></p>
 <p>The hallmark of this pattern is that it produces a stream of gliders. The pattern above exhibits this expected behavior because the entire pattern is being updated simultaneously.</p>
 <p>Here’s the same pattern again.</p>
@@ -90,15 +89,10 @@ for the story. To readers, it (hopefully) seems as though text and patterns from
 <p>While this approach requires the bounding rectangles to be manually specified for each pattern to ensure the full pattern is contained within the atomic update regions, it has the advantage of being fast at runtime – it is easy to quickly perform bounding rectangle intersection and containment checks.</p>
 <p>The <code>?debug=atomic-updates</code> query param visualizes all the atomic updates on a page. Try adding it to this page or to “Life Story,” and you’ll see which parts of the page update atomically.</p>
 <p>And that’s it!</p>
-<p>If all goes well, when you read “Life Story,” the patterns will scroll perfectly in sync with the text and you’ll never spot any discrepancy between the evolution of patterns on the page, and their true evolution in the real Game of Life. But life isn’t always perfect. If you see something that doesn’t look right – if the mask slips – you now have some idea of what’s going on underneath.</p></article>
+<p>If all goes well, when you read “Life Story,” the patterns will scroll perfectly in sync with the text and you’ll never spot any discrepancy between the evolution of patterns on the page, and their true evolution in the real Game of Life. But life isn’t always perfect. If you see something that doesn’t look right – if the mask slips – you now have some idea of what’s going on underneath.</p>
+    </article>
 </scrolling-game-of-life>
-<div class="footer"><p>Further reading:</p>
-<ul>
-<li><a href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life">Game of Life</a></li>
-<li><a href="https://conwaylife.com/wiki/Gosper_glider_gun">Gosper glider gun</a></li>
-<li>“<a href="../../../projects/lifestory/version/1">Life Story</a>”</li>
-<li><a href="https://github.com/justinmanley/lifescroll">Code on GitHub</a></li>
-</ul></div>
+<div class="footer"></div>
 <script>
     document.getElementById('life').initialize();
 </script></div>
