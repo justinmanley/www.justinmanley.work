@@ -7,7 +7,6 @@ lifescroll: 44ba1f5d76cb70218ee7093b304fd17f0668b5bf
   <pattern-anchor src=./patterns/lifestory.rle></pattern-anchor>
 </div>
 
-
 A mother never recovers from the death of her child. It’s worse if you’re a single mother, and worse still if she’s your only child. Not a day passes that I don’t think about Mariam. I was twenty-five when I gave birth to her. Her dad left a few years later. From that day on, it was the two of us against the world. I thought it would always be that way.
 
 Then she died: cancer. She was forty. It should have been me. I had just reached retirement age, had just become officially “old,” and cancer is supposed to be a disease of old age. But that’s life: it never goes the way you expect.
@@ -18,7 +17,7 @@ It started when I was cleaning out her apartment. I was in Mariam’s study, a c
 
 It showed a terminal striped with lines of monospace text. The text, arranged in a simple table, gave an accounting of a strange inventory: beehives, blinkers, blocks, gliders, loaves, boats, toads. I slowly untwisted myself and drew my arm up from below the desk, eyes fixed on the screen. Those words — beehive, blinker, glider — were familiar. But they made no sense. Marian had renounced Life years ago, I thought.
 
-I scrolled upwards, to the top of the inventory, which I assumed was the output of some command-line program Mariam had run (it must have been Mariam; who else could it have been?). Above the inventory, a line of text announced: “Solution not found,” and described the inventory below as incidental “debris” generated in the course of the search (for what, I wondered?). The same line reported that the program had run for ten days. The timestamp on that line showed it had been printed to the terminal earlier that day.
+I scrolled upwards, to the top of the inventory, which I assumed was the output of some command-line program Mariam had run (it must have been Mariam; who else could it have been?). Above the inventory, a line of text announced: “Search complete. No solution found.” The same line reported that the program had run for ten days. The timestamp on that line showed it had been printed to the terminal earlier that day.
 
 A shiver ran up my spine. Mariam had written and run this program while she was still alive, and it had completed only after her death. She had been thinking about this program and its search during her final days, and she had never known its result. 
 
@@ -30,9 +29,9 @@ When Mariam died, I thought she had gone years without Life. We all thought that
 
 When I got home from Mariam’s apartment that day, I pulled out a cardboard box containing a jumble of letters and photographs and theater playbills. I rifled through the sentimental miscellany. Finally, near the bottom of the stack, I found the magazine clipping I was looking for.
 
-A staple, slightly rusted but still intact, held the two sheets of glossy paper together. The title at the top of the page was printed in italics: “The fantastic combinations of John Conway’s new solitaire game ‘life’,” with the familiar byline underneath: “by Martin Gardner.” As I scanned the article, I remembered the day Mariam and I first encountered Life.
+A staple, slightly rusted but still intact, held the two sheets of glossy paper together. The title at the top of the page was printed in italics: _The fantastic combinations of John Conway’s new solitaire game “life”_, with the familiar byline underneath: “by Martin Gardner.” As I scanned the article, I remembered the day Mariam and I first encountered Life.
 
-I used to subscribe to Scientific American, and when Mariam was little she and I would read it together in the evenings after dinner. As an accountant, I’ve always been good with numbers, and Mariam was a bright child. Our favorite part of the magazine was Gardner’s “Mathematical Games” column. Each month when the magazine arrived, Mariam and I would spend many evenings on the sofa together working through Gardner’s latest puzzle.
+I used to subscribe to _Scientific American_, and when Mariam was little she and I would read it together in the evenings after dinner. As an accountant, I’ve always been good with numbers, and Mariam was a bright child. Our favorite part of the magazine was Gardner’s “Mathematical Games” column. Each month when the magazine arrived, Mariam and I spent many evenings on the sofa together working through Gardner’s latest puzzle.
 
 My eyes fixed on Gardner’s long-ago words: “To play Life you must have a fairly large checkerboard and a plentiful supply of flat counters. The basic idea is to start with a simple configuration of counters, one to a cell, then observe how it changes as you apply Conway’s ‘genetic laws’ for births, deaths and survivals. Conway chose his rules carefully to meet three desiderata.”
 
@@ -48,7 +47,7 @@ I skipped ahead: “Conway’s genetic laws are delightfully simple. First note 
   <span class=clickable>Click</span>
   <span class=tappable>Tap</span>
   anywhere to turn cells on or off.
-  <pattern-anchor class=interaction-prompt src=./patterns/interaction-prompt.rle></pattern-anchor>
+  <pattern-anchor class=interaction-promptaky src=./patterns/interaction-prompt.rle></pattern-anchor>
 </div>
 
 I remember reading these rules with Mariam. She was eight years old. As we read, she stopped me to ask the meaning of words she didn’t know. Not mathematical words like “orthogonal” — she had learned that long ago — but “solitaire” and “desiderata.” Instead of a checkerboard we used graph paper, and instead of checkers, we used the puck-shaped pastel-colored sugar candies Mariam and I both loved.
@@ -65,7 +64,7 @@ At first, Mariam made mistakes. But she grew confident as she practiced. When sh
 
 She pushed candies around on her sheet of graph paper, looking for a pleasing arrangement. She decided on nine counters arranged in the shape of an M, for “Mariam.” I teased her, asking how she knew the “M” wasn’t for me, and she grinned again. “Because I’m going to win,” she retorted.
 
-We began to step the pattern forward, stopping after each step to review each other’s work. If we both had the same answer, the person who finished first took a Smartie from the pile of extras. If we had different answers, we started again from the previous step and evolved it more slowly. In that case, the person who got it right took a candy from the pile.
+We began to step the pattern forward, stopping after each step to review each other’s work. If we both had the same answer, the person who finished first took a candy from the pile of extras. If we had different answers, we started again from the previous step and evolved it more slowly. In that case, the person who got it right took a candy from the pile.
 
 Mariam won, and I teased her: “You win, little ‘M’. How about a rematch for big ‘M’?”
 
@@ -131,7 +130,7 @@ The voice behind the camera says, “So, Mariam, tell me why you’re over the G
 
 Mariam looks uncomfortable. Watching, I imagined she did not expect to have the video camera turned on her and did not appreciate it. For a second, I wondered if she would refuse. But then she shakes her hair defiantly and looks at the camera. 
 
-“I’m tired of feeling like I don’t belong. Remember LIFELINE, that newsletter for Life enthusiasts? Did you ever seen any woman’s name anywhere in LIFELINE? The whole thing is so male. I mean, think about it. This obsession with finding glider syntheses for all common patterns. It’s mathematical masturbation. A bunch of dudes jerking off together as though putting enough sperm in one place might spontaneously create a baby without the inconvenience of female involvement. It’s sort of pathetic, isn’t it?”
+“I’m tired of feeling like I don’t belong. Remember Lifeline, that newsletter for Life enthusiasts? Did you ever seen any woman’s name anywhere in Lifeline? The whole thing is so male. I mean, think about it. This obsession with finding glider syntheses for all common patterns. It’s mathematical masturbation. A bunch of dudes jerking off together as though putting enough sperm in one place might spontaneously create a baby without the inconvenience of female involvement. It’s sort of pathetic, isn’t it?”
 
 <pattern-anchor src=./patterns/schick-engine.rle></pattern-anchor>
 
