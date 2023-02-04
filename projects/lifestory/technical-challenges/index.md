@@ -1,4 +1,6 @@
-<h1 class="title"><a href="$url$">Embedding the Game of Life in a scrolling webpage</a></h1>
+---
+title: How to embed Conway's Game of Life in a scrollable web page
+---
 
 "Life Story" embeds interactive simulations of Conway's Game of Life into a text about the same. The simulations are powered by a TypeScript library written specifically
 for the story. To readers, it (hopefully) seems as though text and patterns from the Game of Life are interleaved on the page and moving the page causes the patterns to evolve according to the Life update rule.
