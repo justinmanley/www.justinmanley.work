@@ -7,7 +7,7 @@ import Data.Aeson.KeyMap qualified as KeyMap
 import Data.Binary (Binary)
 import Data.Char (toLower)
 import Data.Functor ((<&>))
-import Data.List (nub, stripPrefix)
+import Data.List (isPrefixOf, nub, stripPrefix)
 import Data.Maybe (fromMaybe, isJust, maybe)
 import Data.Monoid (mappend)
 import Data.String (fromString)
@@ -210,6 +210,7 @@ postPreviewCompiler = do
         dateField "date" "%B %Y"
           `mappend` siteCtx -- Simplified date for post preview in archive.
           `mappend` field "length" postLength
+          `mappend` boolFieldM "is-external" isExternalPost
 
   pandocCompiler
     >>= loadAndApplyTemplate "templates/post_preview.html" postCtx
@@ -340,6 +341,30 @@ createWritingArchiveByTag tag =
 
 postLength :: Item String -> Compiler String
 postLength item = return . show . minutesToReadPost . itemBody $ item
+
+-- | Like 'boolField' but allows the use of the 'Compiler' monad.
+boolFieldM :: String -> (Item a -> Compiler Bool) -> Context a
+boolFieldM name f = field name $ \i -> do
+  b <- f i
+  if b
+    then
+      pure $
+        error $
+          unwords ["no string value for bool field:", name]
+    else empty
+
+-- Given the key of some metadata, extracts the value as a string and returns it.
+-- If the metadata doesnt exist, we return empty.
+extractMetadata :: String -> Item a -> Compiler (Maybe String)
+extractMetadata key item =
+  getMetadataField (itemIdentifier item) key
+
+isExternalPost :: Item a -> Compiler Bool
+isExternalPost item = do
+  m <- extractMetadata "source-url" item
+  return $ case m of
+    Just field -> not $ "/" `isPrefixOf` field || "//" `isPrefixOf` field
+    Nothing -> False
 
 -- Configuration
 
