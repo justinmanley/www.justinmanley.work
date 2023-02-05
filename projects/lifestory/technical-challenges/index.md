@@ -2,7 +2,7 @@
 title: How to embed Conway's Game of Life in a scrollable web page
 ---
 
-My short illustrated narrative "[Life Story](/projects/lifestory/version/1)" embeds interactive simulations of [Conway's Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life) into a text about the same. The simulations are powered by a [TypeScript library written specifically
+My short illustrated narrative "[Life Story](/projects/lifestory)" embeds interactive simulations of [Conway's Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life) into a text about the same. The simulations are powered by a [TypeScript library written specifically
 for the story](https://github.com/justinmanley/lifescroll). To readers, it (hopefully) seems as though text and patterns from the Game of Life are interleaved on the page and moving the page causes the patterns to evolve according to the Life update rule.
 
 However, this is an illusion. Or, more properly, two illusions:

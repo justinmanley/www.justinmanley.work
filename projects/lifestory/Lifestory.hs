@@ -4,10 +4,10 @@
 module Lifestory.Lifestory (compile) where
 
 import Data.Functor ((<&>))
-import Data.List (isPrefixOf, stripPrefix)
+import Data.List (isPrefixOf, isSuffixOf, stripPrefix)
+import Data.Maybe (mapMaybe)
 import Data.Set qualified as Set
 import Data.Text as Text (Text, pack, replace, unpack)
-import Debug.Trace (trace, traceShow)
 import Hakyll
   ( Compiler,
     Context,
@@ -16,10 +16,12 @@ import Hakyll
     Routes,
     Rules,
     compressCss,
+    constRoute,
     copyFileCompiler,
     customRoute,
     defaultContext,
     field,
+    fromGlob,
     getResourceString,
     getRoute,
     idRoute,
@@ -29,12 +31,14 @@ import Hakyll
     makeItem,
     match,
     pandocCompiler,
+    preprocess,
     relativizeUrls,
     route,
     setExtension,
     templateBodyCompiler,
     toSiteRoot,
     unixFilter,
+    version,
     withItemBody,
     withUrls,
     (.||.),
@@ -42,16 +46,19 @@ import Hakyll
 import Hakyll qualified
 import Hakyll.Core.Identifier as Identifier
 import Hakyll.Core.Item (itemIdentifier)
+import Hakyll.Core.Provider (resourceFilePath)
+import System.Directory (listDirectory)
 import System.FilePath (joinPath)
 import Text.HTML.TagSoup qualified as TagSoup
+import Text.Read (readMaybe)
 
 compile :: Context String -> Rules ()
 compile projectsContext = do
-  -- TODO: Create a "compiler" which clones the lifestory repo and
-  -- checks out the specified commit hash
+  -- TODO: Create a "compiler" which clones the lifescroll repo and
+  -- checks out the specified commit hash.
 
-  -- TODO: Replace this with a match for lifescroll/src/Main.elm and
-  -- a compiler which runs `elm make --output=main.js`
+  -- TODO: Replace this with a match for lifescroll/src/*.ts and
+  -- a compiler which runs webpack to generate the javascript bundle.
   match "projects/lifestory/**/lifescroll/main.js" $ do
     route $ removeSubstringRoute "lifescroll/"
     Hakyll.compile copyFileCompiler
@@ -74,16 +81,9 @@ compile projectsContext = do
   match ("projects/lifestory/**/fragments/*.md" .||. "projects/lifestory/**/fragments/*.html") $ do
     Hakyll.compile pandocCompiler
 
-  match "projects/lifestory/**/index.md" $
-    do
-      route $ setExtension "html"
-      Hakyll.compile $ do
-        pandocCompiler
-          >>= loadAndApplyVersionedTemplate "templates/body.html" context
-          >>= loadAndApplyTemplate "templates/default.html" context
-          >>= fullPathForItemCompiler
-          >>= relativizeUrls
-          <&> fmap addAtomicUpdateRegionToPatternAnchors
+  match "projects/lifestory/**/index.md" $ do
+    route $ setExtension "html"
+    Hakyll.compile $ pageCompiler context
 
   match "projects/lifestory/**/style.scss" $ do
     route $ setExtension "css"
@@ -91,6 +91,15 @@ compile projectsContext = do
       getResourceString
         >>= compileSass
         <&> fmap compressCss
+
+  maybeMaxVersion <-
+    preprocess $
+      maxVersion <$> listDirectory "projects/lifestory/version"
+  case maybeMaxVersion of
+    Nothing -> return ()
+    Just v -> match (fromGlob $ "projects/lifestory/version/" ++ show v ++ "/index.md") $ version "latest" $ do
+      route $ constRoute "projects/lifestory/index.html"
+      Hakyll.compile $ pageCompilerTransformingUrls (withVersionedUrl v) context
   where
     context =
       field "head" (loadVersionedItemBody "fragments/head.html")
@@ -127,12 +136,12 @@ replaceString find replacement = Text.unpack . replace find replacement . Text.p
 -- necessary in the first place. For some reason, page-relative links are
 -- interpreted relative to the parent directory, not the directory in which
 -- the page is located.
-fullPathForItemCompiler :: Item String -> Compiler (Item String)
-fullPathForItemCompiler item = do
+withUrlsCompiler :: (FilePath -> FilePath -> FilePath) -> Item String -> Compiler (Item String)
+withUrlsCompiler transformFilepath item = do
   maybeRoute <- getRoute $ itemIdentifier item
   return $ case maybeRoute of
     Nothing -> item
-    Just route -> withUrls (fullPathForItem route) <$> item
+    Just route -> withUrls (transformFilepath route) <$> item
 
 fullPathForItem :: FilePath -> FilePath -> FilePath
 fullPathForItem root path =
@@ -163,3 +172,44 @@ addAtomicUpdateRegionToPatternAnchors =
       if k == "src"
         then [(k, v), ("rendering-options", replaceString "rle" "json" v)]
         else [(k, v)]
+
+maxVersion :: [FilePath] -> Maybe Integer
+maxVersion paths =
+  foldr maybeMax Nothing versions
+  where
+    versions :: [Integer]
+    versions = mapMaybe readMaybe paths
+
+    maybeMax :: Integer -> Maybe Integer -> Maybe Integer
+    maybeMax i Nothing = Just i
+    maybeMax i (Just j) = Just $ max i j
+
+-- Rather than calling this on the same page in multiple places, it would be better
+-- to cache a snapshot and then load it. However, it seems difficult to do this without
+-- introducing a circular dependency.
+pageCompilerTransformingUrls :: (FilePath -> FilePath -> FilePath) -> Context String -> Compiler (Item String)
+pageCompilerTransformingUrls transformFilepath context =
+  pandocCompiler
+    >>= loadAndApplyVersionedTemplate "templates/body.html" context
+    >>= loadAndApplyTemplate "templates/default.html" context
+    >>= withUrlsCompiler (\route -> transformFilepath route . fullPathForItem route)
+    >>= relativizeUrls
+    <&> fmap addAtomicUpdateRegionToPatternAnchors
+
+withVersionedUrl :: Integer -> FilePath -> FilePath -> FilePath
+withVersionedUrl version _ path =
+  -- TODO: Make paths point to the right places in a way that doesn't require
+  -- a hardcoded exemption for the 'technical-challenges' blog post (which is
+  -- the only link on the page that should _not_ be rewritten because it is not
+  -- part of the versioned "bundle".
+  if "technical-challenges" `isSuffixOf` path
+    then path
+    else
+      replaceString
+        "projects/lifestory"
+        (Text.pack $ "projects/lifestory/version/" ++ show version)
+        path
+
+-- Compiler with no extra URL transformation
+pageCompiler :: Context String -> Compiler (Item String)
+pageCompiler = pageCompilerTransformingUrls (const id)

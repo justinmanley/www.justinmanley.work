@@ -219,7 +219,7 @@ postPreviewCompiler = do
 loadAllSnapshotsMatchingMetadata :: (Binary a, Typeable a) => Pattern -> Snapshot -> (Metadata -> Bool) -> Compiler [Item a]
 loadAllSnapshotsMatchingMetadata pattern snapshot metadataPred = do
   matching <- map fst . filter (metadataPred . snd) <$> getAllMetadata pattern
-  mapM (\i -> loadSnapshot i snapshot) matching
+  mapM (`loadSnapshot` snapshot) matching
 
 -- If this compiler fails, then you may need to install the `sass` binary (see
 -- README for more details).

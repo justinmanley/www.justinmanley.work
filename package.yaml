@@ -29,6 +29,7 @@ library:
   - Lifestory.Lifestory
   dependencies:
   - containers
+  - directory
   - filepath
   - hakyll
   - text
