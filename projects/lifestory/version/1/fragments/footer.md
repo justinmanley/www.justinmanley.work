@@ -30,3 +30,7 @@ Thanks to all my friends and supporters who gave feedback and helped me write th
   - <span class="acknowledgment">Kristin Manley</span> for her feedback on Mariam's character
   - <span class="acknowledgment">Michael Webb</span> for letting me load and reload the page on his phone to test its performance
   - my mom <span class="acknowledgment">Marisa Manley</span> for telling me what it was like to work with computers in the late '70s and early '80s.
+
+<h3>Remembrance</h3>
+
+This story is dedicated to the memory of Trishna Banerjee Nair (1992-2022). Trishna: although you are gone, the memory of your laughter still brings me joy.
