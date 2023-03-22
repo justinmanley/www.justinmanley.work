@@ -1,5 +1,5 @@
 ---
-title: How I learned to stop worrying and love optimization
+title: How I Learned to Stop Worrying and Love Optimization
 date: March 20, 2023
 synopsis: A personal meditation on optimization culture.
 cover-image: ./images/deepmind_runner.gif
