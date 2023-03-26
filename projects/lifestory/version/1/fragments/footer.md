@@ -33,4 +33,4 @@ Thanks to all my friends and supporters who gave feedback and helped me write th
 
 <h3>Remembrance</h3>
 
-This story is dedicated to the memory of Trishna Banerjee Nair (1992-2022). Trishna: although you are gone, the memory of your laughter still brings me joy.
+This story is dedicated to the memory of Trishna Banerjee Nair (1992-2022).
