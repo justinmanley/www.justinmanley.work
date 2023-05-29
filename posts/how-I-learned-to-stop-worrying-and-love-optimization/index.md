@@ -3,6 +3,7 @@ title: How I Learned to Stop Worrying and Love Optimization
 date: March 20, 2023
 synopsis: A personal meditation on optimization culture.
 cover-image: ./images/deepmind_runner.gif
+featured: true
 ---
 
 [Feature Visualization]: https://distill.pub/2017/feature-visualization

@@ -1,7 +1,6 @@
 ---
 title: "I, Robot / You, Robot: Alan Rath and the Choreography of Consciousness"
 date: December 19, 2019
-featured: true
 synopsis: With extreme economy of movement, gesture, and form, Alan Rath conveys the development of consciousness through a choreographed encounter between two robot arms.
 cover-image: ./images/again.jpg
 tags: art

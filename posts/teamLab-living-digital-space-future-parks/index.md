@@ -3,7 +3,6 @@ title: Culture and Spatial Perception in the Art of teamLab
 date: November 10, 2016
 cover-image: ./images/crows-are-chased.jpg
 synopsis: teamLab's utopian vision for nonhierarchical spatial representation fails to acknowledge the centrality of linear perspective within Western visual culture and perception.
-featured: true
 tags: art
 ---
 
