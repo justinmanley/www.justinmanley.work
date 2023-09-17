@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta charset="UTF-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>In Pursuit of Connectedness</title>
+        <link rel="icon" href="../../assets/images/favicon.ico" />
+        <link rel="stylesheet" type="text/css" href="../../css/style.css" />
+        <link rel="stylesheet" href="../../assets/fonts/aleo-regular-webfont.woff" type="text/css" media="all">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&display=swap" type="text/css" media="all">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+
+        <script type="text/javascript" src="../../projects/notegraph/notegraph-tutorial/main.js"></script>
+<script type="text/javascript" src="../../projects/notegraph/node_modules/mathjax/es5/tex-chtml.js"></script>
+<link rel="stylesheet" href="../../projects/notegraph/style.css">
+
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+            ga('create', 'UA-43529705-1', 'auto');
+            ga('send', 'pageview');
+        </script>
+    </head>
+    <body>
+		<nav>
+            <div class="nav-groups">
+                <div class="nav-item"><a href="../../" class="nav-brand">Justin Manley</a></div>
+                <div class="nav-item nav-toggle">Menu</div>
+                <ul class="nav-group nav-collapsed">
+                    <!--
+                        NOTE: The $num-nav-items variable in navbar.scss must be updated
+                        whenever a nav-item is added or removed. If $num-nav-items is not
+                        incremented when a new nav-item is added, that nav-item will not
+                        appear on mobile when the menu is expanded; if $num-nav-items is
+                        not decremented when a nav-item is removed, the menu-collapsing
+                        animation will appear to lag.
+                    -->
+                    <li class="nav-item"><a href="../../about">About</a></li>
+                    <li class="nav-item"><a href="../../writing">Writing</a></li>
+                    <li class="nav-item"><a href="../../art">Art</a></li>
+                    <li class="nav-item"><a href="../../talks">Talks</a></li>
+                </ul>
+            </div>
+		</nav>
+        <main>
+            <div class="content"><article>
+    <h1 class="title"><a href="../../projects/notegraph/index.html">In Pursuit of Connectedness</a></h1>
+    <time class="date-published">September 17, 2023</time>
+    <figure><img src="../../projects/notegraph/images/chiharu_shiota_network_hammer_museum_closeup.jpg" /></figure>
+    <notegraph-tutorial>
+    <notegraph-lesson>
+        <h3><notegraph-lesson-index></notegraph-lesson-index>. Small-world feeling</h3>
+        <p>In 1929, Hungarian writer Frigyes Karinthy published a short story speculating that anyone on Earth should be able to reach anyone else via a short chain of personal acquaintances. One would pass a message to a friend, who would pass it on to their friend, and so on.</p>
+        <p>I have never attempted to test Karinthy’s idea, now best-known by the truism of “six degrees of separation.” I have never needed to: I have felt its truth in dozens of “small world” moments: in a place full of strangers, bumping into someone I know. Or discovering that two friends I know from completely different contexts also know each other independently.</p>
+        <p>I treasure these moments. They make the world feel cozy and friendly and full of meaning. Such moments, and such feelings, can come from recognizing connections between objects and events and ideas as well as people. Karinthy recognized this in his short story, writing in a translation by Adam Makkai: “The strange mind-game that clatters in me all the time goes like this: how can I link, with three, four, or at most five links of the chain, trivial, everyday things of life. How can I link one phenomenon to another? How can I join the relative and the ephemeral with steady, permanent things — how can I tie up the part with the whole?”</p>
+        <p>I love writing which conveys this feeling: W. G. Sebald’s novels, Benjamin Labatut’s short stories, Mark Doty’s essays, Alan Moore’s comics, Lawrence Weschler’s profiles, Laurie Anderson’s lyrics. All of these sprawl and wander, then return via improbable but irrefutable chains of association to objects of persistent fascination.</p>
+        <p>The world is more full of these connections than we know. What follows is a system for using writing to play Karinthy’s “strange mind-game” to find connections that tie the whole network of things and ideas into a tight web, dense with meaning.</p>
+        <p>To use writing in pursuit of connectedness, it helps to make the connections between things explicit. The first step is to break writing down into small units, or <i>notes</i>.</p>
+    </notegraph-lesson>
+    <notegraph-lesson>
+        <h3><notegraph-lesson-index></notegraph-lesson-index>. Notes</h3>
+        <notegraph-example>
+            <notegraph-note data-color="tol:orange">
+                <notegraph-note-name>Note</notegraph-note-name>
+                <notegraph-note-body>A short and focused piece of writing.</notegraph-note-body>
+            </notegraph-note>
+        </notegraph-example>
+        <p>This is a note.</p>
+    </notegraph-lesson>
+    <notegraph-lesson>
+        <h3><notegraph-lesson-index></notegraph-lesson-index>. Links</h3>
+        <notegraph-example>
+            <notegraph-note data-color="tol:orange">
+                <notegraph-note-name>Note</notegraph-note-name>
+                <notegraph-note-body>A short and focused piece of writing.</notegraph-note-body>
+            </notegraph-note>
+            <notegraph-note data-color="tol:olive">
+                <notegraph-note-name>Link</notegraph-note-name>
+                <notegraph-note-body>A connection between two <notegraph-mention>note</notegraph-mention>s.</notegraph-note-body>
+            </notegraph-note>
+        </notegraph-example>
+        <p>
+            Mentioning one note within the text of another creates a connection between the two notes.
+        </p>
+    </notegraph-lesson>
+    <notegraph-lesson>
+        <h3><notegraph-lesson-index></notegraph-lesson-index>. Notegraphs</h3>
+        <notegraph-example>
+            <notegraph-note data-color="tol:orange">
+                <notegraph-note-name>Note</notegraph-note-name>
+                <notegraph-note-body>A short and focused piece of writing.</notegraph-note-body>
+            </notegraph-note>
+            <notegraph-note data-color="tol:olive">
+                <notegraph-note-name>Link</notegraph-note-name>
+                <notegraph-note-body>A connection between two <notegraph-mention>note</notegraph-mention>s.</notegraph-note-body>
+            </notegraph-note>
+            <notegraph-note data-color="tol:light-cyan">
+                <notegraph-note-name>Notegraph</notegraph-note-name>
+                <notegraph-note-body>A collection of <notegraph-mention>note</notegraph-mention>s connected by <notegraph-mention>link</notegraph-mention>s.</notegraph-note-body>
+            </notegraph-note>
+        </notegraph-example>
+        <p>
+            I call a collection of interlinked notes a <em>notegraph</em>. 
+        </p>
+        <p>
+            A serious notetaker cultivating an "evergreen" notegraph can easily add dozens of notes every month. But as the notegraph grows, linking new notes becomes increasingly difficult. With a digital notegraph, it is easy to search for existing notes using the same keywords as a new note. But these connections are the least interesting ones. The notegraph is not a database for recording obvious connections — the ones on the surface — but a <em>tool</em> for finding unexpected connections.
+        </p>
+        <p>
+            Keyword search, then, is no use for finding non-obvious connections. How else can a notetaker play Karinthy's "mind game," looking for connections to bind the whole notegraph more tightly together?
+        </p>
+        <p>
+            One strategy is to start with a keyword search, then explore outward from those "obvious" notes, hopping from note to note via the existing links. Of course, this approach is still skewed towards the boring obvious connections. More importantly, because it relies on the existing link structure, this approach is unlikely to hit upon relevant-but-neglected notes.
+        </p>
+        <p>
+            Another strategy is to explore the notegraph randomly. This can be fun, but in a large notegraph rarely turns up promising connections.
+        </p>
+        <p>
+            If only there were some heuristic for finding unexpected connections between notes!
+        </p>
+        <p>
+            Short of such a heuristic, we might wish for a way of knowing which notes, if linked, would increase the overall connectedness of the notegraph. In Karinthy's story, this would be like finding two strangers with different wide networks of friends. Introducing those well-connected strangers — assuming they come to like and trust each other — could make it easier for the friends of one to reach the friends of other. Adding a single connection could make the whole network much more connected.
+        </p>
+        <p>
+            Just as I'm not very good at predicting when two friends of mine will hit it off, I don't know of any better way to tell whether two notes will resonate than to put them side-by-side. But I <em>can</em> tell how linking two notes would affect the connectedness of the whole notegraph.
+        </p>
+        <p>In what follows, I describe a method for doing just that.</p>
+    </notegraph-lesson>
+    <notegraph-lesson num-diagrams="1">
+        <h3><notegraph-lesson-index></notegraph-lesson-index>. Visualizing notegraph structure</h3>
+        <notegraph-example>
+            <notegraph-note data-color="tol:orange" data-position="0.5,0.2">
+                <notegraph-note-name>Note</notegraph-note-name>
+                <notegraph-note-body>A short and focused piece of writing.</notegraph-note-body>
+            </notegraph-note>
+            <notegraph-note data-color="tol:olive" data-position="0.38,0.8">
+                <notegraph-note-name>Link</notegraph-note-name>
+                <notegraph-note-body>A connection between two <notegraph-mention>note</notegraph-mention>s.</notegraph-note-body>
+            </notegraph-note>
+            <notegraph-note data-color="tol:light-cyan" data-position="0.62,0.8">
+                <notegraph-note-name>Notegraph</notegraph-note-name>
+                <notegraph-note-body>A collection of <notegraph-mention>note</notegraph-mention>s connected by <notegraph-mention>link</notegraph-mention>s.</notegraph-note-body>
+            </notegraph-note>
+        </notegraph-example>
+        <p>
+            One way to assess how adding a link will change the overall structure of a network is to visualize it.
+        </p>
+        <!--
+            TODO: Use a more complex graph here. At the very least, it should have space to
+            add links.
+        -->
+        <notegraph-diagram></notegraph-diagram>
+        <p>
+            This common visualization draws a dot for each note and a line for each link.
+        </p>
+    </notegraph-lesson>
+    <notegraph-lesson>
+        <h3><notegraph-lesson-index></notegraph-lesson-index>. Quantifying notegraph structure</h3>
+        <p>
+            Although some popular notetaking tools offer similar visualizations, I seldom find the visualizations helpful, since on large notegraphs, they quickly become cluttered and inscrutable.
+        </p>
+        <!-- TODO: Include a visualization of a large graph. -->
+        <p>
+            (The next few pages include visualizations because, for small notegraphs like the ones here, the visualizations make it easier to think of the notegraph as a whole).
+        </p>
+        <p>
+            To find "well-connected strangers" in a <em>large</em> notegraph, we need more than a visualization.
+        </p>
+        <p>
+            If we can measure the connectedness of a notegraph with some computation that condenses its complexity into a single number, then we can compare different versions of a notegraph. We can simulate "introducing" (linking) many pairs of "strangers" (unlinked notes) and measure how much each "introduction" increases the notegraph's overall connectedness. Many of these "introductions" won't work out because the notes they link don't have enough in common. Even though the measurement is algorithmic, the essential work of cultivating the notegraph is still human: only the notetaker can judge whether two notes resonate with each other.
+        </p>
+        <p>
+            Since I want the "small-world" feeling Karinthy describes — the feeling that everything is closely related to everything else — I choose a measure based on the number of links required to travel between notes. I call this <em>sprawl</em>:
+        </p>
+        <notegraph-formula-definition></notegraph-formula-definition>
+        <p>
+            Sprawl is in the inverse of connectedness, meaning that a notegraph with large sprawl is poorly-connected, while a notegraph with low sprawl is well-connected. Or, succinctly: big sprawl, bad; small sprawl, good. Finding links which reduce sprawl is the key to improving a notegraph's connectedness.
+        </p>
+        <p>
+            Before I share how I've used this measure to weave my own notegraph more tightly together, here are a few examples showing how it works on simple notegraphs.
+        </p>
+    </notegraph-lesson>
+    <notegraph-lesson num-diagrams="1">
+        <h3><notegraph-lesson-index></notegraph-lesson-index>. A pair</h3>
+        <notegraph-example>
+            <notegraph-note data-color="tol:orange" data-position="0.2,0.5">
+                <notegraph-note-name>Note</notegraph-note-name>
+                <notegraph-note-body>A short and focused piece of writing.</notegraph-note-body>
+            </notegraph-note>
+            <notegraph-note data-color="tol:olive" data-position="0.8,0.5">
+                <notegraph-note-name>Link</notegraph-note-name>
+                <notegraph-note-body>A connection between two <notegraph-mention>note</notegraph-mention>s.</notegraph-note-body>
+            </notegraph-note>
+        </notegraph-example>
+        <notegraph-diagram></notegraph-diagram>
+        <p>
+            This notegraph contains only a single pair which can be traversed in one hop, so it has a sprawl of one.
+        </p>
+    </notegraph-lesson>
+    <notegraph-lesson num-diagrams="1">
+        <h3><notegraph-lesson-index></notegraph-lesson-index>. A chain</h3>
+        <notegraph-example>
+            <notegraph-note data-color="tol:orange" data-position="0.2,0.5">
+                <notegraph-note-name>Note</notegraph-note-name>
+                <notegraph-note-body>A short and focused piece of writing.</notegraph-note-body>
+            </notegraph-note>
+            <notegraph-note data-color="tol:olive" data-position="0.5,0.5">
+                <notegraph-note-name>Link</notegraph-note-name>
+                <notegraph-note-body>A connection.</notegraph-note-body>
+            </notegraph-note>
+            <notegraph-note data-color="tol:light-cyan" data-position="0.8,0.5">
+                <notegraph-note-name>Notegraph</notegraph-note-name>
+                <notegraph-note-body>A collection of <notegraph-mention>note</notegraph-mention>s connected by <notegraph-mention>link</notegraph-mention>s.</notegraph-note-body>
+            </notegraph-note>
+        </notegraph-example>
+        <notegraph-diagram></notegraph-diagram>
+        <p>
+            This notegraph has a slightly higher sprawl because its ends are further apart.
+        </p>
+        <notegraph-formula show-full-sum></notegraph-formula>
+        <p>
+            In general, for a notegraph structured as a chain, like this one, sprawl will increase in proportion to the number of notes (i.e. the length of the chain). With a long enough chain, the sprawl can be made as high as you like.
+        </p>
+        <p>
+            Don't get hung up on the precise values of sprawl: these values don't mean anything in isolation. It doesn't matter whether a notegraph has a sprawl of 1 or 1.33. The important thing is to gain a feel for the relative scale of sprawl: how and why one notegraph sprawls more than another, and how a sprawling notegraph might be altered to make it more connected.
+        </p>
+    </notegraph-lesson>
+    <notegraph-lesson num-diagrams="2">
+        <h3><notegraph-lesson-index></notegraph-lesson-index>. A loop</h3>
+        <notegraph-example>
+            <notegraph-note data-color="tol:orange" data-position="0.5,0.2">
+                <notegraph-note-name>Note</notegraph-note-name>
+                <notegraph-note-body>A short and focused piece of writing.</notegraph-note-body>
+            </notegraph-note>
+            <notegraph-note data-color="tol:olive" data-position="0.38,0.8">
+                <notegraph-note-name>Link</notegraph-note-name>
+                <notegraph-note-body>A connection between two <notegraph-mention>note</notegraph-mention>s.</notegraph-note-body>
+            </notegraph-note>
+            <notegraph-note data-color="tol:light-cyan" data-position="0.62,0.8">
+                <notegraph-note-name>Notegraph</notegraph-note-name>
+                <notegraph-note-body>A collection of <notegraph-mention>note</notegraph-mention>s connected by <notegraph-mention>link</notegraph-mention>s.</notegraph-note-body>
+            </notegraph-note>
+        </notegraph-example>
+        <notegraph-diagram></notegraph-diagram>
+        <p>
+            This notegraph has the same number of notes as the previous one, but because the ends of the chain have been joined up, it has a lower sprawl.
+        </p>
+        <notegraph-formula show-full-sum></notegraph-formula>
+        <p>
+            In fact, this is the lowest possible sprawl. A sprawl of one means that every note is directly connected to every other note. It's not possible to be any more connected than that!
+        </p>
+        <p>
+            Hindu scripture describes a vast structure called Indra's Net, an infinite web strung with pearls, each pearl reflecting every other infinite pearl. In Indra's Net, everything is connected to everything else. But in a real notegraph with dozens or hundreds of notes, most notes are not directly connected to each other. This means that sprawl in a typical notegraph is always greater than one. If the notegraph has "six degrees of separation," then its sprawl will be less than six.
+        </p>
+        <p>
+            The matrix below shows the distance between each pair of notes. Every note in the notegraph has a row in the matrix, shown by the colored cells along the left side of the matrix. Every note also has a column shown by the colored cells along the right side of the matrix. Each non-colored cell belongs to exactly one row and one column and so represents a pair of notes. The numbers in the cells show the distance between the two notes. Some cells are grayed-out to avoid pairing a note with itself or counting the same pair twice.
+        </p>
+        <p>
+            You can click to visualize the shortest path between each pair on the accompanying diagram.
+        </p>
+        <notegraph-connectedness-matrix></notegraph-connectedness-matrix>
+        <notegraph-diagram></notegraph-diagram>
+        <p>
+            This notegraph is simple and symmetrical, but the notegraphs in the following pages are more complex. Matrices like this one help show how each pair contributes to the notegraph's overall connectedness.
+        </p>
+    </notegraph-lesson>
+    <notegraph-lesson num-diagrams="2">
+        <h3><notegraph-lesson-index></notegraph-lesson-index>. To increase connectedness</h3>
+        <notegraph-example>
+            <notegraph-note data-color="tol:orange" data-position="0.2,0.5">
+                <notegraph-note-name>Connectedness as a virtue</notegraph-note-name>
+                <notegraph-note-body>The idea that making a network more connected will make it better (more peaceful, creative, resilient, sustainable, etc).</notegraph-note-body>
+            </notegraph-note>
+            <notegraph-note data-color="tol:olive" data-position="0.4,0.5">
+                <notegraph-note-name>Economic connectedness and peace between Germany and Russia</notegraph-note-name>
+                <notegraph-note-body>After the fall of the Berlin Wall, German politicians bought gas and oil from Russia in the hope that economic interdependence would promote peace. Russia’s 2022 invasion of Ukraine seemed, on the surface, to refute the idea of <notegraph-mention>connectedness as a virtue</notegraph-mention> (post-pandemic, it felt natural to think of <notegraph-mention>connectedness as a risk</notegraph-mention>).</notegraph-note-body>
+            </notegraph-note>
+            <notegraph-note data-color="tol:mint" data-position="0.6,0.5">
+                <notegraph-note-name>Connectedness as a risk</notegraph-note-name>
+                <notegraph-note-body>When things move through a network, making the network more connected can make it easier for bad things to move around. For example, <notegraph-mention>disease spreads rapidly through highly-connected social networks</notegraph-mention> and <notegraph-mention>failures in a connected utility grid can propagate widely</notegraph-mention>.</notegraph-note-body>
+            </notegraph-note>
+            <notegraph-note data-color="tol:light-cyan" data-position="0.8,0.2">
+                <notegraph-note-name>Disease spreads rapidly through highly-connected social networks</notegraph-note-name>
+                <notegraph-note-body>The high volume of twenty-first-century intercontinental travel helped COVID-19 spread across the entire planet in a matter of months.</notegraph-note-body>
+            </notegraph-note>
+            <notegraph-note data-color="tol:pink" data-position="0.8,0.8">
+                <notegraph-note-name>Failures in a connected utility grid can propagate widely</notegraph-note-name>
+                <notegraph-note-body>Linkages between utility grids across the Northeast US and Canada caused a 1965 failure at a single electrical relay near Niagara Falls to cascade across the entire region, leaving 30 million people without power for 13 hours.</notegraph-note-body>
+            </notegraph-note>
+        </notegraph-example>
+        <p>This is a slightly more complicated notegraph.</p>
+        <notegraph-diagram></notegraph-diagram>
+        <p>There is variation in the distance between notes.</p>
+        <notegraph-connectedness-matrix></notegraph-connectedness-matrix>
+        <p>With more nodes but only a few more edges, this notegraph has the largest sprawl of any we've seen yet.</p>
+        <notegraph-formula></notegraph-formula>
+        <p>
+            These notes, jotted down hastily, are just a beginning — but already they begin to sprawl. If I wanted to weave these scattered thoughts more tightly together, where should I start?
+        </p>
+        <p>
+            The visualization suggests that the quickest way to bring everything closer together is to find a way to connect the two "ends" of the notegraph: the note on the left (<notegraph-mention>Connectedness as a virtue</notegraph-mention>) with the ones on the right (<notegraph-mention>Disease spreads rapidly through highly-connected social networks</notegraph-mention> and <notegraph-mention>Failures in a connected utility grid can propagate widely</notegraph-mention>).
+        </p>
+        <p>
+            We can use the sprawl metric to check the intuition from the visualization. For every pair of notes without a direct link, we can calculate the sprawl that the notegraph <em>would</em> have if those notes were to be linked. Sometimes, it is possible to directly add a link between two existing notes. But more often, linking two notes requires adding a new note. We model this by calculating the sprawl that results from adding a new note along with two links to existing notes.
+        </p>
+        <p>
+            The matrix at the top of the page shows the length of the shortest path between each pair of notes, all of which combine to give the sprawl. The matrix below shows the reduction in sprawl for every link that we might add (larger numbers are better; they indicate a greater reduction in sprawl). The four cells with a "-" correspond to the four links already in the notegraph. Since those pairs of notes are already linked, there is nothing to be gained by adding another link between them.
+        </p>
+        <notegraph-augmenting-matrix></notegraph-augmenting-matrix>
+        <notegraph-diagram></notegraph-diagram>
+        <p>
+            Again, don't worry about the specific sprawl values in this matrix. What matters are their relative magnitudes: a little bit positive, neutral, a little bit negative.
+        </p>
+        <p>
+            The sprawl calculations show that our options are more evenly divided than we might have guessed. Linking <notegraph-mention>Connectedness as a virtue</notegraph-mention> to <notegraph-mention>Connectedness as a risk</notegraph-mention> would increase the notegraph's connectedness just as much as the more visually distant pairs which jump out of the visualization.
+        </p>
+        <p>
+            The sprawl calculations also shows where to avoid focusing attention. Adding a note along with two links joining <notegraph-mention>Disease spreads rapidly through highly-connected social networks</notegraph-mention> and <notegraph-mention>Failures in a connected utility grid can propagate widely</notegraph-mention> would actually <em>increase</em> the notegraph's sprawl.
+        </p>
+    </notegraph-lesson>
+    <notegraph-lesson num-diagrams="1">
+        <h3><notegraph-lesson-index></notegraph-lesson-index>. Connectedness increased</h3>
+        <notegraph-example>
+            <notegraph-note data-color="tol:orange" data-position="0.2,0.5">
+                <notegraph-note-name>Connectedness as a virtue</notegraph-note-name>
+                <notegraph-note-body>The idea that making a network more connected will make it better (more peaceful, creative, resilient, sustainable, etc).</notegraph-note-body>
+            </notegraph-note>
+            <notegraph-note data-color="tol:olive" data-position="0.4,0.8">
+                <notegraph-note-name>Economic connectedness and peace between Germany and Russia</notegraph-note-name>
+                <notegraph-note-body>After the fall of the Berlin Wall, German politicians bought gas and oil from Russia in the hope that economic interdependence would promote peace. Russia’s 2022 invasion of Ukraine seemed, on the surface, to refute the idea of <notegraph-mention>connectedness as a virtue</notegraph-mention> (post-pandemic, it felt natural to think of <notegraph-mention>connectedness as a risk</notegraph-mention>).</notegraph-note-body>
+            </notegraph-note>
+            <notegraph-note data-color="tol:mint" data-position="0.6,0.5">
+                <notegraph-note-name>Connectedness as a risk</notegraph-note-name>
+                <notegraph-note-body>When things move through a network, making the network more connected can make it easier for bad things to move around. For example, <notegraph-mention>disease spreads rapidly through highly-connected social networks</notegraph-mention> and <notegraph-mention>failures in a connected utility grid can propagate widely</notegraph-mention>.</notegraph-note-body>
+            </notegraph-note>
+            <notegraph-note data-color="tol:light-cyan" data-position="0.8,0.2">
+                <notegraph-note-name>Disease spreads rapidly through highly-connected social networks</notegraph-note-name>
+                <notegraph-note-body>The high volume of twenty-first-century intercontinental travel helped COVID-19 spread across the entire planet in a matter of months.</notegraph-note-body>
+            </notegraph-note>
+            <notegraph-note data-color="tol:pink" data-position="0.8,0.8">
+                <notegraph-note-name>Failures in a connected utility grid can propagate widely</notegraph-note-name>
+                <notegraph-note-body>Linkages between utility grids across the Northeast US and Canada caused a 1965 failure at a single electrical relay near Niagara Falls to cascade across the entire region, leaving 30 million people without power for 13 hours.</notegraph-note-body>
+            </notegraph-note>
+            <notegraph-note data-color="tol:light-yellow" data-position="0.4,0.2">
+                <notegraph-note-name>The risks of connectedness can be mitigated, but its virtues are hard to replace</notegraph-note-name>
+                <notegraph-note-body>Governments have sought to manage the long-term impact of COVID with vaccines rather than permanent travel restrictions. Rather than splitting the Northeast into multiple utility grids after 1965, engineers focused on designing more reliable relays. The persistence of connectedness, despite its risks (<notegraph-mention>connectedness as a risk</notegraph-mention>), suggests that its virtues (<notegraph-mention>connectedness as a virtue</notegraph-mention>) are hard to replicate.</notegraph-note-body>
+            </notegraph-note>
+        </notegraph-example>
+        <p>
+            Following the guidance of the speculative sprawl calculations, this notegraph adds a new note (<notegraph-mention>The risks of connectedness can be mitigated, but its virtues are hard to replace</notegraph-mention>) linking <notegraph-mention>Connectedness as a virtue</notegraph-mention> and <notegraph-mention>Connectedness as a risk</notegraph-mention>.
+        </p>
+        <notegraph-diagram></notegraph-diagram>
+        <notegraph-formula></notegraph-formula>
+        <p>Sure enough, this notegraph is less sprawling (more connected) than before.</p>
+        <p>
+            A <em>link assistant</em> is a tool which identifies and recommends interventions in a notegraph to reduce its sprawl. The matrix on the previous page was a kind of link assistant. That format quickly becomes unwieldy on larger notegraphs, though. A more useful link assistant might present just the 10 most promising pairs of unlinked notes.
+        </p>
+        <p>
+            Using a link assistant is not about automating writing or making it easier. In extending the notegraph from the previous page, the sprawl calculations gave me three options. But I still had to choose one of them, and I still had to do the work of writing. Calculating the sprawl of my notegraph does not eliminate my agency as a writer, but helps me to <em>focus</em> it.
+        </p>
+    </notegraph-lesson>
+    <notegraph-lesson>
+        <h3><notegraph-lesson-index></notegraph-lesson-index>. In practice</h3>
+        <p>I have been using a link assistant to guide my writing with my own notegraph for more than a year. Despite this, my notegraph sprawls. Still, in that time, my link assistant has shown me duplication within my notegraph and helped me consolidate it. It has occasionally surfaced unlikely connections: its juxtaposition of Arctic sea iceberglets with ancient Sumerian clay objects covered in cuneiform brought to my mind the beautiful image of storms leaving snow-writing on the Arctic glaciers, to be read centuries later by the sea. And once — most satisfying of all — opening my link assistant after looking at seventeenth-century Dutch paintings and visiting the former home of a wealthy Dutch industrialist, I found that my link assistant's top suggestion was to link a pair of notes on Dutch paintings and fancy houses. This was exactly the small-world feeling I had hoped my link assistant would help me find, and a moment I think Karinthy would have appreciated.</p>
+    </notegraph-lesson>
+</notegraph-tutorial>
+<script>
+    [...document.getElementsByTagName('notegraph-tutorial')].forEach((tutorial) => tutorial.onPageLoaded());
+</script>
+</article>
+</div>
+        </main>
+        <footer>
+            <div class="content">
+                <div class="contact-links content-block">
+                    <a class="contact-link" href="//twitter.com/outoftheyards">
+                    		<span class="fa fa-twitter"></span></a>     
+					<a class="contact-link" href="//github.com/justinmanley">
+							<span class="fa fa-github"></span></a>     
+                    <a class="contact-link" href="mailto:manleyjster@gmail.com">
+                    		<span class="fa fa-envelope"></span></a>     
+                	<a class="contact-link" href="//linkedin.com/in/justinmanley/">
+                    		<span class="fa fa-linkedin"></span></a>     
+                </div>
+                <form class="newsletter content-block" action="https://tinyletter.com/justinmanley" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/justinmanley', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+                    <label for="tlemail" class="newsletter-description">Sign up for occasional email updates</label>
+                    <div class="newsletter-form">
+                        <input type="text" name="email" id="tlemail" class="newsletter-email" />
+                        <input type="submit" value="Subscribe" class="newsletter-subscribe" />
+                    </div>
+                    <div class="newsletter-archive">or check out the <a href="//tinyletter.com/justinmanley/archive">archive</a> first</div>
+                    <input type="hidden" value="1" name="embed" />
+                </form>
+                <div class="content-block">
+                    <p><a href="../../site-credits">About this site</a></p>
+                </div>
+            </div>
+        </footer>
+		<script>
+            // TODO: Move this into an external script.
+			function toggleNavigationMenu() {
+			  const navs = document.querySelectorAll('.nav-group')
+			  
+                navs.forEach(nav => {
+                    if (nav.classList.contains('nav-expanded')) {
+                        nav.classList.remove('nav-expanded');
+                        nav.classList.add('nav-collapsed');
+                    } else {
+                        if (nav.classList.contains('nav-collapsed')) {
+                            nav.classList.remove('nav-collapsed');
+                        }
+                        nav.classList.add('nav-expanded');
+                    }
+                });
+			}
+
+			document
+                .querySelector('.nav-toggle')
+                .addEventListener('click', toggleNavigationMenu);
+		</script>
+    </body>
+	<script>
+	</script>
+</html>
