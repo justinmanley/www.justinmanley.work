@@ -1,0 +1,8 @@
+{
+    "name": "notegraph",
+    "version": "1.0.0",
+    "description": "A tutorial about notegraphs",
+    "dependencies": {
+        "mathjax": "^3.2.2"
+    }
+}

@@ -27,6 +27,7 @@ library:
   - projects
   other-modules:
   - Lifestory.Lifestory
+  - Notegraph.Notegraph
   dependencies:
   - containers
   - directory

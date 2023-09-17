@@ -1,5 +1,20 @@
 // Variables used across the site and also in project-specific
 // stylesheets.
 
+@use 'sass:color';
+
 // Set up variables for all stylesheets to use
 $brand-primary: #db1d0f;
+
+$font-family-serif:
+    Aleo, Georgia, "Times New Roman", Times, serif;
+$font-family-sans-serif:
+    "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font-family-base: Cardo, $font-family-serif;
+$primary-font-size: 1.3em;
+$font-color-subtle: color.scale($brand-primary, $lightness: 50%);
+
+$article-width: 600px;
+
+// Used as the gutter for the navbar and text content on mobile.
+$mobile-padding-outer: 5%;

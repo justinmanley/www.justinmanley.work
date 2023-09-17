@@ -1,0 +1,65 @@
+@import 'notegraph-tutorial/style.css';
+
+@import './css/variables.scss';
+
+// Import sub-stylesheets. Some of these stylesheets use variables set above,
+// so it's important that the import statements come after the variable
+// declarations.
+@import './bower_components/bootstrap/scss/bootstrap.scss';
+
+.tutorial-controls button {
+    border: 1px solid #bbb;
+    &:focus {
+        outline-color: #db1d0f;
+    }
+}
+
+notegraph-diagram .diagram {
+    height: 150px;
+}
+
+notegraph-example {
+    padding-top: 15px;
+}
+
+.pair-description {
+    padding-bottom: 20px;
+}
+
+notegraph-example, 
+.tutorial-controls,
+.pair-description {
+    padding-left: $mobile-padding-outer;
+    padding-right: $mobile-padding-outer;
+}
+
+notegraph-nodepair-matrix-cell, notegraph-nodepair-matrix-node-label, .empty-cell {
+    width: 2em;
+    height: 2em;
+}
+
+notegraph-lesson {
+    align-items: start;
+}
+
+notegraph-connectedness-matrix, 
+notegraph-augmenting-matrix, 
+notegraph-formula,
+notegraph-formula-definition {
+    align-self: center;
+}
+
+notegraph-connectedness-matrix, 
+notegraph-augmenting-matrix {
+    margin-bottom: 20px;
+}
+
+// Tablets and up
+@include media-breakpoint-up(md) {
+    notegraph-example, 
+    .tutorial-controls,
+    .pair-description {
+		padding-left: 0;
+		padding-right: 0;
+	}
+}

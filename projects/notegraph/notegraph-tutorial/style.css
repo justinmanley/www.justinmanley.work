@@ -1,0 +1,98 @@
+notegraph-tutorial {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+notegraph-lesson {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+notegraph-example {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+}
+
+notegraph-diagram .diagram {
+  height: 300px;
+}
+
+notegraph-note {
+  display: block;
+  border: 1px solid grey;
+  box-shadow: 0 0 0.5em grey;
+  box-sizing: border-box;
+  padding: 1.5em;
+  margin-bottom: 0.75em;
+  width: 100%;
+}
+
+notegraph-note-name {
+  display: block;
+  font-weight: bold;
+}
+
+notegraph-mention {
+  text-decoration: underline;
+}
+
+notegraph-connectedness-matrix, notegraph-augmenting-matrix {
+  display: grid;
+  background-color: #e1e1e1;
+  grid-gap: 1px;
+  border: 1px solid #e1e1e1;
+}
+
+notegraph-nodepair-matrix-cell, notegraph-nodepair-matrix-node-label, .empty-cell {
+  width: 1em;
+  height: 1em;
+  border: 1px solid transparent; /* make space to show a border when a cell is selected */
+  background-color: white;
+}
+
+notegraph-nodepair-matrix-cell, notegraph-nodepair-matrix-node-label, .empty-cell {
+  width: 1em;
+  height: 1em;
+  padding: 0.5em;
+}
+
+notegraph-nodepair-matrix-cell, notegraph-nodepair-matrix-node-label {
+  background-color: white;
+}
+
+notegraph-nodepair-matrix-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+notegraph-nodepair-matrix-cell.selected {
+  border: 1px solid black;
+}
+
+.empty-cell {
+  background-color: #e1e1e1;
+}
+
+.pair-description {
+  font-size: 0.8em;
+  font-style: italic;
+}
+
+.tutorial-controls {
+  height: 3em;
+  width: 100%;
+  margin-top: 2em;
+  display: flex;
+  column-gap: 1em;
+}
+.tutorial-controls button {
+  flex: 1 1 0;
+  width: 0;
+}
+
+/*# sourceMappingURL=style.css.map */
