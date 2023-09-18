@@ -48,8 +48,10 @@ import Hakyll qualified
 import Hakyll.Core.Identifier as Identifier
 import Hakyll.Core.Item (itemIdentifier)
 import Hakyll.Core.Provider (resourceFilePath)
+import Hakyll.Core.Rules (preprocess)
 import System.Directory (listDirectory)
 import System.FilePath (joinPath)
+import System.Process (callCommand)
 import Text.HTML.TagSoup qualified as TagSoup
 import Text.Read (readMaybe)
 
@@ -58,15 +60,23 @@ compile projectsContext = do
   -- TODO: Create a "compiler" which clones the notegraph-tutorial repo and
   -- checks out the specified commit hash.
 
+  -- For mathjax
+  preprocess (callCommand "cd projects/notegraph && npm install")
+
   -- TODO: Replace this with a match for notegraph-tutorial/src/*.ts and
   -- a compiler which runs webpack to generate the javascript bundle.
   match "projects/notegraph/notegraph-tutorial/main.js" $ do
     route idRoute
     Hakyll.compile copyFileCompiler
 
-  match "projects/notegraph/node_modules/**" $ do
-    route idRoute
-    Hakyll.compile copyFileCompiler
+  match
+    ( "projects/notegraph/node_modules/mathjax/es5/tex-chtml.js"
+        .||. "projects/notegraph/node_modules/mathjax/es5/output/chtml/fonts/woff-v2/MathJax_Zero.woff"
+        .||. "projects/notegraph/node_modules/mathjax/es5/output/chtml/fonts/woff-v2/MathJax_Main-Regular.woff"
+    )
+    $ do
+      route $ removeSubstringRoute "node_modules/"
+      Hakyll.compile copyFileCompiler
 
   match "projects/notegraph/notegraph-tutorial/style.css" $ do
     route idRoute

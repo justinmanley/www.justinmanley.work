@@ -33,6 +33,7 @@ library:
   - directory
   - filepath
   - hakyll
+  - process
   - text
   - url
   - xml
