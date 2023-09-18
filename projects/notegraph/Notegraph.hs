@@ -48,10 +48,8 @@ import Hakyll qualified
 import Hakyll.Core.Identifier as Identifier
 import Hakyll.Core.Item (itemIdentifier)
 import Hakyll.Core.Provider (resourceFilePath)
-import Hakyll.Core.Rules (preprocess)
 import System.Directory (listDirectory)
 import System.FilePath (joinPath)
-import System.Process (callCommand)
 import Text.HTML.TagSoup qualified as TagSoup
 import Text.Read (readMaybe)
 
@@ -59,9 +57,6 @@ compile :: Context String -> Rules ()
 compile projectsContext = do
   -- TODO: Create a "compiler" which clones the notegraph-tutorial repo and
   -- checks out the specified commit hash.
-
-  -- For mathjax
-  preprocess (callCommand "cd projects/notegraph && npm install")
 
   -- TODO: Replace this with a match for notegraph-tutorial/src/*.ts and
   -- a compiler which runs webpack to generate the javascript bundle.

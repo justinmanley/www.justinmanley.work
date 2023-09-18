@@ -14,8 +14,14 @@ DIR=$(mktemp -d)
 git clone --depth=1 https://github.com/justinmanley/www.justinmanley.work.git "${DIR}"
 cd "${DIR}"
 
+# Set up site
 npm install
 bower install
+
+# Set up subprojects within site
+(cd projects/notegraph && ./setup.sh)
+
+# Build
 stack build && stack run site build 
 
 # add generated site to git 
