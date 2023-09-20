@@ -1,7 +1,7 @@
 ---
 title: Reference Human
 date: August 1, 2019
-cover-image: ./images/woman_kissing_tree.png
+cover-image: ./images/woman_kissing_tree.jpg
 ---
 
 _Reference Human_ is a generative collage of people from [ImageNet][]. The collage assembles figures from a carefully-curated selection of ImageNet classes in order to materialize dynamic relationships beyond those captured in the ImageNet taxonomy. These configurations — demagogue, tyrant, and protester; matriarch and birthing coach; press photographer and artist’s model — suggest new narratives, plausible chains of cause-and-effect. The individual images are stitched together using a [GAN][] into a unified (if chaotic) whole. When the work is shown, the camera pans slowly over the synthesized landscape, eternally revealing new figures and new relationships.
