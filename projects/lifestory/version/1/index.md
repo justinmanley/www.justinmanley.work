@@ -1,6 +1,7 @@
 ---
 title: Life Story
 lifescroll: 897557bb2910a5ab3aa3adf43906dae8fd7457db
+cover-image: ./images/two_figures_side_by_side.png
 ---
 
 <div class="title">

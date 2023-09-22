@@ -16,6 +16,7 @@ import Data.Typeable
 import Debug.Trace (trace)
 import Hakyll
 import Projects qualified
+import Site.Config
 import Site.PostLength (minutesToReadPost)
 import Site.Url (normalizeUrls)
 import System.FilePath (combine, splitExtension, takeBaseName, takeDirectory)
@@ -76,10 +77,10 @@ main = hakyll $ do
       -- HTML for the standalone post).
       pandocCompiler
         >>= saveSnapshot "post-body"
-        >>= loadAndApplyTemplate "templates/post.html" siteCtx
-        >>= normalizeUrls siteCtx
+        >>= loadAndApplyTemplate "templates/post.html" postCtx
+        >>= normalizeUrls postCtx
         >>= saveSnapshot "post-full"
-        >>= loadAndApplyTemplate "templates/default.html" siteCtx
+        >>= loadAndApplyTemplate "templates/default.html" postCtx
         >>= relativizeUrls
 
   create ["writing/index.html"] $ do
@@ -88,6 +89,7 @@ main = hakyll $ do
       let posts = recentFirst =<< loadAllSnapshotsMatchingMetadata "posts/**/*.md" "post-preview" (not . hasTag "tech")
       let archiveCtx =
             listField "posts" siteCtx posts
+              `mappend` emptyHead
               `mappend` siteCtx
 
       makeItem ""
@@ -111,6 +113,7 @@ main = hakyll $ do
       let talks = recentFirst =<< loadAll "talks/*.md"
       let talksCtx =
             listField "talks" siteCtx talks
+              `mappend` emptyHead
               `mappend` siteCtx
 
       makeItem ""
@@ -127,13 +130,13 @@ main = hakyll $ do
     route $ setExtension "html"
     compile $ do
       pandocCompiler
-        >>= loadAndApplyTemplate "templates/artwork_preview.html" siteCtx
-        >>= normalizeUrls siteCtx
+        >>= loadAndApplyTemplate "templates/artwork_preview.html" postCtx
+        >>= normalizeUrls postCtx
         >>= saveSnapshot "artwork-preview"
 
       pandocCompiler
-        >>= loadAndApplyTemplate "templates/artwork.html" siteCtx
-        >>= loadAndApplyTemplate "templates/default.html" siteCtx
+        >>= loadAndApplyTemplate "templates/artwork.html" postCtx
+        >>= loadAndApplyTemplate "templates/default.html" postCtx
         >>= relativizeUrls
 
   create ["art/index.html"] $ do
@@ -142,6 +145,7 @@ main = hakyll $ do
       let artworks = recentFirst =<< loadAllSnapshotsMatchingMetadata "artworks/**/*.md" "artwork-preview" includeArtworkInGallery
       let galleryCtx =
             listField "artworks" siteCtx artworks
+              `mappend` emptyHead
               `mappend` siteCtx
 
       makeItem ""
@@ -154,7 +158,7 @@ main = hakyll $ do
   match "pages/*.md" $ do
     route pagesRoutes
     compile $ do
-      let pageCtx = mapContextIf (== "title") withName siteCtx
+      let pageCtx = emptyHead `mappend` mapContextIf (== "title") withName siteCtx
 
       pandocCompiler
         >>= loadAndApplyTemplate "templates/page.html" siteCtx
@@ -170,6 +174,7 @@ main = hakyll $ do
       let posts = recentFirst =<< loadAllSnapshots "posts/**/*.md" "post-preview"
       let homeCtx =
             listField "posts" siteCtx posts
+              `mappend` emptyHead
               `mappend` siteCtx
 
       makeItem ""
@@ -229,8 +234,11 @@ compileSass = withItemBody (unixFilter "sass" ["css/style.scss"])
 
 siteCtx =
   dateField "date" "%B %e, %Y"
-    `mappend` constField "head" ""
     `mappend` defaultContext
+
+postCtx =
+  field "head" (fmap itemBody . loadAndApplyTemplate "templates/post_head.html" defaultContext)
+    `mappend` siteCtx
 
 -- This route performs the following mapping:
 --    pages/x.md -> x/index.html
@@ -331,6 +339,7 @@ createWritingArchiveByTag tag =
       let archiveCtx =
             listField "posts" siteCtx posts
               `mappend` constField "title" ("Writings on " ++ tag)
+              `mappend` emptyHead
               `mappend` siteCtx
 
       makeItem ""
@@ -366,6 +375,11 @@ isExternalPost item = do
     Just field -> not $ "/" `isPrefixOf` field || "//" `isPrefixOf` field
     Nothing -> False
 
+-- For pages which do not need any additional
+-- scripts or stylesheets or OpenGraph meta tags.
+emptyHead :: Context String
+emptyHead = constField "head" ""
+
 -- Configuration
 
 name :: String
@@ -384,5 +398,5 @@ feedConfiguration =
       feedDescription = withName tagline,
       feedAuthorName = name,
       feedAuthorEmail = "manleyjster@gmail.com",
-      feedRoot = "http://justinmanley.work"
+      feedRoot = Site.Config.domain
     }

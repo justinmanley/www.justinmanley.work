@@ -1,5 +1,6 @@
 ---
 title: How to embed Conway's Game of Life in a scrollable web page
+cover-image: ./images/gosper_glider_gun_debug_mode.png
 ---
 
 My short illustrated narrative "[Life Story](/projects/lifestory)" embeds interactive simulations of [Conway's Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life) into a text about the same. The simulations are powered by a [TypeScript library written specifically

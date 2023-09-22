@@ -92,6 +92,10 @@ compile projectsContext = do
         >>= compileSass
         <&> fmap compressCss
 
+  match "projects/lifestory/**/images/**" $ do
+    route idRoute
+    Hakyll.compile copyFileCompiler
+
   maybeMaxVersion <-
     preprocess $
       maxVersion <$> listDirectory "projects/lifestory/version"
@@ -102,7 +106,7 @@ compile projectsContext = do
       Hakyll.compile $ pageCompilerTransformingUrls (withVersionedUrl v) context
   where
     context =
-      field "head" (loadVersionedItemBody "fragments/head.html")
+      field "head" (compileHead projectsContext)
         <> field "footer" (loadVersionedItemBody "fragments/footer.md")
         <> projectsContext
 
@@ -213,3 +217,9 @@ withVersionedUrl version _ path =
 -- Compiler with no extra URL transformation
 pageCompiler :: Context String -> Compiler (Item String)
 pageCompiler = pageCompilerTransformingUrls (const id)
+
+compileHead :: Context String -> Item String -> Compiler String
+compileHead context item = do
+  head <- loadAndApplyTemplate "templates/post_head.html" context item
+  scripts <- loadVersionedItemBody "fragments/head.html" item
+  return $ itemBody head ++ "\n" ++ scripts

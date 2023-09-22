@@ -100,8 +100,7 @@ compile projectsContext = do
         <&> fmap compressCss
   where
     context =
-      field "head" (\_ -> loadBody "projects/notegraph/fragments/head.html")
-        <> projectsContext
+      field "head" (compileHead projectsContext) <> projectsContext
 
 removeSubstringRoute :: Text -> Routes
 removeSubstringRoute substring = customRoute $ removeString substring . Identifier.toFilePath
@@ -150,3 +149,9 @@ pageCompilerTransformingUrls transformFilepath context =
 -- Compiler with no extra URL transformation
 pageCompiler :: Context String -> Compiler (Item String)
 pageCompiler = pageCompilerTransformingUrls (const id)
+
+compileHead :: Context a -> Item a -> Compiler String
+compileHead context item = do
+  head <- loadAndApplyTemplate "templates/post_head.html" context item
+  scripts <- loadBody "projects/notegraph/fragments/head.html"
+  return $ itemBody head ++ "\n" ++ scripts
