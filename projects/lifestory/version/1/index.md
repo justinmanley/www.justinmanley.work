@@ -7,17 +7,17 @@ lifescroll: 897557bb2910a5ab3aa3adf43906dae8fd7457db
   <pattern-anchor src=./patterns/lifestory.rle></pattern-anchor>
 </div>
 
-A mother never recovers from the death of her child. It’s worse if you’re a single mother, and worse still if she’s your only child. Not a day passes that I don’t think about Mariam. I was twenty-five when I gave birth to her. Her dad left a few years later. From that day on, it was the two of us against the world. I thought it would always be that way.
+A mother never recovers from the death of her child. It’s worse if you’re a single mother, and worse still if she’s your only child. Not a day passes that I don’t think about Mariam. I was twenty-five when I had her. Her dad left a few years later. From that day on, it was the two of us against the world. I thought it would always be that way.
 
 Then she died: cancer. She was forty. It should have been me. I had just reached retirement age, had just become officially “old,” and cancer is supposed to be a disease of old age. But that’s life: it never goes the way you expect.
 
-When Mariam was alive, we were close even when we were apart. When she was in college, she wrote me at least once a week. I lived for those letters. Later, once telephone calls became less expensive, we spoke almost every day. I thought we were as close as mother and daughter could be. But in the days since she died, I have wondered whether I knew her at all. Of all I have felt, that doubt — and the guilt that has come with it — has been the hardest to bear.
+When Mariam was alive, we were close even when we were apart. When she was in college, she wrote me at least once a week. I lived for those letters. Later, once telephone calls became less expensive, we spoke almost every day. I thought we were as close as mother and daughter could be. But in the days since she died, since discovering the secret life she kept from me in those final years, I have wondered how well I really knew her. Of all I have felt, that doubt — and the guilt that has come with it — has been the hardest to bear.
 
 It started when I was cleaning out her apartment. I was in Mariam’s study, a chilly room whose walls fit tightly around its single window. As I sat down in front of her computer, I saw myself reflected in the dark bulge of its glass screen. I gave the mouse a perfunctory shake as I reached with my other hand under the desk to feel around for the computer’s power button. But before I had found the power button, the screen flickered.
 
 It showed a terminal striped with lines of monospace text. The text, arranged in a simple table, gave an accounting of a strange inventory: beehives, blinkers, blocks, gliders, loaves, boats, toads. I slowly untwisted myself and drew my arm up from below the desk, eyes fixed on the screen. Those words — beehive, blinker, glider — were familiar. But they made no sense. Marian had renounced Life years ago, I thought.
 
-I scrolled upwards, to the top of the inventory, which I assumed was the output of some command-line program Mariam had run (it must have been Mariam; who else could it have been?). Above the inventory, a line of text announced: “Search complete. No solution found.” The same line reported that the program had run for ten days. The timestamp on that line showed it had been printed to the terminal earlier that day.
+I scrolled upwards, to the top of the inventory, which I assumed was the output of some command-line program Mariam had run. (It must have been Mariam; who else could it have been?) Above the inventory, a line of text announced: “Search complete. No solution found.” The same line reported that the program had run for ten days. The timestamp on that line showed it had been printed to the terminal earlier that day.
 
 A shiver ran up my spine. Mariam had written and run this program while she was still alive, and it had completed only after her death. She had been thinking about this program and its search during her final days, and she had never known its result. 
 
@@ -196,7 +196,7 @@ Ashlyn shook her head.
 
 “I know.” I didn’t, but I couldn’t argue with her. “But it’s not just that.”
 
-I couldn’t say any more. My throat was swollen with a great unhappy lump and my tear ducts prickled. I had cried earlier, at the funeral service, but I didn’t want to cry here, surrounded by people. I took a deep breath. Ashlyn waited.
+I couldn’t say any more. My throat was swollen with a great lump and I felt prickles of heat behind my eyes. I had cried earlier, at the funeral service, but I didn’t want to cry here, surrounded by people. I took a deep breath. Ashlyn waited.
 
 “If Mariam was so unhappy — if Life made her so lonely and frustrated and angry — would her life have been better if she had never known about Life? Should I have stuck to the zoo and the science museum?”
 
