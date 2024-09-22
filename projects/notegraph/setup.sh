@@ -12,6 +12,9 @@ set -x
 # the mathjax files do not seem to run in the same compilation round.
 # The copy step only runs _after_ the preprocessing rule has run and
 # some other change triggers recompilation.
-# Running 'npm install' here ensures that the mathjax files are present
+# Running 'npm ci' here ensures that the mathjax files are present
 # the first time the site is built.
-npm install
+# Running 'npm ci' rather than 'npm install' ensures that the existing 
+# package-lock.json file is used, if present, and that a new one is not
+# generated.
+npm ci

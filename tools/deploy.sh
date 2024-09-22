@@ -15,7 +15,7 @@ git clone --depth=1 https://github.com/justinmanley/www.justinmanley.work.git "$
 cd "${DIR}"
 
 # Set up site
-npm install
+npm ci
 bower install
 
 # Set up subprojects within site
