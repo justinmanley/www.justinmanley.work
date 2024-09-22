@@ -48,6 +48,8 @@ import Hakyll qualified
 import Hakyll.Core.Identifier as Identifier
 import Hakyll.Core.Item (itemIdentifier)
 import Hakyll.Core.Provider (resourceFilePath)
+import Site.PageCompiler (pageCompiler)
+import Site.Strings (removeString)
 import System.Directory (listDirectory)
 import System.FilePath (joinPath)
 import Text.HTML.TagSoup qualified as TagSoup
@@ -106,47 +108,9 @@ compile projectsContext = do
 removeSubstringRoute :: Text -> Routes
 removeSubstringRoute substring = customRoute $ removeString substring . Identifier.toFilePath
 
-removeString :: Text -> String -> String
-removeString substring = replaceString substring ""
-
-replaceString :: Text -> Text -> String -> String
-replaceString find replacement = Text.unpack . replace find replacement . Text.pack
-
--- Surely there is a better way to do this? I'm not sure why this is even
--- necessary in the first place. For some reason, page-relative links are
--- interpreted relative to the parent directory, not the directory in which
--- the page is located.
-withUrlsCompiler :: (FilePath -> FilePath -> FilePath) -> Item String -> Compiler (Item String)
-withUrlsCompiler transformFilepath item = do
-  maybeRoute <- getRoute $ itemIdentifier item
-  return $ case maybeRoute of
-    Nothing -> item
-    Just route -> withUrls (transformFilepath route) <$> item
-
-fullPathForItem :: FilePath -> FilePath -> FilePath
-fullPathForItem root path =
-  case stripPrefix "./" path of
-    Nothing -> path
-    Just basePath -> "/" ++ removeString "index.html" root ++ basePath
-
 -- TODO: See if it is possible to consolidate this with the compileSass
 -- function in Site.hs.
 -- If this compiler fails, then you may need to install the `sass` binary (see
 -- README for more details).
 compileSass :: Item String -> Compiler (Item String)
 compileSass = withItemBody (unixFilter "sass" ["--stdin"])
-
--- Rather than calling this on the same page in multiple places, it would be better
--- to cache a snapshot and then load it. However, it seems difficult to do this without
--- introducing a circular dependency.
-pageCompilerTransformingUrls :: (FilePath -> FilePath -> FilePath) -> Context String -> Compiler (Item String)
-pageCompilerTransformingUrls transformFilepath context =
-  getResourceBody
-    >>= loadAndApplyTemplate "templates/post.html" context
-    >>= loadAndApplyTemplate "templates/default.html" context
-    >>= withUrlsCompiler (\route -> transformFilepath route . fullPathForItem route)
-    >>= relativizeUrls
-
--- Compiler with no extra URL transformation
-pageCompiler :: Context String -> Compiler (Item String)
-pageCompiler = pageCompilerTransformingUrls (const id)
