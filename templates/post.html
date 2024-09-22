@@ -1,6 +1,6 @@
 <article>
     <h1 class="title"><a href="$url$">$title$</a></h1>
     <time class="date-published">$date$</time>
-    <figure><img src="$cover-image$"></img></figure>
+    $if(cover-image)$<figure><img src="$cover-image$"></img></figure>$endif$
     $body$
 </article>
