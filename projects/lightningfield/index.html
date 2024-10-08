@@ -4,6 +4,41 @@ date: September 22, 2024
 ---
 <div class="lightning-field-container">
     <lightning-field>
+        <help-text>
+            <template class="desktop"></template>
+                <p>Move around the field using the arrow keys.</p>
+                <p>
+                    Use the
+                    <span class="vertical-arrows">
+                        <img 
+                            src="./static/arrow-up-square.svg" 
+                            alt="Up arrow"
+                            style="margin-bottom: 0.25em">
+                        </img>
+                        <img 
+                            src="./static/arrow-down-square.svg" 
+                            alt="Down arrow">
+                        </img>
+                    </span>
+                    keys to move forwards and backwards <br /> and the
+                    <span class="horizontal-arrows">
+                        <img 
+                            src="./static/arrow-left-square.svg" 
+                            alt="Left arrow"
+                            style="margin-right: 0.25em">
+                        </img>
+                        <img 
+                            src="./static/arrow-right-square.svg"
+                            alt="Right arrow">
+                        </img>
+                    </span>
+                    arrow keys to turn.
+                </p>
+            </template>
+            <template class="mobile">
+                Tap and hold to move around the Field.
+            </template>
+        </help-text>
         <panoptic-view></panoptic-view>
         <closeup-view></closeup-view>
     </lightning-field>

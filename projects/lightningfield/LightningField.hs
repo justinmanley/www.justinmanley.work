@@ -36,6 +36,10 @@ compile projectsContext = do
     route idRoute
     Hakyll.compile copyFileCompiler
 
+  match "projects/lightningfield/static/*.svg" $ do
+    route idRoute
+    Hakyll.compile copyFileCompiler
+
   match ("projects/lightningfield/fragments/*.md" .||. "projects/lightningfield/fragments/*.html") $ do
     Hakyll.compile pandocCompiler
 
