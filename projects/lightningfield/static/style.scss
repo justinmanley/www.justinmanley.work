@@ -5,6 +5,12 @@
 // declarations.
 @import './bower_components/bootstrap/scss/bootstrap.scss';
 
+figure.full-width {
+    width: 100vw;
+    position: relative;
+    left: calc(-50vw + 50%);
+}
+
 lightning-field {
     width: 100%;
     height: 100%;
