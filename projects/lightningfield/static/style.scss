@@ -37,6 +37,10 @@ closeup-view {
     left: 0;
 }
 
+.help-text-option {
+    display: none;
+}
+
 help-text {
     position: relative;
     z-index: 600;  /* to bring it above both the Leaflet map and the panoptic view */
