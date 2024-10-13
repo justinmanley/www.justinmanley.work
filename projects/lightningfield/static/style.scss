@@ -1,0 +1,84 @@
+@import './css/variables.scss';
+
+// Import sub-stylesheets. Some of these stylesheets use variables set above,
+// so it's important that the import statements come after the variable
+// declarations.
+@import './bower_components/bootstrap/scss/bootstrap.scss';
+
+lightning-field {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+panoptic-view {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 500; /* to bring it above the Leaflet map, which has a z-index of 400 by default */
+}
+
+closeup-view {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+help-text {
+    position: relative;
+    z-index: 600;  /* to bring it above both the Leaflet map and the panoptic view */
+    text-align: center;
+    text-shadow: 0 0 3px white;
+}
+
+.horizontal-arrows {
+    display: inline-flex;
+}
+
+.vertical-arrows {
+    display: inline-flex;
+    flex-direction: column;
+    vertical-align: middle;
+}
+
+$mobile-list-item-width: 0.9em;
+$desktop-list-item-width: 1.8em;
+
+.exercises-list {
+    padding-inline-start: $mobile-padding-outer;
+
+    &.start {
+        counter-reset: exercises 0;
+    }
+    li { 
+        display: block;
+        margin-left: $mobile-list-item-width;
+    }
+    li:before { 
+        content: counter(exercises) ". ";
+        counter-increment: exercises;
+        position: absolute;
+        margin-left: -$mobile-list-item-width;
+    }
+}
+
+// Tablets and up
+@include media-breakpoint-up(md) {
+    .exercises-list {
+        padding-inline-start: 0;
+        li {
+            margin-left: $desktop-list-item-width;
+        }
+
+        li:before {
+            margin-left: -$desktop-list-item-width;
+        }
+    }
+}

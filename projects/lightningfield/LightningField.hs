@@ -3,13 +3,16 @@
 
 module LightningField.LightningField (compile) where
 
+import Data.Functor ((<&>))
 import Hakyll
   ( Compiler,
     Context,
     Item,
     Rules,
+    compressCss,
     copyFileCompiler,
     field,
+    getResourceString,
     idRoute,
     loadBody,
     match,
@@ -20,6 +23,7 @@ import Hakyll
   )
 import Hakyll qualified
 import Site.PageCompiler (pageCompiler)
+import Site.Sass (compileSass)
 
 compile :: Context String -> Rules ()
 compile projectsContext = do
@@ -32,9 +36,12 @@ compile projectsContext = do
     route idRoute
     Hakyll.compile copyFileCompiler
 
-  match "projects/lightningfield/static/style.css" $ do
-    route idRoute
-    Hakyll.compile copyFileCompiler
+  match "projects/lightningfield/static/style.scss" $ do
+    route $ setExtension "css"
+    Hakyll.compile $ do
+      getResourceString
+        >>= compileSass
+        <&> fmap compressCss
 
   match "projects/lightningfield/static/*.svg" $ do
     route idRoute
