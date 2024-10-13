@@ -24,6 +24,7 @@ import Hakyll
 import Hakyll qualified
 import Site.PageCompiler (pageCompiler)
 import Site.Sass (compileSass)
+import Site.Strings (replaceString)
 
 compile :: Context String -> Rules ()
 compile projectsContext = do
@@ -33,6 +34,12 @@ compile projectsContext = do
   -- TODO: Replace this with a match for notegraph-tutorial/src/*.ts and
   -- a compiler which runs webpack to generate the javascript bundle.
   match "projects/lightningfield/static/main.js" $ do
+    route idRoute
+    Hakyll.compile $ do
+      fmap (replaceString "google-maps-api-key" "/projects/lightningfield/static/google-maps-api-key")
+        <$> getResourceString
+
+  match "projects/lightningfield/static/google-maps-api-key" $ do
     route idRoute
     Hakyll.compile copyFileCompiler
 

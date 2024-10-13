@@ -1,6 +1,6 @@
 {-# LANGUAGE OverloadedStrings #-}
 
-module Site.Strings (removeString) where
+module Site.Strings (replaceString, removeString) where
 
 import Data.Text as Text (Text, pack, replace, unpack)
 
