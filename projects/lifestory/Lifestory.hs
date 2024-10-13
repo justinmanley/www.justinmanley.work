@@ -47,6 +47,7 @@ import Hakyll qualified
 import Hakyll.Core.Identifier as Identifier
 import Hakyll.Core.Item (itemIdentifier)
 import Hakyll.Core.Provider (resourceFilePath)
+import Site.Sass (compileSass)
 import System.Directory (listDirectory)
 import System.FilePath (joinPath)
 import Text.HTML.TagSoup qualified as TagSoup
@@ -148,13 +149,6 @@ fullPathForItem root path =
   case stripPrefix "./" path of
     Nothing -> path
     Just basePath -> "/" ++ removeString "index.html" root ++ basePath
-
--- TODO: See if it is possible to consolidate this with the compileSass
--- function in Site.hs.
--- If this compiler fails, then you may need to install the `sass` binary (see
--- README for more details).
-compileSass :: Item String -> Compiler (Item String)
-compileSass = withItemBody (unixFilter "sass" ["--stdin"])
 
 -- I would prefer to use Text.XML.Light along with (a modified version of)
 -- Site.Urls.mapAttrs. However, Text.XML.Light.showContent garbles the HTML

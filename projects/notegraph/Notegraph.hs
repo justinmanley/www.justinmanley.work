@@ -49,6 +49,7 @@ import Hakyll.Core.Identifier as Identifier
 import Hakyll.Core.Item (itemIdentifier)
 import Hakyll.Core.Provider (resourceFilePath)
 import Site.PageCompiler (pageCompiler)
+import Site.Sass (compileSass)
 import Site.Strings (removeString)
 import System.Directory (listDirectory)
 import System.FilePath (joinPath)
@@ -107,10 +108,3 @@ compile projectsContext = do
 
 removeSubstringRoute :: Text -> Routes
 removeSubstringRoute substring = customRoute $ removeString substring . Identifier.toFilePath
-
--- TODO: See if it is possible to consolidate this with the compileSass
--- function in Site.hs.
--- If this compiler fails, then you may need to install the `sass` binary (see
--- README for more details).
-compileSass :: Item String -> Compiler (Item String)
-compileSass = withItemBody (unixFilter "sass" ["--stdin"])
