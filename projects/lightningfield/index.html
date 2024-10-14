@@ -51,7 +51,7 @@
     <time class="date-published">September 22, 2024</time>
     
     <figure class="full-width">
-    <lightning-field>
+    <lightning-field grid-height="16" grid-width="25" interactive>
         <help-text>
             <div class="help-text-option desktop"></template>
                 <p>Move around the field using the arrow keys.</p>
@@ -77,7 +77,7 @@
                 Tap and hold to move around the Field.
             </div>
         </help-text>
-        <panoptic-view></panoptic-view>
+        <panoptic-view theme="light" display="lines"></panoptic-view>
         <closeup-view></closeup-view>
     </lightning-field>
 </figure>
@@ -112,6 +112,15 @@
 <p>
     Although I was never lost in the Field, I became disoriented more than once. Even within a single square within the Field’s grid, 220 feet on a side, there are a dizzying number of intersections, points where more than one line of poles snaps into alignment. It is easy to set out across the desert for one such intersection, and end up in another. Fortunately, the stakes are low (in fact, despite the Field’s name, they are made of low-conductivity steel which seldom attracts lightning), and shelter is always within view.
 </p>
+
+<figure class="diagrams">
+    <lightning-field grid-height="1" grid-width="1">
+        <panoptic-view theme="dark" display="lines"></panoptic-view>
+    </lightning-field>
+    <lightning-field grid-height="1" grid-width="1">
+        <panoptic-view theme="dark" display="points"></panoptic-view>
+    </lightning-field>
+</figure>
 
 <h3>Fifteen exercises</h3>
 
