@@ -1,23 +1,21 @@
 ---
-title: About
+title: About me
 ---
 
-Justin Manley writes things for people and computers.
+Hi, I'm Justin!
 
-His writing for people focuses on:
+I am a writer and a coder.
 
-<div class="content-block">
+My art writing has appeared in [Hyperallergic][] and [Squarecylinder][]. I am drawn to art which is technologically demanding, spatially inventive, obsessive, spare, and ambivalent.
 
-  - Maps, plans, and the representation and perception of space
-  - The aesthetics and ethics of the grotesque
-  - What consciousness is and how it works
-  - What the history and philosophy of science & technology can teach us about building humane technologies
+My code powers applications for communicating expressively, building roads and laying power lines, and making videos.
 
-</div>
+My latest projects explore the interactive possibilities of digitally-native writing through [a short story][lifestory], [an essay on notetaking][notegraph], and [a set of movement exercises][lightningfield].
 
-Justin holds a B.S. in Mathematics from the University of Chicago and works as a software engineer.
+I live in London.
 
-To receive occasional (roughly biannual) updates on Justin's latest writing and projects, you can subscribe
-to his [newsletter][].
-
-[newsletter]: https://tinyletter.com/justinmanley
+[Hyperallergic]: https://hyperallergic.com/author/justin-manley
+[Squarecylinder]: https://www.squarecylinder.com/?s=justin+manley 
+[lifestory]: /projects/lifestory
+[notegraph]: /projects/notegraph
+[lightningfield]: /projects/lightningfield

@@ -7,10 +7,10 @@ code][] for this website is hosted on [GitHub][] and served using [GitHub Pages]
 
 The [Favicon image][] is by AKoht on [DeviantArt][], originally licensed [CC-BY][].
 
-The [mailing list][] is hosted on [TinyLetter][].
+The [mailing list][] is hosted on [Buttondown][].
 
 [Hakyll]: http://jaspervdj.be/hakyll
-[Font Awesome]: http://fortawesome.github.io/Font-Awesome/
+[Font Awesome]: https://fontawesome.com/
 [The League of Moveable Type]: https://www.theleagueofmoveabletype.com
 [source code]: https://github.com/justinmanley/www.justinmanley.work
 [GitHub]: https://github.com/
@@ -20,5 +20,5 @@ The [mailing list][] is hosted on [TinyLetter][].
 [DeviantArt]: http://www.deviantart.com/
 [CC-BY]: http://creativecommons.org/licenses/by/4.0/
 
-[mailing list]: https://tinyletter.com/justinmanley
-[TinyLetter]: https://tinyletter.com/
+[mailing list]: https://buttondown.com/justinmanley
+[Buttondown]: https://buttondown.com/
