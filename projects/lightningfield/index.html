@@ -51,33 +51,39 @@
     <time class="date-published">October 14, 2024</time>
     
     <figure class="full-width">
-    <lightning-field grid-height="16" grid-width="25" interactive>
+    <!-- 
+        The grid dimensions count the number of squares, which is one less in each dimension
+        than the number of poles.
+    -->
+    <lightning-field grid-height="15" grid-width="24" interactive>
         <help-text>
             <div class="help-text-option desktop"></template>
-                <p>Move around the field using the arrow keys.</p>
+                <p><span class="help-text-content">Move around the field using the arrow keys.</span></p>
                 <p>
-                    Use the
-                    <span class="vertical-arrows">
-                        <img src="../../projects/lightningfield/static/arrow-up-square.svg" alt="Up arrow" style="margin-bottom: 0.25em">
-                        </img>
-                        <img src="../../projects/lightningfield/static/arrow-down-square.svg" alt="Down arrow">
-                        </img>
+                    <span class="help-text-content">
+                        Use the
+                        <span class="vertical-arrows">
+                            <img src="../../projects/lightningfield/static/arrow-up-square.svg" alt="Up arrow" style="margin-bottom: 0.25em">
+                            </img>
+                            <img src="../../projects/lightningfield/static/arrow-down-square.svg" alt="Down arrow">
+                            </img>
+                        </span>
+                        keys to move forwards and backwards <br /> and the
+                        <span class="horizontal-arrows">
+                            <img src="../../projects/lightningfield/static/arrow-left-square.svg" alt="Left arrow" style="margin-right: 0.25em">
+                            </img>
+                            <img src="../../projects/lightningfield/static/arrow-right-square.svg" alt="Right arrow">
+                            </img>
+                        </span>
+                        arrow keys to turn.
                     </span>
-                    keys to move forwards and backwards <br /> and the
-                    <span class="horizontal-arrows">
-                        <img src="../../projects/lightningfield/static/arrow-left-square.svg" alt="Left arrow" style="margin-right: 0.25em">
-                        </img>
-                        <img src="../../projects/lightningfield/static/arrow-right-square.svg" alt="Right arrow">
-                        </img>
-                    </span>
-                    arrow keys to turn.
                 </p>
             </div>
             <div class="help-text-option mobile">
-                Tap and hold to move around the Field.
+                <p><span class="help-text-content">Tap and hold to move around the Field.</span></p>
             </div>
         </help-text>
-        <panoptic-view theme="light" display="lines"></panoptic-view>
+        <panoptic-view theme="light" display="lines" line-width="2"></panoptic-view>
         <closeup-view></closeup-view>
     </lightning-field>
 </figure>
@@ -107,19 +113,22 @@
     One special way to respond to the Lightning Field, then, would be to explore this geometry in all its kaleidoscopic complexity. The movement exercises below are some of the ways I found to explore the Field’s geometry, and through it my own body’s sense of distance, scale, and orientation.
 </p>
 <p>
-    The visualization above simulates moving through the Field at a run. From any given position, each set of poles which come into alignment appears as a line on the map. Your position — usually just a patch of empty desert, occasionally a pole (see if you can find one!) — lies in the crosshair, the intersection of all the lines of alignment. Although the movement exercises are intended for the Field, you can play with many of them — simulate them — in the visualization.
+    The visualization above simulates moving through the Field. The pace is fast — much faster than I could walk, or even run through the Field. It's more like that of the birds I saw swooping through the Field and occasionally perching on the tip of a pole. From any given position, each set of poles which come into alignment appears as a line on the map. Your position — usually just a patch of empty desert, occasionally a pole (see if you can find one!) — lies in the crosshair, the intersection of all the lines of alignment. Although the movement exercises are intended for the Field, you can play with many of them — simulate them — in the visualization.
 </p>
 <p>
     Although I was never lost in the Field, I became disoriented more than once. Even within a single square within the Field’s grid, 220 feet on a side, there are a dizzying number of intersections, points where more than one line of poles snaps into alignment. It is easy to set out across the desert for one such intersection, and end up in another. Fortunately, the stakes are low (in fact, despite the Field’s name, they are made of low-conductivity steel which seldom attracts lightning), and shelter is always within view.
 </p>
 
-<figure class="diagrams">
-    <lightning-field grid-height="1" grid-width="1">
-        <panoptic-view theme="dark" display="lines"></panoptic-view>
-    </lightning-field>
-    <lightning-field grid-height="1" grid-width="1">
-        <panoptic-view theme="dark" display="points"></panoptic-view>
-    </lightning-field>
+<figure>
+    <div class="diagrams">
+        <lightning-field grid-height="1" grid-width="1">
+            <panoptic-view theme="dark" display="lines"></panoptic-view>
+        </lightning-field>
+        <lightning-field grid-height="1" grid-width="1">
+            <panoptic-view theme="dark" display="points"></panoptic-view>
+        </lightning-field>
+    </div>
+    <figcaption>The invisible geometry latent within each of the Field's 360 squares. First, the axes of symmetry that the other poles in the Field trace through this square. Second, all the points where those axes intersect. Notice the islands of calm around the most prominent intersection points.</figcaption>
 </figure>
 
 <h3>Fifteen exercises</h3>
