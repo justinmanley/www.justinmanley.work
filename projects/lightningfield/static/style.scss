@@ -45,7 +45,14 @@ help-text {
     position: relative;
     z-index: 600;  /* to bring it above both the Leaflet map and the panoptic view */
     text-align: center;
-    text-shadow: 0 0 3px white;
+}
+
+.help-text-content {
+    background-color: white;
+    display: inline-block;
+    padding: 5px;
+    border-radius: 12px;
+    box-shadow: 0 0 5px white, 0 0 10px white, 0 0 15px white;
 }
 
 .horizontal-arrows {
