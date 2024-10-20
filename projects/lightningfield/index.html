@@ -9,7 +9,10 @@ date: October 14, 2024
     -->
     <lightning-field grid-height="15" grid-width="24" interactive>
         <help-text>
-            <div class="help-text-option desktop"></template>
+            <div class="help-text-option desktop unfocused">
+                <span class="help-text-content">Click to explore.</span>
+            </div>
+            <div class="help-text-option desktop focused">
                 <p><span class="help-text-content">Move around the field using the arrow keys.</span></p>
                 <p>
                     <span class="help-text-content">
@@ -41,7 +44,7 @@ date: October 14, 2024
                     </span>
                 </p>
             </div>
-            <div class="help-text-option mobile">
+            <div class="help-text-option mobile focused unfocused">
                 <p><span class="help-text-content">Tap and hold to move around the Field.</span></p>
             </div>
         </help-text>
