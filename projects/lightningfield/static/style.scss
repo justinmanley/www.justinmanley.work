@@ -29,7 +29,7 @@ geometric-view {
     z-index: 500; /* to bring it above the Leaflet map, which has a z-index of 400 by default */
 }
 
-photographic-view {
+terrain-view {
     width: 100%;
     height: 100%;
     position: absolute;
