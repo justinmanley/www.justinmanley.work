@@ -20,6 +20,15 @@ lightning-field {
     position: relative;
 }
 
+border-view {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 600; /* to bring it above the Leaflet map, which has a z-index of 400 by default */
+}
+
 geometric-view {
     width: 100%;
     height: 100%;

@@ -7,7 +7,7 @@ date: October 14, 2024
         The grid dimensions count the number of squares, which is one less in each dimension
         than the number of poles.
     -->
-    <lightning-field grid-height="15" grid-width="24" interactive>
+    <lightning-field grid-height="15" grid-width="24" border-thickness="0.01" interactive>
         <help-text>
             <div class="help-text-option desktop unfocused">
                 <span class="help-text-content">Click to explore.</span>
@@ -49,6 +49,7 @@ date: October 14, 2024
             </div>
         </help-text>
         <geometric-view theme="light" display="lines" line-width="2"></geometric-view>
+        <border-view></border-view>
         <terrain-view></terrain-view>
     </lightning-field>
 </figure>
@@ -86,10 +87,10 @@ date: October 14, 2024
 
 <figure>
     <div class="diagrams">
-        <lightning-field grid-height="1" grid-width="1">
+        <lightning-field grid-height="1" grid-width="1" canvas-margin="2">
             <geometric-view theme="dark" display="lines"></geometric-view>
         </lightning-field>
-        <lightning-field grid-height="1" grid-width="1">
+        <lightning-field grid-height="1" grid-width="1" canvas-margin="2">
             <geometric-view theme="dark" display="points"></geometric-view>
         </lightning-field>
     </div>
