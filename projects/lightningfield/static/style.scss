@@ -6,9 +6,9 @@
 @import './bower_components/bootstrap/scss/bootstrap.scss';
 
 figure.full-width {
-    width: 100vw;
+    width: calc(100vw - var(--scrollbar-width));
     position: relative;
-    left: calc(-50vw + 50%);
+    left: calc(-50vw + 50% + var(--scrollbar-width) / 2);
 }
 
 lightning-field {
