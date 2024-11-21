@@ -211,6 +211,14 @@
         <p>As before, wander the Field — but now, when you reach the edge of the Field, walk out of it for as long as you like. When you’re ready, turn back, find a new path or pick a new point, and re-enter.</p>
     </li>
 </ol>
+<script type="text/javascript">
+    function setScrollbarWidth() {
+        const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+        document.documentElement.style.setProperty('--scrollbar-width', scrollbarWidth + 'px');
+    }
+    setScrollbarWidth();
+    window.addEventListener('resize', setScrollbarWidth);
+</script>
 </article>
 </div>
         </main>
