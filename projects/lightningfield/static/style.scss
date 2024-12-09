@@ -102,6 +102,10 @@ $desktop-list-item-width: 1.8em;
     }
 }
 
+.fullscreen-caption {
+    display: none;
+}
+
 // Tablets and up
 @include media-breakpoint-up(md) {
     .diagrams {
@@ -118,5 +122,10 @@ $desktop-list-item-width: 1.8em;
         li:before {
             margin-left: -$desktop-list-item-width;
         }
+    }
+
+    .fullscreen-caption {
+        display: block;
+        margin: 0 15px;
     }
 }
