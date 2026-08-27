@@ -1,9 +1,9 @@
 {-# LANGUAGE OverloadedStrings #-}
 
-module Site.PageCompiler (pageCompiler) where
+module Site.PageCompiler (pageCompiler, markdownPageCompiler) where
 
 import Data.List (stripPrefix)
-import Hakyll (Compiler, Context, Item, getResourceBody, getRoute, itemIdentifier, loadAndApplyTemplate, relativizeUrls, withUrls)
+import Hakyll (Compiler, Context, Item, getResourceBody, getRoute, itemIdentifier, loadAndApplyTemplate, pandocCompiler, relativizeUrls, withUrls)
 import Site.Strings (removeString)
 
 fullPathForItem :: FilePath -> FilePath -> FilePath
@@ -26,14 +26,19 @@ withUrlsCompiler transformFilepath item = do
 -- Rather than calling this on the same page in multiple places, it would be better
 -- to cache a snapshot and then load it. However, it seems difficult to do this without
 -- introducing a circular dependency.
-pageCompilerTransformingUrls :: (FilePath -> FilePath -> FilePath) -> Context String -> Compiler (Item String)
-pageCompilerTransformingUrls transformFilepath context =
-  getResourceBody
+pageCompilerTransformingUrls :: Compiler (Item String) -> (FilePath -> FilePath -> FilePath) -> Context String -> Compiler (Item String)
+pageCompilerTransformingUrls bodyCompiler transformFilepath context =
+  bodyCompiler
     >>= loadAndApplyTemplate "templates/post.html" context
     >>= loadAndApplyTemplate "templates/default.html" context
     >>= withUrlsCompiler (\route -> transformFilepath route . fullPathForItem route)
     >>= relativizeUrls
 
--- Compiler with no extra URL transformation
+-- Compiler for pages whose body is already HTML, with no extra URL transformation.
 pageCompiler :: Context String -> Compiler (Item String)
-pageCompiler = pageCompilerTransformingUrls (const id)
+pageCompiler = pageCompilerTransformingUrls getResourceBody (const id)
+
+-- Compiler for pages whose body is written in Markdown, with no extra URL
+-- transformation. Raw HTML embedded in the Markdown is passed through untouched.
+markdownPageCompiler :: Context String -> Compiler (Item String)
+markdownPageCompiler = pageCompilerTransformingUrls pandocCompiler (const id)

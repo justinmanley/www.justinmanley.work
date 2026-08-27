@@ -25,10 +25,14 @@ library:
   source-dirs:
   - src
   - projects
+  # 'photo-pairs' is not a legal Haskell module name, so the PhotoPairs module
+  # is exposed by adding its project directory as a source directory.
+  - projects/photo-pairs
   other-modules:
   - Lifestory.Lifestory
   - Notegraph.Notegraph
   - LightningField.LightningField
+  - PhotoPairs
   dependencies:
   - containers
   - directory
