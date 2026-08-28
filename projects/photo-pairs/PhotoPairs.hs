@@ -16,13 +16,17 @@ import Hakyll
     match,
     route,
     setExtension,
+    (.||.),
   )
 import Hakyll qualified
 import Site.PageCompiler (markdownPageCompiler)
 
 compile :: Context String -> Rules ()
 compile projectsContext = do
-  match "projects/photo-pairs/static/*.mp4" $ do
+  -- Static assets for the project as a whole ('projects/photo-pairs/static')
+  -- as well as those belonging to an individual page, such as the images for a
+  -- single pair ('projects/photo-pairs/book/pair/<pair>/static').
+  match ("projects/photo-pairs/static/*" .||. "projects/photo-pairs/**/static/*") $ do
     route idRoute
     Hakyll.compile copyFileCompiler
 
