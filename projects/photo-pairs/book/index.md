@@ -16,7 +16,7 @@ date: August 27, 2026
 
 I'm making a book!
 
-I'm writing the text, of course. But I also plan to produce the book myself. Once I've selected all the images and completed the text, I plan to work with a printer and binder to produce a beautiful book, an object which is satisfying to hold, with paper that feels good to the touch and which makes the pictures look their best.
+I'm writing the text, of course. But I also plan to produce the book myself. Once I've selected all the images and completed the text, I'll to work with a printer and binder to produce a beautiful book, an object which is satisfying to hold, with paper that feels good to the touch and which makes the pictures look their best.
 
 It's an adventure!
 
@@ -51,7 +51,7 @@ I select images exclusively from among the 45,000 pictures I took with my phone 
 
 When I find a good pair of pictures, I learn everything I can about each one. If it's a picture I took of something in the world, then I start by working from my own memory. Many of the images in my camera roll are pictures of other pictures: of photographs somebody else took, or of paintings. In those cases, I can't rely on my memory, so I research. I spend time in libraries and archives. When I can, I visit the places shown in the pictures. I'm looking for shared histories or people or objects which connect the two pictures in each pair.
 
-When I've learned as much as I can about each picture in a pair, I write. Starting with one of the pictures, I follow the path that leads through history and memory into the other.
+Once I've learned as much as I can about each picture in a pair, I write. Starting with one of the pictures, I follow the path that leads through history and memory into the other.
 
 The book is a sequence of pairs.
 
