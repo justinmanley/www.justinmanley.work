@@ -11,6 +11,7 @@ module PhotoPairs (compile) where
 import Hakyll
   ( Context,
     Rules,
+    constField,
     copyFileCompiler,
     idRoute,
     match,
@@ -32,4 +33,13 @@ compile projectsContext = do
 
   match "projects/photo-pairs/**/index.md" $ do
     route $ setExtension "html"
-    Hakyll.compile $ markdownPageCompiler projectsContext
+    Hakyll.compile $ markdownPageCompiler context
+  where
+    -- Every page of the project loads the script which sets up the player for
+    -- a recording, rather than just those pages which have a recording,
+    -- because the script does nothing on a page without one.
+    context =
+      constField "head" recordingScript <> projectsContext
+
+    recordingScript =
+      "<script defer src=\"/projects/photo-pairs/static/recording.js\"></script>"

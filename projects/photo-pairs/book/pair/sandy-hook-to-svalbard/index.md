@@ -7,6 +7,10 @@ date: March 3, 2025
 <img src="./static/sandy_hook.jpg"></img>
 </figure>
 
+<figure class="recording">
+<audio src="./static/recording.m4a" controls controlslist="nodownload" preload="metadata"></audio>
+</figure>
+
 The year is 1933. Depression. If the settlement of Sandy Hook is anything like the rest of the country, no fewer than four or five of the ten houses are in default of their mortgage. 
 
 A commuter hastens along the dirt path that cuts across the vacant lots between the huddled houses and the train platform. Two years later, the railroad company will go bankrupt. People will choose to take their newly-bought automobiles on the newly-built highway instead. The train station will be closed, then demolished, the tracks taken up and melted down. No one will remember that the train whistle could once be heard here, on this street, as the sun rose each morning into the Agnes Pelton sky.
