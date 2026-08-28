@@ -5,6 +5,9 @@ date: August 27, 2026
 
 <figure>
     <video src="/projects/photo-pairs/static/book-mockup.mp4"
+           poster="/projects/photo-pairs/static/book-mockup-poster.webp"
+           width="1280"
+           height="720"
            autoplay
            loop
            muted

@@ -101,6 +101,10 @@ article {
 	img,
 	video {
 		width: 100%;
+		// Paired with intrinsic width/height attributes on the element, this
+		// preserves the aspect ratio and reserves layout space before the
+		// asset loads, avoiding a layout shift.
+		height: auto;
 
 		@include center-block();
 	}
