@@ -6,6 +6,19 @@
 	padding-bottom: 50px;
 }
 
+// The newsletter form as it appears inline in the body of an article, rather
+// than in the footer, where it needs less room beneath it.
+.newsletter-inline {
+	padding-bottom: 20px;
+
+	// The sizes below are given in em, so they are relative to the font size
+	// of the enclosing element. Reset the font size to the size used on the
+	// body -- which is what the form inherits in the footer -- so that the
+	// form is the same size here as it is there, rather than scaled up by the
+	// larger font size used for article text.
+	font-size: $font-size-base;
+}
+
 .newsletter-form {
 	display: flex;
 	margin: 0 auto;

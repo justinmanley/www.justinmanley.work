@@ -19,6 +19,14 @@ It's an adventure!
 
 I'll be sharing updates along the way. You can follow along on [Instagram](https://www.instagram.com/justinmanley_) or [via email](https://buttondown.com/photo-pairs-book).
 
+<form class="newsletter newsletter-inline content-block"
+      action="https://buttondown.com/api/emails/embed-subscribe/photo-pairs-book"
+      method="post"
+      target="popupwindow"
+      onsubmit="window.open('https://buttondown.com/photo-pairs-book', 'popupwindow')">
+<div class="newsletter-form"><input type="email" name="email" id="bd-email-photo-pairs-book" class="newsletter-email" aria-label="Email address"/><input type="submit" value="Subscribe" class="newsletter-subscribe"/><input type="hidden" value="1" name="embed"/></div>
+</form>
+
 ### What is it about?
 
 I wish I could tell you, but...I don't know yet.
@@ -48,15 +56,17 @@ The book is a sequence of pairs.
 
 I'm really not sure! What it's about depends on which images make it in. Really good pairs of images are rare enough that, when I find a good pair, I have to use it.
 
-So far, though, some themes are emerging.
+So far, though, some themes are emerging:
 
-Memories: how easily they can disappear -- and how sometimes, against all the odds, they persist.
+Holding onto things and throwing things away.
 
-Buildings being torn down, or burned down, or simply falling apart.
+Mothers, sons, and daughters.
 
 Death that is senseless and cruel.
 
-Holding onto things and throwing things away.
+Buildings burning up, or being torn down, or simply falling apart.
+
+Roads and railways, cars and trains.
 
 ### AI-enabled literature
 
