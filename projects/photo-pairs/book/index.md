@@ -27,6 +27,15 @@ Here's what I know so far.
 
 The book consists of images joined by short texts.
 
+Here's an example:
+
+<a class="pair-preview" href="/projects/photo-pairs/book/pair/sandy-hook-to-svalbard">
+<img src="/projects/photo-pairs/book/pair/sandy-hook-to-svalbard/static/sandy_hook.jpg"
+     alt="Sandy Hook"></img>
+<img src="/projects/photo-pairs/book/pair/sandy-hook-to-svalbard/static/svalbard.jpg"
+     alt="Svalbard"></img>
+</a>
+
 I select images exclusively from among the 45,000 pictures I took with my phone between 2008 and 2024. Scrolling through my phone's camera roll, I look for pictures I took at different times, in different places, showing different things, but which nonetheless have a strong visual resemblance.
 
 When I find a good pair of pictures, I learn everything I can about each one. If it's a picture I took of something in the world, then I start by working from my own memory. Many of the images in my camera roll are pictures of other pictures: of photographs somebody else took, or of paintings. In those cases, I can't rely on my memory, so I research. I spend time in libraries and archives. When I can, I visit the places shown in the pictures. I'm looking for shared histories or people or objects which connect the two pictures in each pair.
@@ -56,7 +65,3 @@ The 45,000 images I took between 2008 and 2024 yield more than two billion poten
 The pattern of two rhyming images joined by text is a new literary structure, a new kind of constraint, like the sonnet or the haiku or Dante's terza rima. AI supports this literary structure in the same way that a thesaurus makes it easier to write rhyming poetry. This project is my answer to the question of how writers might use humanity's new tools to expand what literature can be.
 
 I never use AI to do the writing or make the decisions. Every word is my own, and everything I write is grounded in real, human facts and feelings.
-
-### Read more
-
-[Sandy Hook to Svalbard](/projects/photo-pairs/book/pair/sandy-hook-to-svalbard)

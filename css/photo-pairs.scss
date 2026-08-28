@@ -1,0 +1,40 @@
+// A link to the page for a single pair of photographs, showing the two
+// photographs side by side. Used on the photo pairs book page.
+//
+// The link sits inside a paragraph, which supplies the same left and right
+// gutters on mobile that the surrounding text has.
+.pair-preview {
+	display: flex;
+	gap: 10px;
+	padding: 10px;
+	border: 1px solid $brand-primary;
+	border-radius: $border-radius-sm;
+
+	// Reset the styles applied to images inside an <article>, which would
+	// otherwise stretch each photograph across the full width of the box.
+	img {
+		flex: 1;
+		min-width: 0;
+		margin: 0;
+	}
+
+	// Bootstrap draws a focus ring just inside the border of a focused link.
+	// Suppress it when the box is focused by a mouse click, but leave it in
+	// place for keyboard users, for whom it is the only indication of which
+	// link is selected.
+	&:focus:not(:focus-visible) {
+		outline: none;
+	}
+
+	// Darken the whole box: the background behind and between the
+	// photographs, the photographs themselves, and the border.
+	&:hover {
+		background-color: $gray-lighter;
+		border-color: darken($brand-primary, 10%);
+		text-decoration: none;
+
+		img {
+			filter: brightness(0.9);
+		}
+	}
+}
