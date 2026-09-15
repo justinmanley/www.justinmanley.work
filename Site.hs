@@ -384,5 +384,5 @@ feedConfiguration =
       feedDescription = withName tagline,
       feedAuthorName = name,
       feedAuthorEmail = "manleyjster@gmail.com",
-      feedRoot = "http://justinmanley.work"
+      feedRoot = "https://justinmanley.world"
     }
