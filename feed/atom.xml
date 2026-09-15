@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <title>Justin Manley</title>
-    <link href="http://justinmanley.work/feed/atom.xml" rel="self" />
-    <link href="http://justinmanley.work" />
-    <id>http://justinmanley.work/feed/atom.xml</id>
+    <link href="https://justinmanley.world/feed/atom.xml" rel="self" />
+    <link href="https://justinmanley.world" />
+    <id>https://justinmanley.world/feed/atom.xml</id>
     <author>
         <name>Justin Manley</name>
         <email>manleyjster@gmail.com</email>
@@ -11,8 +11,8 @@
     <updated>2024-12-22T00:00:00Z</updated>
     <entry>
     <title>Six Reflections on Calderara</title>
-    <link href="http://justinmanley.work/posts/six-reflections-on-calderara/index.html" />
-    <id>http://justinmanley.work/posts/six-reflections-on-calderara/index.html</id>
+    <link href="https://justinmanley.world/posts/six-reflections-on-calderara/index.html" />
+    <id>https://justinmanley.world/posts/six-reflections-on-calderara/index.html</id>
     <published>2024-12-22T00:00:00Z</published>
     <updated>2024-12-22T00:00:00Z</updated>
     <summary type="html"><![CDATA[<style>
@@ -63,8 +63,8 @@
 </entry>
 <entry>
     <title>How I Learned to Stop Worrying and Love Optimization</title>
-    <link href="http://justinmanley.work/posts/how-I-learned-to-stop-worrying-and-love-optimization/index.html" />
-    <id>http://justinmanley.work/posts/how-I-learned-to-stop-worrying-and-love-optimization/index.html</id>
+    <link href="https://justinmanley.world/posts/how-I-learned-to-stop-worrying-and-love-optimization/index.html" />
+    <id>https://justinmanley.world/posts/how-I-learned-to-stop-worrying-and-love-optimization/index.html</id>
     <published>2023-03-20T00:00:00Z</published>
     <updated>2023-03-20T00:00:00Z</updated>
     <summary type="html"><![CDATA[<p>Imagine a traveler stranded in the mountains at night. Somewhere far below, there are valleys with food, warmth, safety. It is pitch-black: no stars, no moon. In order to reach the safety of a valley, the traveler must navigate by feel alone. They slide their feet around, pat the ground to feel which way it slopes, then take a step in the direction of steepest descent, always following the gradient of the land. If the traveler is lucky and the landscape accommodating, gradient descent will bring them eventually out of the mountains.</p>
@@ -125,8 +125,8 @@ The header GIF is an excerpt from the <a href="https://www.youtube.com/watch?v=h
 </entry>
 <entry>
     <title>I, Robot / You, Robot: Alan Rath and the Choreography of Consciousness</title>
-    <link href="http://justinmanley.work/posts/alan-rath-again/index.html" />
-    <id>http://justinmanley.work/posts/alan-rath-again/index.html</id>
+    <link href="https://justinmanley.world/posts/alan-rath-again/index.html" />
+    <id>https://justinmanley.world/posts/alan-rath-again/index.html</id>
     <published>2019-12-19T00:00:00Z</published>
     <updated>2019-12-19T00:00:00Z</updated>
     <summary type="html"><![CDATA[<p>Two robotic arms dance against a white wall. The robots flirt with each other, waving, tickling, stroking, kissing. They are elegant and uncanny: the robots strike a bodybuilder’s pose, flexing, then twirl like octopus tentacles before straightening out into a pair of long human legs. The robotic arms belong to an artwork called <em>Again</em>, completed in 2017 by artist Alan Rath, and as I watch their movements, I feel that I am facing a pair of creatures animated by a strange new form of consciousness.</p>
@@ -217,8 +217,8 @@ Nature, volume 253, pp. 265–266 (24 January 1975).</p>
 </entry>
 <entry>
     <title>Skepticism and Despair in <i>The Infinity Engine</i></title>
-    <link href="http://justinmanley.work/posts/infinity-engine/index.html" />
-    <id>http://justinmanley.work/posts/infinity-engine/index.html</id>
+    <link href="https://justinmanley.world/posts/infinity-engine/index.html" />
+    <id>https://justinmanley.world/posts/infinity-engine/index.html</id>
     <published>2017-05-21T00:00:00Z</published>
     <updated>2017-05-21T00:00:00Z</updated>
     <summary type="html"><![CDATA[<p>In <em>The Infinity Engine</em> (2014 - 2017), artist Lynn Hershman Leeson offers a concentrated experience of the contemporary debate over the implications of genetic modification and other emerging biotechnologies. The multimedia installation traces the movement of these technologies through society from inception in the laboratory to eventual acceptance into living human bodies. For me, a layperson, the <em>The Infinity Engine</em> awakens a disheartening awareness of the uncertainty of our biological future and my own lack of agency.</p>
@@ -250,8 +250,8 @@ Two boxes hold hundreds of pages of technical reports, patents filings, Supreme 
 </entry>
 <entry>
     <title>Surface Tension</title>
-    <link href="http://justinmanley.work/posts/camille-utterback-sustaining-presence/index.html" />
-    <id>http://justinmanley.work/posts/camille-utterback-sustaining-presence/index.html</id>
+    <link href="https://justinmanley.world/posts/camille-utterback-sustaining-presence/index.html" />
+    <id>https://justinmanley.world/posts/camille-utterback-sustaining-presence/index.html</id>
     <published>2017-03-25T00:00:00Z</published>
     <updated>2017-03-25T00:00:00Z</updated>
     <summary type="html"><![CDATA[<p>Winston Churchill once said, “We make our buildings and afterwards they make us.” The same is true of technology. Linear perspective,<sup><a href="#rationalization-of-sight">1</a></sup> the printing press,<sup><a href="#printing-press">2</a></sup> the camera,<sup><a href="#on-photography">3</a></sup> the computer;<sup><a href="#second-self">4</a></sup> these technologies have changed irreversibly the way the world appears to us, how we relate to each other, and the way we see ourselves. Digital display technology is poised now to effect a similar transformation in the way that we see the world. Already ubiquitous on cellphone screens, digital images will become increasingly inseparable from physical reality with the spread of augmented and virtual reality technologies. In her <a href="http://events.stanford.edu/events/635/63511/">show of digital installation art</a> at the Stanford Art Gallery, artist Camille Utterback offers a critique of the digital screen and a hopeful exploration of the possibilities of an augmented reality which is deeply based in the physical world.</p>
@@ -304,8 +304,8 @@ For further reading on these topics, see my <a href="https://docs.google.com/doc
 </entry>
 <entry>
     <title>I Have No Memory of This Place</title>
-    <link href="http://justinmanley.work/posts/sohei-nishino-new-work/index.html" />
-    <id>http://justinmanley.work/posts/sohei-nishino-new-work/index.html</id>
+    <link href="https://justinmanley.world/posts/sohei-nishino-new-work/index.html" />
+    <id>https://justinmanley.world/posts/sohei-nishino-new-work/index.html</id>
     <published>2017-01-04T00:00:00Z</published>
     <updated>2017-01-04T00:00:00Z</updated>
     <summary type="html"><![CDATA[<p>When I first saw <a href="http://soheinishino.net/">Sohei Nishino</a>’s map of San Francisco at SFMOMA, I felt an inexplicable, irrational sense of resentment. Behind me, a teenager crowed to his friends: “I don’t even have to look at the label, I can tell that one is San Francisco.” Nishino’s map of San Francisco is instantly recognizable from a distance, but as I inspected its details, I felt indignant in spite of myself. <a href="https://www.youtube.com/watch?v=bSrf8EgSyDg">Nishino’s city wasn’t the San Francisco that I knew</a>. Missing were the familiar sights that dominate my memories of the city: Mission Street’s shabby bodegas and dollar stores; the bookshops and taquerias fronting on narrow, shaded sidewalks along 24th Street; the cliffs of Thornton State Beach, draped with spiky succulent sea fig.</p>
@@ -350,8 +350,8 @@ For further reading, see my <a href="https://docs.google.com/document/d/1OIoKdH-
 </entry>
 <entry>
     <title>Culture and Spatial Perception in the Art of teamLab</title>
-    <link href="http://justinmanley.work/posts/teamLab-living-digital-space-future-parks/index.html" />
-    <id>http://justinmanley.work/posts/teamLab-living-digital-space-future-parks/index.html</id>
+    <link href="https://justinmanley.world/posts/teamLab-living-digital-space-future-parks/index.html" />
+    <id>https://justinmanley.world/posts/teamLab-living-digital-space-future-parks/index.html</id>
     <published>2016-11-10T00:00:00Z</published>
     <updated>2016-11-10T00:00:00Z</updated>
     <summary type="html"><![CDATA[<p>The best visual spectacle in the Bay Area right now is the show of digital installation art by Japanese art group <a href="http://www.team-lab.net/">teamLab</a> at <a href="http://www.pacegallery.com/">Pace Art + Technology</a> in Menlo Park. The show is a vast warren of dazzling sights: a <a href="http://exhibition.team-lab.net/siliconvalley/art/art01.html">narrow path through a forest of glowing LEDs</a>, a <a href="http://exhibition.team-lab.net/siliconvalley/art/art09.html">cave full of projected flowers endlessly blooming and dying</a>, a <a href="http://exhibition.team-lab.net/siliconvalley/art/art02.html">hazy world of dark waves stretching into infinity</a>. The twenty artworks are beautiful, intricate, and masterfully executed, but they quickly blur together into a highbrow funhouse, a sophisticated trade show. The show is grounded in teamLab’s homegrown theory of spatial perception and motivated by the group’s ambitions for social harmony and the advancement of Japanese art. These ideas might have elevated the show, but they are underdeveloped and unconvincing. Nevertheless, they suggest exciting new directions for inquiry into the relationship between culture and perception.</p>
@@ -428,8 +428,8 @@ For further reading, see <em>Cultural Modes of Seeing Through Cultural Modes of 
 </entry>
 <entry>
     <title>Three Excursions in Artificial Existence</title>
-    <link href="http://justinmanley.work/posts/three-excursions-in-artificial-existence/index.html" />
-    <id>http://justinmanley.work/posts/three-excursions-in-artificial-existence/index.html</id>
+    <link href="https://justinmanley.world/posts/three-excursions-in-artificial-existence/index.html" />
+    <id>https://justinmanley.world/posts/three-excursions-in-artificial-existence/index.html</id>
     <published>2016-02-17T00:00:00Z</published>
     <updated>2016-02-17T00:00:00Z</updated>
     <summary type="html"><![CDATA[<p>The creation of a true artificial intelligence is likely still decades away, but as limited forms of machine intelligence become increasingly ubiquitous, questions about the relationship between we humans and our semisentient creations will become ever more pressing. <a href="http://neat.thecjm.org/">NEAT: New Experiments in Art and Technology</a>, on view this past fall at the <a href="http://www.thecjm.org/">Contemporary Jewish Museum</a> in San Francisco, offered a few compelling explorations of artificial existence. Arranged among unremarkable interactive visualizations and video artworks, these artificial beings were both formally inventive and technologically topical.</p>
@@ -473,8 +473,8 @@ For further reading, see <em>Cultural Modes of Seeing Through Cultural Modes of 
 </entry>
 <entry>
     <title>The Death and Life of Dante-Harper Townhomes</title>
-    <link href="http://justinmanley.work/posts/dorchester-art-housing-collaborative/index.html" />
-    <id>http://justinmanley.work/posts/dorchester-art-housing-collaborative/index.html</id>
+    <link href="https://justinmanley.world/posts/dorchester-art-housing-collaborative/index.html" />
+    <id>https://justinmanley.world/posts/dorchester-art-housing-collaborative/index.html</id>
     <published>2015-12-27T00:00:00Z</published>
     <updated>2015-12-27T00:00:00Z</updated>
     <summary type="html"><![CDATA[<p>Chicago artist Theaster Gates bought an abandoned bank building for just $1 from the City of Chicago in 2013. Since then, his fans have eagerly awaited the debut of the <a href="https://rebuild-foundation.org/site/stony-island-arts-bank/">Stony Island Arts Bank</a>, an exhibition space and archive which opened in October to much fanfare. Though it’s an impressive demonstration of Gates’ fundraising chops (it cost $3.5M to make the building structurally sound), the building is architecturally underwhelming at present. Except for the lavish library at the back of the building, the Arts Bank is little more than an empty shell.</p>
@@ -535,8 +535,8 @@ Looking down into the atrium of the Stony Island Arts Bank. The pillars around t
 </entry>
 <entry>
     <title>A Sunroom of One's Own</title>
-    <link href="http://justinmanley.work/posts/a-sunroom-of-ones-own/index.html" />
-    <id>http://justinmanley.work/posts/a-sunroom-of-ones-own/index.html</id>
+    <link href="https://justinmanley.world/posts/a-sunroom-of-ones-own/index.html" />
+    <id>https://justinmanley.world/posts/a-sunroom-of-ones-own/index.html</id>
     <published>2014-05-13T00:00:00Z</published>
     <updated>2014-05-13T00:00:00Z</updated>
     <summary type="html"><![CDATA[<p>It’s a clear, warm Saturday morning in May, and my sunroom is full of light and the sounds drifting up from the sidewalk. Across the street, a black dog turns the corner sedately, trailing his human behind. On the sidewalk just below, a mother pushing a yellow stroller passes an elderly woman trundling a wire cart full of grocery bags.</p>
