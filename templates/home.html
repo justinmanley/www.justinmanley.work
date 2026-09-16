@@ -1,9 +1,35 @@
 ---
 title: Writer, artist, and software artisan
 ---
-<h3 class="page-title content-block">Selected writing</h3>
-$for(posts)$
-    $if(featured)$
-        $body$
-    $endif$
-$endfor$
+<article class="home">
+    <h1 class="home-greeting content-block">Welcome to my world</h1>
+
+    <figure class="hero">
+        <a href="/pairwise">
+            <video src="/projects/photo-pairs/static/book-mockup.mp4"
+                   poster="/projects/photo-pairs/static/book-mockup-poster.webp"
+                   width="1920"
+                   height="1080"
+                   autoplay
+                   loop
+                   muted
+                   playsinline></video>
+        </a>
+    </figure>
+
+    <p>I'm making a photo book! <a href="/pairwise"><i>Pairwise</i></a> is a book of pairs of pictures along with short texts about the histories behind the images.</p>
+    
+    <p>I’m bringing this project into the physical world: first as a limited-edition preview of 100 copies shipping in time for the holidays, and then as a full-length book in 2027.</p>
+
+    <p>Subscribe to follow along as I sort through images, visit archives, test paper samples, and watch freshly-printed pages pour out of the printer. Subscribers also get first word when the limited-edition booklet goes live.</p>
+
+    <iframe 
+      class="substack-subscribe-embed"
+      src="https://pairwisebook.substack.com/embed?transparent=1"
+      width="480"
+      height="150"
+      style="border: 0; background: transparent"
+      frameborder="0"
+      scrolling="no">
+    </iframe>
+</article>

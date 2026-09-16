@@ -1,0 +1,35 @@
+// The greeting which opens the homepage. Set in the lightest grey on the site,
+// at a size which lets it stand on its own as the first thing on the page.
+.home-greeting {
+	color: $gray-lighter;
+	font-size: 1.5rem;
+	padding-bottom: 40px;
+
+	// Tablets and up: the line has room to breathe, so let it grow.
+	@include media-breakpoint-up(md) {
+		font-size: 2rem;
+	}
+}
+
+// The newsletter embed comes with a fixed width of 480px, which is wider than
+// a phone screen: left alone, it stretches the page wider than the window and
+// carries the navigation, the text and part of the video off the right-hand
+// edge. Overriding the width here keeps the embed on the screen without
+// editing the snippet Substack supplies.
+.substack-subscribe-embed {
+	display: block;
+	width: 100%;
+	max-width: 480px;
+
+	// The same left and right gutters the text takes on mobile. Unlike the
+	// video, which is meant to run to the edges of the screen, a form flush
+	// against them looks unfinished. Bootstrap sets `box-sizing: border-box`,
+	// so this padding comes out of the width above rather than adding to it.
+	padding-left: $mobile-padding-outer;
+	padding-right: $mobile-padding-outer;
+
+	@include media-breakpoint-up(md) {
+		padding-left: 0;
+		padding-right: 0;
+	}
+}

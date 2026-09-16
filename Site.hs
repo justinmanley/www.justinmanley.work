@@ -31,6 +31,12 @@ main = hakyll $ do
     route idRoute
     compile copyFileCompiler
 
+  -- The Sass sources have no output of their own: they are compiled into a
+  -- single stylesheet by the rule below. This rule exists so that Hakyll knows
+  -- about them, which is what makes `site watch` notice when one of them
+  -- changes, and what allows the stylesheet to be rebuilt when one does.
+  match "css/*.scss" $ compile getResourceBody
+
   create ["css/style.css"] $ do
     route $ setExtension "css"
     sassStylesheets <- makePatternDependency "css/*.scss"
@@ -167,13 +173,8 @@ main = hakyll $ do
   create ["index.html"] $ do
     route idRoute
     compile $ do
-      let posts = recentFirst =<< loadAllSnapshots "posts/**/*.md" "post-preview"
-      let homeCtx =
-            listField "posts" siteCtx posts
-              `mappend` siteCtx
-
       makeItem ""
-        >>= loadTemplateWithMetadataAndApply "templates/home.html" homeCtx
+        >>= loadTemplateWithMetadataAndApply "templates/home.html" siteCtx
         <&> withNameInTitle
         >>= uncurry (loadAndApplyTemplate "templates/default.html")
         >>= relativizeUrls

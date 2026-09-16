@@ -35,4 +35,4 @@ Hanssen vows to get more houses built. Perhaps the houses will be red and yellow
 </figure>
 
 
-[Back to the book](/projects/photo-pairs/book)
+[Back to the book](/pairwise)

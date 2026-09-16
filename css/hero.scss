@@ -1,0 +1,33 @@
+// Media given the full weight of the page. On wider screens it breaks out of
+// the column the text is set in and grows to fill most of the window, stopping
+// short of the edges of the screen. Used for the video of the book, both on
+// the homepage and at the top of the book's own page.
+.hero {
+	@include media-breakpoint-up(md) {
+		width: 90vw;
+		max-width: 1280px;
+
+		// Center the media on the page rather than on the narrower column of
+		// text which contains it.
+		margin-left: 50%;
+		transform: translateX(-50%);
+	}
+
+	// A hero which links somewhere puts the link around the whole frame, so
+	// that all of it is clickable, including the poster image shown before a
+	// video loads.
+	a {
+		// Without this, the link is laid out as text, leaving a gap beneath
+		// the media where the descenders of a line of text would sit.
+		display: block;
+
+		// Dim the media on hover, the same way the preview of a pair of
+		// photographs is dimmed, since there is no text here to underline.
+		&:hover {
+			img,
+			video {
+				filter: brightness(0.9);
+			}
+		}
+	}
+}
